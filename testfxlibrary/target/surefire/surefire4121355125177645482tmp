@@ -1,0 +1,6 @@
+#surefire
+#Thu Jul 13 02:07:48 BST 2017
+maven.ext.class.path=/usr/local/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar
+user.dir=/home/osboxes/Downloads/robotframework-testfxlibrary
+localRepository=/home/osboxes/.m2/repository
+basedir=/home/osboxes/Downloads/robotframework-testfxlibrary

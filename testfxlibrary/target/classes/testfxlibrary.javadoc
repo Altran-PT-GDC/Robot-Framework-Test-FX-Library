@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <package name="">
+        <class name="TestFXLibrary" qualified="TestFXLibrary" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <comment>TestFXLibrary is a ... library for the Robot Framework.&lt;br&gt;
+ &lt;br&gt;
+ &lt;b&gt;Insert library introduction here.&lt;/b&gt;</comment>
+            <class qualified="org.robotframework.javalib.library.AnnotationLibrary"/>
+            <constructor name="TestFXLibrary" signature="()" qualified="TestFXLibrary" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>testfxlibrary can be imported with optional arguments.&lt;br&gt;
+ &lt;br&gt;
+ &lt;b&gt;Insert importing documentation here.&lt;/b&gt;</comment>
+            </constructor>
+            <method name="getEcho" signature="()" qualified="TestFXLibrary.getEcho" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <return qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Echo"/>
+            </method>
+            <method name="runKeyword" signature="(java.lang.String, java.lang.Object[])" qualified="TestFXLibrary.runKeyword" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="keywordName">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="args">
+                    <type qualified="java.lang.Object" dimension="[]"/>
+                </parameter>
+                <return qualified="java.lang.Object"/>
+                <annotation name="Override" qualified="java.lang.Override"/>
+            </method>
+            <method name="getKeywordDocumentation" signature="(java.lang.String)" qualified="TestFXLibrary.getKeywordDocumentation" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="keywordName">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+                <annotation name="Override" qualified="java.lang.Override"/>
+            </method>
+            <method name="toStrings" signature="(java.lang.Object[])" qualified="TestFXLibrary.toStrings" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Convert all arguments in the object array to string</comment>
+                <parameter name="args">
+                    <type qualified="java.lang.Object" dimension="[]"/>
+                </parameter>
+                <return qualified="java.lang.Object" dimension="[]"/>
+            </method>
+            <field name="KEYWORD_PATTERN" qualified="TestFXLibrary.KEYWORD_PATTERN" scope="public" volatile="false" transient="false" static="true" final="true">
+                <type qualified="java.lang.String"/>
+                <comment>The list of keyword patterns for the AnnotationLibrary</comment>
+            </field>
+            <field name="JAVADOC_2_LIBDOC" qualified="TestFXLibrary.JAVADOC_2_LIBDOC" scope="public" volatile="false" transient="false" static="true" final="true">
+                <type qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc"/>
+                <comment>The javadoc to libdoc converter</comment>
+            </field>
+            <field name="ROBOT_LIBRARY_DOC_FORMAT" qualified="TestFXLibrary.ROBOT_LIBRARY_DOC_FORMAT" scope="public" volatile="false" transient="false" static="true" final="true">
+                <type qualified="java.lang.String"/>
+                <comment>The library documentation is written in HTML</comment>
+                <constant>"HTML"</constant>
+            </field>
+            <field name="ROBOT_LIBRARY_SCOPE" qualified="TestFXLibrary.ROBOT_LIBRARY_SCOPE" scope="public" volatile="false" transient="false" static="true" final="true">
+                <type qualified="java.lang.String"/>
+                <comment>The scope of this library is global.</comment>
+                <constant>"GLOBAL"</constant>
+            </field>
+            <field name="ROBOT_LIBRARY_VERSION" qualified="TestFXLibrary.ROBOT_LIBRARY_VERSION" scope="public" volatile="false" transient="false" static="true" final="true">
+                <type qualified="java.lang.String"/>
+                <comment>The actual version of this library. Loaded from maven project.</comment>
+            </field>
+            <field name="echo" qualified="TestFXLibrary.echo" scope="protected" volatile="false" transient="false" static="false" final="false">
+                <type qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Echo"/>
+                <comment>Instantiated Echo keyword bean</comment>
+                <annotation name="Autowired" qualified="org.robotframework.javalib.annotation.Autowired"/>
+            </field>
+        </class>
+    </package>
+    <package name="com.altran.gdc.robotframework.testfxlibrary.exceptions">
+        <class name="testfxlibraryNonFatalException" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryNonFatalException" scope="public" abstract="false" error="false" exception="true" externalizable="false" included="true" serializable="true">
+            <comment>A raised exception of this type marks the step as failed, but does not end
+ all test executions.</comment>
+            <class qualified="java.lang.RuntimeException"/>
+            <constructor name="testfxlibraryNonFatalException" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryNonFatalException" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+            <constructor name="testfxlibraryNonFatalException" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryNonFatalException" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="string">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+            </constructor>
+            <constructor name="testfxlibraryNonFatalException" signature="(java.lang.Throwable)" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryNonFatalException" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="t">
+                    <type qualified="java.lang.Throwable"/>
+                </parameter>
+            </constructor>
+            <constructor name="testfxlibraryNonFatalException" signature="(java.lang.String, java.lang.Throwable)" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryNonFatalException" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="string">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="t">
+                    <type qualified="java.lang.Throwable"/>
+                </parameter>
+            </constructor>
+            <annotation name="SuppressWarnings" qualified="java.lang.SuppressWarnings">
+                <argument name="value" primitive="false" array="true">
+                    <type qualified="java.lang.String" dimension="[]"/>
+                    <value>serial</value>
+                </argument>
+            </annotation>
+            <field name="ROBOT_EXIT_ON_FAILURE" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryNonFatalException.ROBOT_EXIT_ON_FAILURE" scope="public" volatile="false" transient="false" static="true" final="true">
+                <type qualified="boolean"/>
+                <comment>Mark this exception as non fatal</comment>
+                <constant>false</constant>
+            </field>
+        </class>
+        <class name="testfxlibraryFatalException" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryFatalException" scope="public" abstract="false" error="false" exception="true" externalizable="false" included="true" serializable="true">
+            <comment>A raised exception of this type ends all test executions.</comment>
+            <class qualified="java.lang.RuntimeException"/>
+            <constructor name="testfxlibraryFatalException" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryFatalException" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+            <constructor name="testfxlibraryFatalException" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryFatalException" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="string">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+            </constructor>
+            <constructor name="testfxlibraryFatalException" signature="(java.lang.Throwable)" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryFatalException" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="t">
+                    <type qualified="java.lang.Throwable"/>
+                </parameter>
+            </constructor>
+            <constructor name="testfxlibraryFatalException" signature="(java.lang.String, java.lang.Throwable)" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryFatalException" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="string">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="t">
+                    <type qualified="java.lang.Throwable"/>
+                </parameter>
+            </constructor>
+            <annotation name="SuppressWarnings" qualified="java.lang.SuppressWarnings">
+                <argument name="value" primitive="false" array="true">
+                    <type qualified="java.lang.String" dimension="[]"/>
+                    <value>serial</value>
+                </argument>
+            </annotation>
+            <field name="ROBOT_EXIT_ON_FAILURE" qualified="com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryFatalException.ROBOT_EXIT_ON_FAILURE" scope="public" volatile="false" transient="false" static="true" final="true">
+                <type qualified="boolean"/>
+                <comment>Mark this exception as fatal</comment>
+                <constant>true</constant>
+            </field>
+        </class>
+    </package>
+    <package name="com.altran.gdc.robotframework.testfxlibrary.keywords">
+        <class name="Window" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Window" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <tag name="@author" text="pcosta"/>
+            <class qualified="java.lang.Object"/>
+            <constructor name="Window" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Window" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+        </class>
+        <class name="TestFX" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <class qualified="java.lang.Object"/>
+            <constructor name="TestFX" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+            <method name="launchApplication" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.launchApplication" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Launch Java FX application. &lt;br&gt;
+ The classname given must extend javafx.application.Application.&lt;br&gt;
+ ATENTTION: The class must be added to the classpath beforehand.</comment>
+                <tag name="@param" text="className &#xA;            The name of the class that extends javafx.application.Application to be launched."/>
+                <parameter name="className">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <exception qualified="java.lang.Exception"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>className</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="launchJARApplication" signature="(java.lang.String, java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.launchJARApplication" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Launch Java FX application from external JAR.&lt;br&gt;
+ The classname given must extend javafx.application.Application.&lt;br&gt;
+ ATENTTION: The JAR must be added to the classpath beforehand.</comment>
+                <tag name="@param" text="applicationJAR &#xA;            The path of the JAR that contains the application&#xA;            to be launched. The JAR must contain a JavaFX application with a class&#xA;            that extends javafx.application.Application."/>
+                <tag name="@param" text="className &#xA;             The name of the class im the JAR that extends&#xA;             javafx.application.Application to be launched."/>
+                <parameter name="applicationJAR">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="className">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <exception qualified="java.lang.Exception"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>applicationJAR</value>
+                        <value>className</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="closeApplication" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.closeApplication" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Closes the Java FX application. 
+ The primary stage is hidden and cleaned-up.</comment>
+                <return qualified="void"/>
+                <exception qualified="java.util.concurrent.TimeoutException"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+            </method>
+            <method name="clickOn" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.clickOn" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Clicks on a indentifier.&lt;br&gt;</comment>
+                <tag name="@param" text="identifier &#xA;             A string containing the identifier of the node to be clicked."/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <exception qualified="java.util.concurrent.TimeoutException"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="doubleClickOn" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.doubleClickOn" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Double Click on a node.</comment>
+                <tag name="@param" text="identifier &#xA;            The identifier of the node"/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="drag" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.drag" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Drag a node.&lt;br&gt;</comment>
+                <tag name="@param" text="identifier &#xA;             The identifier of the node to be draged."/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="drop" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.drop" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Drop a node that is being draged.</comment>
+                <tag name="@param" text="identifier&#xA;            The identifier of the node"/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="dropTo" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.dropTo" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Drop to specific node.&lt;br&gt;</comment>
+                <tag name="@param" text="identifier&#xA;            The identifier of the node"/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="moveBy" signature="(double, double)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.moveBy" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Move the mouse to a x,y coordinate</comment>
+                <tag name="@param" text="xCoordinate&#xA;            The x coordinate"/>
+                <tag name="@param" text="yCoordinate&#xA;            The y coordinate"/>
+                <parameter name="xCoordinate">
+                    <type qualified="double"/>
+                </parameter>
+                <parameter name="yCoordinate">
+                    <type qualified="double"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>xCoordinate</value>
+                        <value>yCoordinate</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="moveTo" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.moveTo" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Move Mouse to node</comment>
+                <tag name="@param" text="identifier &#xA;            The identifier of the node"/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="rightClickOn" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.rightClickOn" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Right Click on node</comment>
+                <tag name="@param" text="identifier &#xA;            The identifier of the node"/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="scrollLeft" signature="(int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.scrollLeft" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Scroll left</comment>
+                <tag name="@param" text="amount &#xA;            The amount to be scrolled"/>
+                <parameter name="amount">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>amount</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="scrollRight" signature="(int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.scrollRight" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Scroll right</comment>
+                <tag name="@param" text="amount &#xA;            The amount to be scrolled"/>
+                <parameter name="amount">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>amount</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="scrollUp" signature="(int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.scrollUp" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Scroll up</comment>
+                <tag name="@param" text="amount &#xA;            The amount to be scrolled"/>
+                <parameter name="amount">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>amount</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="scrollDown" signature="(int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.scrollDown" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Scroll down</comment>
+                <tag name="@param" text="amount &#xA;            The amount to be scrolled"/>
+                <parameter name="amount">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>amount</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="sleep" signature="(int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.sleep" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Sleep. Pause the execution during a period</comment>
+                <tag name="@param" text="milliseconds &#xA;            The number of millisenconds to pause the execution"/>
+                <parameter name="milliseconds">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>milliseconds</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="waitUntilElementIsVisible" signature="(java.lang.String, int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.waitUntilElementIsVisible" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="timeout">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                        <value>timeout</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="waitUntilElementHasText" signature="(java.lang.String, java.lang.String, int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.waitUntilElementHasText" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="textToValidate">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="timeout">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                        <value>textToValidate</value>
+                        <value>timeout</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="waitUntilElementIsDisabled" signature="(java.lang.String, int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.waitUntilElementIsDisabled" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="timeout">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                        <value>timeout</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="waitUntilElementIsEnabled" signature="(java.lang.String, int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.waitUntilElementIsEnabled" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="timeout">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                        <value>timeout</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="closeCurrentWindow" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.closeCurrentWindow" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Close the current focused window</comment>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+            </method>
+            <method name="listTargetWindows" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.listTargetWindows" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>List all target windows</comment>
+                <tag name="@return" text="A list of javafx.stage.Window"/>
+                <return qualified="java.util.List">
+                    <generic qualified="javafx.stage.Window"/>
+                </return>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+            </method>
+            <method name="listWindows" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.listWindows" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>List all Windows</comment>
+                <tag name="@return" text="A list of javafx.stage.Window"/>
+                <return qualified="java.util.List">
+                    <generic qualified="javafx.stage.Window"/>
+                </return>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+            </method>
+            <method name="targetWindow" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.targetWindow" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Target a scpecific window</comment>
+                <tag name="@param" text="identifier&#xA;          the identifier of the window"/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="window" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.window" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Choose? window</comment>
+                <tag name="@param" text="identifier &#xA;          the identifier of the window"/>
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="press" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.press" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Press a key</comment>
+                <tag name="@param" text="keycode &#xA;          the keycode of the key to be pressed. eg. &quot;Enter&quot;"/>
+                <parameter name="keycode">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>keycode</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="eraseText" signature="(int)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.eraseText" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Erase Text from a text field</comment>
+                <tag name="@param" text="numberOfCharacters &#xA;          The number of characters to be erased"/>
+                <parameter name="numberOfCharacters">
+                    <type qualified="int"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>numberOfCharacters</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="write" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.write" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Writes text on the focused node. (eg. a text field)</comment>
+                <tag name="@param" text="text &#xA;          The text to written"/>
+                <parameter name="text">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>text</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="relase" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.relase" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Relese a key</comment>
+                <tag name="@param" text="keycode&#xA;          The keycode of the key to be released. eg. &quot;Enter&quot;"/>
+                <parameter name="keycode">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>keycode</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="type" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.type" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Type a keycode</comment>
+                <tag name="@param" text="keycode &#xA;      The keycode to be typed"/>
+                <parameter name="keycode">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>keycode</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="verifyThatContains" signature="(java.lang.String, java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.verifyThatContains" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="identifierToValidate">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                        <value>identifierToValidate</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="verifyThatHasText" signature="(java.lang.String, java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.verifyThatHasText" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="textToValidate">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                        <value>textToValidate</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="verifyThatIsEnabled" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.verifyThatIsEnabled" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="verifyThatIsDisabled" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.verifyThatIsDisabled" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="verifyThatIsVisible" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.verifyThatIsVisible" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="verifyThatHasChild" signature="(java.lang.String, java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.verifyThatHasChild" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="identifier">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="identifierToValidate">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>identifier</value>
+                        <value>identifierToValidate</value>
+                    </argument>
+                </annotation>
+            </method>
+            <annotation name="RobotKeywords" qualified="org.robotframework.javalib.annotation.RobotKeywords"/>
+        </class>
+        <class name="Mouse" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Mouse" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <tag name="@author" text="pcosta"/>
+            <class qualified="java.lang.Object"/>
+            <constructor name="Mouse" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Mouse" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+        </class>
+        <class name="Misc" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Misc" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <tag name="@author" text="pcosta"/>
+            <class qualified="java.lang.Object"/>
+            <constructor name="Misc" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Misc" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+        </class>
+        <class name="Logging" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <class qualified="java.lang.Object"/>
+            <constructor name="Logging" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+            <method name="trace" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.trace" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="msg">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <method name="debug" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.debug" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="msg">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <method name="info" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.info" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="msg">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <method name="html" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.html" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="msg">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <method name="warn" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.warn" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="msg">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <method name="log" signature="(java.lang.String, java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.log" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="msg">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="logLevel">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <method name="log0" signature="(java.lang.String, java.lang.String, java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.log0" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Log the given message with the Robot logger.&lt;br&gt;
+ &lt;br&gt;
+ There is a hard limit of 100k in the Jython source code parser. 
+ Therefore messages larger than 1k are saved on disk and the later
+ read back into memory on the Jython side.</comment>
+                <parameter name="msg">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="methodName">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <parameter name="methodArguments">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <annotation name="RobotKeywords" qualified="org.robotframework.javalib.annotation.RobotKeywords"/>
+            <field name="VALID_LOG_LEVELS" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.VALID_LOG_LEVELS" scope="protected" volatile="false" transient="false" static="true" final="true">
+                <type qualified="java.util.Map">
+                    <generic qualified="java.lang.String"/>
+                    <generic qualified="java.lang.String" dimension="[]"/>
+                </type>
+            </field>
+            <field name="loggingPythonInterpreter" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging.loggingPythonInterpreter" scope="protected" volatile="false" transient="false" static="true" final="false">
+                <type qualified="java.lang.ThreadLocal">
+                    <generic qualified="org.python.util.PythonInterpreter"/>
+                </type>
+                <comment>Thread local variable with loaded logger.</comment>
+            </field>
+        </class>
+        <class name="Keyboard" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Keyboard" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <tag name="@author" text="pcosta"/>
+            <class qualified="java.lang.Object"/>
+            <constructor name="Keyboard" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Keyboard" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+        </class>
+        <class name="Echo" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Echo" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <class qualified="java.lang.Object"/>
+            <constructor name="Echo" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Echo" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+            <method name="echo" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Echo.echo" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Returns the given &lt;b&gt;message&lt;/b&gt;.&lt;br&gt;</comment>
+                <tag name="@param" text="message&#xA;            The message to return."/>
+                <parameter name="message">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>message</value>
+                    </argument>
+                </annotation>
+            </method>
+            <method name="echoWithDefault" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Echo.echoWithDefault" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <return qualified="java.lang.String"/>
+                <annotation name="RobotKeywordOverload" qualified="org.robotframework.javalib.annotation.RobotKeywordOverload"/>
+            </method>
+            <method name="echoWithDefault" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Echo.echoWithDefault" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Returns the given &lt;b&gt;message&lt;/b&gt;, when given.
+ Otherwise the default message &amp;quot;Hello World!&amp;quot;
+ is returned.&lt;br&gt;</comment>
+                <tag name="@param" text="message&#xA;            The message to return."/>
+                <parameter name="message">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+                <annotation name="RobotKeyword" qualified="org.robotframework.javalib.annotation.RobotKeyword"/>
+                <annotation name="ArgumentNames" qualified="org.robotframework.javalib.annotation.ArgumentNames">
+                    <argument name="value" primitive="false" array="true">
+                        <type qualified="java.lang.String" dimension="[]"/>
+                        <value>message=Hello</value>
+                    </argument>
+                </annotation>
+            </method>
+            <annotation name="RobotKeywords" qualified="org.robotframework.javalib.annotation.RobotKeywords"/>
+            <field name="logging" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Echo.logging" scope="protected" volatile="false" transient="false" static="false" final="false">
+                <type qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Logging"/>
+                <comment>Instantiated Logging keyword bean</comment>
+                <annotation name="Autowired" qualified="org.robotframework.javalib.annotation.Autowired"/>
+            </field>
+        </class>
+        <class name="Assert" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Assert" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <tag name="@author" text="pcosta"/>
+            <class qualified="java.lang.Object"/>
+            <constructor name="Assert" signature="()" qualified="com.altran.gdc.robotframework.testfxlibrary.keywords.Assert" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+        </class>
+    </package>
+    <package name="com.altran.gdc.robotframework.testfxlibrary.utils">
+        <class name="Javadoc2Libdoc" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <class qualified="java.lang.Object"/>
+            <constructor name="Javadoc2Libdoc" signature="(java.lang.Class&lt;?&gt;)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="clazz">
+                    <type qualified="java.lang.Class">
+                        <generic qualified="?">
+                            <wildcard/>
+                        </generic>
+                    </type>
+                </parameter>
+            </constructor>
+            <method name="getKeywordDocumentation" signature="(java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.getKeywordDocumentation" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="keywordName">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+            </method>
+            <method name="loadJavadocRoot" signature="(java.io.InputStream)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.loadJavadocRoot" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="inputStream">
+                    <type qualified="java.io.InputStream"/>
+                </parameter>
+                <return qualified="com.github.markusbernhardt.xmldoclet.xjc.Root"/>
+            </method>
+            <method name="loadKeywordDocumentationMap" signature="(com.github.markusbernhardt.xmldoclet.xjc.Root, java.lang.String)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.loadKeywordDocumentationMap" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="root">
+                    <type qualified="com.github.markusbernhardt.xmldoclet.xjc.Root"/>
+                </parameter>
+                <parameter name="className">
+                    <type qualified="java.lang.String"/>
+                </parameter>
+                <return qualified="java.util.Map">
+                    <generic qualified="java.lang.String"/>
+                    <generic qualified="java.lang.String"/>
+                </return>
+            </method>
+            <method name="formatComment" signature="(com.github.markusbernhardt.xmldoclet.xjc.Class)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.formatComment" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="classNode">
+                    <type qualified="com.github.markusbernhardt.xmldoclet.xjc.Class"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+            </method>
+            <method name="formatComment" signature="(com.github.markusbernhardt.xmldoclet.xjc.Constructor)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.formatComment" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="constructorNode">
+                    <type qualified="com.github.markusbernhardt.xmldoclet.xjc.Constructor"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+            </method>
+            <method name="formatComment" signature="(com.github.markusbernhardt.xmldoclet.xjc.Method)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.formatComment" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="methodNode">
+                    <type qualified="com.github.markusbernhardt.xmldoclet.xjc.Method"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+            </method>
+            <method name="formatParam" signature="(com.github.markusbernhardt.xmldoclet.xjc.Method)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.formatParam" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="methodNode">
+                    <type qualified="com.github.markusbernhardt.xmldoclet.xjc.Method"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+            </method>
+            <method name="formatReturn" signature="(com.github.markusbernhardt.xmldoclet.xjc.Method)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.formatReturn" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="methodNode">
+                    <type qualified="com.github.markusbernhardt.xmldoclet.xjc.Method"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+            </method>
+            <method name="formatSee" signature="(com.github.markusbernhardt.xmldoclet.xjc.Method)" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.formatSee" scope="protected" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="methodNode">
+                    <type qualified="com.github.markusbernhardt.xmldoclet.xjc.Method"/>
+                </parameter>
+                <return qualified="java.lang.String"/>
+            </method>
+            <field name="keywordDocumentationMap" qualified="com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc.keywordDocumentationMap" scope="protected" volatile="false" transient="false" static="false" final="true">
+                <type qualified="java.util.Map">
+                    <generic qualified="java.lang.String"/>
+                    <generic qualified="java.lang.String"/>
+                </type>
+            </field>
+        </class>
+    </package>
+    <package name="testapp">
+        <class name="JavafxExample2" qualified="testapp.JavafxExample2" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <class qualified="javafx.application.Application"/>
+            <constructor name="JavafxExample2" signature="()" qualified="testapp.JavafxExample2" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+            <method name="main" signature="(java.lang.String[])" qualified="testapp.JavafxExample2.main" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="true" varArgs="false">
+                <parameter name="args">
+                    <type qualified="java.lang.String" dimension="[]"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <method name="start" signature="(javafx.stage.Stage)" qualified="testapp.JavafxExample2.start" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="primaryStage">
+                    <type qualified="javafx.stage.Stage"/>
+                </parameter>
+                <return qualified="void"/>
+                <annotation name="Override" qualified="java.lang.Override"/>
+            </method>
+        </class>
+        <class name="JavafxExample" qualified="testapp.JavafxExample" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <tag name="@author" text="pcosta"/>
+            <class qualified="javafx.application.Application"/>
+            <constructor name="JavafxExample" signature="()" qualified="testapp.JavafxExample" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+            <method name="main" signature="(java.lang.String[])" qualified="testapp.JavafxExample.main" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="true" varArgs="false">
+                <tag name="@param" text="args the command line arguments"/>
+                <parameter name="args">
+                    <type qualified="java.lang.String" dimension="[]"/>
+                </parameter>
+                <return qualified="void"/>
+            </method>
+            <method name="start" signature="(javafx.stage.Stage)" qualified="testapp.JavafxExample.start" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <parameter name="stage">
+                    <type qualified="javafx.stage.Stage"/>
+                </parameter>
+                <return qualified="void"/>
+                <exception qualified="java.lang.Exception"/>
+                <annotation name="Override" qualified="java.lang.Override"/>
+            </method>
+        </class>
+    </package>
+</root>

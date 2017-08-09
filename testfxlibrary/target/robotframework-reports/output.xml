@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.2 (Jython 2.7.0 on java1.8.0_102)" generated="20170809 17:14:51.379">
+<suite source="C:\Users\Altran\testfxlibrary\src\test\resources\robotframework" name="Robotframework" id="s1">
+<suite source="C:\Users\Altran\testfxlibrary\src\test\resources\robotframework\testfxlibrary.txt" name="Testfxlibrary" id="s1-s1">
+<test name="Echo With Default" id="s1-s1-t1">
+<kw library="TestFXLibrary" name="Echo With Default">
+<doc>Returns the given &lt;b&gt;message&lt;/b&gt;, when given.</doc>
+<assign>
+<var>${string}</var>
+</assign>
+<msg level="INFO" timestamp="20170809 17:14:52.097">${string} = Hello</msg>
+<status endtime="20170809 17:14:52.097" starttime="20170809 17:14:52.082" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${string}</arg>
+<arg>Hello</arg>
+</arguments>
+<msg level="DEBUG" timestamp="20170809 17:14:52.097">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status endtime="20170809 17:14:52.097" starttime="20170809 17:14:52.097" status="PASS"></status>
+</kw>
+<status critical="yes" endtime="20170809 17:14:52.113" starttime="20170809 17:14:52.082" status="PASS"></status>
+</test>
+<test name="Echo With Overridden Default" id="s1-s1-t2">
+<kw library="TestFXLibrary" name="Echo With Default">
+<doc>Returns the given &lt;b&gt;message&lt;/b&gt;, when given.</doc>
+<arguments>
+<arg>Blub</arg>
+</arguments>
+<assign>
+<var>${string}</var>
+</assign>
+<msg level="INFO" timestamp="20170809 17:14:52.113">${string} = Blub</msg>
+<status endtime="20170809 17:14:52.113" starttime="20170809 17:14:52.113" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${string}</arg>
+<arg>Blub</arg>
+</arguments>
+<msg level="DEBUG" timestamp="20170809 17:14:52.129">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status endtime="20170809 17:14:52.129" starttime="20170809 17:14:52.113" status="PASS"></status>
+</kw>
+<status critical="yes" endtime="20170809 17:14:52.129" starttime="20170809 17:14:52.113" status="PASS"></status>
+</test>
+<test name="Test Example 1" id="s1-s1-t3">
+<kw library="TestFXLibrary" name="Launch Application">
+<doc>Launch Java FX application. &lt;br&gt;</doc>
+<arguments>
+<arg>testapp.JavafxExample</arg>
+</arguments>
+<status endtime="20170809 17:14:52.879" starttime="20170809 17:14:52.129" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Click On">
+<doc>Clicks on a indentifier.&lt;br&gt;&lt;br&gt;&lt;b&gt;Parameters:&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;identifier &lt;/b&gt;&amp;nbsp;A string containing the identifier of the node to be clicked.&lt;br&gt;</doc>
+<arguments>
+<arg>count</arg>
+</arguments>
+<status endtime="20170809 17:14:53.497" starttime="20170809 17:14:52.880" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Click On">
+<doc>Clicks on a indentifier.&lt;br&gt;&lt;br&gt;&lt;b&gt;Parameters:&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;identifier &lt;/b&gt;&amp;nbsp;A string containing the identifier of the node to be clicked.&lt;br&gt;</doc>
+<arguments>
+<arg>count</arg>
+</arguments>
+<status endtime="20170809 17:14:53.663" starttime="20170809 17:14:53.499" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Click On">
+<doc>Clicks on a indentifier.&lt;br&gt;&lt;br&gt;&lt;b&gt;Parameters:&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;identifier &lt;/b&gt;&amp;nbsp;A string containing the identifier of the node to be clicked.&lt;br&gt;</doc>
+<arguments>
+<arg>count</arg>
+</arguments>
+<status endtime="20170809 17:14:53.823" starttime="20170809 17:14:53.665" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Close Application">
+<doc>Closes the Java FX application. </doc>
+<status endtime="20170809 17:14:53.940" starttime="20170809 17:14:53.824" status="PASS"></status>
+</kw>
+<status critical="yes" endtime="20170809 17:14:53.941" starttime="20170809 17:14:52.129" status="PASS"></status>
+</test>
+<test name="Test Example 2" id="s1-s1-t4">
+<kw library="TestFXLibrary" name="Launch Application">
+<doc>Launch Java FX application. &lt;br&gt;</doc>
+<arguments>
+<arg>testapp.JavafxExample2</arg>
+</arguments>
+<status endtime="20170809 17:14:54.313" starttime="20170809 17:14:53.947" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Click On">
+<doc>Clicks on a indentifier.&lt;br&gt;&lt;br&gt;&lt;b&gt;Parameters:&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;identifier &lt;/b&gt;&amp;nbsp;A string containing the identifier of the node to be clicked.&lt;br&gt;</doc>
+<arguments>
+<arg>.choice-box</arg>
+</arguments>
+<status endtime="20170809 17:14:54.723" starttime="20170809 17:14:54.314" status="PASS"></status>
+</kw>
+<kw name="Test Fruits with Orange">
+<msg level="FAIL" timestamp="20170809 17:14:54.743">No keyword with name 'Test Fruits with Orange' found.</msg>
+<status endtime="20170809 17:14:54.744" starttime="20170809 17:14:54.742" status="FAIL"></status>
+</kw>
+<status critical="yes" endtime="20170809 17:14:54.747" starttime="20170809 17:14:53.944" status="FAIL">No keyword with name 'Test Fruits with Orange' found.</status>
+</test>
+<test name="Test Wait Until Element Is Enabled" id="s1-s1-t5">
+<kw library="TestFXLibrary" name="Launch Application">
+<doc>Launch Java FX application. &lt;br&gt;</doc>
+<arguments>
+<arg>testapp.JavafxExample2</arg>
+</arguments>
+<status endtime="20170809 17:14:54.932" starttime="20170809 17:14:54.753" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Click On">
+<doc>Clicks on a indentifier.&lt;br&gt;&lt;br&gt;&lt;b&gt;Parameters:&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;identifier &lt;/b&gt;&amp;nbsp;A string containing the identifier of the node to be clicked.&lt;br&gt;</doc>
+<arguments>
+<arg>Wait Button</arg>
+</arguments>
+<msg level="INFO" timestamp="20170809 17:14:55.348">ago 09, 2017 5:14:54 PM javafx.scene.CssStyleHelper calculateValue
+WARNING: Could not resolve '-fx-selection-bar' while resolving lookups for '-fx-background-color' from rule '*.menu-item:focused' in stylesheet jar:file:/C:/Program%20Files/Java/jdk1.8.0_102/jre/lib/ext/jfxrt.jar!/com/sun/javafx/scene/control/skin/modena/modena.bss
+ago 09, 2017 5:14:54 PM javafx.scene.CssStyleHelper calculateValue
+WARNING: Could not resolve '-fx-focused-text-base-color' while resolving lookups for '-fx-text-fill' from rule '*.menu-item:focused&gt;*.label' in stylesheet jar:file:/C:/Program%20Files/Java/jdk1.8.0_102/jre/lib/ext/jfxrt.jar!/com/sun/javafx/scene/control/skin/modena/modena.bss</msg>
+<status endtime="20170809 17:14:55.350" starttime="20170809 17:14:54.933" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Wait Until Element Is Enabled">
+<arguments>
+<arg>Fruit or Veg</arg>
+<arg>4</arg>
+</arguments>
+<status endtime="20170809 17:14:58.316" starttime="20170809 17:14:55.351" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>OK</arg>
+<arg>WARN</arg>
+</arguments>
+<msg level="WARN" timestamp="20170809 17:14:58.321">OK</msg>
+<status endtime="20170809 17:14:58.324" starttime="20170809 17:14:58.318" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Close Application">
+<doc>Closes the Java FX application. </doc>
+<status endtime="20170809 17:14:58.433" starttime="20170809 17:14:58.325" status="PASS"></status>
+</kw>
+<status critical="yes" endtime="20170809 17:14:58.434" starttime="20170809 17:14:54.749" status="PASS"></status>
+</test>
+<test name="Test Wait Until Element Is Enabled Time Out" id="s1-s1-t6">
+<kw library="TestFXLibrary" name="Launch Application">
+<doc>Launch Java FX application. &lt;br&gt;</doc>
+<arguments>
+<arg>testapp.JavafxExample2</arg>
+</arguments>
+<status endtime="20170809 17:14:58.660" starttime="20170809 17:14:58.440" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Click On">
+<doc>Clicks on a indentifier.&lt;br&gt;&lt;br&gt;&lt;b&gt;Parameters:&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;identifier &lt;/b&gt;&amp;nbsp;A string containing the identifier of the node to be clicked.&lt;br&gt;</doc>
+<arguments>
+<arg>Wait Button</arg>
+</arguments>
+<status endtime="20170809 17:14:58.858" starttime="20170809 17:14:58.663" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Return Status">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>Fruit or Veg</arg>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw library="TestFXLibrary" name="Wait Until Element Is Enabled">
+<arguments>
+<arg>Fruit or Veg</arg>
+<arg>1</arg>
+</arguments>
+<msg level="FAIL" timestamp="20170809 17:15:00.895">java.util.concurrent.TimeoutException</msg>
+<msg level="DEBUG" timestamp="20170809 17:15:00.896">java.lang.RuntimeException: 
+	at org.robotframework.javalib.library.AnnotationLibrary.retrieveInnerException(AnnotationLibrary.java:148)
+	at org.robotframework.javalib.library.AnnotationLibrary.runKeyword(AnnotationLibrary.java:130)
+	at TestFXLibrary.runKeyword(TestFXLibrary.java:86)
+	at robot.libraries.BuiltIn$py.run_keyword$104(C:\Python27\Lib\site-packages\robot\libraries\BuiltIn.py:1598)
+	at robot.libraries.BuiltIn$py.call_function(C:\Python27\Lib\site-packages\robot\libraries\BuiltIn.py)
+	at robot.libraries.BuiltIn$py.run_keyword_and_ignore_error$117(C:\Python27\Lib\site-packages\robot\libraries\BuiltIn.py:1792)
+	at robot.libraries.BuiltIn$py.call_function(C:\Python27\Lib\site-packages\robot\libraries\BuiltIn.py)
+	at robot.libraries.BuiltIn$py.run_keyword_and_return_status$118(C:\Python27\Lib\site-packages\robot\libraries\BuiltIn.py:1815)
+	at robot.libraries.BuiltIn$py.call_function(C:\Python27\Lib\site-packages\robot\libraries\BuiltIn.py)
+	at robot.model.testcase$py.visit$7(C:\Python27\Lib\site-packages\robot\model\testcase.py:74)
+	at robot.model.testcase$py.call_function(C:\Python27\Lib\site-packages\robot\model\testcase.py)
+	at robot.model.itemlist$py.visit$11(C:\Python27\Lib\site-packages\robot\model\itemlist.py:75)
+	at robot.model.itemlist$py.call_function(C:\Python27\Lib\site-packages\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(C:\Python27\Lib\site-packages\robot\model\visitor.py:88)
+	at robot.model.visitor$py.call_function(C:\Python27\Lib\site-packages\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(C:\Python27\Lib\site-packages\robot\model\testsuite.py:161)
+	at robot.model.testsuite$py.call_function(C:\Python27\Lib\site-packages\robot\model\testsuite.py)
+	at robot.model.itemlist$py.visit$11(C:\Python27\Lib\site-packages\robot\model\itemlist.py:75)
+	at robot.model.itemlist$py.call_function(C:\Python27\Lib\site-packages\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(C:\Python27\Lib\site-packages\robot\model\visitor.py:88)
+	at robot.model.visitor$py.call_function(C:\Python27\Lib\site-packages\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(C:\Python27\Lib\site-packages\robot\model\testsuite.py:161)
+	at robot.model.testsuite$py.call_function(C:\Python27\Lib\site-packages\robot\model\testsuite.py)
+	at robot.run$py.main$3(C:\Python27\Lib\site-packages\robot\run.py:452)
+	at robot.run$py.call_function(C:\Python27\Lib\site-packages\robot\run.py)
+	at robot.utils.application$py._execute$10(C:\Python27\Lib\site-packages\robot\utils\application.py:94)
+	at robot.utils.application$py.call_function(C:\Python27\Lib\site-packages\robot\utils\application.py)
+	at robot.utils.application$py.execute_cli$5(C:\Python27\Lib\site-packages\robot\utils\application.py:49)
+	at robot.utils.application$py.call_function(C:\Python27\Lib\site-packages\robot\utils\application.py)
+	at robot.run$py.run_cli$7(C:\Python27\Lib\site-packages\robot\run.py:489)
+	at robot.run$py.call_function(C:\Python27\Lib\site-packages\robot\run.py)
+	at robot.jarrunner$py._run$3(C:\Python27\Lib\site-packages\robot\jarrunner.py:64)
+	at robot.jarrunner$py.call_function(C:\Python27\Lib\site-packages\robot\jarrunner.py)
+	at robot.jarrunner$py.run$2(C:\Python27\Lib\site-packages\robot\jarrunner.py:57)
+	at robot.jarrunner$py.call_function(C:\Python27\Lib\site-packages\robot\jarrunner.py)
+	at org.robotframework.RobotRunner.run(RobotRunner.java:74)
+	at org.robotframework.RobotFramework.run(RobotFramework.java:61)
+	at org.robotframework.mavenplugin.AcceptanceTestMojo.executeRobot(AcceptanceTestMojo.java:73)
+	at org.robotframework.mavenplugin.AcceptanceTestMojo.subclassExecute(AcceptanceTestMojo.java:68)
+	at org.robotframework.mavenplugin.AbstractMojoWithLoadedClasspath.execute(AbstractMojoWithLoadedClasspath.java:52)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:134)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:207)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:116)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:80)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:307)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:193)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:106)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:863)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:288)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:199)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+	at org.codehaus.classworlds.Launcher.main(Launcher.java:47)
+Caused by: java.lang.RuntimeException: java.util.concurrent.TimeoutException
+	at org.testfx.service.support.WaitUntilSupport.awaitCondition(WaitUntilSupport.java:104)
+	at org.testfx.service.support.WaitUntilSupport.waitUntil(WaitUntilSupport.java:78)
+	at com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.waitUntilElementIsEnabled(TestFX.java:308)
+	at org.robotframework.javalib.reflection.KeywordInvoker.invoke(KeywordInvoker.java:50)
+	at org.robotframework.javalib.beans.annotation.AnnotationKeywordExtractor$1.execute(AnnotationKeywordExtractor.java:62)
+	at org.robotframework.javalib.library.KeywordFactoryBasedLibrary.runKeyword(KeywordFactoryBasedLibrary.java:37)
+	at org.robotframework.javalib.library.AnnotationLibrary.runKeyword(AnnotationLibrary.java:128)
+	... 264 more
+Caused by: java.util.concurrent.TimeoutException
+	at org.testfx.util.WaitForAsyncUtils.waitFor(WaitForAsyncUtils.java:308)
+	at org.testfx.service.support.WaitUntilSupport.awaitCondition(WaitUntilSupport.java:101)
+	... 274 more</msg>
+<status endtime="20170809 17:15:00.898" starttime="20170809 17:14:58.863" status="FAIL"></status>
+</kw>
+<msg level="INFO" timestamp="20170809 17:15:00.900">${status} = False</msg>
+<status endtime="20170809 17:15:00.901" starttime="20170809 17:14:58.860" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status} is ${TRUE}</arg>
+<arg>Fail</arg>
+</arguments>
+<status endtime="20170809 17:15:00.915" starttime="20170809 17:15:00.902" status="PASS"></status>
+</kw>
+<kw library="TestFXLibrary" name="Close Application">
+<doc>Closes the Java FX application. </doc>
+<status endtime="20170809 17:15:01.025" starttime="20170809 17:15:00.916" status="PASS"></status>
+</kw>
+<status critical="yes" endtime="20170809 17:15:01.026" starttime="20170809 17:14:58.435" status="PASS"></status>
+</test>
+<test name="Test Click on" id="s1-s1-t7">
+<kw library="TestFXLibrary" name="Click On">
+<doc>Clicks on a indentifier.&lt;br&gt;&lt;br&gt;&lt;b&gt;Parameters:&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;identifier &lt;/b&gt;&amp;nbsp;A string containing the identifier of the node to be clicked.&lt;br&gt;</doc>
+<arguments>
+<arg>.choice-box</arg>
+</arguments>
+<msg level="FAIL" timestamp="20170809 17:15:01.044">the query ".choice-box" returned no nodes.</msg>
+<msg level="DEBUG" timestamp="20170809 17:15:01.046">java.lang.RuntimeException: 
+	at org.robotframework.javalib.library.AnnotationLibrary.retrieveInnerException(AnnotationLibrary.java:148)
+	at org.robotframework.javalib.library.AnnotationLibrary.runKeyword(AnnotationLibrary.java:130)
+	at TestFXLibrary.runKeyword(TestFXLibrary.java:86)
+	at robot.model.testcase$py.visit$7(C:\Python27\Lib\site-packages\robot\model\testcase.py:74)
+	at robot.model.testcase$py.call_function(C:\Python27\Lib\site-packages\robot\model\testcase.py)
+	at robot.model.itemlist$py.visit$11(C:\Python27\Lib\site-packages\robot\model\itemlist.py:75)
+	at robot.model.itemlist$py.call_function(C:\Python27\Lib\site-packages\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(C:\Python27\Lib\site-packages\robot\model\visitor.py:88)
+	at robot.model.visitor$py.call_function(C:\Python27\Lib\site-packages\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(C:\Python27\Lib\site-packages\robot\model\testsuite.py:161)
+	at robot.model.testsuite$py.call_function(C:\Python27\Lib\site-packages\robot\model\testsuite.py)
+	at robot.model.itemlist$py.visit$11(C:\Python27\Lib\site-packages\robot\model\itemlist.py:75)
+	at robot.model.itemlist$py.call_function(C:\Python27\Lib\site-packages\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(C:\Python27\Lib\site-packages\robot\model\visitor.py:88)
+	at robot.model.visitor$py.call_function(C:\Python27\Lib\site-packages\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(C:\Python27\Lib\site-packages\robot\model\testsuite.py:161)
+	at robot.model.testsuite$py.call_function(C:\Python27\Lib\site-packages\robot\model\testsuite.py)
+	at robot.run$py.main$3(C:\Python27\Lib\site-packages\robot\run.py:452)
+	at robot.run$py.call_function(C:\Python27\Lib\site-packages\robot\run.py)
+	at robot.utils.application$py._execute$10(C:\Python27\Lib\site-packages\robot\utils\application.py:94)
+	at robot.utils.application$py.call_function(C:\Python27\Lib\site-packages\robot\utils\application.py)
+	at robot.utils.application$py.execute_cli$5(C:\Python27\Lib\site-packages\robot\utils\application.py:49)
+	at robot.utils.application$py.call_function(C:\Python27\Lib\site-packages\robot\utils\application.py)
+	at robot.run$py.run_cli$7(C:\Python27\Lib\site-packages\robot\run.py:489)
+	at robot.run$py.call_function(C:\Python27\Lib\site-packages\robot\run.py)
+	at robot.jarrunner$py._run$3(C:\Python27\Lib\site-packages\robot\jarrunner.py:64)
+	at robot.jarrunner$py.call_function(C:\Python27\Lib\site-packages\robot\jarrunner.py)
+	at robot.jarrunner$py.run$2(C:\Python27\Lib\site-packages\robot\jarrunner.py:57)
+	at robot.jarrunner$py.call_function(C:\Python27\Lib\site-packages\robot\jarrunner.py)
+	at org.robotframework.RobotRunner.run(RobotRunner.java:74)
+	at org.robotframework.RobotFramework.run(RobotFramework.java:61)
+	at org.robotframework.mavenplugin.AcceptanceTestMojo.executeRobot(AcceptanceTestMojo.java:73)
+	at org.robotframework.mavenplugin.AcceptanceTestMojo.subclassExecute(AcceptanceTestMojo.java:68)
+	at org.robotframework.mavenplugin.AbstractMojoWithLoadedClasspath.execute(AbstractMojoWithLoadedClasspath.java:52)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:134)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:207)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:116)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:80)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:307)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:193)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:106)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:863)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:288)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:199)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+	at org.codehaus.classworlds.Launcher.main(Launcher.java:47)
+Caused by: org.testfx.api.FxRobotException: the query ".choice-box" returned no nodes.
+	at org.testfx.api.FxRobot.queryVisibleNode(FxRobot.java:1107)
+	at org.testfx.api.FxRobot.pointOfVisibleNode(FxRobot.java:1076)
+	at org.testfx.api.FxRobot.clickOn(FxRobot.java:750)
+	at org.testfx.api.FxRobot.clickOn(FxRobot.java:60)
+	at org.testfx.api.FxRobotInterface.clickOn(FxRobotInterface.java:638)
+	at com.altran.gdc.robotframework.testfxlibrary.keywords.TestFX.clickOn(TestFX.java:132)
+	at org.robotframework.javalib.reflection.KeywordInvoker.invoke(KeywordInvoker.java:50)
+	at org.robotframework.javalib.beans.annotation.AnnotationKeywordExtractor$1.execute(AnnotationKeywordExtractor.java:62)
+	at org.robotframework.javalib.library.KeywordFactoryBasedLibrary.runKeyword(KeywordFactoryBasedLibrary.java:37)
+	at org.robotframework.javalib.library.AnnotationLibrary.runKeyword(AnnotationLibrary.java:128)
+	... 191 more</msg>
+<status endtime="20170809 17:15:01.048" starttime="20170809 17:15:01.030" status="FAIL"></status>
+</kw>
+<status critical="yes" endtime="20170809 17:15:01.049" starttime="20170809 17:15:01.028" status="FAIL">the query ".choice-box" returned no nodes.</status>
+</test>
+<status endtime="20170809 17:15:01.063" starttime="20170809 17:14:51.691" status="FAIL"></status>
+</suite>
+<status endtime="20170809 17:15:01.098" starttime="20170809 17:14:51.394" status="FAIL"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="2">Critical Tests</stat>
+<stat pass="5" fail="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="2" name="Robotframework" id="s1">Robotframework</stat>
+<stat pass="5" fail="2" name="Testfxlibrary" id="s1-s1">Robotframework.Testfxlibrary</stat>
+</suite>
+</statistics>
+<errors>
+<msg level="WARN" timestamp="20170809 17:14:58.321">OK</msg>
+</errors>
+</robot>
