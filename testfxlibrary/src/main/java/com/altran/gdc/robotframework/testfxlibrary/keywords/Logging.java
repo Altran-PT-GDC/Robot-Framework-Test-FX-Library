@@ -14,14 +14,6 @@ import com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryNonFa
 @RobotKeywords
 public class Logging {
 
-	// ******************************
-	// Keywords
-	// ******************************
-
-	// ******************************
-	// Internal Methods
-	// ******************************
-
 	protected final static Map<String, String[]> VALID_LOG_LEVELS;
 
 	static {
@@ -33,27 +25,27 @@ public class Logging {
 		VALID_LOG_LEVELS.put("warn", new String[] { "warn", "" });
 	}
 	
-	protected void trace(String msg) {
+	protected void trace(String msg) throws IOException {
 		log(msg, "trace");
 	}
 
-	protected void debug(String msg) {
+	protected void debug(String msg) throws IOException {
 		log(msg, "debug");
 	}
 
-	protected void info(String msg) {
+	protected void info(String msg) throws IOException {
 		log(msg, "info");
 	}
 
-	protected void html(String msg) {
+	protected void html(String msg) throws IOException {
 		log(msg, "html");
 	}
 
-	protected void warn(String msg) {
+	protected void warn(String msg) throws IOException {
 		log(msg, "warn");
 	}
 
-	protected void log(String msg, String logLevel) {
+	protected void log(String msg, String logLevel) throws IOException {
 		String[] methodParameters = VALID_LOG_LEVELS.get(logLevel.toLowerCase());
 		if (methodParameters != null) {
 			log0(msg, methodParameters[0], methodParameters[1]);
@@ -69,15 +61,16 @@ public class Logging {
 	 * Therefore messages larger than 1k are saved on disk and the later
 	 * read back into memory on the Jython side. 
 	 */
-	protected void log0(String msg, String methodName, String methodArguments) {
+	protected void log0(String msg, String methodName, String methodArguments) throws IOException {
 		if (msg.length() > 1024) {
 			// Message is too large.
 			// There is a hard limit of 100k in the Jython source code parser
+			FileWriter writer = null;
 			try {
 				// Write message to temp file
 				File tempFile = File.createTempFile("testfxlibrary-", ".log");
 				tempFile.deleteOnExit();
-				FileWriter writer = new FileWriter(tempFile);
+				writer = new FileWriter(tempFile);
 				writer.write(msg);
 				writer.close();
 				
@@ -90,6 +83,10 @@ public class Logging {
 				
 			} catch (IOException e) {
 				throw new testfxlibraryNonFatalException("Error in handling temp file for long log message.", e);
+			} finally {
+				if (writer != null) {
+					writer.close();
+				}
 			}
 		} else {
 			// Message is small enough to get parsed by Jython

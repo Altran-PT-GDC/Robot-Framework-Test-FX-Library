@@ -4,7 +4,6 @@ import java.util.ResourceBundle;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.library.AnnotationLibrary;
 
-import com.altran.gdc.robotframework.testfxlibrary.keywords.Echo;
 import com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc;
 
 /**
@@ -17,7 +16,7 @@ public class TestFXLibrary extends AnnotationLibrary {
 	/**
 	 * The list of keyword patterns for the AnnotationLibrary
 	 */
-	public static final String KEYWORD_PATTERN = "com.altran.gdc.robotframework.testfxlibrary".replace('.','/') + "/keywords/**/*.class";
+	public static final String KEYWORD_PATTERN = "com/altran/gdc/robotframework/testfxlibrary/keywords/**/*.class";
 
 	/**
 	 * The javadoc to libdoc converter
@@ -57,24 +56,6 @@ public class TestFXLibrary extends AnnotationLibrary {
 		super();
 		addKeywordPattern(KEYWORD_PATTERN);
 		createKeywordFactory(); // => init annotations
-	}
-
-	// ******************************
-	// Autowired References
-	// ******************************
-
-	/**
-	 * Instantiated Echo keyword bean
-	 */
-	@Autowired
-	protected Echo echo;
-
-	// ******************************
-	// Getter / Setter
-	// ******************************
-
-	public Echo getEcho() {
-		return echo;
 	}
 
 	// ******************************
