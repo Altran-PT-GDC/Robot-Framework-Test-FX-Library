@@ -35,9 +35,7 @@ Test Example 2
 
 Test Example 4
     Launch Application  testapp.JavafxExample2
-    #Click On    .text-field
     Erase All Text      .text-field
-    Pause Execution
     Close Application
 
 Test Wait Until Element Is Enabled
@@ -54,8 +52,12 @@ Test Wait Until Element Is Enabled Time Out
     Run keyword if  ${status} is ${TRUE}   Fail
     Close Application
 
-
-
+Test Get Text
+    Launch Application  testapp.JavafxExample2
+    Click on    .text-field
+    ${text}    Get Text    .text-field
+    Log     ${text}     WARN
+    Close Application
 
 *** Keywords ***
 

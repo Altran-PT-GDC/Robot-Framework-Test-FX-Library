@@ -11,7 +11,6 @@ import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
-import org.testfx.service.query.NodeQuery;
 
 /**
  *
@@ -89,4 +88,18 @@ public class Keyboard {
         TextField text = new FxRobot().lookup(identifier).query();
         text.setText("");
     }
+
+    /**
+     * Get Text from a text field
+     *
+     * @param identifier
+     *          The node were you're going to write
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public String getText(String identifier) {
+        TextField textField = new FxRobot().lookup(identifier).query();
+        return textField.getText();
+    }
+
 }

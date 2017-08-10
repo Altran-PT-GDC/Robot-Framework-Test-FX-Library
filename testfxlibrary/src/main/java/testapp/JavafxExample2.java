@@ -77,9 +77,12 @@ public class JavafxExample2 extends Application {
         listPane.getChildren().add(listLbl);
         listPane.getChildren().add(vegetables);
         listPane.setVisible(false);
+
+        final TextField name = new TextField();
+        name.setText("Diogo");
         
         componentLayout.setCenter(listPane);
-        
+        componentLayout.setRight(name);
         //The button uses an inner class to handle the button click event
         final Button vegFruitBut = new Button("Fruit or Veg");
         vegFruitBut.setOnAction(new EventHandler() {
