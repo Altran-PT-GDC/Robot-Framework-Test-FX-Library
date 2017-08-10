@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.scene.Node;
 import org.hamcrest.Matchers;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
@@ -23,30 +24,29 @@ import java.util.concurrent.TimeoutException;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import static java.lang.System.out;
 import static org.testfx.matcher.base.NodeMatchers.hasText;
 import static org.testfx.matcher.base.NodeMatchers.isDisabled;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
 /**
- *
  * @author pcosta
  */
 @RobotKeywords
 public class Misc {
+
+    @Autowired
+    private Logging LOG;
 
     /**
      * Launch Java FX application. <br>
      * The classname given must extend javafx.application.Application.<br>
      * ATENTTION: The class must be added to the classpath beforehand.
      *
-     * @param className
-     *            The name of the class that extends javafx.application.Application to be launched.
+     * @param className The name of the class that extends javafx.application.Application to be launched.
      */
     @RobotKeyword
     @ArgumentNames({"className"})
-    public void launchApplication(String className)
-            throws Exception {
+    public void launchApplication(String className) throws TimeoutException, ClassNotFoundException {
         FxToolkit.registerPrimaryStage();
         FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
         FxToolkit.showStage();
@@ -57,19 +57,16 @@ public class Misc {
      * The classname given must extend javafx.application.Application.<br>
      * ATENTTION: The JAR must be added to the classpath beforehand.
      *
-     * @param applicationJAR
-     *            The path of the JAR that contains the application
-     *            to be launched. The JAR must contain a JavaFX application with a class
-     *            that extends javafx.application.Application.
-     *
-     * @param className
-     *             The name of the class im the JAR that extends
-     *             javafx.application.Application to be launched.
+     * @param applicationJAR The path of the JAR that contains the application
+     *                       to be launched. The JAR must contain a JavaFX application with a class
+     *                       that extends javafx.application.Application.
+     * @param className      The name of the class im the JAR that extends
+     *                       javafx.application.Application to be launched.
      */
     @RobotKeyword
     @ArgumentNames({"applicationJAR", "className"})
-    public void launchJARApplication(String applicationJAR, String className)
-            throws Exception {
+    public void launchJARApplication(String applicationJAR, String className) throws TimeoutException,
+            IOException, ClassNotFoundException {
         FxToolkit.registerPrimaryStage();
         ClassLoader classLoader = loadClassesFromJar(applicationJAR);
         FxToolkit.setupApplication((Class<? extends Application>) classLoader.loadClass(className));
@@ -95,9 +92,7 @@ public class Misc {
                 // -6 because of .class
                 String className = je.getName().substring(0, je.getName().length() - 6);
                 className = className.replace('/', '.');
-                Class c = cl.loadClass(className);
-                out.println(className);
-
+                LOG.info(className);
             }
         } finally {
             if (jarFile != null) {
@@ -110,13 +105,11 @@ public class Misc {
         }
 
         return cl;
-
     }
 
     /**
      * Closes the Java FX application.
      * The primary stage is hidden and cleaned-up.
-     *
      */
     @RobotKeyword
     public void closeApplication() throws TimeoutException {
@@ -127,8 +120,7 @@ public class Misc {
     /**
      * Sleep. Pause the execution during a period
      *
-     * @param milliseconds
-     *            The number of millisenconds to pause the execution
+     * @param milliseconds The number of millisenconds to pause the execution
      */
     @RobotKeyword
     @ArgumentNames({"milliseconds"})
@@ -138,32 +130,32 @@ public class Misc {
 
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout"})
-    public void waitUntilElementIsVisible(String identifier, int timeout){
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isVisible()),timeout);
+    public void waitUntilElementIsVisible(String identifier, int timeout) {
+        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isVisible()), timeout);
     }
 
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout"})
-    public void waitUntilElementIsNotVisible(String identifier, int timeout){
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isVisible()),timeout);
+    public void waitUntilElementIsNotVisible(String identifier, int timeout) {
+        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isVisible()), timeout);
     }
 
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout"})
-    public void waitUntilElementHasText(String identifier,String textToValidate, int timeout){
-        new WaitUntilSupport().waitUntil(getNode(identifier), hasText(textToValidate),timeout);
+    public void waitUntilElementHasText(String identifier, String textToValidate, int timeout) {
+        new WaitUntilSupport().waitUntil(getNode(identifier), hasText(textToValidate), timeout);
     }
 
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout"})
-    public void waitUntilElementIsDisabled(String identifier, int timeout){
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isDisabled()),timeout);
+    public void waitUntilElementIsDisabled(String identifier, int timeout) {
+        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isDisabled()), timeout);
     }
 
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout"})
-    public void waitUntilElementIsEnabled(String identifier, int timeout){
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isDisabled()),timeout);
+    public void waitUntilElementIsEnabled(String identifier, int timeout) {
+        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isDisabled()), timeout);
     }
 
     private Node getNode(String identifier) {

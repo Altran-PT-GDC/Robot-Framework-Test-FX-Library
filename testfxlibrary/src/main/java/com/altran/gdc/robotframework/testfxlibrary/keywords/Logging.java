@@ -9,20 +9,26 @@ import java.util.Map;
 import org.python.util.PythonInterpreter;
 import org.robotframework.javalib.annotation.RobotKeywords;
 
-import com.altran.gdc.robotframework.testfxlibrary.exceptions.testfxlibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 
 @RobotKeywords
 public class Logging {
+
+	private static final String DEBUG_CONSTANT = "debug";
+	private static final String HTML_CONSTANT = "html";
+	private static final String INFO_CONSTANT = "info";
+	private static final String TRACE_CONSTANT = "trace";
+	private static final String WARNING_CONSTANT = "warn";
 
 	protected final static Map<String, String[]> VALID_LOG_LEVELS;
 
 	static {
 		VALID_LOG_LEVELS = new HashMap<String, String[]>();
-		VALID_LOG_LEVELS.put("debug", new String[] { "debug", "" });
-		VALID_LOG_LEVELS.put("html", new String[] { "info", ", True, False" });
-		VALID_LOG_LEVELS.put("info", new String[] { "info", "" });
-		VALID_LOG_LEVELS.put("trace", new String[] { "trace", "" });
-		VALID_LOG_LEVELS.put("warn", new String[] { "warn", "" });
+		VALID_LOG_LEVELS.put(DEBUG_CONSTANT, new String[] { DEBUG_CONSTANT, "" });
+		VALID_LOG_LEVELS.put(HTML_CONSTANT, new String[] { HTML_CONSTANT, ", True, False" });
+		VALID_LOG_LEVELS.put(INFO_CONSTANT, new String[] { INFO_CONSTANT, "" });
+		VALID_LOG_LEVELS.put(TRACE_CONSTANT, new String[] { TRACE_CONSTANT, "" });
+		VALID_LOG_LEVELS.put(WARNING_CONSTANT, new String[] { WARNING_CONSTANT, "" });
 	}
 	
 	protected void trace(String msg) throws IOException {
@@ -50,7 +56,7 @@ public class Logging {
 		if (methodParameters != null) {
 			log0(msg, methodParameters[0], methodParameters[1]);
 		} else {
-			throw new testfxlibraryNonFatalException(String.format("Given log level %s is invalid.", logLevel));
+			throw new TestFxLibraryNonFatalException(String.format("Given log level %s is invalid.", logLevel));
 		}
 	}
 
@@ -82,7 +88,7 @@ public class Logging {
 								methodArguments));
 				
 			} catch (IOException e) {
-				throw new testfxlibraryNonFatalException("Error in handling temp file for long log message.", e);
+				throw new TestFxLibraryNonFatalException("Error in handling temp file for long log message.", e);
 			} finally {
 				if (writer != null) {
 					writer.close();

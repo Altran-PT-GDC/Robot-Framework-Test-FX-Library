@@ -4,26 +4,26 @@ package com.altran.gdc.robotframework.testfxlibrary.exceptions;
  * A raised exception of this type ends all test executions.
  */
 @SuppressWarnings("serial")
-public class testfxlibraryFatalException extends RuntimeException {
+public class TestFxLibraryFatalException extends RuntimeException {
 
 	/**
 	 * Mark this exception as fatal
 	 */
 	public static final boolean ROBOT_EXIT_ON_FAILURE = true;
 
-	public testfxlibraryFatalException() {
+	public TestFxLibraryFatalException() {
 		super();
 	}
 
-	public testfxlibraryFatalException(String string) {
+	public TestFxLibraryFatalException(String string) {
 		super(string);
 	}
 
-	public testfxlibraryFatalException(Throwable t) {
+	public TestFxLibraryFatalException(Throwable t) {
 		super(t);
 	}
 
-	public testfxlibraryFatalException(String string, Throwable t) {
+	public TestFxLibraryFatalException(String string, Throwable t) {
 		super(string, t);
 	}
 }

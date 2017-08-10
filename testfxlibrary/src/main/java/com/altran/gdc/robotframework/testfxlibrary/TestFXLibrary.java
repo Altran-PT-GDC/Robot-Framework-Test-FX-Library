@@ -1,3 +1,4 @@
+package com.altran.gdc.robotframework.testfxlibrary;
 import java.io.File;
 import java.util.ResourceBundle;
 
@@ -43,7 +44,7 @@ public class TestFXLibrary extends AnnotationLibrary {
 			return ResourceBundle.getBundle(TestFXLibrary.class.getCanonicalName().replace(".", File.separator))
 					.getString("version");
 		} catch (RuntimeException e) {
-			return "unknown";
+			throw e;
 		}
 	}
 	
@@ -74,7 +75,7 @@ public class TestFXLibrary extends AnnotationLibrary {
 			try {
 				return super.getKeywordDocumentation(keywordName);
 			} catch (NullPointerException e) {
-				return "";
+				throw e;
 			}
 		}
 		return keywordDocumentation;
