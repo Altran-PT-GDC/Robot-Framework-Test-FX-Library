@@ -1,5 +1,6 @@
 *** Settings ***
 Library           TestFXLibrary
+Library           Dialogs
 
 
 *** Test Cases ***
@@ -46,14 +47,10 @@ Test Wait Until Element Is Enabled Time Out
     Run keyword if  ${status} is ${TRUE}   Fail
     Close Application
 
-Test Click on
-    Click On    .choice-box
-
-
 *** Keywords ***
 
-Test Fruits with {fruit}
+Test Fruits with ${fruit}
     Click On    Beans
     Click On    Fruit or Veg
-    Click On    {fruit}
+    Click On    ${fruit}
 
