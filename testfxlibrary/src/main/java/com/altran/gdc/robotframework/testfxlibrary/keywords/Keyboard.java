@@ -5,11 +5,13 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
+import org.testfx.service.query.NodeQuery;
 
 /**
  *
@@ -76,5 +78,15 @@ public class Keyboard {
     @ArgumentNames({"keycode"})
     public void type(String keycode) {
         new FxRobot().type(KeyCode.getKeyCode(keycode));
+    }
+
+    /**
+     * Erase All Text from a text field.
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void  eraseAllText(String identifier) {
+        TextField text = new FxRobot().lookup(identifier).query();
+        text.setText("");
     }
 }

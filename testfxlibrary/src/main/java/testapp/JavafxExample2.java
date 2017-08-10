@@ -21,10 +21,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -107,8 +104,13 @@ public class JavafxExample2 extends Application {
             }
         });
 
+
+        final TextField text = new TextField("OLA TEST");
+        text.setId("text");
+
+
         HBox hBox = new HBox();
-        hBox.getChildren().addAll(vegFruitBut, testWait);
+        hBox.getChildren().addAll(vegFruitBut, testWait, text);
         
         componentLayout.setBottom(hBox);
 
