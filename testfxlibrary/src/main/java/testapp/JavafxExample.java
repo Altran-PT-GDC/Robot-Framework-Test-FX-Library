@@ -40,6 +40,10 @@ public class JavafxExample extends Application {
             Button countButton = new Button("count");
             countButton.setId("countButton");
 
+            Button btnDisable = new Button("Disable");
+            btnDisable.setId("btnDisable");
+            btnDisable.setDisable(true);
+
             // create countValue.
             final TextField countValue = new TextField("0");
             countValue.setId("countValue");
@@ -56,7 +60,7 @@ public class JavafxExample extends Application {
             countValue.setPrefWidth(50);
 
             // create and add containers.
-            HBox box = new HBox(10, countButton, countValue);
+            HBox box = new HBox(10, countButton, countValue, btnDisable);
             box.setPadding(new Insets(10));
             box.setAlignment(Pos.CENTER);
             getChildren().add(box);
