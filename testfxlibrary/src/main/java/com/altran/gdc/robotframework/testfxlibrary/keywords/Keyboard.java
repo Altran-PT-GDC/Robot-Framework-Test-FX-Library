@@ -80,7 +80,10 @@ public class Keyboard {
     }
 
     /**
-     * Erase All Text from a text field.
+     * Erase All Text from a text field
+     *
+     * @param identifier
+     *      The node were you're going to write
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -93,7 +96,7 @@ public class Keyboard {
      * Get Text from a text field
      *
      * @param identifier
-     *          The node were you're going to write
+     *      The node were you're going to write
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

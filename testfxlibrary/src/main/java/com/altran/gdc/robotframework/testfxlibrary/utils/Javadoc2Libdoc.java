@@ -108,11 +108,15 @@ public class Javadoc2Libdoc {
 			hasTag = true;
 			String text = tagInfo.getText();
 			int index = text.indexOf('\n');
+
 			stringBuilderParam.append("&nbsp;&nbsp;&nbsp;&nbsp;<b>");
-			stringBuilderParam.append(text.substring(0, index));
+			if ( index > 0) {
+				stringBuilderParam.append(text.substring(0, index));
+			}
 			stringBuilderParam.append("</b>&nbsp;");
 			stringBuilderParam.append(text.substring(index + 1).trim());
 			stringBuilderParam.append("<br>");
+
 		}
 		if (hasTag) {
 			return stringBuilderParam.toString();
