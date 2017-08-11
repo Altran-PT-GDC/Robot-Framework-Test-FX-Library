@@ -1,8 +1,6 @@
-package com.altran.gdc.robotframework.testfxlibrary;
 import java.io.File;
 import java.util.ResourceBundle;
 
-import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.library.AnnotationLibrary;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc;
