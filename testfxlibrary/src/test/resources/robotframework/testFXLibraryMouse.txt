@@ -1,0 +1,61 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+Test Click On Count Button
+    Launch Application  testapp.JavafxExample
+    Click On    count
+    Click On    count
+    Click On    count
+    Close Application
+
+Test Click On Choice Box
+    Launch Application  testapp.JavafxExample2
+    Click On    .choice-box
+    Test Fruits with Orange
+    Close Application
+
+Test Erase All Text
+    Launch Application  testapp.JavafxExample2
+    Erase All Text      .text-field
+    Close Application
+
+Test Get Text
+    Launch Application  testapp.JavafxExample2
+    Click on    .text-field
+    ${text}    Get Text    .text-field
+    Log     ${text}     WARN
+    Close Application
+
+Test Scroll Down
+    Launch Application  testapp.JavafxExample2
+    Click On    .scroll-pane
+    Scroll Down   7
+    Pause Execution
+    Scroll Up   7
+    Pause Execution
+    Close Application
+
+Test Drag & Drop
+
+    Launch Application  testapp.JavafxExample2
+    Drag    .scroll-bar
+    Move By     -50   -50
+    Drop    .scroll-bar
+    Close Application
+
+Test Get Node List
+
+    Launch Application  testapp.JavafxExample2
+    Click On    .list-view
+    ${list}   Get Node List  .list-view
+    Log     ${list}     WARN
+    Close Application
+
+*** Keywords ***
+
+Test Fruits with ${fruit}
+    Click On    Beans
+    Click On    Fruit or Veg
+    Click On    ${fruit}
