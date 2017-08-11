@@ -7,12 +7,13 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import javafx.geometry.HorizontalDirection;
 import javafx.geometry.VerticalDirection;
+import javafx.scene.Node;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
 import org.testfx.robot.Motion;
-
+import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -169,5 +170,17 @@ public class Mouse {
     @ArgumentNames({"amount"})
     public void scrollDown(int amount) {
         new FxRobot().scroll(0, VerticalDirection.DOWN);
+    }
+
+    /**
+     * Get Node list
+     *
+     * @param identifier
+     *            The node identifier that has the list to be returned
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public Set<Node> getNodeList(String identifier) {
+        return new FxRobot().lookup(identifier).queryAll();
     }
 }

@@ -12,6 +12,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -79,11 +80,17 @@ public class JavafxExample2 extends Application {
 
         final TextField name = new TextField();
         name.setText("Diogo");
+
+        final ObservableList<String> oList = FXCollections.observableArrayList("um", "dois", "tres", "quatro", "cinco", "seis", "sete");
+
+        final ListView<String> listView = new ListView<>();
+        listView.setItems(oList);
+
         final VBox vBox = new VBox();
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setMaxHeight(200);
-        vBox.getChildren().addAll(name, new TextField("um"), new TextField("dois"),new TextField("três"),new TextField("três"),new TextField("três"),new TextField("três"),new TextField("três")
-                ,new TextField("três"),new TextField("três"),new TextField("três"),new TextField("três"),new TextField("três"));
+        scrollPane.setMaxWidth(100);
+        vBox.getChildren().addAll(name, listView);
         scrollPane.setContent(vBox);
 
         componentLayout.setCenter(listPane);
@@ -108,6 +115,8 @@ public class JavafxExample2 extends Application {
 
         final TextField text = new TextField("OLA TEST");
         text.setId("text");
+
+
 
 
         HBox hBox = new HBox();
