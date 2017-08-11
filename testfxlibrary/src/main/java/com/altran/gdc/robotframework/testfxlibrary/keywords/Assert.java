@@ -5,6 +5,8 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
@@ -26,7 +28,9 @@ public class Assert {
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})
     public void verifyThatContains(String identifier, String identifierToValidate) {
+
         verifyThat(identifier, (Predicate) contains( identifierToValidate ));
+
 
     }
 

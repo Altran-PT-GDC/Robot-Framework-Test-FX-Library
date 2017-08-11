@@ -36,6 +36,7 @@ public class JavafxExample extends Application {
     
     private static class CounterPane extends StackPane {
         public CounterPane() {
+            setId("counterPane");
             // create countButton.
             Button countButton = new Button("count");
             countButton.setId("countButton");

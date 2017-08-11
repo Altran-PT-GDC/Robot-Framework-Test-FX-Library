@@ -3,10 +3,10 @@ Library           TestFXLibrary
 Library           Dialogs
 
 *** Test Cases ***
-#Test Verify That Contains
-#    Launch Application  testapp.JavafxExample
-#    Verify That Contains    \#countButton     \#countValue
-#    Close Application
+Test Verify That Contains
+    Launch Application  testapp.JavafxExample
+    Verify That Contains    \#counterPane     \#countValue
+    Close Application
 
 Test Verify That Has Text
     Launch Application  testapp.JavafxExample
@@ -26,4 +26,9 @@ Test Verify That Is Disabled
 Test Verify That Is Visible
     Launch Application  testapp.JavafxExample
     Verify That Is Visible  \#countValue
+    Close Application
+
+Test Verify That Has Child
+    Launch Application  testapp.JavafxExample
+    Verify That Has Child  \#counterPane     \#btnDisable
     Close Application
