@@ -6,27 +6,26 @@ package testapp;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author pcosta
- */
 //Imports are listed in full to show what's being used
 //could just import javafx.*
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+/**
+ *
+ * @author pcosta
+ */
 
 public class JavafxExample2 extends Application {
 
@@ -55,7 +54,7 @@ public class JavafxExample2 extends Application {
         Label choiceLbl = new Label("Fruits");
         
         //The choicebox is populated from an observableArrayList
-        ChoiceBox fruits = new ChoiceBox(FXCollections.observableArrayList("Asparagus", "Beans", "Broccoli", "Cabbage"
+        ChoiceBox<String> fruits = new ChoiceBox<>(FXCollections.observableArrayList("Asparagus", "Beans", "Broccoli", "Cabbage"
          , "Carrot", "Celery", "Cucumber", "Leek", "Mushroom"
          , "Pepper", "Radish", "Shallot", "Spinach", "Swede"
          , "Turnip"));
@@ -72,7 +71,7 @@ public class JavafxExample2 extends Application {
         listPane.setHgap(100);
         Label listLbl = new Label("Vegetables");
         
-        final ListView vegetables = new ListView(FXCollections.observableArrayList("Apple", "Apricot", "Banana"
+        final ListView<String> vegetables = new ListView<>(FXCollections.observableArrayList("Apple", "Apricot", "Banana"
          ,"Cherry", "Date", "Kiwi", "Orange", "Pear", "Strawberry"));
         listPane.getChildren().add(listLbl);
         listPane.getChildren().add(vegetables);
@@ -80,31 +79,30 @@ public class JavafxExample2 extends Application {
 
         final TextField name = new TextField();
         name.setText("Diogo");
-        
+        final VBox vBox = new VBox();
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setMaxHeight(200);
+        vBox.getChildren().addAll(name, new TextField("um"), new TextField("dois"),new TextField("três"),new TextField("três"),new TextField("três"),new TextField("três"),new TextField("três")
+                ,new TextField("três"),new TextField("três"),new TextField("três"),new TextField("três"),new TextField("três"));
+        scrollPane.setContent(vBox);
+
         componentLayout.setCenter(listPane);
-        componentLayout.setRight(name);
+        componentLayout.setRight(scrollPane);
         //The button uses an inner class to handle the button click event
         final Button vegFruitBut = new Button("Fruit or Veg");
-        vegFruitBut.setOnAction(new EventHandler() {
-
-            @Override
-            public void handle(Event event) {
-                //switch the visibility for each FlowPane
-                choicePane.setVisible(!choicePane.isVisible());
-                listPane.setVisible(!listPane.isVisible());
-            }
+        vegFruitBut.setOnAction(event -> {
+            //switch the visibility for each FlowPane
+            choicePane.setVisible(!choicePane.isVisible());
+            listPane.setVisible(!listPane.isVisible());
         });
 
         Button testWait = new Button("Wait Button");
-        testWait.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                vegFruitBut.setDisable(!vegFruitBut.isDisable());
-                Timeline timer = new Timeline(
-                        new KeyFrame(Duration.seconds(3), events -> vegFruitBut.setDisable(false))
-                );
-                timer.play();
-            }
+        testWait.setOnAction(event -> {
+            vegFruitBut.setDisable(!vegFruitBut.isDisable());
+            Timeline timer = new Timeline(
+                    new KeyFrame(Duration.seconds(3), events -> vegFruitBut.setDisable(false))
+            );
+            timer.play();
         });
 
 

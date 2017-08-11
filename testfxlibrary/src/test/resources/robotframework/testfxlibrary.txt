@@ -59,6 +59,21 @@ Test Get Text
     Log     ${text}     WARN
     Close Application
 
+Test Scroll Down
+    Launch Application  testapp.JavafxExample2
+    Click On    .scroll-pane
+    Scroll Down   7
+    Pause Execution
+    Close Application
+
+Test Drag & Drop
+
+    Launch Application  testapp.JavafxExample2
+    Drag    .scroll-bar
+    Move By     -50   -50
+    Close Application
+
+
 *** Keywords ***
 
 Test Fruits with ${fruit}
