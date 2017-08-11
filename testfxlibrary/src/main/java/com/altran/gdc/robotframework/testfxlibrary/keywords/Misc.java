@@ -5,6 +5,8 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryProperties;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import javafx.application.Application;
 import javafx.scene.Node;
 import org.hamcrest.Matchers;
@@ -43,6 +45,10 @@ public class Misc {
      * ATENTTION: The class must be added to the classpath beforehand.
      *
      * @param className The name of the class that extends javafx.application.Application to be launched.
+     * @throws TimeoutException
+     *      If something goes wrong
+     * @throws ClassNotFoundException
+     *      If something goes wrong
      */
     @RobotKeyword
     @ArgumentNames({"className"})
@@ -62,6 +68,12 @@ public class Misc {
      *                       that extends javafx.application.Application.
      * @param className      The name of the class im the JAR that extends
      *                       javafx.application.Application to be launched.
+     * @throws TimeoutException
+     *      If something goes wrong
+     * @throws IOException
+     *      If something goes wrong
+     * @throws ClassNotFoundException
+     *      If something goes wrong
      */
     @RobotKeyword
     @ArgumentNames({"applicationJAR", "className"})
@@ -110,6 +122,9 @@ public class Misc {
     /**
      * Closes the Java FX application.
      * The primary stage is hidden and cleaned-up.
+     *
+     * @throws TimeoutException
+     *      If something goes wrong
      */
     @RobotKeyword
     public void closeApplication() throws TimeoutException {
@@ -129,32 +144,37 @@ public class Misc {
     }
 
     @RobotKeyword
-    @ArgumentNames({"identifier", "timeout"})
-    public void waitUntilElementIsVisible(String identifier, int timeout) {
+    @ArgumentNames({"identifier"})
+    public void waitUntilElementIsVisible(String identifier) {
+        int timeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.ElEMENT_IS_VISIBLE));
         new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isVisible()), timeout);
     }
 
     @RobotKeyword
-    @ArgumentNames({"identifier", "timeout"})
-    public void waitUntilElementIsNotVisible(String identifier, int timeout) {
+    @ArgumentNames({"identifier"})
+    public void waitUntilElementIsNotVisible(String identifier) {
+        int timeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.ELEMENT_IS_NOT_VISIBLE));
         new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isVisible()), timeout);
     }
 
     @RobotKeyword
-    @ArgumentNames({"identifier", "textToValidate", "timeout"})
-    public void waitUntilElementHasText(String identifier, String textToValidate, int timeout) {
+    @ArgumentNames({"identifier", "textToValidate"})
+    public void waitUntilElementHasText(String identifier, String textToValidate) {
+        int timeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.ELEMENT_HAS_TEXT));
         new WaitUntilSupport().waitUntil(getNode(identifier), hasText(textToValidate), timeout);
     }
 
     @RobotKeyword
-    @ArgumentNames({"identifier", "timeout"})
-    public void waitUntilElementIsDisabled(String identifier, int timeout) {
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isDisabled()), timeout);
+    @ArgumentNames({"identifier"})
+    public void waitUntilElementIsDisabled(String identifier) {
+        int timeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.ELEMENT_IS_DISABLED));
+        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isDisabled()),timeout);
     }
 
     @RobotKeyword
-    @ArgumentNames({"identifier", "timeout"})
-    public void waitUntilElementIsEnabled(String identifier, int timeout) {
+    @ArgumentNames({"identifier"})
+    public void waitUntilElementIsEnabled(String identifier) {
+        int timeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.ELEMENT_IS_ENABLED));
         new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isDisabled()), timeout);
     }
 

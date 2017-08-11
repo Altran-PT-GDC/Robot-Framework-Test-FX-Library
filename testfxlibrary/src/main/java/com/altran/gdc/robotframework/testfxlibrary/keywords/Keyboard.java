@@ -97,6 +97,8 @@ public class Keyboard {
      *
      * @param identifier
      *      The node were you're going to write
+     *
+     * @return The text from textfield
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

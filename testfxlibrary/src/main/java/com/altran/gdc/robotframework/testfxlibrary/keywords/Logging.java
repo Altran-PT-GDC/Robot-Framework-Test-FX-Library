@@ -19,6 +19,7 @@ public class Logging {
 	private static final String INFO_CONSTANT = "info";
 	private static final String TRACE_CONSTANT = "trace";
 	private static final String WARNING_CONSTANT = "warn";
+	private static final String ERROR_CONSTANT = "error";
 
 	protected final static Map<String, String[]> VALID_LOG_LEVELS;
 
@@ -29,26 +30,40 @@ public class Logging {
 		VALID_LOG_LEVELS.put(INFO_CONSTANT, new String[] { INFO_CONSTANT, "" });
 		VALID_LOG_LEVELS.put(TRACE_CONSTANT, new String[] { TRACE_CONSTANT, "" });
 		VALID_LOG_LEVELS.put(WARNING_CONSTANT, new String[] { WARNING_CONSTANT, "" });
+		VALID_LOG_LEVELS.put(ERROR_CONSTANT, new String[] { ERROR_CONSTANT, "" });
 	}
 	
-	protected void trace(String msg) throws IOException {
-		log(msg, "trace");
+	public void trace(String msg) {
+		try {
+			log(msg, "trace");
+		} catch (IOException e) {
+		}
 	}
 
-	protected void debug(String msg) throws IOException {
-		log(msg, "debug");
+	protected void debug(String msg) {
+		try {
+			log(msg, "debug");
+		} catch (IOException e) {
+		}
 	}
 
-	protected void info(String msg) throws IOException {
-		log(msg, "info");
+	public void info(String msg) {
+		try {
+			log(msg, "info");
+		} catch (IOException e) {
+		}
 	}
 
-	protected void html(String msg) throws IOException {
+	public void html(String msg) throws IOException {
 		log(msg, "html");
 	}
 
-	protected void warn(String msg) throws IOException {
+	public void warn(String msg) throws IOException {
 		log(msg, "warn");
+	}
+
+	public void error(String msg) throws IOException {
+		log(msg, "error");
 	}
 
 	protected void log(String msg, String logLevel) throws IOException {
@@ -63,9 +78,18 @@ public class Logging {
 	/**
 	 * Log the given message with the Robot logger.<br>
 	 * <br>
-	 * There is a hard limit of 100k in the Jython source code parser. 
+	 * There is a hard limit of 100k in the Jython source code parser.
 	 * Therefore messages larger than 1k are saved on disk and the later
-	 * read back into memory on the Jython side. 
+	 * read back into memory on the Jython side.
+	 *
+	 * @param msg
+	 * 		The message
+	 * @param methodName
+	 * 		The method name
+	 * @param methodArguments
+	 * 		The arguments
+	 * @throws IOException
+	 * 		If something goes wrong
 	 */
 	protected void log0(String msg, String methodName, String methodArguments) throws IOException {
 		if (msg.length() > 1024) {

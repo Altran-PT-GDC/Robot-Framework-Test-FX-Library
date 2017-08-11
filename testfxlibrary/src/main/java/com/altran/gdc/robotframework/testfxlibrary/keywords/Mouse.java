@@ -27,6 +27,8 @@ public class Mouse {
      *
      * @param identifier
      *             A string containing the identifier of the node to be clicked.
+     * @throws TimeoutException
+     *      If something goes wrong
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

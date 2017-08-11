@@ -1,16 +1,18 @@
 import java.io.File;
 import java.util.ResourceBundle;
 
+import com.altran.gdc.robotframework.testfxlibrary.keywords.Timeout;
 import org.robotframework.javalib.library.AnnotationLibrary;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc;
+import org.robotframework.javalib.library.RobotJavaLibrary;
 
 /**
  * TestFXLibrary is a ... library for the Robot Framework.<br>
  * <br>
  * <b>Insert library introduction here.</b>
  */
-public class TestFXLibrary extends AnnotationLibrary {
+public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary {
 
 	/**
 	 * The list of keyword patterns for the AnnotationLibrary
@@ -55,6 +57,7 @@ public class TestFXLibrary extends AnnotationLibrary {
 		super();
 		addKeywordPattern(KEYWORD_PATTERN);
 		createKeywordFactory(); // => init annotations
+        setDefaultTimeouts();
 	}
 
 	// ******************************
@@ -83,9 +86,13 @@ public class TestFXLibrary extends AnnotationLibrary {
 	// Internal Methods
 	// ******************************
 
-	/**
-	 * Convert all arguments in the object array to string
-	 */
+    /**
+     * Convert all arguments in the object array to string
+     * @param args
+     *      The arguments
+     * @return
+     *      The arguments converted in String
+     */
 	protected Object[] toStrings(Object[] args) {
 		Object[] newArgs = new Object[args.length];
 		for (int i = 0; i < newArgs.length; i++) {
@@ -97,4 +104,11 @@ public class TestFXLibrary extends AnnotationLibrary {
 		}
 		return newArgs;
 	}
+
+    /**
+     * Set default timeouts
+     */
+    private void setDefaultTimeouts() {
+        new Timeout().setTimeouts(20);
+    }
 }
