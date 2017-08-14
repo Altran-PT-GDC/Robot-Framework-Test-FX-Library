@@ -2,6 +2,8 @@ package com.altran.gdc.robotframework.testfxlibrary.utils;
 
 import com.altran.gdc.robotframework.testfxlibrary.keywords.Logging;
 import org.robotframework.javalib.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,20 +12,16 @@ import java.util.Properties;
 
 public class TestFxLibraryProperties {
 
+    private static final Logger log = LoggerFactory.getLogger(TestFxLibraryProperties.class);
     private static Properties props;
-
-    @Autowired
-    private Logging LOG;
 
     static {
         props = new Properties();
         try {
             TestFxLibraryProperties util = new TestFxLibraryProperties();
             props = util.getPropertiesFromClasspath("testfxlibrary.properties");
-        } catch (FileNotFoundException e) {
-
         } catch (IOException e) {
-
+            log.error("Error!", e);
         }
     }
 

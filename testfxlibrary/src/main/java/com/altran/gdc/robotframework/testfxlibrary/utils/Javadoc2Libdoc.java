@@ -17,8 +17,11 @@ import com.github.markusbernhardt.xmldoclet.xjc.ObjectFactory;
 import com.github.markusbernhardt.xmldoclet.xjc.Package;
 import com.github.markusbernhardt.xmldoclet.xjc.Root;
 import com.github.markusbernhardt.xmldoclet.xjc.TagInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Javadoc2Libdoc {
+	private static final Logger log = LoggerFactory.getLogger(Javadoc2Libdoc.class);
 	protected final Map<String, String> keywordDocumentationMap;
 
 	public Javadoc2Libdoc(java.lang.Class<?> clazz) {
@@ -38,6 +41,7 @@ public class Javadoc2Libdoc {
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			return (Root) unmarshaller.unmarshal(inputStream);
 		} catch (JAXBException e) {
+			log.error("Error!", e);
 			return new ObjectFactory().createRoot();
 		}
 	}
@@ -58,7 +62,7 @@ public class Javadoc2Libdoc {
 				}
 				for (Method methodNode : classNode.getMethod()) {
 					for (AnnotationInstance annotationInstanceNode : methodNode.getAnnotation()) {
-						if (annotationInstanceNode.getName().equals("RobotKeyword")) {
+						if ("RobotKeyword".equals(annotationInstanceNode.getName())) {
 							keywordDocumentation.put(methodNode.getName(), formatComment(methodNode));
 							break;
 						}
@@ -102,7 +106,7 @@ public class Javadoc2Libdoc {
 		StringBuilder stringBuilderParam = new StringBuilder();
 		stringBuilderParam.append("<br><b>Parameters:</b><br>");
 		for (TagInfo tagInfo : methodNode.getTag()) {
-			if (!tagInfo.getName().equals("@param")) {
+			if (!"@param".equals(tagInfo.getName())) {
 				continue;
 			}
 			hasTag = true;
@@ -129,7 +133,7 @@ public class Javadoc2Libdoc {
 		StringBuilder stringBuilderParam = new StringBuilder();
 		stringBuilderParam.append("<br><b>Returns:</b><br>");
 		for (TagInfo tagInfo : methodNode.getTag()) {
-			if (!tagInfo.getName().equals("@return")) {
+			if (!"@return".equals(tagInfo.getName())) {
 				continue;
 			}
 			hasTag = true;
@@ -149,7 +153,7 @@ public class Javadoc2Libdoc {
 		StringBuilder stringBuilderParam = new StringBuilder();
 		stringBuilderParam.append("<br><b>See Also:</b><br>");
 		for (TagInfo tagInfo : methodNode.getTag()) {
-			if (!tagInfo.getName().equals("@see")) {
+			if (!"@see".equals(tagInfo.getName())) {
 				continue;
 			}
 			hasTag = true;

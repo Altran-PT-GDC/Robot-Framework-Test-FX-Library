@@ -5,6 +5,7 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryProperties;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import javafx.application.Application;
@@ -37,7 +38,7 @@ import static org.testfx.matcher.base.NodeMatchers.isVisible;
 public class Misc {
 
     @Autowired
-    private Logging LOG;
+    private Logging log;
 
     /**
      * Launch Java FX application. <br>
@@ -52,10 +53,16 @@ public class Misc {
      */
     @RobotKeyword
     @ArgumentNames({"className"})
-    public void launchApplication(String className) throws TimeoutException, ClassNotFoundException {
-        FxToolkit.registerPrimaryStage();
-        FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
-        FxToolkit.showStage();
+    public void launchApplication(String className){
+        try {
+            FxToolkit.registerPrimaryStage();
+            FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+            FxToolkit.showStage();
+        } catch (TimeoutException | ClassNotFoundException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+
+
     }
 
     /**
@@ -104,7 +111,7 @@ public class Misc {
                 // -6 because of .class
                 String className = je.getName().substring(0, je.getName().length() - 6);
                 className = className.replace('/', '.');
-                LOG.info(className);
+                log.info(className);
             }
         } finally {
             if (jarFile != null) {

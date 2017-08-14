@@ -10,10 +10,13 @@ import org.python.util.PythonInterpreter;
 import org.robotframework.javalib.annotation.RobotKeywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RobotKeywords
 public class Logging {
 
+	private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
 	private static final String DEBUG_CONSTANT = "debug";
 	private static final String HTML_CONSTANT = "html";
 	private static final String INFO_CONSTANT = "info";
@@ -37,6 +40,7 @@ public class Logging {
 		try {
 			log(msg, "trace");
 		} catch (IOException e) {
+			LOG.error("Error!", e);
 		}
 	}
 
@@ -44,6 +48,7 @@ public class Logging {
 		try {
 			log(msg, "debug");
 		} catch (IOException e) {
+			LOG.error("Error!", e);
 		}
 	}
 
@@ -51,6 +56,7 @@ public class Logging {
 		try {
 			log(msg, "info");
 		} catch (IOException e) {
+			LOG.error("Error!", e);
 		}
 	}
 
