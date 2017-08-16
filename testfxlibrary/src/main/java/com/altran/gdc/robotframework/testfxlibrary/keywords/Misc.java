@@ -27,6 +27,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+import static java.net.URLClassLoader.newInstance;
 import static org.testfx.matcher.base.NodeMatchers.hasText;
 import static org.testfx.matcher.base.NodeMatchers.isDisabled;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
@@ -101,7 +102,7 @@ public class Misc {
             Enumeration<JarEntry> e = jarFile.entries();
 
             URL[] urls = {new URL("jar:file:" + applicationJAR + "!/")};
-            cl = URLClassLoader.newInstance(urls);
+            cl = newInstance(urls);
 
             while (e.hasMoreElements()) {
                 JarEntry je = e.nextElement();
@@ -121,6 +122,7 @@ public class Misc {
             if (cl != null) {
                 cl.close();
             }
+
         }
 
         return cl;

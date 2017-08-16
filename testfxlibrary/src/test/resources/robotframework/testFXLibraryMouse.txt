@@ -32,9 +32,7 @@ Test Scroll Down
     Launch Application  testapp.JavafxExample2
     Click On    .scroll-pane
     Scroll Down   7
-    Pause Execution
     Scroll Up   7
-    Pause Execution
     Close Application
 
 Test Drag & Drop
