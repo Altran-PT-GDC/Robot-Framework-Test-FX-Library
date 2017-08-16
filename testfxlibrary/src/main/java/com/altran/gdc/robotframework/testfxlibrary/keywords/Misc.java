@@ -82,8 +82,10 @@ public class Misc {
             IOException, ClassNotFoundException {
         FxToolkit.registerPrimaryStage();
         ClassLoader classLoader = loadClassesFromJar(applicationJAR);
-        FxToolkit.setupApplication((Class<? extends Application>) classLoader.loadClass(className));
-        FxToolkit.showStage();
+        if (classLoader != null) {
+            FxToolkit.setupApplication((Class<? extends Application>) classLoader.loadClass(className));
+            FxToolkit.showStage();
+        }
     }
 
     private ClassLoader loadClassesFromJar(String applicationJAR) throws IOException, ClassNotFoundException {
