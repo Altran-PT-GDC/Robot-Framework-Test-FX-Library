@@ -13,7 +13,7 @@ Test Wait Until Element Is Enabled
 Test Wait Until Element Is Enabled Time Out
     Launch Application  testapp.JavafxExample2
     Click on    Wait Button
-    Set Timeout     WaitUntilElementIsEnabled   1
+    Set Timeout     Timeout   1
     ${status}=  Run Keyword and return status   Wait Until Element Is Enabled   Fruit or Veg
     Run keyword if  ${status} is ${TRUE}   Fail
     Close Application

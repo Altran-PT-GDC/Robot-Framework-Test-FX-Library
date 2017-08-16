@@ -12,11 +12,7 @@ import org.robotframework.javalib.annotation.RobotKeywords;
 @RobotKeywords
 public class Timeout {
     public final static String[] TIMEOUTS = new String[] {
-            TimeoutConstants.ElEMENT_IS_VISIBLE,
-            TimeoutConstants.ELEMENT_IS_NOT_VISIBLE,
-            TimeoutConstants.ELEMENT_HAS_TEXT,
-            TimeoutConstants.ELEMENT_IS_DISABLED,
-            TimeoutConstants.ELEMENT_IS_ENABLED
+            TimeoutConstants.GENERIC_TIMEOUT
     };
 
     /**
@@ -32,20 +28,5 @@ public class Timeout {
     @ArgumentNames({"timeoutName", "timeoutInSeconds"})
     public void setTimeout(String timeoutName, int timeoutInSeconds) {
         TestFxLibraryProperties.setProperty(timeoutName, String.valueOf(timeoutInSeconds));
-    }
-
-    /**
-     * Sets all relevant timeouts
-     * By default, they are all set to 10 seconds
-     *
-     * @param timeoutInSeconds
-     *      The timeout in seconds
-     */
-    @RobotKeyword
-    @ArgumentNames({"timeoutInSeconds"})
-    public void setTimeouts(int timeoutInSeconds) {
-        for (String timeoutType : TIMEOUTS) {
-            TestFxLibraryProperties.setProperty(timeoutType, String.valueOf(timeoutInSeconds));
-        }
     }
 }

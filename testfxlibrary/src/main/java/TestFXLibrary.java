@@ -2,6 +2,7 @@ import java.io.File;
 import java.util.ResourceBundle;
 
 import com.altran.gdc.robotframework.testfxlibrary.keywords.Timeout;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import org.robotframework.javalib.library.AnnotationLibrary;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc;
@@ -109,6 +110,6 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
      * Set default timeouts
      */
     private void setDefaultTimeouts() {
-        new Timeout().setTimeouts(20);
+        new Timeout().setTimeout(TimeoutConstants.GENERIC_TIMEOUT, 20);
     }
 }

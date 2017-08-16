@@ -176,7 +176,9 @@ public class Mouse {
      * Get Node list
      *
      * @param identifier
-     *            The node identifier that has the list to be returned
+     *          The node identifier that has the list to be returned
+     * @return
+     *          The nodes
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

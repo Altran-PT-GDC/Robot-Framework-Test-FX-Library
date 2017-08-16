@@ -1,7 +1,5 @@
 package com.altran.gdc.robotframework.testfxlibrary.utils;
 
-import com.altran.gdc.robotframework.testfxlibrary.keywords.Logging;
-import org.robotframework.javalib.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +17,7 @@ public class TestFxLibraryProperties {
         props = new Properties();
         try {
             TestFxLibraryProperties util = new TestFxLibraryProperties();
-            props = util.getPropertiesFromClasspath("testfxlibrary.properties");
+            props = util.getPropertiesFromClasspath("TestFXLibrary.properties");
         } catch (IOException e) {
             log.error("Error!", e);
         }
@@ -30,6 +28,10 @@ public class TestFxLibraryProperties {
 
     public static String getProperty(String key) {
         return props.getProperty(key);
+    }
+
+    public static String getProperty(String key, String defaultValue) {
+        return props.getProperty(key, defaultValue);
     }
 
     public static void setProperty(String keyName, String propertyValue){
