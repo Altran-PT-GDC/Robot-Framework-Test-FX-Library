@@ -5,6 +5,8 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import javafx.scene.Node;
+import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.robotframework.javalib.annotation.ArgumentNames;
@@ -14,7 +16,9 @@ import org.robotframework.javalib.annotation.RobotKeywords;
 import java.util.function.Predicate;
 
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.is;
 import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.api.FxAssert.verifyThatIter;
 import static org.testfx.matcher.base.NodeMatchers.*;
 import static org.testfx.matcher.base.NodeMatchers.hasChild;
 
@@ -28,10 +32,7 @@ public class Assert {
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})
     public void verifyThatContains(String identifier, String identifierToValidate) {
-
         verifyThat(identifier, (Predicate) contains( identifierToValidate ));
-
-
     }
 
     @RobotKeyword

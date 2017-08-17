@@ -1,0 +1,23 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+Test Press And Release
+    Launch Application  testapp.JavafxExample
+    Click On    \#countValue
+    Press       8
+    Release     8
+    Close Application
+
+Test Erase Text
+    Launch Application  testapp.JavafxExample
+    Click On    \#countValue
+    Erase Text    1
+    Close Application
+
+Test Write
+    Launch Application  testapp.JavafxExample
+    Click On    \#countValue
+    Write    test
+    Close Application

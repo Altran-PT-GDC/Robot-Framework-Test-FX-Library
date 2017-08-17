@@ -10,6 +10,13 @@ Test Wait Until Element Is Enabled
     Log     OK      WARN
     Close Application
 
+ Test Wait Until Element Is Visible
+     Launch Application  testapp.JavafxExample2
+     Click on    Wait Button
+     Wait Until Element Is Enabled   Fruit or Veg
+     Log     OK      WARN
+     Close Application
+
 Test Wait Until Element Is Enabled Time Out
     Launch Application  testapp.JavafxExample2
     Click on    Wait Button

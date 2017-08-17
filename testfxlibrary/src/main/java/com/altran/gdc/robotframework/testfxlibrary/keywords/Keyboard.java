@@ -63,7 +63,7 @@ public class Keyboard {
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
-    public void relase(String keycode) {
+    public void release(String keycode) {
         new FxRobot().release(KeyCode.getKeyCode(keycode));
     }
 
