@@ -34,6 +34,14 @@ Test Wait Until Element Present on Application
     Click on    test
     Close Application
 
+Test Wait Until Element Present on Application Time Out
+    Launch Application  testapp.JavafxExample2
+    Click on    Wait Button
+    ${status}=  Run Keyword and return status   Wait Until Element Is Present       test    1
+    Run keyword if  ${status} is ${TRUE}   Fail
+    Log     ${status}   WARN
+    Close Application
+
 Test Node Key
      Launch Application  testapp.JavafxExample
      ${node}=   Get Node Key   \#counterPane

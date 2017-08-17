@@ -149,81 +149,158 @@ public class Misc {
         new FxRobot().sleep(milliseconds);
     }
 
+    /**
+     * Wait until an element is visible
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
     public void waitUntilElementIsVisible(String identifier, int timeout) {
         new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isVisible()), timeout);
     }
 
+    /**
+     * Wait until an element is visible with the default timeout
+     *
+     */
     @RobotKeywordOverload
     public void waitUntilElementIsVisible(String identifier) {
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementIsVisible(identifier, waitTimeout);
     }
 
+    /**
+     * Wait until an element is not visible
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
     public void waitUntilElementIsNotVisible(String identifier, int timeout) {
         new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isVisible()), timeout);
     }
 
+    /**
+     * Wait until an element is not visible with the default timeout
+     *
+     */
     @RobotKeywordOverload
     public void waitUntilElementIsNotVisible(String identifier) {
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementIsNotVisible(identifier, waitTimeout);
     }
 
+    /**
+     * Wait until an element has some text on it
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
     public void waitUntilElementHasText(String identifier, String textToValidate, int timeout) {
         new WaitUntilSupport().waitUntil(getNode(identifier), hasText(textToValidate), timeout);
     }
 
+    /**
+     * Wait until an element has some text on it with the default timeout
+     *
+     */
     @RobotKeywordOverload
     public void waitUntilElementHasText(String identifier, String textToValidate) {
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementHasText(identifier, textToValidate, waitTimeout);
     }
 
+    /**
+     * Wait until an element is disable
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
     public void waitUntilElementIsDisabled(String identifier, int timeout) {
         new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isDisabled()),timeout);
     }
 
+    /**
+     * Wait until an element is disable with the default timeout
+     *
+     */
     @RobotKeywordOverload
     public void waitUntilElementIsDisabled(String identifier) {
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementIsDisabled(identifier, waitTimeout);
     }
 
+    /**
+     * Wait until an element is enable
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
     public void waitUntilElementIsEnabled(String identifier, int timeout) {
         new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isDisabled()), timeout);
     }
 
+    /**
+     * Wait until an element is enable with the default timeout
+     *
+     */
     @RobotKeywordOverload
     public void waitUntilElementIsEnabled(String identifier) {
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementIsEnabled(identifier, waitTimeout);
     }
 
+    /**
+     * Wait until an element is created and present on the application
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
     @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public void waitUntilElementIsPresent(String identifier) {
+    @ArgumentNames({"identifier", "timeout=20"})
+    public void waitUntilElementIsPresent(String identifier, int timeout) {
 
-        Awaitility.await().until(() -> {
-            return getNode(identifier) != null;
-        });
+        Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
+        Awaitility.await().until(() -> getNode(identifier) != null);
 
     }
 
+    /**
+     * Wait until an element is created and present on the application with the default timeout
+     *
+     */
+    @RobotKeywordOverload
+    public void waitUntilElementIsPresent(String identifier) {
+
+        Awaitility.await().until(() -> getNode(identifier) != null);
+
+    }
+
+    /**
+     * Get the n element from a list of elements
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param nthElement The n element from a list
+     */
     @ArgumentNames({"identifier", "nthElement"})
     public Node getNhtElement(String identifier, int nthElement) {
         return getNode(identifier, nthElement);
     }
 
+    /**
+     * Get the inner element from a node
+     *
+     * @param identifier The name of the element that you are going to test
+     */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public String getNodeKey(String identifier) {
