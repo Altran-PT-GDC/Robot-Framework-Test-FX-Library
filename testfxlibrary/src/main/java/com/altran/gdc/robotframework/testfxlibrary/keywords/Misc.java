@@ -6,12 +6,14 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryProperties;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import javafx.application.Application;
 import javafx.scene.Node;
 import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;
+import org.python.google.common.collect.Iterables;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
@@ -22,6 +24,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
 import java.util.concurrent.*;
+import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -83,13 +86,11 @@ public class Misc {
             IOException, ClassNotFoundException {
         FxToolkit.registerPrimaryStage();
         ClassLoader classLoader = loadClassesFromJar(applicationJAR);
-        if (classLoader != null) {
-            FxToolkit.setupApplication((Class<? extends Application>) classLoader.loadClass(className));
-            FxToolkit.showStage();
-        }
+        FxToolkit.setupApplication((Class<? extends Application>) classLoader.loadClass(className));
+        FxToolkit.showStage();
     }
 
-    private ClassLoader loadClassesFromJar(String applicationJAR) throws IOException {
+    private ClassLoader loadClassesFromJar(String applicationJAR) throws IOException, ClassNotFoundException {
         JarFile jarFile = null;
         URLClassLoader cl = null;
 
@@ -218,8 +219,28 @@ public class Misc {
 
     }
 
+    @ArgumentNames({"identifier", "nthElement"})
+    public Node getNhtElement(String identifier, int nthElement) {
+        HBox box = new HBox();
+        return getNode(identifier, nthElement);
+    }
+
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public String getNodeKey(String identifier) {
+        Node node = getNode(identifier);
+        String key = node.toString();
+        TestFXLibraryCache.getIstance().put(key, node);
+        return key;
+    }
+
     private Node getNode(String identifier) {
         return new FxRobot().lookup(identifier).query();
+    }
+
+    private Node getNode(String identifier, int nthElement) {
+        Set<Node> nodeList = new FxRobot().lookup(identifier).queryAll();
+        return  Iterables.get(nodeList, nthElement);
     }
 
 

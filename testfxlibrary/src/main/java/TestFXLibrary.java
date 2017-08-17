@@ -2,6 +2,7 @@ import java.io.File;
 import java.util.ResourceBundle;
 
 import com.altran.gdc.robotframework.testfxlibrary.keywords.Timeout;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import org.robotframework.javalib.library.AnnotationLibrary;
 
@@ -59,6 +60,7 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
 		addKeywordPattern(KEYWORD_PATTERN);
 		createKeywordFactory(); // => init annotations
         setDefaultTimeouts();
+		TestFXLibraryCache.getIstance();
 	}
 
 	// ******************************

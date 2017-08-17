@@ -18,6 +18,8 @@ Test Wait Until Element Is Enabled
      Close Application
 
 Test Wait Until Element Is Enabled Time Out
+    Close Application
+
     Launch Application  testapp.JavafxExample2
     Click on    Wait Button
     Set Timeout     Timeout   1
@@ -31,3 +33,9 @@ Test Wait Until Element Present on Application
     Wait Until Element Is Present       test
     Click on    test
     Close Application
+
+Test Node Key
+     Launch Application  testapp.JavafxExample
+     ${node}=   Get Node Key   \#counterPane
+     Click On   \#countButton   ${node}
+     Close Application
