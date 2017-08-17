@@ -221,7 +221,6 @@ public class Misc {
 
     @ArgumentNames({"identifier", "nthElement"})
     public Node getNhtElement(String identifier, int nthElement) {
-        HBox box = new HBox();
         return getNode(identifier, nthElement);
     }
 
