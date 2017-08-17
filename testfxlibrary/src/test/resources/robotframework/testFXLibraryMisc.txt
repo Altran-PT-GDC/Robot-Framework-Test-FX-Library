@@ -17,3 +17,10 @@ Test Wait Until Element Is Enabled Time Out
     ${status}=  Run Keyword and return status   Wait Until Element Is Enabled   Fruit or Veg
     Run keyword if  ${status} is ${TRUE}   Fail
     Close Application
+
+Test Wait Until Element Present on Application
+    Launch Application  testapp.JavafxExample2
+    Click on    Wait Button
+    Wait Until Element Is Present       test
+    Click on    test
+    Close Application

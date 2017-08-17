@@ -29,6 +29,7 @@ import javafx.util.Duration;
  */
 
 public class JavafxExample2 extends Application {
+    private BorderPane componentLayout;
 
     //JavaFX applicatoin still use the main method.
     //It should only ever contain the call to the launch method
@@ -46,7 +47,7 @@ public class JavafxExample2 extends Application {
   
         //The BorderPane has the same areas laid out as the
         //BorderLayout layout manager
-        BorderPane componentLayout = new BorderPane();
+        componentLayout = new BorderPane();
         componentLayout.setPadding(new Insets(20,0,20,20));
         
         //The FlowPane is a conatiner that uses a flow layout
@@ -107,7 +108,7 @@ public class JavafxExample2 extends Application {
         testWait.setOnAction(event -> {
             vegFruitBut.setDisable(!vegFruitBut.isDisable());
             Timeline timer = new Timeline(
-                    new KeyFrame(Duration.seconds(3), events -> vegFruitBut.setDisable(false))
+                    new KeyFrame(Duration.seconds(3), events -> changeElementForWait(vegFruitBut, false))
             );
             timer.play();
         });
@@ -131,5 +132,10 @@ public class JavafxExample2 extends Application {
         //Add the Scene to the Stage
         primaryStage.setScene(appScene);
         primaryStage.show();
+    }
+
+    private void changeElementForWait(Button vegFruitBut, boolean value) {
+        vegFruitBut.setDisable(value);
+        componentLayout.setCenter( new Label("test"));
     }
 }

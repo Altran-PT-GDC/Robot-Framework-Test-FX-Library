@@ -10,6 +10,7 @@ import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryProperties
 import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import javafx.application.Application;
 import javafx.scene.Node;
+import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
@@ -20,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -88,7 +89,7 @@ public class Misc {
         }
     }
 
-    private ClassLoader loadClassesFromJar(String applicationJAR) throws IOException, ClassNotFoundException {
+    private ClassLoader loadClassesFromJar(String applicationJAR) throws IOException {
         JarFile jarFile = null;
         URLClassLoader cl = null;
 
@@ -155,7 +156,7 @@ public class Misc {
 
     @RobotKeywordOverload
     public void waitUntilElementIsVisible(String identifier) {
-        int waitTimeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementIsVisible(identifier, waitTimeout);
     }
 
@@ -167,7 +168,7 @@ public class Misc {
 
     @RobotKeywordOverload
     public void waitUntilElementIsNotVisible(String identifier) {
-        int waitTimeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementIsNotVisible(identifier, waitTimeout);
     }
 
@@ -179,7 +180,7 @@ public class Misc {
 
     @RobotKeywordOverload
     public void waitUntilElementHasText(String identifier, String textToValidate) {
-        int waitTimeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementHasText(identifier, textToValidate, waitTimeout);
     }
 
@@ -191,7 +192,7 @@ public class Misc {
 
     @RobotKeywordOverload
     public void waitUntilElementIsDisabled(String identifier) {
-        int waitTimeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementIsDisabled(identifier, waitTimeout);
     }
 
@@ -203,11 +204,23 @@ public class Misc {
 
     @RobotKeywordOverload
     public void waitUntilElementIsEnabled(String identifier) {
-        int waitTimeout = Integer.valueOf(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
         waitUntilElementIsEnabled(identifier, waitTimeout);
+    }
+
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void waitUntilElementIsPresent(String identifier) {
+
+        Awaitility.await().until(() -> {
+            return getNode(identifier) != null;
+        });
+
     }
 
     private Node getNode(String identifier) {
         return new FxRobot().lookup(identifier).query();
     }
+
+
 }
