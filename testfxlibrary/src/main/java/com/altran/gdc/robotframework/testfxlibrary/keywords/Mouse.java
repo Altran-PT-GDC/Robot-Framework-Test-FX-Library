@@ -6,13 +6,11 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
+import com.sun.javafx.binding.StringFormatter;
 import javafx.geometry.HorizontalDirection;
 import javafx.geometry.VerticalDirection;
 import javafx.scene.Node;
-import org.robotframework.javalib.annotation.ArgumentNames;
-import org.robotframework.javalib.annotation.RobotKeyword;
-import org.robotframework.javalib.annotation.RobotKeywordOverload;
-import org.robotframework.javalib.annotation.RobotKeywords;
+import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.robot.Motion;
 import java.util.Set;
@@ -24,6 +22,9 @@ import java.util.concurrent.TimeoutException;
  */
 @RobotKeywords
 public class Mouse {
+
+    @Autowired
+    private Logging logging;
 
     /**
      * Clicks on a indentifier.<br>
@@ -41,6 +42,8 @@ public class Mouse {
     public void clickOn(String identifier, String nodeKey) throws TimeoutException {
         if(nodeKey != null){
             Node node = (Node) TestFXLibraryCache.getIstance().get(nodeKey);
+            //logging.info(String.format("CLICK OK - The node is %s", node));
+            System.out.println(String.format("CLICK OK - The node is %s", node));
             Node n = new FxRobot().from(node).lookup(identifier).query();
             new FxRobot().clickOn(n);
         } else {

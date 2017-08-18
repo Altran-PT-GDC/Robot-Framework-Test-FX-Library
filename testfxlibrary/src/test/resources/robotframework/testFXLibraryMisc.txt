@@ -47,3 +47,9 @@ Test Node Key
      ${node}=   Get Node Key   \#counterPane
      Click On   \#countButton   ${node}
      Close Application
+
+Test Get NTH Element
+     Launch Application  testapp.JavafxExample
+     ${node}=   Get Nth Element  \#counterPane      0
+     Log    ${node}     WARN
+     Close Application

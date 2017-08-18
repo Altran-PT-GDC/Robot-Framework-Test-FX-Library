@@ -286,13 +286,18 @@ public class Misc {
     }
 
     /**
-     * Get the n element from a list of elements
+     * Get NTH element from a Node list
      *
-     * @param identifier The name of the element that you are going to test
-     * @param nthElement The n element from a list
+     * @param identifier
+     *      The node to search
+     * @param nthElement
+     *      The index of the element to return from the list
+     * @return
+     *      The Node
      */
+    @RobotKeyword
     @ArgumentNames({"identifier", "nthElement"})
-    public Node getNhtElement(String identifier, int nthElement) {
+    public Node getNthElement(String identifier, int nthElement) {
         return getNode(identifier, nthElement);
     }
 
@@ -314,10 +319,19 @@ public class Misc {
         return new FxRobot().lookup(identifier).query();
     }
 
+    /**
+     * Get NTH element from a Node list
+     *
+     * @param identifier
+     *      The node to search
+     * @param nthElement
+     *      The index of the element to return from the list
+     * @return
+     *      The Node
+     */
     private Node getNode(String identifier, int nthElement) {
         Set<Node> nodeList = new FxRobot().lookup(identifier).queryAll();
         return  Iterables.get(nodeList, nthElement);
     }
-
-
+    
 }
