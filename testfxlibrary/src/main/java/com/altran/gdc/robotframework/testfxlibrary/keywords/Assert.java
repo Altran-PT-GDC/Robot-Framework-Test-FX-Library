@@ -5,10 +5,6 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
-import javafx.scene.Node;
-import org.hamcrest.Matcher;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
@@ -16,9 +12,7 @@ import org.robotframework.javalib.annotation.RobotKeywords;
 import java.util.function.Predicate;
 
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.is;
 import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.api.FxAssert.verifyThatIter;
 import static org.testfx.matcher.base.NodeMatchers.*;
 import static org.testfx.matcher.base.NodeMatchers.hasChild;
 
@@ -29,18 +23,35 @@ import static org.testfx.matcher.base.NodeMatchers.hasChild;
 @RobotKeywords
 public class Assert {
 
+    /**
+     * Verify if a node contains an element with specific identifier.
+     *
+     * @param identifier
+     * @param identifierToValidate
+     */
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})
     public void verifyThatContains(String identifier, String identifierToValidate) {
         verifyThat(identifier, (Predicate) contains( identifierToValidate ));
     }
 
+    /**
+     * Verify if a node contains a specific text.
+     *
+     * @param identifier
+     * @param textToValidate
+     */
     @RobotKeyword
     @ArgumentNames({"identifier","textToValidate"})
     public void verifyThatHasText(String identifier, String textToValidate) {
         verifyThat( identifier, hasText(textToValidate));
     }
 
+    /**
+     * Verify if an element is enabled.
+     *
+     * @param identifier
+     */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void verifyThatIsEnabled(String identifier) {
@@ -48,6 +59,11 @@ public class Assert {
 
     }
 
+    /**
+     * Verify if an element is disabled.
+     *
+     * @param identifier
+     */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void verifyThatIsDisabled(String identifier) {
@@ -55,6 +71,11 @@ public class Assert {
 
     }
 
+    /**
+     * Verify if an element is visible.
+     *
+     * @param identifier
+     */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void verifyThatIsVisible(String identifier) {
@@ -62,6 +83,12 @@ public class Assert {
 
     }
 
+    /**
+     * Verify if a node has childs.
+     *
+     * @param identifier
+     * @param identifierToValidate
+     */
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})
     public void verifyThatHasChild(String identifier, String identifierToValidate) {
