@@ -117,11 +117,14 @@ public class JavafxExample2 extends Application {
         final TextField text = new TextField("OLA TEST");
         text.setId("text");
 
+        final Button toBeErase = new Button("To Be Erase");
+
+
 
 
 
         HBox hBox = new HBox();
-        hBox.getChildren().addAll(vegFruitBut, testWait, text);
+        hBox.getChildren().addAll(vegFruitBut, testWait, text, toBeErase);
         
         componentLayout.setBottom(hBox);
 
@@ -137,5 +140,6 @@ public class JavafxExample2 extends Application {
     private void changeElementForWait(Button vegFruitBut, boolean value) {
         vegFruitBut.setDisable(value);
         componentLayout.setCenter( new Label("test"));
+        //TODO Erase Button "toBeErased from hBOx"
     }
 }

@@ -1,6 +1,8 @@
 package com.altran.gdc.robotframework.testfxlibrary.utils;
 
 
+import com.altran.gdc.robotframework.testfxlibrary.keywords.Timeout;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TestFxLibraryValidation {
@@ -16,4 +18,12 @@ public class TestFxLibraryValidation {
             }
         }
     }
+
+    public static void validateTimeout(Integer timeout) throws IllegalArgumentException, NullPointerException {
+        if (timeout < 0) {
+            throw new IllegalArgumentException(String.format("Argument %s must be positive", timeout));
+        }
+    }
+
 }
+

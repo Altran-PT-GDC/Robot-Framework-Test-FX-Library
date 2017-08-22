@@ -6,10 +6,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
-import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
-import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryConstants;
-import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryProperties;
-import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
+import com.altran.gdc.robotframework.testfxlibrary.utils.*;
 import javafx.application.Application;
 import javafx.scene.Node;
 import org.awaitility.Awaitility;
@@ -159,7 +156,19 @@ public class Misc {
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
     public void waitUntilElementIsVisible(String identifier, int timeout) {
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isVisible()), timeout);
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try{
+
+            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isVisible()), timeout);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+
+            throw new TestFxLibraryFatalException(e);
+
+        }
+
     }
 
     /**
@@ -168,8 +177,13 @@ public class Misc {
      */
     @RobotKeywordOverload
     public void waitUntilElementIsVisible(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+
         waitUntilElementIsVisible(identifier, waitTimeout);
+
     }
 
     /**
@@ -181,7 +195,18 @@ public class Misc {
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
     public void waitUntilElementIsNotVisible(String identifier, int timeout) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try{
+
         new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isVisible()), timeout);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+
+            throw new TestFxLibraryFatalException(e);
+
+        }
     }
 
     /**
@@ -190,8 +215,13 @@ public class Misc {
      */
     @RobotKeywordOverload
     public void waitUntilElementIsNotVisible(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+
         waitUntilElementIsNotVisible(identifier, waitTimeout);
+
     }
 
     /**
@@ -202,8 +232,19 @@ public class Misc {
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
-    public void waitUntilElementHasText(String identifier, String textToValidate, int timeout) {
-        new WaitUntilSupport().waitUntil(getNode(identifier), hasText(textToValidate), timeout);
+    public void waitUntilElementContains(String identifier, String textToValidate, int timeout) {
+
+        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
+
+        try{
+
+            new WaitUntilSupport().waitUntil(getNode(identifier), hasText(textToValidate), timeout);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+
+            throw new TestFxLibraryFatalException(e);
+
+        }
     }
 
     /**
@@ -211,9 +252,52 @@ public class Misc {
      *
      */
     @RobotKeywordOverload
-    public void waitUntilElementHasText(String identifier, String textToValidate) {
+    public void waitUntilElementContains(String identifier, String textToValidate) {
+
+        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
+
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-        waitUntilElementHasText(identifier, textToValidate, waitTimeout);
+
+            waitUntilElementContains(identifier, textToValidate, waitTimeout);
+
+    }
+
+    /**
+     * Wait until an element has some text on it
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
+    public void waitUntilElementDoesNotContains(String identifier, String textToValidate, int timeout) {
+
+        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
+
+        try{
+
+            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(hasText(textToValidate)), timeout);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+
+            throw new TestFxLibraryFatalException(e);
+
+        }
+    }
+
+    /**
+     * Wait until an element has some text on it with the default timeout
+     *
+     */
+    @RobotKeywordOverload
+    public void waitUntilElementDoesNotContains(String identifier, String textToValidate) {
+
+        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
+
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+
+            waitUntilElementDoesNotContains(identifier, textToValidate, waitTimeout);
+
     }
 
     /**
@@ -225,7 +309,18 @@ public class Misc {
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
     public void waitUntilElementIsDisabled(String identifier, int timeout) {
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isDisabled()),timeout);
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try{
+
+            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isDisabled()),timeout);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+
+            throw new TestFxLibraryFatalException(e);
+
+        }
     }
 
     /**
@@ -234,8 +329,13 @@ public class Misc {
      */
     @RobotKeywordOverload
     public void waitUntilElementIsDisabled(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-        waitUntilElementIsDisabled(identifier, waitTimeout);
+
+            waitUntilElementIsDisabled(identifier, waitTimeout);
+
     }
 
     /**
@@ -247,7 +347,18 @@ public class Misc {
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
     public void waitUntilElementIsEnabled(String identifier, int timeout) {
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isDisabled()), timeout);
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try{
+
+            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isDisabled()), timeout);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+
+            throw new TestFxLibraryFatalException(e);
+
+        }
     }
 
     /**
@@ -256,7 +367,9 @@ public class Misc {
      */
     @RobotKeywordOverload
     public void waitUntilElementIsEnabled(String identifier) {
+
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+
         waitUntilElementIsEnabled(identifier, waitTimeout);
     }
 
@@ -268,21 +381,78 @@ public class Misc {
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilElementIsPresent(String identifier, int timeout) {
+    public void waitUntilPageContains(String identifier, int timeout) {
 
-        Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-        Awaitility.await().until(() -> getNode(identifier) != null);
+        TestFxLibraryValidation.validateArguments(identifier);
 
+        try{
+
+            System.out.println("Timeout : " + timeout );
+            Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
+            System.out.println("Identifier : " + identifier);
+            Awaitility.await().until(() -> getNode(identifier) != null);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+
+            throw new TestFxLibraryFatalException(e);
+
+        }
     }
 
     /**
      * Wait until an element is created and present on the application with the default timeout
      *
+     * @param identifier The name of the element that you are going to test
      */
     @RobotKeywordOverload
-    public void waitUntilElementIsPresent(String identifier) {
+    public void waitUntilPageContains(String identifier) {
 
-        Awaitility.await().until(() -> getNode(identifier) != null);
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+
+        waitUntilPageContains(identifier, waitTimeout);
+
+    }
+
+    /**
+     * Wait until an element is deleted and present on the application
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "timeout=20"})
+    public void waitUntilPageDoesNotContains(String identifier, int timeout) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try{
+
+            Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
+            Awaitility.await().until(() -> getNode(identifier) == null);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+
+            throw new TestFxLibraryFatalException(e);
+
+        }
+    }
+
+    /**
+     * Wait until an element is deleted and present on the application with the default timeout
+     *
+     * @param identifier The name of the element that you are going to test
+     */
+    @RobotKeywordOverload
+    public void waitUntilPageDoesNotContains(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+
+        waitUntilPageContains(identifier, waitTimeout);
+
 
     }
 

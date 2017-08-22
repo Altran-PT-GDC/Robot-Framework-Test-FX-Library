@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.sun:tools:1.7">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_112/lib/tools.jar!/" />
+          <root url="jar://C:/Program Files/Java/jdk1.8.0_102/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

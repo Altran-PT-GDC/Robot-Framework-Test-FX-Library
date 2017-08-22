@@ -3,6 +3,20 @@ Library           TestFXLibrary
 Library           Dialogs
 
 *** Test Cases ***
+Test Wait Until Element Contains
+    Launch Application  testapp.JavafxExample2
+    Click on    Wait Button
+    Wait Until Element Contains   Fruit or Veg  Fruit or Veg
+    Log     OK      WARN
+    Close Application
+
+Test Wait Until Element Does Not Contains
+    Launch Application  testapp.JavafxExample2
+    Click on    Wait Button
+    Wait Until Element Does Not Contains   Fruit or Veg  Batatas
+    Log     OK      WARN
+    Close Application
+
 Test Wait Until Element Is Enabled
     Launch Application  testapp.JavafxExample2
     Click on    Wait Button
@@ -18,8 +32,6 @@ Test Wait Until Element Is Enabled
      Close Application
 
 Test Wait Until Element Is Enabled Time Out
-    Close Application
-
     Launch Application  testapp.JavafxExample2
     Click on    Wait Button
     Set Timeout     Timeout   1
@@ -27,17 +39,18 @@ Test Wait Until Element Is Enabled Time Out
     Run keyword if  ${status} is ${TRUE}   Fail
     Close Application
 
-Test Wait Until Element Present on Application
+Test Wait Until Page Contains on Application
     Launch Application  testapp.JavafxExample2
     Click on    Wait Button
-    Wait Until Element Is Present       test
+    Set Timeout     Timeout   20
+    Wait Until Page Contains       test
     Click on    test
     Close Application
 
-Test Wait Until Element Present on Application Time Out
+Test Wait Until Page Contains on Application Time Out
     Launch Application  testapp.JavafxExample2
     Click on    Wait Button
-    ${status}=  Run Keyword and return status   Wait Until Element Is Present       test    1
+    ${status}=  Run Keyword and return status   Wait Until Page Contains       test    1
     Run keyword if  ${status} is ${TRUE}   Fail
     Log     ${status}   WARN
     Close Application
