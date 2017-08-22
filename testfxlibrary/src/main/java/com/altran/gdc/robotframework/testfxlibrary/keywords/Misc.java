@@ -7,6 +7,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryConstants;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryProperties;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import javafx.application.Application;
@@ -332,6 +333,20 @@ public class Misc {
     private Node getNode(String identifier, int nthElement) {
         Set<Node> nodeList = new FxRobot().lookup(identifier).queryAll();
         return  Iterables.get(nodeList, nthElement);
+    }
+
+    @RobotKeyword()
+    @ArgumentNames({"timeout"})
+    public void defaultWait(long timeout){
+        try {
+            new WaitUntilSupport().wait(timeout);
+        } catch (InterruptedException e) {
+            try {
+                log.error("Error!");
+            } catch (IOException e1) {
+               
+            }
+        }
     }
     
 }

@@ -2,14 +2,19 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryConstants;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.testfx.api.FxRobot;
 import org.testfx.service.support.WaitUntilSupport;
+
+import java.io.IOException;
 
 import static com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation.validateArguments;
 
 public class TemplateKW {
 
+    Autowired
+    Misc misc;
     /**
      * template kw.
      *
@@ -24,8 +29,8 @@ public class TemplateKW {
 
         /* wait */
         try {
-            new WaitUntilSupport().wait(TestFxLibraryConstants.TIMEOUT);
-        } catch (InterruptedException e) {
+            misc.defaultWait(TestFxLibraryConstants.TIMEOUT);
+        } catch (IOException e) {
 
         }
 
