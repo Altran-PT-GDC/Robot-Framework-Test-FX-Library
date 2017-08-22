@@ -344,7 +344,7 @@ public class Misc {
             try {
                 log.error("Error!");
             } catch (IOException e1) {
-               
+
             }
         }
     }

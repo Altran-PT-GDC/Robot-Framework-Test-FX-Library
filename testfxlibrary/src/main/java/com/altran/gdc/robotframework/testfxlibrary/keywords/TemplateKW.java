@@ -13,7 +13,7 @@ import static com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryVal
 
 public class TemplateKW {
 
-    Autowired
+    @Autowired
     Misc misc;
     /**
      * template kw.
@@ -28,11 +28,7 @@ public class TemplateKW {
         validateArguments(identifier);
 
         /* wait */
-        try {
-            misc.defaultWait(TestFxLibraryConstants.TIMEOUT);
-        } catch (IOException e) {
-
-        }
+        misc.defaultWait(TestFxLibraryConstants.TIMEOUT);
 
         /* action */
         new FxRobot().clickOn(identifier);
