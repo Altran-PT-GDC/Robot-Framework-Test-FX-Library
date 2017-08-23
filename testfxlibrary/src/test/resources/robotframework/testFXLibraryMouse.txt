@@ -51,6 +51,19 @@ Test Get Node List
     Log     ${list}     WARN
     Close Application
 
+Test Get CheckBox Status
+
+    Launch Application  testapp.JavafxExample2
+    ${status}     Get CheckBox Status    .check-box
+    Log     ${status}     WARN
+    Close Application
+
+Test Set CheckBox
+
+    Launch Application  testapp.JavafxExample2
+    Set CheckBox    .check-box   true
+    Close Application
+
 *** Keywords ***
 
 Test Fruits with ${fruit}

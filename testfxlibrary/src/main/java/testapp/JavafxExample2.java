@@ -92,6 +92,7 @@ public class JavafxExample2 extends Application {
         final ListView<String> listView = new ListView<>();
         listView.setItems(oList);
 
+        final VBox rightVbox = new VBox();
         final VBox vBox = new VBox();
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setMaxHeight(200);
@@ -99,8 +100,12 @@ public class JavafxExample2 extends Application {
         vBox.getChildren().addAll(name, listView);
         scrollPane.setContent(vBox);
 
+        final CheckBox check = new CheckBox("Check Here");
+
+        rightVbox.getChildren().addAll(scrollPane, check);
+
         componentLayout.setCenter(listPane);
-        componentLayout.setRight(scrollPane);
+        componentLayout.setRight(rightVbox);
         //The button uses an inner class to handle the button click event
         final Button vegFruitBut = new Button("Fruit or Veg");
         vegFruitBut.setOnAction(event -> {

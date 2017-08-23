@@ -157,6 +157,7 @@ public class Misc {
     public void waitUntilElementIsVisible(String identifier, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         try{
 
@@ -196,6 +197,7 @@ public class Misc {
     public void waitUntilElementIsNotVisible(String identifier, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         try{
 
@@ -234,6 +236,7 @@ public class Misc {
     public void waitUntilElementContains(String identifier, String textToValidate, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier, textToValidate);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         try{
 
@@ -272,6 +275,7 @@ public class Misc {
     public void waitUntilElementDoesNotContains(String identifier, String textToValidate, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier, textToValidate);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         try{
 
@@ -310,6 +314,7 @@ public class Misc {
     public void waitUntilElementIsDisabled(String identifier, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         try{
 
@@ -348,6 +353,7 @@ public class Misc {
     public void waitUntilElementIsEnabled(String identifier, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         try{
 
@@ -383,6 +389,7 @@ public class Misc {
     public void waitUntilPageContains(String identifier, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         try{
 
@@ -423,6 +430,7 @@ public class Misc {
     public void waitUntilPageDoesNotContains(String identifier, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         try{
 
@@ -463,6 +471,8 @@ public class Misc {
     public void waitUntilPageContainsElement(String identifier, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateTimeout(timeout);
+
         if (identifier.startsWith("#")) {
             try{
 
@@ -520,6 +530,7 @@ public class Misc {
     public void waitUntilPageDoesNotContainElement(String identifier, int timeout) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateTimeout(timeout);
 
         if (identifier.startsWith("#")) {
             try{

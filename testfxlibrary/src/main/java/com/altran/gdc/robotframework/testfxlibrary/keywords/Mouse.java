@@ -5,11 +5,14 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import com.sun.javafx.binding.StringFormatter;
 import javafx.geometry.HorizontalDirection;
 import javafx.geometry.VerticalDirection;
 import javafx.scene.Node;
+import javafx.scene.control.CheckBox;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.robot.Motion;
@@ -198,5 +201,50 @@ public class Mouse {
     @ArgumentNames({"identifier"})
     public Set<Node> getNodeList(String identifier) {
         return new FxRobot().lookup(identifier).queryAll();
+    }
+
+    /**
+     *
+     * @param identifier
+     *          The identifier of the CheckBox
+     * @param booleanValue
+     *          Boolean value to set the CheckBox selection
+     */
+
+    @RobotKeyword
+    @ArgumentNames({"identifier" , "booleanValue"})
+    public void setCheckBox(String identifier, Boolean booleanValue) {
+
+        TestFxLibraryValidation.validateArguments(identifier, booleanValue);
+
+        try{
+            CheckBox check = new FxRobot().lookup(identifier).query();
+            check.setSelected(booleanValue);
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
+    }
+
+    /**
+     *
+     * @param identifier
+     *          The identifier of the CheckBox
+     * @return
+     *          Boolean value if the checkbox is selected (true) or not (false).
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public Boolean getCheckBoxStatus(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try{
+            CheckBox check = new FxRobot().lookup(identifier).query();
+            return check.isSelected();
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
     }
 }
