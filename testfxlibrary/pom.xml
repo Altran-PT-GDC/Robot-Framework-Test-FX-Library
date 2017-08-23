@@ -67,6 +67,11 @@
             <artifactId>guava</artifactId>
             <version>23.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.loadui</groupId>
+            <artifactId>testFx</artifactId>
+            <version>3.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -296,6 +301,23 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <!--<plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.3</version>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <goals>
+                                    <goal>perform</goal>
+                                </goals>
+                                <configuration>
+                                    <pomFileName>${project.build.directory}/pom.xml</pomFileName>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>-->
+
                 </plugins>
             </build>
         </profile>
