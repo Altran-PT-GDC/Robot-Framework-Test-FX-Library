@@ -5,10 +5,18 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryConstants;
+import javafx.stage.Stage;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
+import org.testfx.api.FxToolkit;
+import org.testfx.api.FxToolkitContext;
+import org.testfx.service.support.WaitUntilSupport;
+import org.testfx.toolkit.PrimaryStageFuture;
 
 import java.util.List;
 
@@ -24,7 +32,11 @@ public class Window {
      */
     @RobotKeyword
     public void closeCurrentWindow() {
-        new FxRobot().closeCurrentWindow();
+        try {
+            new FxRobot().closeCurrentWindow();
+        } catch (Exception e){
+            throw new TestFxLibraryNonFatalException("Error Close Window");
+        }
     }
 
     /**
@@ -64,14 +76,31 @@ public class Window {
     }
 
     /**
-     * Choose? window
+     * Choose window
      *
      * @param identifier
-     *          the identifier of the window
+     *          the identifier of the window8
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void window(String identifier) {
         new FxRobot().window(identifier);
+    }
+
+    /**
+     * Select the Main Window
+     *
+     * Example:
+     * Select Main Window
+     */
+    @RobotKeyword("Select the mais Window\n\n" +
+            "Example:\n" +
+            "Select Main Window")
+    public void selectMainWindow(){
+        try {
+            new FxToolkitContext().getPrimaryStageFuture().get();
+        } catch (Exception e){
+            throw new TestFxLibraryNonFatalException("Error get main window");
+        }
     }
 }

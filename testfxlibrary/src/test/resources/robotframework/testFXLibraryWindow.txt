@@ -28,3 +28,8 @@ Test Window
     Launch Application  testapp.JavafxExample2
     Window   example Gui
     Close Application
+
+Test Select Main Window
+    Launch Application  testapp.JavafxExample2
+    Select Main Window
+    Close Application

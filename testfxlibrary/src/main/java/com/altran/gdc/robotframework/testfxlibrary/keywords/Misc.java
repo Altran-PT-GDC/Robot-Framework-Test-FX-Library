@@ -50,6 +50,8 @@ public class Misc {
     @RobotKeyword
     @ArgumentNames({"className"})
     public void launchApplication(String className){
+        TestFxLibraryValidation.validateArguments(className);
+
         try {
             FxToolkit.registerPrimaryStage();
             FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
@@ -57,8 +59,6 @@ public class Misc {
         } catch (TimeoutException | ClassNotFoundException e) {
             throw new TestFxLibraryFatalException(e);
         }
-
-
     }
 
     /**
@@ -113,13 +113,10 @@ public class Misc {
             if (jarFile != null) {
                 jarFile.close();
             }
-
             if (cl != null) {
                 cl.close();
             }
-
         }
-
         return cl;
     }
 
@@ -127,13 +124,17 @@ public class Misc {
      * Closes the Java FX application.
      * The primary stage is hidden and cleaned-up.
      *
-     * @throws TimeoutException
+     * @throws TestFxLibraryFatalException
      *      If something goes wrong
      */
     @RobotKeyword
-    public void closeApplication() throws TimeoutException {
-        FxToolkit.hideStage();
-        FxToolkit.cleanupStages();
+    public void closeApplication() throws TestFxLibraryFatalException {
+        try {
+            FxToolkit.hideStage();
+            FxToolkit.cleanupStages();
+        } catch (Exception e) {
+            throw new TestFxLibraryFatalException(e);
+        }
     }
 
     /**
