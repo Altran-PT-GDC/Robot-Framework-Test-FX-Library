@@ -14,6 +14,7 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -30,11 +31,15 @@ import javafx.util.Duration;
 
 public class JavafxExample2 extends Application {
     private BorderPane componentLayout;
+    HBox hBox;
+    Button toBeErase;
 
     //JavaFX applicatoin still use the main method.
     //It should only ever contain the call to the launch method
     public static void main(String[] args) {
         launch(args);
+
+
     }
     
     //starting point for the application
@@ -108,7 +113,7 @@ public class JavafxExample2 extends Application {
         testWait.setOnAction(event -> {
             vegFruitBut.setDisable(!vegFruitBut.isDisable());
             Timeline timer = new Timeline(
-                    new KeyFrame(Duration.seconds(3), events -> changeElementForWait(vegFruitBut, false))
+                    new KeyFrame(Duration.seconds(5), events -> changeElementForWait(vegFruitBut, false))
             );
             timer.play();
         });
@@ -117,13 +122,13 @@ public class JavafxExample2 extends Application {
         final TextField text = new TextField("OLA TEST");
         text.setId("text");
 
-        final Button toBeErase = new Button("To Be Erase");
+        toBeErase = new Button("To Be Erase");
 
 
 
 
 
-        HBox hBox = new HBox();
+        hBox = new HBox();
         hBox.getChildren().addAll(vegFruitBut, testWait, text, toBeErase);
         
         componentLayout.setBottom(hBox);
@@ -140,6 +145,8 @@ public class JavafxExample2 extends Application {
     private void changeElementForWait(Button vegFruitBut, boolean value) {
         vegFruitBut.setDisable(value);
         componentLayout.setCenter( new Label("test"));
-        //TODO Erase Button "toBeErased from hBOx"
+        hBox.getChildren().remove(toBeErase);
+
+
     }
 }

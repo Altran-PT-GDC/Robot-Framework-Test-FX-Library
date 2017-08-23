@@ -27,9 +27,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 import static java.net.URLClassLoader.newInstance;
-import static org.testfx.matcher.base.NodeMatchers.hasText;
-import static org.testfx.matcher.base.NodeMatchers.isDisabled;
-import static org.testfx.matcher.base.NodeMatchers.isVisible;
+import static org.testfx.matcher.base.NodeMatchers.*;
 
 /**
  * @author pcosta
@@ -375,7 +373,7 @@ public class Misc {
     }
 
     /**
-     * Wait until an element is created and present on the application
+     * Wait until an element with text is created and present on the application
      *
      * @param identifier The name of the element that you are going to test
      * @param timeout The limit time to complete the test
@@ -388,9 +386,7 @@ public class Misc {
 
         try{
 
-            System.out.println("Timeout : " + timeout );
             Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-            System.out.println("Identifier : " + identifier);
             Awaitility.await().until(() -> getNode(identifier) != null);
 
         } catch (IllegalArgumentException | NullPointerException e){
@@ -401,7 +397,7 @@ public class Misc {
     }
 
     /**
-     * Wait until an element is created and present on the application with the default timeout
+     * Wait until an element with text is created and present on the application with the default timeout
      *
      * @param identifier The name of the element that you are going to test
      */
@@ -417,7 +413,7 @@ public class Misc {
     }
 
     /**
-     * Wait until an element is deleted and present on the application
+     * Wait until an element with text is deleted from the application
      *
      * @param identifier The name of the element that you are going to test
      * @param timeout The limit time to complete the test
@@ -441,7 +437,7 @@ public class Misc {
     }
 
     /**
-     * Wait until an element is deleted and present on the application with the default timeout
+     * Wait until an element with text is deleted from application with the default timeout
      *
      * @param identifier The name of the element that you are going to test
      */
@@ -452,8 +448,122 @@ public class Misc {
 
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
 
-        waitUntilPageContains(identifier, waitTimeout);
+        waitUntilPageDoesNotContains(identifier, waitTimeout);
 
+    }
+
+    /**
+     * Wait until an element is created and present on the application
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "timeout=20"})
+    public void waitUntilPageContainsElement(String identifier, int timeout) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+        if (identifier.startsWith("#")) {
+            try{
+
+                Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
+                Awaitility.await().until(() -> getNode(identifier) != null);
+
+            } catch (IllegalArgumentException | NullPointerException e){
+
+                throw new TestFxLibraryFatalException(e);
+
+            }
+        } else {
+            final String changedIdentifier = "#" + identifier;
+            try {
+
+                Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
+                Awaitility.await().until(() -> getNode(changedIdentifier) != null);
+
+            } catch (IllegalArgumentException | NullPointerException e) {
+
+                throw new TestFxLibraryFatalException(e);
+
+            }
+        }
+    }
+
+    /**
+     * Wait until an element is created and present on the application with the default timeout
+     *
+     * @param identifier The name of the element that you are going to test
+     */
+    @RobotKeywordOverload
+    public void waitUntilPageContainsElement(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        if (identifier.substring(0) != "#") {
+            identifier = "#" + identifier;
+        }
+
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+
+        waitUntilPageContainsElement(identifier, waitTimeout);
+
+    }
+
+    /**
+     * Wait until an element is deleted from the application
+     *
+     * @param identifier The name of the element that you are going to test
+     * @param timeout The limit time to complete the test
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "timeout=20"})
+    public void waitUntilPageDoesNotContainElement(String identifier, int timeout) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        if (identifier.startsWith("#")) {
+            try{
+
+                Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
+                Awaitility.await().until(() -> getNode(identifier) == null);
+
+            } catch (IllegalArgumentException | NullPointerException e){
+
+                throw new TestFxLibraryFatalException(e);
+
+            }
+        } else {
+            final String changedIdentifier = "#" + identifier;
+            try {
+
+                Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
+                Awaitility.await().until(() -> getNode(changedIdentifier) == null);
+
+            } catch (IllegalArgumentException | NullPointerException e) {
+
+                throw new TestFxLibraryFatalException(e);
+
+            }
+        }
+    }
+
+    /**
+     * Wait until an element is deleted from application with the default timeout
+     *
+     * @param identifier The name of the element that you are going to test
+     */
+    @RobotKeywordOverload
+    public void waitUntilPageDoesNotContainElement(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        if (identifier.substring(0) != "#") {
+            identifier = "#" + identifier;
+        }
+
+        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
+
+        waitUntilPageDoesNotContainElement(identifier, waitTimeout);
 
     }
 
