@@ -13,7 +13,7 @@ Library           Dialogs
 Test Erase Text
     Launch Application  testapp.JavafxExample
     Click On    \#countValue
-    Erase Text
+    Erase Text  1
     Close Application
 
 Test Write
