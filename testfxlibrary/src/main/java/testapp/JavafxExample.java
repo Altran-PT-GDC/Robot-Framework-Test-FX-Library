@@ -101,13 +101,4 @@ public class JavafxExample extends Application {
     private static int asInteger(String value) { return Integer.parseInt(value); }
     private static String asString(int value) { return value + ""; }
 
-    private static String asString(int value) {
-        return value + "";
-    }
-
-
-
-
-
-
 }

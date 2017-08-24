@@ -695,6 +695,7 @@ public class Misc {
      * @param timeout
      *          The limit time to complete the test
      * @throws IOException
+     *      If something goes wrong
      */
     @RobotKeyword()
     @ArgumentNames({"timeout"})

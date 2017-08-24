@@ -29,9 +29,3 @@ Test Window
     Window   example Gui
     Close Application
 
-Test File Chooser
-    Launch Application  testapp.JavafxExample
-    Click On    \#chooser
-    Choose Dialog
-    Close Application
-
