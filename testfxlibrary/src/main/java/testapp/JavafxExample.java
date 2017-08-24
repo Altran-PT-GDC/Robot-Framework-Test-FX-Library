@@ -17,12 +17,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
  * @author pcosta
  */
 public class JavafxExample extends Application {
+
 
     /**
      * @param args the command line arguments
@@ -31,9 +33,19 @@ public class JavafxExample extends Application {
         launch(args);
     }
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        stage.setScene(new Scene(new CounterPane(stage), 200, 50));
+        stage.show();
+    }
+    
 
     private static class CounterPane extends StackPane {
-        public CounterPane() {
+        private Stage stage;
+        FileChooser ch = new FileChooser();
+
+        public CounterPane(Stage stage) {
+            this.stage = stage;
             setId("counterPane");
             // create countButton.
             Button countButton = new Button("count");
@@ -59,30 +71,43 @@ public class JavafxExample extends Application {
             countValue.setEditable(false);
             countValue.setPrefWidth(50);
 
+            Button chooser = new Button("Chooser");
+            chooser.setId("chooser");
+            chooser.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+
+                    showFileChooser();
+
+
+                }
+            });
+
             // create and add containers.
-            HBox box = new HBox(10, countButton, countValue, btnDisable);
+            HBox box = new HBox(10, countButton, countValue, btnDisable, chooser);
             box.setPadding(new Insets(10));
             box.setAlignment(Pos.CENTER);
             getChildren().add(box);
         }
 
-
+        private void showFileChooser(){
+            ch.setTitle("File Chooser");
+            ch.showOpenDialog(stage);
+        }
+        
     }
+    
 
-
-    private static int asInteger(String value) {
-        return Integer.parseInt(value);
-    }
+    private static int asInteger(String value) { return Integer.parseInt(value); }
+    private static String asString(int value) { return value + ""; }
 
     private static String asString(int value) {
         return value + "";
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(new CounterPane(), 200, 50));
-        stage.show();
-    }
+
+
+
 
 
 }
