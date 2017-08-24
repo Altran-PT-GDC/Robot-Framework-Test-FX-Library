@@ -80,3 +80,9 @@ Test Get NTH Element
      ${node}=   Get Nth Element  \#counterPane      0
      Log    ${node}     WARN
      Close Application
+
+Test Get Node Attribute
+     Launch Application  testapp.JavafxExample2
+     ${attribute}=      Get Node Atrribute    \#check     isSelected
+     Log    ${attribute}     WARN
+     Close Application

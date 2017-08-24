@@ -6,17 +6,11 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
-import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryConstants;
-import javafx.stage.Stage;
 import org.robotframework.javalib.annotation.ArgumentNames;
-import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
-import org.testfx.api.FxToolkit;
 import org.testfx.api.FxToolkitContext;
-import org.testfx.service.support.WaitUntilSupport;
-import org.testfx.toolkit.PrimaryStageFuture;
 
 import java.util.List;
 
@@ -47,8 +41,7 @@ public class Window {
      */
     @RobotKeyword
     public List<javafx.stage.Window> listTargetWindows() {
-        List<javafx.stage.Window> targetWindows = new FxRobot().listTargetWindows();
-        return targetWindows;
+        return new FxRobot().listTargetWindows();
     }
 
     /**
@@ -59,8 +52,8 @@ public class Window {
      */
     @RobotKeyword
     public List<javafx.stage.Window> listWindows() {
-        List<javafx.stage.Window> windows = new FxRobot().listWindows();
-        return windows;
+
+        return new FxRobot().listWindows();
     }
 
     /**

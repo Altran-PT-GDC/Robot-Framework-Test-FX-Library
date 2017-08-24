@@ -11,7 +11,7 @@ import org.robotframework.javalib.annotation.RobotKeywords;
  */
 @RobotKeywords
 public class Timeout {
-    public final static String[] TIMEOUTS = new String[] {
+    public static final String[] TIMEOUTS = new String[] {
             TimeoutConstants.GENERIC_TIMEOUT
     };
 

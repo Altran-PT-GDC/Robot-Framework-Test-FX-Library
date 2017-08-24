@@ -17,10 +17,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -101,7 +98,8 @@ public class JavafxExample2 extends Application {
         scrollPane.setContent(vBox);
 
         final CheckBox check = new CheckBox("Check Here");
-
+        check.setId("check");
+        check.setVisible(true);
         rightVbox.getChildren().addAll(scrollPane, check);
 
         componentLayout.setCenter(listPane);

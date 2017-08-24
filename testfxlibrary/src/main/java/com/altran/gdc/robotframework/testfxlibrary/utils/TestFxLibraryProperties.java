@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class TestFxLibraryProperties {
 
-    private static final Logger log = LoggerFactory.getLogger(TestFxLibraryProperties.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TestFxLibraryProperties.class);
     private static Properties props;
 
     static {
@@ -19,7 +19,7 @@ public class TestFxLibraryProperties {
             TestFxLibraryProperties util = new TestFxLibraryProperties();
             props = util.getPropertiesFromClasspath("TestFXLibrary.properties");
         } catch (IOException e) {
-            log.error("Error!", e);
+            LOG.error("Error!", e);
         }
     }
 
@@ -46,14 +46,14 @@ public class TestFxLibraryProperties {
      * @throws IOException
      */
     private Properties getPropertiesFromClasspath(String propFileName) throws IOException {
-        Properties props = new Properties();
+        Properties properties = new Properties();
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(propFileName);
 
         if (inputStream == null) {
             throw new FileNotFoundException("Property File '" + propFileName + "' Not Found");
         }
 
-        props.load(inputStream);
-        return props;
+        properties.load(inputStream);
+        return properties;
     }
 }

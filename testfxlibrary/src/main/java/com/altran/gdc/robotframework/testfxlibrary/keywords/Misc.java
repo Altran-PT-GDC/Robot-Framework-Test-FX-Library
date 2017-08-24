@@ -18,6 +18,8 @@ import org.testfx.api.FxToolkit;
 import org.testfx.service.support.WaitUntilSupport;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
@@ -34,6 +36,8 @@ import static org.testfx.matcher.base.NodeMatchers.*;
  */
 @RobotKeywords
 public class Misc {
+
+    private static final int CLASS_VALUE = 6;
 
     @Autowired
     private Logging log;
@@ -78,15 +82,20 @@ public class Misc {
      */
     @RobotKeyword
     @ArgumentNames({"applicationJAR", "className"})
-    public void launchJARApplication(String applicationJAR, String className) throws TimeoutException,
-            IOException, ClassNotFoundException {
-        FxToolkit.registerPrimaryStage();
-        ClassLoader classLoader = loadClassesFromJar(applicationJAR);
-        FxToolkit.setupApplication((Class<? extends Application>) classLoader.loadClass(className));
-        FxToolkit.showStage();
+    public void launchJARApplication(String applicationJAR, String className){
+        try {
+            FxToolkit.registerPrimaryStage();
+            ClassLoader classLoader = loadClassesFromJar(applicationJAR);
+            FxToolkit.setupApplication((Class<? extends Application>) classLoader.loadClass(className));
+            FxToolkit.showStage();
+
+        } catch (TimeoutException | ClassNotFoundException | IOException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
     }
 
-    private ClassLoader loadClassesFromJar(String applicationJAR) throws IOException, ClassNotFoundException {
+    private ClassLoader loadClassesFromJar(String applicationJAR) throws IOException {
         JarFile jarFile = null;
         URLClassLoader cl = null;
 
@@ -103,7 +112,7 @@ public class Misc {
                     continue;
                 }
                 // -6 because of .class
-                String className = je.getName().substring(0, je.getName().length() - 6);
+                String className = je.getName().substring(0, je.getName().length() - CLASS_VALUE);
                 className = className.replace('/', '.');
                 log.info(className);
             }
@@ -126,7 +135,7 @@ public class Misc {
      *      If something goes wrong
      */
     @RobotKeyword
-    public void closeApplication() throws TestFxLibraryFatalException {
+    public void closeApplication() {
         try {
             FxToolkit.hideStage();
             FxToolkit.cleanupStages();
@@ -509,13 +518,15 @@ public class Misc {
 
         TestFxLibraryValidation.validateArguments(identifier);
 
+        String changedIdentifier = null;
+
         if (identifier.substring(0) != "#") {
-            identifier = "#" + identifier;
+            changedIdentifier = "#" + identifier;
         }
 
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
 
-        waitUntilPageContainsElement(identifier, waitTimeout);
+        waitUntilPageContainsElement(changedIdentifier, waitTimeout);
 
     }
 
@@ -568,13 +579,15 @@ public class Misc {
 
         TestFxLibraryValidation.validateArguments(identifier);
 
+        String changedIdentifier = null;
+
         if (identifier.substring(0) != "#") {
-            identifier = "#" + identifier;
+            changedIdentifier = "#" + identifier;
         }
 
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
 
-        waitUntilPageDoesNotContainElement(identifier, waitTimeout);
+        waitUntilPageDoesNotContainElement(changedIdentifier, waitTimeout);
 
     }
 
@@ -629,16 +642,46 @@ public class Misc {
 
     @RobotKeyword()
     @ArgumentNames({"timeout"})
-    public void defaultWait(long timeout){
+    public void defaultWait(long timeout) throws IOException {
         try {
             new WaitUntilSupport().wait(timeout);
         } catch (InterruptedException e) {
-            try {
-                log.error("Error!");
-            } catch (IOException e1) {
-
-            }
+            log.error("Error!");
         }
     }
-    
+
+    /**
+     *
+     * @param identifier
+     *          The node where you want to get the attribute
+     * @param attribute
+     *          The method name of the attribute that you want
+     * @return
+     *          The attribute value in a String
+     *
+     * @throws InstantiationException
+     */
+
+    @RobotKeyword()
+    @ArgumentNames({"identifier" , "attribute"})
+    public String getNodeAtrribute(String identifier, String attribute) {
+
+        TestFxLibraryValidation.validateArguments(identifier, attribute);
+
+
+        Node node = getNode(identifier);
+
+        try {
+            Class clazz = Class.forName(node.getClass().getName());
+
+            Object obj = clazz.newInstance();
+            Method m = obj.getClass().getMethod(attribute);
+            Object o = m.invoke(obj);
+
+            return o.toString();
+
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
 }

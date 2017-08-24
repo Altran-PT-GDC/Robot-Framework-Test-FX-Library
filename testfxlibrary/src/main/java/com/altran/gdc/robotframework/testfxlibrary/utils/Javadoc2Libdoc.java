@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Javadoc2Libdoc {
-	private static final Logger log = LoggerFactory.getLogger(Javadoc2Libdoc.class);
+	private static final Logger LOG = LoggerFactory.getLogger(Javadoc2Libdoc.class);
 	protected final Map<String, String> keywordDocumentationMap;
 
 	public Javadoc2Libdoc(java.lang.Class<?> clazz) {
@@ -41,7 +41,7 @@ public class Javadoc2Libdoc {
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			return (Root) unmarshaller.unmarshal(inputStream);
 		} catch (JAXBException e) {
-			log.error("Error!", e);
+			LOG.error("Error!", e);
 			return new ObjectFactory().createRoot();
 		}
 	}

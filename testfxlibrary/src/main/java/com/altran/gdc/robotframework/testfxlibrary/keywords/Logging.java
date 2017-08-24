@@ -24,7 +24,7 @@ public class Logging {
 	private static final String WARNING_CONSTANT = "warn";
 	private static final String ERROR_CONSTANT = "error";
 
-	protected final static Map<String, String[]> VALID_LOG_LEVELS;
+	protected static final Map<String, String[]> VALID_LOG_LEVELS;
 
 	static {
 		VALID_LOG_LEVELS = new HashMap<String, String[]>();

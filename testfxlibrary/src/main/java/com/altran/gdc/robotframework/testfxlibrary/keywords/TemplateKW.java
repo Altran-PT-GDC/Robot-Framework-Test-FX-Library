@@ -5,7 +5,6 @@ import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.testfx.api.FxRobot;
-import org.testfx.service.support.WaitUntilSupport;
 
 import java.io.IOException;
 
@@ -23,7 +22,7 @@ public class TemplateKW {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void templateKw(String identifier) {
+    public void templateKw(String identifier) throws IOException {
         /* validate arguments */
         validateArguments(identifier);
 
