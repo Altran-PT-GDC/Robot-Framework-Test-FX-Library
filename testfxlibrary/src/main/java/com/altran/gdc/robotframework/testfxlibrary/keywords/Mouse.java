@@ -27,6 +27,8 @@ public class Mouse {
 
     @Autowired
     private Logging logging;
+    @Autowired
+    private Misc misc;
 
     /**
      * * Clicks on a indentifier.<br>
@@ -244,6 +246,31 @@ public class Mouse {
             return check.isSelected();
         } catch (IllegalArgumentException | NullPointerException e) {
             throw  new TestFxLibraryFatalException(e);
+        }
+
+    }
+
+    /**
+     * Select function from a popup menu of an element
+     *
+     * @param identifier
+     *          The identifier of the CheckBox
+     * @param functionText
+     *          The name of the funciton that you want to select
+     */
+
+    @RobotKeyword
+    @ArgumentNames({"identifier", "functionText"})
+    public void selectFromPopupMenu(String identifier, String functionText) {
+
+        TestFxLibraryValidation.validateArguments(identifier, functionText);
+
+        try{
+            misc.waitUntilPageContains(identifier);
+            rightClickOn(identifier);
+            clickOn(functionText);
+        } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
+            throw new TestFxLibraryFatalException(e);
         }
 
     }

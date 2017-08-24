@@ -11,6 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.loadui:testFx:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Maven: org.robotframework:javalib-core:1.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2" level="project" />
     <orderEntry type="library" name="Maven: com.thoughtworks.paranamer:paranamer:1.1.2" level="project" />
@@ -19,7 +21,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.sun:tools:1.7">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_112/lib/tools.jar!/" />
+          <root url="jar://C:/Program Files/Java/jdk1.8.0_102/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -42,7 +44,5 @@
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.0.18" level="project" />
     <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" level="project" />
-    <orderEntry type="library" name="Maven: org.loadui:testFx:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
   </component>
 </module>

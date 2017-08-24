@@ -64,6 +64,12 @@ Test Set CheckBox
     Set CheckBox    .check-box   true
     Close Application
 
+Test Select From PopUp Menu
+
+    Launch Application  testapp.JavafxExample2
+    Select From PopupMenu   \#text  Select All
+    Close Application
+
 *** Keywords ***
 
 Test Fruits with ${fruit}

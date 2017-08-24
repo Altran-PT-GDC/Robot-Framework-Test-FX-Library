@@ -7,15 +7,11 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 
-import javafx.scene.Node;
-import javafx.stage.Stage;
-import org.loadui.testfx.GuiTest;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
 
-import org.testfx.api.FxRobotContext;
 import org.testfx.api.FxToolkitContext;
 
 

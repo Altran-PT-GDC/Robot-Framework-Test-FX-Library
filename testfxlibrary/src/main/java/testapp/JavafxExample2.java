@@ -100,6 +100,9 @@ public class JavafxExample2 extends Application {
         final CheckBox check = new CheckBox("Check Here");
         check.setId("check");
         check.setVisible(true);
+
+        final Menu menu = new Menu("Test Menu");
+
         rightVbox.getChildren().addAll(scrollPane, check);
 
         componentLayout.setCenter(listPane);
