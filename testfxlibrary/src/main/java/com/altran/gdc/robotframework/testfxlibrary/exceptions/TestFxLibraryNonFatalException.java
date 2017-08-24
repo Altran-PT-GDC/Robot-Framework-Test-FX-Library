@@ -7,24 +7,24 @@ package com.altran.gdc.robotframework.testfxlibrary.exceptions;
 @SuppressWarnings("serial")
 public class TestFxLibraryNonFatalException extends RuntimeException {
 
-	/**
-	 * Mark this exception as non fatal
-	 */
-	public static final boolean ROBOT_EXIT_ON_FAILURE = false;
+    /**
+     * Mark this exception as non fatal
+     */
+    public static final boolean ROBOT_EXIT_ON_FAILURE = false;
 
-	public TestFxLibraryNonFatalException() {
-		super();
-	}
+    public TestFxLibraryNonFatalException() {
+        super();
+    }
 
-	public TestFxLibraryNonFatalException(String string) {
-		super(string);
-	}
+    public TestFxLibraryNonFatalException(String string) {
+        super(string);
+    }
 
-	public TestFxLibraryNonFatalException(Throwable t) {
-		super(t);
-	}
+    public TestFxLibraryNonFatalException(Throwable t) {
+        super(t);
+    }
 
-	public TestFxLibraryNonFatalException(String string, Throwable t) {
-		super(string, t);
-	}
+    public TestFxLibraryNonFatalException(String string, Throwable t) {
+        super(string, t);
+    }
 }

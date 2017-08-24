@@ -20,19 +20,18 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- *
  * @author pcosta
  */
 public class JavafxExample extends Application {
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
-    
-    
+
+
     private static class CounterPane extends StackPane {
         public CounterPane() {
             setId("counterPane");
@@ -50,12 +49,13 @@ public class JavafxExample extends Application {
 
             // initialize controls.
             countButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                int value = asInteger(countValue.getText());
-                int incrementedValue = value + 1;
-                countValue.setText(asString(incrementedValue));
-            }
-        });
+                @Override
+                public void handle(ActionEvent e) {
+                    int value = asInteger(countValue.getText());
+                    int incrementedValue = value + 1;
+                    countValue.setText(asString(incrementedValue));
+                }
+            });
             countValue.setEditable(false);
             countValue.setPrefWidth(50);
 
@@ -65,14 +65,18 @@ public class JavafxExample extends Application {
             box.setAlignment(Pos.CENTER);
             getChildren().add(box);
         }
-        
-        
-    }
-    
-    
 
-    private static int asInteger(String value) { return Integer.parseInt(value); }
-    private static String asString(int value) { return value + ""; }
+
+    }
+
+
+    private static int asInteger(String value) {
+        return Integer.parseInt(value);
+    }
+
+    private static String asString(int value) {
+        return value + "";
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -80,5 +84,5 @@ public class JavafxExample extends Application {
         stage.show();
     }
 
-    
+
 }
