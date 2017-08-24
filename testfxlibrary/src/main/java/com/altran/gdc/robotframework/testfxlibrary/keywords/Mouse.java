@@ -29,10 +29,13 @@ public class Mouse {
     private Logging logging;
 
     /**
-     * Clicks on a indentifier.<br>
+     * * Clicks on a indentifier.<br>
      *
+     * @param identifier
+     *          The identifier of the node
      * @throws TimeoutException
      *      If something goes wrong
+     *
      */
     @RobotKeywordOverload
     public void clickOn(String identifier) throws TimeoutException {

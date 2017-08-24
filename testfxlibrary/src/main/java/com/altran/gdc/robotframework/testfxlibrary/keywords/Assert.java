@@ -27,7 +27,9 @@ public class Assert {
      * Verify if a node contains an element with specific identifier.
      *
      * @param identifier
+     *          The node you want to verify
      * @param identifierToValidate
+     *          The node you want to validate
      */
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})
@@ -39,7 +41,9 @@ public class Assert {
      * Verify if a node contains a specific text.
      *
      * @param identifier
+     *          The node you want to verify
      * @param textToValidate
+     *          The text you want to validate
      */
     @RobotKeyword
     @ArgumentNames({"identifier","textToValidate"})
@@ -51,6 +55,7 @@ public class Assert {
      * Verify if an element is enabled.
      *
      * @param identifier
+     *          The node you want to verify
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -63,6 +68,7 @@ public class Assert {
      * Verify if an element is disabled.
      *
      * @param identifier
+     *          The node you want to verify
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -75,6 +81,7 @@ public class Assert {
      * Verify if an element is visible.
      *
      * @param identifier
+     *          The node you want to verify
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -87,7 +94,9 @@ public class Assert {
      * Verify if a node has childs.
      *
      * @param identifier
+     *          The node you want to verify
      * @param identifierToValidate
+     *          The node you want to validate
      */
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})

@@ -47,7 +47,8 @@ public class Misc {
      * The classname given must extend javafx.application.Application.<br>
      * ATENTTION: The class must be added to the classpath beforehand.
      *
-     * @param className The name of the class that extends javafx.application.Application to be launched.
+     * @param className
+     *          The name of the class that extends javafx.application.Application to be launched.
      */
     @RobotKeyword
     @ArgumentNames({"className"})
@@ -68,17 +69,13 @@ public class Misc {
      * The classname given must extend javafx.application.Application.<br>
      * ATENTTION: The JAR must be added to the classpath beforehand.
      *
-     * @param applicationJAR The path of the JAR that contains the application
-     *                       to be launched. The JAR must contain a JavaFX application with a class
-     *                       that extends javafx.application.Application.
-     * @param className      The name of the class im the JAR that extends
-     *                       javafx.application.Application to be launched.
-     * @throws TimeoutException
-     *      If something goes wrong
-     * @throws IOException
-     *      If something goes wrong
-     * @throws ClassNotFoundException
-     *      If something goes wrong
+     * @param applicationJAR
+     *          The path of the JAR that contains the application
+     *          to be launched. The JAR must contain a JavaFX application with a class
+     *          that extends javafx.application.Application.
+     * @param className
+     *          The name of the class im the JAR that extends
+     *          javafx.application.Application to be launched.
      */
     @RobotKeyword
     @ArgumentNames({"applicationJAR", "className"})
@@ -147,7 +144,8 @@ public class Misc {
     /**
      * Sleep. Pause the execution during a period
      *
-     * @param milliseconds The number of millisenconds to pause the execution
+     * @param milliseconds
+     *          The number of millisenconds to pause the execution
      */
     @RobotKeyword
     @ArgumentNames({"milliseconds"})
@@ -158,8 +156,10 @@ public class Misc {
     /**
      * Wait until an element is visible
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -183,6 +183,8 @@ public class Misc {
     /**
      * Wait until an element is visible with the default timeout
      *
+     * @param identifier
+     *          The name of the element that you are going to test
      */
     @RobotKeywordOverload
     public void waitUntilElementIsVisible(String identifier) {
@@ -198,8 +200,10 @@ public class Misc {
     /**
      * Wait until an element is not visible
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -222,6 +226,8 @@ public class Misc {
     /**
      * Wait until an element is not visible with the default timeout
      *
+     * @param identifier
+     *         The name of the element that you are going to test
      */
     @RobotKeywordOverload
     public void waitUntilElementIsNotVisible(String identifier) {
@@ -237,8 +243,12 @@ public class Misc {
     /**
      * Wait until an element has some text on it
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param textToValidate
+     *          The Text you want to validate
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
@@ -261,6 +271,10 @@ public class Misc {
     /**
      * Wait until an element has some text on it with the default timeout
      *
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param textToValidate
+     *          The Text you want to validate
      */
     @RobotKeywordOverload
     public void waitUntilElementContains(String identifier, String textToValidate) {
@@ -274,10 +288,16 @@ public class Misc {
     }
 
     /**
+     *
      * Wait until an element has some text on it
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param textToValidate
+     *          The Text you want to validate
+     * @param timeout
+     *          The limit time to complete the test
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
@@ -300,6 +320,10 @@ public class Misc {
     /**
      * Wait until an element has some text on it with the default timeout
      *
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param textToValidate
+     *          The Text you want to validate
      */
     @RobotKeywordOverload
     public void waitUntilElementDoesNotContains(String identifier, String textToValidate) {
@@ -315,8 +339,10 @@ public class Misc {
     /**
      * Wait until an element is disable
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -339,6 +365,8 @@ public class Misc {
     /**
      * Wait until an element is disable with the default timeout
      *
+     * @param identifier
+     *          The name of the element that you are going to test
      */
     @RobotKeywordOverload
     public void waitUntilElementIsDisabled(String identifier) {
@@ -354,8 +382,10 @@ public class Misc {
     /**
      * Wait until an element is enable
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -378,6 +408,8 @@ public class Misc {
     /**
      * Wait until an element is enable with the default timeout
      *
+     * @param identifier
+     *          The name of the element that you are going to test
      */
     @RobotKeywordOverload
     public void waitUntilElementIsEnabled(String identifier) {
@@ -390,8 +422,10 @@ public class Misc {
     /**
      * Wait until an element with text is created and present on the application
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -415,7 +449,8 @@ public class Misc {
     /**
      * Wait until an element with text is created and present on the application with the default timeout
      *
-     * @param identifier The name of the element that you are going to test
+     * @param identifier
+     *          The name of the element that you are going to test
      */
     @RobotKeywordOverload
     public void waitUntilPageContains(String identifier) {
@@ -431,8 +466,10 @@ public class Misc {
     /**
      * Wait until an element with text is deleted from the application
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -456,7 +493,8 @@ public class Misc {
     /**
      * Wait until an element with text is deleted from application with the default timeout
      *
-     * @param identifier The name of the element that you are going to test
+     * @param identifier
+     *          The name of the element that you are going to test
      */
     @RobotKeywordOverload
     public void waitUntilPageDoesNotContains(String identifier) {
@@ -472,8 +510,10 @@ public class Misc {
     /**
      * Wait until an element is created and present on the application
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -511,7 +551,8 @@ public class Misc {
     /**
      * Wait until an element is created and present on the application with the default timeout
      *
-     * @param identifier The name of the element that you are going to test
+     * @param identifier
+     *          The name of the element that you are going to test
      */
     @RobotKeywordOverload
     public void waitUntilPageContainsElement(String identifier) {
@@ -533,8 +574,10 @@ public class Misc {
     /**
      * Wait until an element is deleted from the application
      *
-     * @param identifier The name of the element that you are going to test
-     * @param timeout The limit time to complete the test
+     * @param identifier
+     *          The name of the element that you are going to test
+     * @param timeout
+     *          The limit time to complete the test
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -572,7 +615,8 @@ public class Misc {
     /**
      * Wait until an element is deleted from application with the default timeout
      *
-     * @param identifier The name of the element that you are going to test
+     * @param identifier
+     *          The name of the element that you are going to test
      */
     @RobotKeywordOverload
     public void waitUntilPageDoesNotContainElement(String identifier) {
@@ -608,9 +652,13 @@ public class Misc {
     }
 
     /**
-     * Get the inner element from a node
+     * * Get the inner element from a node
      *
-     * @param identifier The name of the element that you are going to test
+     * @param identifier
+     *          The name of the element that you are going to test
+     *
+     * @return
+     *          The inner element key
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -640,6 +688,13 @@ public class Misc {
         return  Iterables.get(nodeList, nthElement);
     }
 
+    /**
+     * Set the default timeout of Wait Until Support wait method
+     *
+     * @param timeout
+     *          The limit time to complete the test
+     * @throws IOException
+     */
     @RobotKeyword()
     @ArgumentNames({"timeout"})
     public void defaultWait(long timeout) throws IOException {
@@ -651,6 +706,7 @@ public class Misc {
     }
 
     /**
+     *  Get an attribute value of an element
      *
      * @param identifier
      *          The node where you want to get the attribute
@@ -659,7 +715,6 @@ public class Misc {
      * @return
      *          The attribute value in a String
      *
-     * @throws InstantiationException
      */
 
     @RobotKeyword()
