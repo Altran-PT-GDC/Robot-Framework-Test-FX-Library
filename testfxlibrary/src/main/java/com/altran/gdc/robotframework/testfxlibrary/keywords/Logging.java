@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryConstants;
 import org.python.util.PythonInterpreter;
 import org.robotframework.javalib.annotation.RobotKeywords;
 
@@ -16,6 +17,20 @@ import org.slf4j.LoggerFactory;
 @RobotKeywords
 public class Logging {
 
+    /**
+     * Thread local variable with loaded logger.
+     */
+    protected static ThreadLocal<PythonInterpreter> loggingPythonInterpreter = new ThreadLocal<PythonInterpreter>() {
+        @Override
+        protected PythonInterpreter initialValue() {
+            PythonInterpreter pythonInterpreter = new PythonInterpreter();
+            pythonInterpreter.exec("from robot.variables import GLOBAL_VARIABLES; from robot.api import logger;");
+            return pythonInterpreter;
+        }
+    };
+
+    protected static final Map<String, String[]> VALID_LOG_LEVELS;
+
     private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
     private static final String DEBUG_CONSTANT = "debug";
     private static final String HTML_CONSTANT = "html";
@@ -25,8 +40,6 @@ public class Logging {
     private static final String ERROR_CONSTANT = "error";
     private static final String ERROR_MESSAGE = "Error!";
     private static final int MIN_MSG_LENGHT = 1024;
-
-    protected static final Map<String, String[]> VALID_LOG_LEVELS;
 
     static {
         VALID_LOG_LEVELS = new HashMap<String, String[]>();
@@ -42,7 +55,7 @@ public class Logging {
         try {
             log(msg, "trace");
         } catch (IOException e) {
-            LOG.error(ERROR_MESSAGE, e);
+            LOG.error(TestFxLibraryConstants.ERROR_MESSAGE, e);
         }
     }
 
@@ -50,7 +63,7 @@ public class Logging {
         try {
             log(msg, "debug");
         } catch (IOException e) {
-            LOG.error(ERROR_MESSAGE, e);
+            LOG.error(TestFxLibraryConstants.ERROR_MESSAGE, e);
         }
     }
 
@@ -58,7 +71,7 @@ public class Logging {
         try {
             log(msg, "info");
         } catch (IOException e) {
-            LOG.error(ERROR_MESSAGE, e);
+            LOG.error(TestFxLibraryConstants.ERROR_MESSAGE, e);
         }
     }
 
@@ -96,7 +109,7 @@ public class Logging {
      * @throws IOException If something goes wrong
      */
     protected void log0(String msg, String methodName, String methodArguments) throws IOException {
-        if (msg.length() > MIN_MSG_LENGHT) {
+        if (msg.length() > TestFxLibraryConstants.MESSAGE_LENGTH) {
             // Message is too large.
             // There is a hard limit of 100k in the Jython source code parser
             FileWriter writer = null;
@@ -129,17 +142,4 @@ public class Logging {
                             methodArguments));
         }
     }
-
-    /**
-     * Thread local variable with loaded logger.
-     */
-    protected static ThreadLocal<PythonInterpreter> loggingPythonInterpreter = new ThreadLocal<PythonInterpreter>() {
-        @Override
-        protected PythonInterpreter initialValue() {
-            PythonInterpreter pythonInterpreter = new PythonInterpreter();
-            pythonInterpreter.exec("from robot.variables import GLOBAL_VARIABLES; from robot.api import logger;");
-            return pythonInterpreter;
-        }
-    };
-
 }

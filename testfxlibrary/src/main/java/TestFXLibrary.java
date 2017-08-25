@@ -3,6 +3,7 @@ import java.util.ResourceBundle;
 
 import com.altran.gdc.robotframework.testfxlibrary.keywords.Timeout;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryConstants;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import org.robotframework.javalib.library.AnnotationLibrary;
 
@@ -42,15 +43,6 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
      */
     public static final String ROBOT_LIBRARY_VERSION = loadRobotLibraryVersion();
 
-    private static String loadRobotLibraryVersion() {
-        try {
-            return ResourceBundle.getBundle(TestFXLibrary.class.getCanonicalName().replace(".", File.separator))
-                    .getString("version");
-        } catch (RuntimeException e) {
-            throw e;
-        }
-    }
-
     /**
      * testfxlibrary can be imported with optional arguments.<br>
      * <br>
@@ -59,10 +51,19 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
     public TestFXLibrary() {
         super();
         addKeywordPattern(KEYWORD_PATTERN);
-        // => init annotations
+        // init annotations
         createKeywordFactory();
         setDefaultTimeouts();
         TestFXLibraryCache.getIstance();
+    }
+
+    private static String loadRobotLibraryVersion() {
+        try {
+            return ResourceBundle.getBundle(TestFXLibrary.class.getCanonicalName().replace(".", File.separator))
+                    .getString("version");
+        } catch (RuntimeException e) {
+            throw e;
+        }
     }
 
     // ******************************
@@ -113,6 +114,6 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
      * Set default timeouts
      */
     private void setDefaultTimeouts() {
-        new Timeout().setTimeout(TimeoutConstants.GENERIC_TIMEOUT, TIMEOUT_VALUE);
+        new Timeout().setTimeout(TimeoutConstants.GENERIC_TIMEOUT, TestFxLibraryConstants.DEFAULT_TIMEOUT);
     }
 }
