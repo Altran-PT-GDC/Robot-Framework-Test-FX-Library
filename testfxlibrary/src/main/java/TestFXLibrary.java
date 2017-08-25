@@ -16,6 +16,7 @@ import org.robotframework.javalib.library.RobotJavaLibrary;
  */
 public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary {
 
+    private static final int TIMEOUT_VALUE = 20;
     /**
      * The list of keyword patterns for the AnnotationLibrary
      */
@@ -58,7 +59,8 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
     public TestFXLibrary() {
         super();
         addKeywordPattern(KEYWORD_PATTERN);
-        createKeywordFactory(); // => init annotations
+        // => init annotations
+        createKeywordFactory();
         setDefaultTimeouts();
         TestFXLibraryCache.getIstance();
     }
@@ -111,6 +113,6 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
      * Set default timeouts
      */
     private void setDefaultTimeouts() {
-        new Timeout().setTimeout(TimeoutConstants.GENERIC_TIMEOUT, 20);
+        new Timeout().setTimeout(TimeoutConstants.GENERIC_TIMEOUT, TIMEOUT_VALUE);
     }
 }
