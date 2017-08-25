@@ -8,7 +8,6 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.*;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Node;
 import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;

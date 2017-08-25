@@ -25,7 +25,11 @@ import javafx.stage.Stage;
  */
 public class JavafxExample extends Application {
 
-
+    private static final int HBOX_INSETS = 10;
+    private static final int HBOX_SPACING = 10;
+    private static final int COUNTERPANE_WIDTH = 200;
+    private static final int COUNTERPANE_HEIGHT = 50;
+    private static final int TEXTFIELD_PREF_WIDTH = 50;
     /**
      * @param args the command line arguments
      */
@@ -35,7 +39,7 @@ public class JavafxExample extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(new CounterPane(stage), 200, 50));
+        stage.setScene(new Scene(new CounterPane(stage), COUNTERPANE_WIDTH, COUNTERPANE_HEIGHT));
         stage.show();
     }
     
@@ -69,7 +73,7 @@ public class JavafxExample extends Application {
                 }
             });
             countValue.setEditable(false);
-            countValue.setPrefWidth(50);
+            countValue.setPrefWidth(TEXTFIELD_PREF_WIDTH);
 
             Button chooser = new Button("Chooser");
             chooser.setId("chooser");
@@ -84,8 +88,8 @@ public class JavafxExample extends Application {
             });
 
             // create and add containers.
-            HBox box = new HBox(10, countButton, countValue, btnDisable, chooser);
-            box.setPadding(new Insets(10));
+            HBox box = new HBox(HBOX_SPACING, countButton, countValue, btnDisable, chooser);
+            box.setPadding(new Insets(HBOX_INSETS));
             box.setAlignment(Pos.CENTER);
             getChildren().add(box);
         }

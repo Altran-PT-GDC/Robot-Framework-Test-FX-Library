@@ -23,6 +23,8 @@ public class Logging {
     private static final String TRACE_CONSTANT = "trace";
     private static final String WARNING_CONSTANT = "warn";
     private static final String ERROR_CONSTANT = "error";
+    private static final String ERROR_MESSAGE = "Error!";
+    private static final int MIN_MSG_LENGHT = 1024;
 
     protected static final Map<String, String[]> VALID_LOG_LEVELS;
 
@@ -40,7 +42,7 @@ public class Logging {
         try {
             log(msg, "trace");
         } catch (IOException e) {
-            LOG.error("Error!", e);
+            LOG.error(ERROR_MESSAGE, e);
         }
     }
 
@@ -48,7 +50,7 @@ public class Logging {
         try {
             log(msg, "debug");
         } catch (IOException e) {
-            LOG.error("Error!", e);
+            LOG.error(ERROR_MESSAGE, e);
         }
     }
 
@@ -56,7 +58,7 @@ public class Logging {
         try {
             log(msg, "info");
         } catch (IOException e) {
-            LOG.error("Error!", e);
+            LOG.error(ERROR_MESSAGE, e);
         }
     }
 
@@ -94,7 +96,7 @@ public class Logging {
      * @throws IOException If something goes wrong
      */
     protected void log0(String msg, String methodName, String methodArguments) throws IOException {
-        if (msg.length() > 1024) {
+        if (msg.length() > MIN_MSG_LENGHT) {
             // Message is too large.
             // There is a hard limit of 100k in the Jython source code parser
             FileWriter writer = null;
