@@ -15,7 +15,6 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -28,8 +27,20 @@ import javafx.util.Duration;
 
 public class JavafxExample2 extends Application {
     private BorderPane componentLayout;
-    HBox hBox;
-    Button toBeErase;
+    private HBox hBox;
+    private Button toBeErase;
+    private static final int TEXT_FIELD_MAX_WIDTH = 80;
+    private static final int TEXT_FIELD_MAX_HIGHT = 50;
+    private static final int SCROLLPANE_MAX_WIDTH = 100;
+    private static final int SCROLLPANE_MAX_HIGHT = 200;
+    private static final int SCENE_WIDTH = 500;
+    private static final int SCENE_HIGHT = 500;
+    private static final int BORDERPANE_INSETS_TOP = 20;
+    private static final int BORDERPANE_INSETS_BOTTOM = 20;
+    private static final int BORDERPANE_INSETS_LEFT = 20;
+    private static final int BORDERPANE_INSETS_RIGHT = 0;
+    private static final int FLOWPANE_HGAP = 100;
+    private static final int WAIT_TIME = 5;
 
     //JavaFX applicatoin still use the main method.
     //It should only ever contain the call to the launch method
@@ -50,11 +61,11 @@ public class JavafxExample2 extends Application {
         //The BorderPane has the same areas laid out as the
         //BorderLayout layout manager
         componentLayout = new BorderPane();
-        componentLayout.setPadding(new Insets(20, 0, 20, 20));
+        componentLayout.setPadding(new Insets(BORDERPANE_INSETS_TOP, BORDERPANE_INSETS_RIGHT,BORDERPANE_INSETS_BOTTOM, BORDERPANE_INSETS_LEFT));
 
         //The FlowPane is a conatiner that uses a flow layout
         final FlowPane choicePane = new FlowPane();
-        choicePane.setHgap(100);
+        choicePane.setHgap(FLOWPANE_HGAP);
         Label choiceLbl = new Label("Fruits");
 
         //The choicebox is populated from an observableArrayList
@@ -72,7 +83,7 @@ public class JavafxExample2 extends Application {
         componentLayout.setTop(choicePane);
 
         final FlowPane listPane = new FlowPane();
-        listPane.setHgap(100);
+        listPane.setHgap(FLOWPANE_HGAP);
         Label listLbl = new Label("Vegetables");
 
         final ListView<String> vegetables = new ListView<>(FXCollections.observableArrayList("Apple", "Apricot", "Banana"
@@ -92,16 +103,14 @@ public class JavafxExample2 extends Application {
         final VBox rightVbox = new VBox();
         final VBox vBox = new VBox();
         ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setMaxHeight(200);
-        scrollPane.setMaxWidth(100);
+        scrollPane.setMaxHeight(SCROLLPANE_MAX_HIGHT);
+        scrollPane.setMaxWidth(SCROLLPANE_MAX_WIDTH);
         vBox.getChildren().addAll(name, listView);
         scrollPane.setContent(vBox);
 
         final CheckBox check = new CheckBox("Check Here");
         check.setId("check");
         check.setVisible(true);
-
-        final Menu menu = new Menu("Test Menu");
 
         rightVbox.getChildren().addAll(scrollPane, check);
 
@@ -119,7 +128,7 @@ public class JavafxExample2 extends Application {
         testWait.setOnAction(event -> {
             vegFruitBut.setDisable(!vegFruitBut.isDisable());
             Timeline timer = new Timeline(
-                    new KeyFrame(Duration.seconds(5), events -> changeElementForWait(vegFruitBut, false))
+                    new KeyFrame(Duration.seconds(WAIT_TIME), events -> changeElementForWait(vegFruitBut, false))
             );
             timer.play();
         });
@@ -128,17 +137,23 @@ public class JavafxExample2 extends Application {
         final TextField text = new TextField("OLA TEST");
         text.setId("text");
 
+        final TextArea textArea = new TextArea("PARA APAGAR");
+        textArea.setId("textArea");
+        textArea.setMaxWidth(TEXT_FIELD_MAX_WIDTH);
+        textArea.setMaxHeight(TEXT_FIELD_MAX_HIGHT);
+        textArea.setWrapText(true);
+
         toBeErase = new Button("To Be Erase");
 
 
         hBox = new HBox();
-        hBox.getChildren().addAll(vegFruitBut, testWait, text, toBeErase);
+        hBox.getChildren().addAll(vegFruitBut, testWait, text, textArea, toBeErase);
 
         componentLayout.setBottom(hBox);
 
 
         //Add the BorderPane to the Scene
-        Scene appScene = new Scene(componentLayout, 500, 500);
+        Scene appScene = new Scene(componentLayout, SCENE_WIDTH, SCENE_HIGHT);
 
         //Add the Scene to the Stage
         primaryStage.setScene(appScene);

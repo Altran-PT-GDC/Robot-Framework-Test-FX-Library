@@ -5,6 +5,7 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import org.robotframework.javalib.annotation.ArgumentNames;
@@ -80,6 +81,19 @@ public class Keyboard {
     }
 
     /**
+     * Erase All Text from a text area
+     *
+     * @param identifier
+     *      The node were you're going to write
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void  eraseAllTextArea(String identifier) {
+        TextArea text = new FxRobot().lookup(identifier).query();
+        text.setText("");
+    }
+
+    /**
      * Erase All Text from a text field
      *
      * @param identifier
@@ -87,7 +101,7 @@ public class Keyboard {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void  eraseAllText(String identifier) {
+    public void  eraseAllTextField(String identifier) {
         TextField text = new FxRobot().lookup(identifier).query();
         text.setText("");
     }

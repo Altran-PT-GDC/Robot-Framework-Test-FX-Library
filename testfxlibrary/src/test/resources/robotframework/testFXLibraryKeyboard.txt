@@ -16,6 +16,16 @@ Test Erase Text
     Erase Text  1
     Close Application
 
+Test Erase All Text From TextField
+    Launch Application  testapp.JavafxExample2
+    Erase All Text Field    \#text
+    Close Application
+
+Test Erase All Text From TextArea
+    Launch Application  testapp.JavafxExample2
+    Erase All Text Area     \#textArea
+    Close Application
+
 Test Write
     Launch Application  testapp.JavafxExample
     Click On    \#countValue

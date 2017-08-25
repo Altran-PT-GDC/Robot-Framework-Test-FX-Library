@@ -16,11 +16,6 @@ Test Click On Choice Box
     Test Fruits with Orange
     Close Application
 
-Test Erase All Text
-    Launch Application  testapp.JavafxExample2
-    Erase All Text      .text-field
-    Close Application
-
 Test Get Text
     Launch Application  testapp.JavafxExample2
     Click on    .text-field
