@@ -17,7 +17,6 @@ import org.robotframework.javalib.library.RobotJavaLibrary;
  */
 public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary {
 
-    private static final int TIMEOUT_VALUE = 20;
     /**
      * The list of keyword patterns for the AnnotationLibrary
      */

@@ -15,6 +15,10 @@ import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkitContext;
 
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -67,7 +71,7 @@ public class Window {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void targetWindow(String identifier) {
+    public void selectWindow(String identifier) {
         new FxRobot().targetWindow(identifier);
     }
 
@@ -99,4 +103,20 @@ public class Window {
             throw new TestFxLibraryNonFatalException("Error get main window");
         }
     }
+
+    /**
+     *
+     * @param format
+     * @param filePath
+     *
+     */
+    public void takeScreenShot(String format, String filePath){
+        try {
+            BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+            ImageIO.write(image, "png", new File("/screenshot.png"));
+        } catch (Exception e){
+            throw new TestFxLibraryNonFatalException("Error taking screenshot");
+        }
+    }
+
 }

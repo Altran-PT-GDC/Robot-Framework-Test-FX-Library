@@ -88,7 +88,7 @@ public class Keyboard {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void  eraseAllTextArea(String identifier) {
+    public void  clearTextArea(String identifier) {
         TextArea text = new FxRobot().lookup(identifier).query();
         text.setText("");
     }
@@ -101,7 +101,7 @@ public class Keyboard {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void  eraseAllTextField(String identifier) {
+    public void  clearTextField(String identifier) {
         TextField text = new FxRobot().lookup(identifier).query();
         text.setText("");
     }

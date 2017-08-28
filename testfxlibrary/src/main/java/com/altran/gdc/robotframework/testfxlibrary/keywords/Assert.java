@@ -85,7 +85,7 @@ public class Assert {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void verifyThatIsVisible(String identifier) {
+    public void componentShouldBeVisible(String identifier) {
         verifyThat( identifier, isVisible() );
 
     }

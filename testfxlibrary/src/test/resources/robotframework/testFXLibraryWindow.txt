@@ -5,27 +5,27 @@ Library           Dialogs
 *** Test Cases ***
 
 Test Close Window
-    Launch Application  testapp.JavafxExample2
+    Start Application  testapp.JavafxExample2
     Close Current Window
     Close Application
 
 Test List Target Windows
-    Launch Application  testapp.JavafxExample2
+    Start Application  testapp.JavafxExample2
     List Target Windows
     Close Application
 
 Test List Windows
-    Launch Application  testapp.JavafxExample2
+    Start Application  testapp.JavafxExample2
     List Windows
     Close Application
 
 Test Target Window
-    Launch Application  testapp.JavafxExample2
-    Target Window   example Gui
+    Start Application  testapp.JavafxExample2
+    Select Window   example Gui
     Close Application
 
 Test Window
-    Launch Application  testapp.JavafxExample2
+    Start Application  testapp.JavafxExample2
     Window   example Gui
     Close Application
 

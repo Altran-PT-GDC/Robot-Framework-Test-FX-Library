@@ -52,7 +52,7 @@ public class Misc {
      */
     @RobotKeyword
     @ArgumentNames({"className"})
-    public void launchApplication(String className){
+    public void startApplication(String className){
         TestFxLibraryValidation.validateArguments(className);
 
         try {
@@ -79,7 +79,7 @@ public class Misc {
      */
     @RobotKeyword
     @ArgumentNames({"applicationJAR", "className"})
-    public void launchJARApplication(String applicationJAR, String className){
+    public void startJARApplication(String applicationJAR, String className){
         try {
             FxToolkit.registerPrimaryStage();
             ClassLoader classLoader = loadClassesFromJar(applicationJAR);
@@ -720,7 +720,7 @@ public class Misc {
 
     @RobotKeyword()
     @ArgumentNames({"identifier" , "attribute"})
-    public String getNodeAtrribute(String identifier, String attribute) {
+    public String getComponentAtrribute(String identifier, String attribute) {
 
         TestFxLibraryValidation.validateArguments(identifier, attribute);
 

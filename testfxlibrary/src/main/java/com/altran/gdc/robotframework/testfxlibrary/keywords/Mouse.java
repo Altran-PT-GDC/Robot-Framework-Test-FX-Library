@@ -6,6 +6,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.geometry.HorizontalDirection;
@@ -13,6 +14,8 @@ import javafx.geometry.VerticalDirection;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import org.robotframework.javalib.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testfx.api.FxRobot;
 import org.testfx.robot.Motion;
 import java.util.Set;
@@ -30,6 +33,8 @@ public class Mouse {
     @Autowired
     private Misc misc;
 
+    private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
+
     /**
      * * Clicks on a indentifier.<br>
      *
@@ -40,13 +45,13 @@ public class Mouse {
      *
      */
     @RobotKeywordOverload
-    public void clickOn(String identifier) throws TimeoutException {
-        clickOn(identifier, null);
+    public void clickOnComponent(String identifier) throws TimeoutException {
+        clickOnComponent(identifier, null);
     }
 
     @RobotKeyword
     @ArgumentNames({"identifier", "nodeKey=null"})
-    public void clickOn(String identifier, String nodeKey) throws TimeoutException {
+    public void clickOnComponent(String identifier, String nodeKey) throws TimeoutException {
         if(nodeKey != null){
             Node node = (Node) TestFXLibraryCache.getIstance().get(nodeKey);
             Node n = new FxRobot().from(node).lookup(identifier).query();
@@ -64,7 +69,7 @@ public class Mouse {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void doubleClickOn(String identifier) {
+    public void doubleClickOnComponent(String identifier) {
         new FxRobot().doubleClickOn(identifier);
     }
 
@@ -139,7 +144,7 @@ public class Mouse {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void rightClickOn(String identifier) {
+    public void rightClickOnComponent(String identifier) {
         new FxRobot().rightClickOn(identifier, Motion.DIRECT);
     }
 
@@ -215,7 +220,7 @@ public class Mouse {
 
     @RobotKeyword
     @ArgumentNames({"identifier" , "booleanValue"})
-    public void setCheckBox(String identifier, Boolean booleanValue) {
+    public void setCheckBoxState(String identifier, Boolean booleanValue) {
 
         TestFxLibraryValidation.validateArguments(identifier, booleanValue);
 
@@ -237,13 +242,61 @@ public class Mouse {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public Boolean getCheckBoxStatus(String identifier) {
+    public Boolean getCheckBoxState(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
 
         try{
             CheckBox check = new FxRobot().lookup(identifier).query();
             return check.isSelected();
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
+    }
+
+    /**
+     * Test if component is Enabled
+     *
+     * @param identifier
+     *          The identifier of the Component
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void checkBoxShouldBeEnabled(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try{
+            if(getCheckBoxState(identifier).equals(true)){
+                LOG.info("CheckBox is enabled!");
+            } else {
+                throw new TestFxLibraryNonFatalException("Component is disabled");
+            }
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
+    }
+
+    /**
+     * Test if component is disabled
+     *
+     * @param identifier
+     *          The identifier of the Component
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void checkBoxShouldBeDisabled(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try{
+            if(getCheckBoxState(identifier).equals(false)){
+                LOG.info("CheckBox is disabled!");
+            } else {
+                throw new TestFxLibraryNonFatalException("Component is enabled");
+            }
         } catch (IllegalArgumentException | NullPointerException e) {
             throw  new TestFxLibraryFatalException(e);
         }
@@ -267,8 +320,8 @@ public class Mouse {
 
         try{
             misc.waitUntilPageContains(identifier);
-            rightClickOn(identifier);
-            clickOn(functionText);
+            rightClickOnComponent(identifier);
+            clickOnComponent(functionText);
         } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
         }

@@ -4,31 +4,31 @@ Library           Dialogs
 
 *** Test Cases ***
 #Test Verify That Contains
-#    Launch Application  testapp.JavafxExample
+#    Start Application  testapp.JavafxExample
 #    Verify That Contains    \#countValue     \#countValue
 #    Close Application
 
 Test Verify That Has Text
-    Launch Application  testapp.JavafxExample
+    Start Application  testapp.JavafxExample
     Verify That Has Text    \#countValue  0
     Close Application
 
 Test Verify That Is Enabled
-    Launch Application  testapp.JavafxExample
+    Start Application  testapp.JavafxExample
     Verify That Is Enabled  \#countValue
     Close Application
 
 Test Verify That Is Disabled
-    Launch Application  testapp.JavafxExample
+    Start Application  testapp.JavafxExample
     Verify That Is Disabled  \#btnDisable
     Close Application
 
-Test Verify That Is Visible
-    Launch Application  testapp.JavafxExample
-    Verify That Is Visible  \#countValue
+Test Component Should Be Visible
+    Start Application  testapp.JavafxExample
+    Component Should Be Visible  \#countValue
     Close Application
 
 Test Verify That Has Child
-    Launch Application  testapp.JavafxExample
+    Start Application  testapp.JavafxExample
     Verify That Has Child  \#counterPane     \#btnDisable
     Close Application

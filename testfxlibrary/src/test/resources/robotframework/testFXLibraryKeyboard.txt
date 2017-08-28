@@ -4,30 +4,30 @@ Library           Dialogs
 
 *** Test Cases ***
 #Test Press And Release
-#    Launch Application  testapp.JavafxExample
-#    Click On    \#countValue
+#    Start Application  testapp.JavafxExample
+#    Click On Component    \#countValue
 #    Press       8
 #    Release     8
 #    Close Application
 
 Test Erase Text
-    Launch Application  testapp.JavafxExample
-    Click On    \#countValue
+    Start Application  testapp.JavafxExample
+    Click On Component    \#countValue
     Erase Text  1
     Close Application
 
 Test Erase All Text From TextField
-    Launch Application  testapp.JavafxExample2
-    Erase All Text Field    \#text
+    Start Application  testapp.JavafxExample2
+    Clear Text Field    \#text
     Close Application
 
 Test Erase All Text From TextArea
-    Launch Application  testapp.JavafxExample2
-    Erase All Text Area     \#textArea
+    Start Application  testapp.JavafxExample2
+    Clear Text Area     \#textArea
     Close Application
 
 Test Write
-    Launch Application  testapp.JavafxExample
-    Click On    \#countValue
+    Start Application  testapp.JavafxExample
+    Click On Component    \#countValue
     Write    test
     Close Application

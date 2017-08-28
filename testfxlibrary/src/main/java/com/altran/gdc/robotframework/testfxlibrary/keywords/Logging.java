@@ -38,8 +38,6 @@ public class Logging {
     private static final String TRACE_CONSTANT = "trace";
     private static final String WARNING_CONSTANT = "warn";
     private static final String ERROR_CONSTANT = "error";
-    private static final String ERROR_MESSAGE = "Error!";
-    private static final int MIN_MSG_LENGHT = 1024;
 
     static {
         VALID_LOG_LEVELS = new HashMap<String, String[]>();
