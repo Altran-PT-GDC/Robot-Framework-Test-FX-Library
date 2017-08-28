@@ -21,7 +21,9 @@ import org.testfx.api.FxRobot;
 public class Keyboard {
 
     /**
-     * Press a key
+     * (Press a key)
+     *
+     * Presses the key passed as parameter.
      *
      * @param keycode
      *          the keycode of the key to be pressed. eg. "Enter"
@@ -33,7 +35,10 @@ public class Keyboard {
     }
 
     /**
-     * Erase Text from a text field
+     * (Erase Text from a text field)
+     *
+     * Erases text from a text field. The number of characters erased is
+     * passed as parameter.
      *
      * @param numberOfCharacters
      *          The number of characters to be erased
@@ -57,7 +62,9 @@ public class Keyboard {
     }
 
     /**
-     * Relese a key
+     * (Relese a key)
+     *
+     * Releases the key passed as parameter.
      *
      * @param keycode
      *          The keycode of the key to be released. eg. "Enter"
@@ -69,7 +76,9 @@ public class Keyboard {
     }
 
     /**
-     * Type a keycode
+     * (Type a keycode)
+     *
+     * Types the keycode passed as parameter.
      *
      * @param keycode
      *      The keycode to be typed
@@ -81,10 +90,14 @@ public class Keyboard {
     }
 
     /**
-     * Erase All Text from a text area
+     * (Erase All Text from a text area)
+     *
+     * Erases all the text on the the text area passed as parameter.
      *
      * @param identifier
-     *      The node were you're going to write
+     *      (The node were you're going to write)
+     *
+     *      The text area to be cleared of text
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -94,10 +107,14 @@ public class Keyboard {
     }
 
     /**
-     * Erase All Text from a text field
+     * (Erase All Text from a text field)
+     *
+     * Erases all the text on the text field passed as parameter.
      *
      * @param identifier
-     *      The node were you're going to write
+     *      (The node were you're going to write)
+     *
+     *      The text field to be cleared of text
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -107,12 +124,18 @@ public class Keyboard {
     }
 
     /**
-     * Get Text from a text field
+     * (Get Text from a text field)
+     *
+     * Gets text from the text field passed as parameter.
      *
      * @param identifier
-     *      The node were you're going to write
+     *      (The node were you're going to write)
      *
-     * @return The text from textfield
+     *      The text field from which to get text
+     *
+     * @return (The text from textfield)
+     *
+     *          The text present in the text field
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
