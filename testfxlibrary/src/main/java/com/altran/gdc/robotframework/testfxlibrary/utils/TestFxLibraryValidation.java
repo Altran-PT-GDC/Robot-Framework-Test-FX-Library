@@ -28,5 +28,11 @@ public class TestFxLibraryValidation {
         }
     }
 
+    public static void validateIndex(Integer index){
+        if (index < 0) {
+            throw new IllegalArgumentException(String.format("Argument %s must be positive", index));
+        }
+    }
+
 }
 

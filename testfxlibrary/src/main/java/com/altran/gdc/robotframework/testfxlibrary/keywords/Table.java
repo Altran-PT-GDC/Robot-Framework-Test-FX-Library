@@ -1,6 +1,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -131,6 +132,9 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"ientifier", "rowIndex", "columnIndex"})
     public String getTableCellValue(String identifier, int rowIndex, int columnIndex){
+        TestFxLibraryValidation.validateIndex(rowIndex);
+        TestFxLibraryValidation.validateIndex(columnIndex);
+
         TableView table = new FxRobot().lookup(identifier).query();
 
         // Item row
@@ -158,6 +162,9 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"ientifier", "rowIndex", "columnIndex", "text"})
     public void tableCellShouldContain(String identifier, int rowIndex, int columnIndex, String text){
+        TestFxLibraryValidation.validateIndex(rowIndex);
+        TestFxLibraryValidation.validateIndex(columnIndex);
+
         TableView table = new FxRobot().lookup(identifier).query();
 
         // Item row
@@ -186,6 +193,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"ientifier", "columnIndex"})
     public List<String> getTableColumnValues(String identifier, int columnIndex){
+        TestFxLibraryValidation.validateIndex(columnIndex);
+
         TableView table = new FxRobot().lookup(identifier).query();
 
         // Item row
@@ -220,6 +229,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"ientifier", "rowIndex"})
     public List<String> getTableRowValues(String identifier, int rowIndex){
+        TestFxLibraryValidation.validateIndex(rowIndex);
+        
         TableView table = new FxRobot().lookup(identifier).query();
 
         // Item row
