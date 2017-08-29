@@ -9,17 +9,13 @@ import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatal
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
-import com.google.common.io.PatternFilenameFilter;
-import com.sun.javafx.robot.impl.FXRobotHelper;
-import com.sun.javafx.scene.SceneHelper;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.WritableImage;
+import javafx.stage.Stage;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
 
-import org.testfx.api.FxToolkit;
 import org.testfx.api.FxToolkitContext;
 
 
@@ -27,7 +23,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.nio.file.Files;
 import java.util.List;
 
 /**
@@ -40,6 +35,9 @@ public class Window {
     private String filePath;
     private int counter;
     private String fileName;
+
+    @Autowired
+    Misc misc;
 
     /**
      * Close the current focused window
@@ -121,6 +119,7 @@ public class Window {
      * Take a screenshot of the application
      *
      * @param format
+     *          The image format of the ScreenShots
      *
      */
     @RobotKeyword
@@ -131,7 +130,11 @@ public class Window {
 
         try {
 
-            BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+            Stage primaryStage = new FxToolkitContext().getPrimaryStageFuture().get();
+            Rectangle r = new Rectangle();
+            r.setBounds((int)primaryStage.getX(),(int)primaryStage.getY(),(int)primaryStage.getWidth(),(int)primaryStage.getHeight());
+
+            BufferedImage image = new Robot().createScreenCapture(r);
             String fp = filePath + fileName + counter + "." + format;
             ImageIO.write(image, format, new File(fp));
             counter++;
@@ -141,10 +144,15 @@ public class Window {
     }
 
     /**
+     *
      * Set the Path of the folder where you want to save the screenshots
+     * Delete the files with the same name on the directory set by the user
+     * Reset the counter of the Screenshots
      *
      * @param filePath
-     *
+     *          The Path of the folder where you want to save the ScreenShots
+     * @param fileName
+     *          The name that you want to give to the Screenshots
      */
     @RobotKeyword
     @ArgumentNames({"filePath" , "fileName"})
@@ -167,10 +175,8 @@ public class Window {
         File directory = new File(filePath);
 
         File[] files = directory.listFiles();
-        for (File f : files)
-        {
-            if (f.getName().startsWith(fileName))
-            {
+        for (File f : files) {
+            if (f.getName().startsWith(fileName)) {
                 f.delete();
             }
         }

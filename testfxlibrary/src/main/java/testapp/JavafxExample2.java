@@ -95,7 +95,7 @@ public class JavafxExample2 extends Application {
         final TextField name = new TextField();
         name.setText("Diogo");
 
-        final ObservableList<String> oList = FXCollections.observableArrayList("um", "dois", "tres", "quatro", "cinco", "seis", "sete");
+        final ObservableList<String> oList = FXCollections.observableArrayList("one", "two", "three", "four", "five", "Six", "Seven");
 
         final ListView<String> listView = new ListView<>();
         listView.setItems(oList);

@@ -39,3 +39,4 @@ Test Capture Screen
     Capture Screen     jpg
     Close Application
 
+
