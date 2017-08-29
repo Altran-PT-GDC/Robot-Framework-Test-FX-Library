@@ -1,0 +1,89 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+
+Test Get Table Column Count
+    Start Application  testapp.JavafxExample
+    ${count}    Get Table Column Count  \#table
+    Log     ${count}    WARN
+    Close Application
+
+Test Table Should Be Visible
+    Start Application  testapp.JavafxExample
+    Table Should Be Visible  \#table
+    Close Application
+
+Test Table Should Not Be Visible
+    Start Application  testapp.JavafxExample
+    Table Should Not Be Visible  \#table1
+    Close Application
+
+Test Get Table Row Count
+    Start Application  testapp.JavafxExample
+    ${count}    Get Table Row Count  \#table
+    Log     ${count}    WARN
+    Close Application
+
+Test Get Table Headers
+    Start Application  testapp.JavafxExample
+    ${count}    Get Table Headers  \#table
+    Log     ${count}    WARN
+    Close Application
+
+Test Get Table Values
+    Start Application  testapp.JavafxExample
+    ${count}    Get Table Values  \#table
+    Log     ${count}    WARN
+    Close Application
+
+Test Get Table Cell Value
+    Start Application  testapp.JavafxExample
+    ${count}    Get Table Cell Value  \#table   0   2
+    Log     ${count}    WARN
+    Close Application
+
+Test Table Cell Should Contain
+    Start Application  testapp.JavafxExample
+    Table Cell Should Contain   \#table   1   0     Jonh
+    Close Application
+
+
+Test Get Table Column Values
+    Start Application  testapp.JavafxExample
+    ${count}    Get Table Column Values  \#table    0
+    Log     ${count}    WARN
+    Close Application
+
+Test Get Table Row Values
+    Start Application  testapp.JavafxExample
+    ${count}    Get Table Row Values  \#table    0
+    Log     ${count}    WARN
+    Close Application
+
+
+Test Get Table Header Should Contain
+    Start Application  testapp.JavafxExample
+    Get Table Header Should Contain  \#table    Email
+    Close Application
+
+Test Get Table Should Contain
+    Start Application  testapp.JavafxExample
+    Get Table Should Contain  \#table    Dow
+    Close Application
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

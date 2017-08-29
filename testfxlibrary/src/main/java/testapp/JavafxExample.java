@@ -8,17 +8,28 @@ package testapp;
 
 
 import javafx.application.Application;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author pcosta
@@ -30,6 +41,11 @@ public class JavafxExample extends Application {
     private static final int COUNTERPANE_WIDTH = 200;
     private static final int COUNTERPANE_HEIGHT = 50;
     private static final int TEXTFIELD_PREF_WIDTH = 50;
+    private static final int WIDTH = 800;
+    private static final int HEIGHT = 600;
+
+
+
     /**
      * @param args the command line arguments
      */
@@ -39,6 +55,10 @@ public class JavafxExample extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        stage.setMaxHeight(HEIGHT);
+        stage.setMaxWidth(WIDTH);
+        stage.setWidth(WIDTH);
+        stage.setHeight(HEIGHT);
         stage.setScene(new Scene(new CounterPane(stage), COUNTERPANE_WIDTH, COUNTERPANE_HEIGHT));
         stage.show();
     }
@@ -47,6 +67,8 @@ public class JavafxExample extends Application {
     private static class CounterPane extends StackPane {
         private Stage stage;
         FileChooser ch = new FileChooser();
+        private final ObservableList<Person> data =
+                FXCollections.observableArrayList(new Person("A", "B", "s@s.s"));
 
         public CounterPane(Stage stage) {
             this.stage = stage;
@@ -87,11 +109,43 @@ public class JavafxExample extends Application {
                 }
             });
 
+            //
+            TableView table = new TableView();
+            table.setId("table");
+            TableColumn firstNameCol = new TableColumn("First Name");
+            firstNameCol.setCellValueFactory(
+                    new PropertyValueFactory<>("firstName"));
+
+            TableColumn lastNameCol = new TableColumn("Last Name");
+            lastNameCol.setCellValueFactory(
+                    new PropertyValueFactory<>("lastName"));
+
+            TableColumn emailCol = new TableColumn("Email");
+            emailCol.setCellValueFactory(
+                    new PropertyValueFactory<>("email"));
+
+            table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+
+            data.add(new Person("Jonh", "Dow", "jonhdoe@s.s"));
+            table.setItems(data);
+
+
+
+            TableView table1 = new TableView();
+            table1.setId("table1");
+            table1.setVisible(false);
+            TableColumn address = new TableColumn("Address");
+            TableColumn phone = new TableColumn("Phone");
+            table1.getColumns().addAll(address, phone);
+
             // create and add containers.
-            HBox box = new HBox(HBOX_SPACING, countButton, countValue, btnDisable, chooser);
+            HBox box = new HBox(HBOX_SPACING, countButton, countValue, btnDisable, chooser, table, table1);
             box.setPadding(new Insets(HBOX_INSETS));
             box.setAlignment(Pos.CENTER);
+
+
             getChildren().add(box);
+
         }
 
         private void showFileChooser(){

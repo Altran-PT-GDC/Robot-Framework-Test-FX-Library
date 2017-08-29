@@ -5,15 +5,17 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
+import javafx.stage.Stage;
 
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
-
 import org.testfx.api.FxToolkitContext;
-
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,6 +29,13 @@ import java.util.List;
  */
 @RobotKeywords
 public class Window {
+
+    private String filePath;
+    private int counter;
+    private String fileName;
+
+    @Autowired
+    Misc misc;
 
     /**
      * Close the current focused window
@@ -105,17 +114,71 @@ public class Window {
     }
 
     /**
+     * Take a screenshot of the application
      *
      * @param format
-     * @param filePath
+     *          The image format of the ScreenShots
      *
      */
-    public void takeScreenShot(String format, String filePath){
+    @RobotKeyword
+    @ArgumentNames({"format"})
+    public void captureScreen(String format){
+
+        TestFxLibraryValidation.validateArguments(format);
+
         try {
-            BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-            ImageIO.write(image, "png", new File("/screenshot.png"));
+
+            Stage primaryStage = new FxToolkitContext().getPrimaryStageFuture().get();
+            Rectangle r = new Rectangle();
+            r.setBounds((int)primaryStage.getX(),(int)primaryStage.getY(),(int)primaryStage.getWidth(),(int)primaryStage.getHeight());
+
+            BufferedImage image = new Robot().createScreenCapture(r);
+            String fp = filePath + fileName + counter + "." + format;
+            ImageIO.write(image, format, new File(fp));
+            System.out.println("*HTML* <img src=\"" + fp + "\">");
+            counter++;
+
         } catch (Exception e){
             throw new TestFxLibraryNonFatalException("Error taking screenshot");
+        }
+    }
+
+    /**
+     *
+     * Set the Path of the folder where you want to save the screenshots
+     * Delete the files with the same name on the directory set by the user
+     * Reset the counter of the Screenshots
+     *
+     * @param filePath
+     *          The Path of the folder where you want to save the ScreenShots
+     * @param fileName
+     *          The name that you want to give to the Screenshots
+     */
+    @RobotKeyword
+    @ArgumentNames({"filePath" , "fileName"})
+    public void setFilePath(String filePath, String fileName){
+
+        TestFxLibraryValidation.validateArguments(filePath, fileName);
+
+        try {
+            this.filePath = filePath;
+            this.fileName = fileName;
+            deleteFiles();
+            counter = 1;
+
+        } catch (Exception e){
+            throw new TestFxLibraryFatalException("Error setting the filePath");
+        }
+    }
+
+    public void deleteFiles(){
+        File directory = new File(filePath);
+
+        File[] files = directory.listFiles();
+        for (File f : files) {
+            if (f.getName().startsWith(fileName)) {
+                f.delete();
+            }
         }
     }
 
