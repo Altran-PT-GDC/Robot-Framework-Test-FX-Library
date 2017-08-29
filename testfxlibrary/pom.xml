@@ -132,7 +132,7 @@
                         <configuration>
                             <libdoc>
                                 <outputDirectory>${project.build.directory}</outputDirectory>
-                                <outputFile>${keywrds.class}.xml</outputFile>
+                                <outputFile>${keywords.class}.xml</outputFile>
                                 <libraryOrResourceFile>${keywords.class}</libraryOrResourceFile>
                             </libdoc>
                         </configuration>

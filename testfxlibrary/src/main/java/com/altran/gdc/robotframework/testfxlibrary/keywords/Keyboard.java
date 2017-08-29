@@ -21,12 +21,28 @@ import org.testfx.api.FxRobot;
 public class Keyboard {
 
     /**
-     * (Press a key)
+     *<b>Description:</b>This keyword presses the key passed as parameter.<br><br>
      *
-     * Presses the key passed as parameter.
+     *<b>Input Arguments:</b><br>
      *
-     * @param keycode
-     *          the keycode of the key to be pressed. eg. "Enter"
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>keycode</td>
+     *         <td>Yes</td>
+     *         <td>the keycode of the key to be pressed. eg. "Enter"</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -35,13 +51,28 @@ public class Keyboard {
     }
 
     /**
-     * (Erase Text from a text field)
+     * <b>Description:</b>This keyword erases text from a text field. The number of characters
+     * erased is passed as argument.<br><br>
      *
-     * Erases text from a text field. The number of characters erased is
-     * passed as parameter.
+     *<b>Input Arguments:</b><br>
      *
-     * @param numberOfCharacters
-     *          The number of characters to be erased
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>numberOfCharacters</td>
+     *         <td>Yes</td>
+     *         <td>The number of characters to be erased</td>
+     *         <td>int</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"numberOfCharacters"})
@@ -50,10 +81,27 @@ public class Keyboard {
     }
 
     /**
-     * Writes text on the focused node. (eg. a text field)
+     * <b>Description:</b>This keyword writes text on the focused node. (eg. a text field)<br><br>
      *
-     * @param text
-     *          The text to written
+     *<b>Input Arguments:</b><br>
+     *
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>text</td>
+     *         <td>Yes</td>
+     *         <td>The text to written</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"text"})
@@ -62,12 +110,27 @@ public class Keyboard {
     }
 
     /**
-     * (Relese a key)
+     * <b>Description:</b>This keyword releases the key passed as argument.<br><br>
      *
-     * Releases the key passed as parameter.
+     *<b>Input Arguments:</b><br>
      *
-     * @param keycode
-     *          The keycode of the key to be released. eg. "Enter"
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>keycode</td>
+     *         <td>Yes</td>
+     *         <td>The keycode of the key to be released. eg. "Enter"</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -76,12 +139,28 @@ public class Keyboard {
     }
 
     /**
-     * (Type a keycode)
+     *<b>Description:</b>This keyword types the keycode passed as argument.<br><br>
      *
-     * Types the keycode passed as parameter.
+     *<b>Input Arguments:</b><br>
      *
-     * @param keycode
-     *      The keycode to be typed
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>keycode</td>
+     *         <td>Yes</td>
+     *         <td>The keycode to be typed</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     *
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -90,14 +169,28 @@ public class Keyboard {
     }
 
     /**
-     * (Erase All Text from a text area)
+     *<b>Description:</b>This keyword erases all the text on the the text area passed as argument.<br><br>
      *
-     * Erases all the text on the the text area passed as parameter.
+     *<b>Input Arguments:</b><br>
      *
-     * @param identifier
-     *      (The node were you're going to write)
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>The text area to be cleared of text</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      *
-     *      The text area to be cleared of text
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -107,14 +200,27 @@ public class Keyboard {
     }
 
     /**
-     * (Erase All Text from a text field)
      *
-     * Erases all the text on the text field passed as parameter.
+     *<b>Description:</b>This keyword erases all the text on the the text field passed as argument.<br><br>
      *
-     * @param identifier
-     *      (The node were you're going to write)
+     *<b>Input Arguments:</b><br>
      *
-     *      The text field to be cleared of text
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>The text field to be cleared of text</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -124,18 +230,44 @@ public class Keyboard {
     }
 
     /**
-     * (Get Text from a text field)
+     *<b>Description:</b>This keyword gets text from the text field passed as argument.<br><br>
      *
-     * Gets text from the text field passed as parameter.
+     *<b>Input Arguments:</b><br>
      *
-     * @param identifier
-     *      (The node were you're going to write)
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>The text field from which to get text</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      *
-     *      The text field from which to get text
+     * <br><br>
      *
-     * @return (The text from textfield)
+     * <b>Output Arguments:</b><br>
      *
-     *          The text present in the text field
+     *<table>
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Summary</th>
+     *         <th>Values</th>
+     *     </tr>
+     *     <tr>
+     *         <td>text</td>
+     *         <td>The text present in the text field</td>
+     *         <td>string</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
