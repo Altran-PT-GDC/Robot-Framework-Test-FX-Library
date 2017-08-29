@@ -7,17 +7,15 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
-
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.stage.Stage;
+
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
-
 import org.testfx.api.FxToolkitContext;
-
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -137,7 +135,9 @@ public class Window {
             BufferedImage image = new Robot().createScreenCapture(r);
             String fp = filePath + fileName + counter + "." + format;
             ImageIO.write(image, format, new File(fp));
+            System.out.println("*HTML* <img src=\"" + fp + "\">");
             counter++;
+
         } catch (Exception e){
             throw new TestFxLibraryNonFatalException("Error taking screenshot");
         }
