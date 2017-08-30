@@ -30,10 +30,10 @@ Test Select From Combo Box By Position
 
 Test Select From List View By Text
     Start Application  testapp.JavafxExample2
-    Select From List View By Text  \#comboBox   two
+    Select From List View By Text  \#listView   two
     Close Application
 
 Test Select From List View By Position
-    Start Application  testapp.JavafxExample
-    Select From List View By Position  \#comboBox2  1
+    Start Application  testapp.JavafxExample2
+    Select From List View By Position  \#listView   1
     Close Application
