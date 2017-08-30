@@ -35,5 +35,5 @@ Test Select From List View By Text
 
 Test Select From List View By Position
     Start Application  testapp.JavafxExample2
-    Select From List View By Position  \#listView  1
+    Select From List View By Position  \#listView   1
     Close Application
