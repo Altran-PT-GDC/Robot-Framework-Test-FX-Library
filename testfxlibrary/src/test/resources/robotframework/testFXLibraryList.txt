@@ -15,3 +15,25 @@ Test Get List Items From ListView
     ${count}    Get List Items From ListView  \#listView
     Log     ${count}    WARN
     Close Application
+
+
+Test Select From Combo Box By Text
+    Start Application  testapp.JavafxExample
+    Select From Combo Box By Text  \#comboBox   JD
+    Close Application
+
+Test Select From Combo Box By Position
+    Start Application  testapp.JavafxExample
+    Select From Combo Box By Position  \#comboBox   1
+    Close Application
+
+
+Test Select From List View By Text
+    Start Application  testapp.JavafxExample2
+    Select From List View By Text  \#comboBox   two
+    Close Application
+
+Test Select From List View By Position
+    Start Application  testapp.JavafxExample
+    Select From List View By Position  \#comboBox2  1
+    Close Application
