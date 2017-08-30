@@ -8,9 +8,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
-
 import java.util.function.Predicate;
-
 import static org.hamcrest.Matchers.contains;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.*;

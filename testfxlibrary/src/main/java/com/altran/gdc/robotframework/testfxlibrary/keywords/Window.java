@@ -14,6 +14,8 @@ import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkitContext;
 
@@ -33,6 +35,8 @@ public class Window {
     private String filePath;
     private int counter;
     private String fileName;
+    private static final Logger LOG = LoggerFactory.getLogger(Window.class);
+    private static final String ERROR_MSG = "Error";
 
     @Autowired
     Misc misc;
@@ -45,6 +49,7 @@ public class Window {
         try {
             new FxRobot().closeCurrentWindow();
         } catch (Exception e){
+            LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryNonFatalException("Error Close Window");
         }
     }
@@ -109,6 +114,7 @@ public class Window {
         try {
             new FxToolkitContext().getPrimaryStageFuture().get();
         } catch (Exception e){
+            LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryNonFatalException("Error get main window");
         }
     }
@@ -139,6 +145,7 @@ public class Window {
             counter++;
 
         } catch (Exception e){
+            LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryNonFatalException("Error taking screenshot");
         }
     }
@@ -167,6 +174,7 @@ public class Window {
             counter = 1;
 
         } catch (Exception e){
+            LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryFatalException("Error setting the filePath");
         }
     }

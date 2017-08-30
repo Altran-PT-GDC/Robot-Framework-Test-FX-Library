@@ -20,6 +20,7 @@ import java.util.List;
 public class Table {
 
     private static final Logger LOG = LoggerFactory.getLogger(Table.class);
+    private static String ERROR_MSG = "The table not contains the text %s";
     /**
      * Return the number of columns for specific table
      *
@@ -290,8 +291,8 @@ public class Table {
                 try{
                     data = (String) col.getCellObservableValue(it.next()).getValue();
                 }catch (Exception e) {
-                    LOG.error(String.format("The table not contains the text %s", text),e);
-                    throw new TestFxLibraryNonFatalException(String.format("The table not contains the text %s", text));
+                    LOG.error(String.format(ERROR_MSG, text),e);
+                    throw new TestFxLibraryNonFatalException(String.format(ERROR_MSG, text));
                 }
 
                 if (data.contains(text)) {
@@ -303,7 +304,7 @@ public class Table {
         }
 
         if(!flag){
-            throw new TestFxLibraryNonFatalException(String.format("The table not contains the text %s", text));
+            throw new TestFxLibraryNonFatalException(String.format(ERROR_MSG, text));
         }
     }
 }

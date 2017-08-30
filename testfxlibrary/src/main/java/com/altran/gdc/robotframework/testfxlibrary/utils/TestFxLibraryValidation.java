@@ -7,6 +7,17 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TestFxLibraryValidation {
 
+    private TestFxLibraryValidation(){
+    }
+
+    /**
+     * Validate arguments. This method validate:
+     *      If String is null or empty
+     *      If Boolean is null
+     *
+     * @param args
+     *      The arguments to validate
+     */
     public static void validateArguments(Object... args){
         for(Object obj : args){
             checkNotNull(obj, String.format("Argument %s is null", obj ));
@@ -22,12 +33,24 @@ public class TestFxLibraryValidation {
         }
 
 
+    /**
+     * Validate if the parameter timeout is bigger than 0.
+     *
+     * @param timeout
+     *      The timeout parameter
+     */
     public static void validateTimeout(Integer timeout){
         if (timeout < 0) {
             throw new IllegalArgumentException(String.format("Argument %s must be positive", timeout));
         }
     }
 
+    /**
+     * Validate if the index used to get certain element from list bigger than 0.
+     *
+     * @param index
+     *      The parameter index
+     */
     public static void validateIndex(Integer index){
         if (index < 0) {
             throw new IllegalArgumentException(String.format("Argument %s must be positive", index));
