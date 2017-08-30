@@ -414,7 +414,6 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     * <br>
      * @return
      * : Attribute value in a string
      * <br><br>
@@ -437,13 +436,36 @@ public class Mouse {
     }
 
     /**
+     * <b>Description:</b>This keyword sets a given checkbox state passed as the first parameter. The second
+     * parameter is a boolean which defines the state<br>
      *
      * @param identifier
-     *          The identifier of the CheckBox
+     * : The identifier of the CheckBox
      * @param booleanValue
-     *          Boolean value to set the CheckBox selection
+     * : Boolean value to set the CheckBox selection
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>booleanValue</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      */
-
     @RobotKeyword
     @ArgumentNames({"identifier" , "booleanValue"})
     public void setCheckBoxState(String identifier, Boolean booleanValue) {
@@ -460,11 +482,29 @@ public class Mouse {
     }
 
     /**
+     * <b>Description:</b>This keyword gets the boolean value state of a given checkbox passed as the
+     * parameter<br>
      *
      * @param identifier
-     *          The identifier of the CheckBox
+     * : The identifier of the CheckBox
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      * @return
-     *          Boolean value if the checkbox is selected (true) or not (false).
+     * : Boolean value if the checkbox is selected (true) or not (false).
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -482,10 +522,25 @@ public class Mouse {
     }
 
     /**
-     * Test if component is Enabled
+     * <b>Description:</b>This keyword tests if a given checkbox passed as the parameter is enabled<br>
      *
      * @param identifier
-     *          The identifier of the Component
+     * : The identifier of the Component
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -506,10 +561,25 @@ public class Mouse {
     }
 
     /**
-     * Test if component is disabled
+     * <b>Description:</b>This keyword tests if a given checkbox passed as the parameter is disabled<br>
      *
      * @param identifier
-     *          The identifier of the Component
+     * : The identifier of the checkbox
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -530,14 +600,34 @@ public class Mouse {
     }
 
     /**
-     * Select function from a popup menu of an element
+     * <b>Description:</b>This keyword selects a function from a popup menu of an element<br>
      *
      * @param identifier
-     *          The identifier of the CheckBox
+     * : The identifier of the element
      * @param functionText
-     *          The name of the funciton that you want to select
+     * : The name of the function that you want to select
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>functionText</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      */
-
     @RobotKeyword
     @ArgumentNames({"identifier", "functionText"})
     public void selectFromPopupMenu(String identifier, String functionText) {
