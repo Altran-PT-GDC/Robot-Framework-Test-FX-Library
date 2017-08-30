@@ -166,9 +166,25 @@ public class Keyboard {
     }
 
     /**
-     * Verify if the text contained in a TextArea is equals to the text you want to validate. The test fails if the text is diferent
+     * (Get Text from a text area)
      *
-     * @return (The text from textfield)
+     * Gets text from the text area passed as parameter.
+     *
+     * @param identifier
+     *      (The node were you're going to write)
+     *
+     *      The text field from which to get text
+     *          The identifier of the TextArea you want to validate
+     * @param textToValidate
+     *          The text you want to validate
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "textToValidate"})
+    public void textAreaTextShouldBe(String identifier, String textToValidate) {
+
+        misc.waitUntilPageContains(identifier);
+
+        try{
 
             TextArea node = new FxRobot().lookup(identifier).query();
             String nodeText = node.getText();
