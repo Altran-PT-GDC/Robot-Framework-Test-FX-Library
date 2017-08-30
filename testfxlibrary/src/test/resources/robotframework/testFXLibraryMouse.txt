@@ -28,7 +28,7 @@ Test Drag & Drop
     Start Application  testapp.JavafxExample2
     Drag    .scroll-bar
     Move By     -50   -50
-    Drop    .scroll-bar
+    Drop
     Close Application
 
 Test Get Node List

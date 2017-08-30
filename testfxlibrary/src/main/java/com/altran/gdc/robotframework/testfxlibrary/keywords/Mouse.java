@@ -89,12 +89,9 @@ public class Mouse {
      * Drop a node that is being draged.
      *
      *
-     * @param identifier
-     *            The identifier of the node
      */
     @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public void drop(String identifier) {
+    public void drop() {
         new FxRobot().drop();
     }
 
@@ -105,7 +102,6 @@ public class Mouse {
      *            The identifier of the node
      */
     @RobotKeyword
-    @ArgumentNames({"identifier"})
     public void dropTo(String identifier) {
         new FxRobot().dropTo(identifier);
     }
