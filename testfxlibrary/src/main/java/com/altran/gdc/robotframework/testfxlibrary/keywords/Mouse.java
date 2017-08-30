@@ -251,7 +251,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"xCoordinate", "yCoordinate"})
     public void moveBy(double xCoordinate, double yCoordinate) {
-        new FxRobot().moveBy(0, 0, Motion.DIRECT);
+        new FxRobot().moveBy(xCoordinate, yCoordinate, Motion.DIRECT);
     }
 
     /**
@@ -338,7 +338,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollLeft(int amount) {
-        new FxRobot().scroll(0, HorizontalDirection.LEFT);
+        new FxRobot().scroll(amount, HorizontalDirection.LEFT);
     }
 
     /**
@@ -367,7 +367,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollRight(int amount) {
-        new FxRobot().scroll(0, HorizontalDirection.RIGHT);
+        new FxRobot().scroll(amount, HorizontalDirection.RIGHT);
     }
 
     /**
@@ -396,7 +396,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollUp(int amount) {
-        new FxRobot().scroll(0, VerticalDirection.UP);
+        new FxRobot().scroll(amount, VerticalDirection.UP);
     }
 
     /**
@@ -425,7 +425,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollDown(int amount) {
-        new FxRobot().scroll(0, VerticalDirection.DOWN);
+        new FxRobot().scroll(amount, VerticalDirection.DOWN);
     }
     /**
      * Get Node list

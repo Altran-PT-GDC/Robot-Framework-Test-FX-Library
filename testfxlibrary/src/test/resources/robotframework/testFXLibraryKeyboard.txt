@@ -31,3 +31,18 @@ Test Write
     Click On Component    \#countValue
     Write    test
     Close Application
+
+Test Text Field Text Should Be
+    Start Application  testapp.JavafxExample2
+    Text Field Text Should Be    \#text    OLA TEST
+    Close Application
+
+Test Text Area Text Should Be
+    Start Application  testapp.JavafxExample2
+    Text Area Text Should Be    \#textArea    PARA APAGAR
+    Close Application
+
+Test Label Text Should Be
+    Start Application  testapp.JavafxExample2
+    Label Text Should Be    \#label    Label to test
+    Close Application
