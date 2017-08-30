@@ -36,31 +36,28 @@ public class Mouse {
     private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
 
     /**
+     * <b>Description:</b>This keyword clicks on an identifier<br>
      *
-     *<b>Description:</b>This keyword clicks on an identifier<br><br>
-     *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The identifier of the node
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The identifier of the node</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
+     * <br>
      * @throws TimeoutException
-     *      If something goes wrong
-     *
+     * : If something goes wrong
      */
     @RobotKeywordOverload
     public void clickOnComponent(String identifier) throws TimeoutException {
@@ -68,37 +65,37 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword clicks on an identifier using the node key as second parameter
-     * when provided<br><br>
+     * <b>Description:</b>This keyword clicks on an identifier using the node key as second parameter
+     * when provided<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The identifier of the node
+     * @param nodeKey
+     * : The node clicked on
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The identifier of the nod</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>nodeKey</td>
      *         <td>No</td>
-     *         <td>The node clicked on</td>
      *         <td>string</td>
      *         <td>null</td>
      *     </tr>
      * </table>
-     *
+     * <br>
      * @throws TimeoutException
-     *      If something goes wrong
+     * : If something goes wrong
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "nodeKey=null"})
@@ -113,28 +110,25 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword double clicks on a node using the identifier as parameter<br><br>
+     * <b>Description:</b>This keyword double clicks on a node using the identifier as parameter<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The identifier of the node
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The identifier of the node</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -143,28 +137,25 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword drags a node using the identifier as argument<br><br>
+     * <b>Description:</b>This keyword drags a node using the identifier as argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The identifier of the node
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The identifier of the node</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -182,28 +173,25 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword drops a node that is being dragged to a node identified as argument<br><br>
+     * <b>Description:</b>This keyword drops a node that is being dragged to a node identified as argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The identifier of the node
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The identifier of the node</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -212,41 +200,33 @@ public class Mouse {
     }
 
     /**
-     * Move the mouse to a x,y coordinate
+     * <b>Description:</b>This keyword moves the mouse to an x, y location identified as the two parameters.<br>
      *
      * @param xCoordinate
-     *            The x coordinate
+     * : The x coordinate
      * @param yCoordinate
-     *            The y coordinate
-     *
-     *<b>Description:</b>This keyword moves the mouse to an x, y location identified as the two parameters.<br><br>
-     *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * : The y coordinate
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>xCoordinate</td>
      *         <td>No</td>
-     *         <td>The identifier of the node</td>
      *         <td>double</td>
      *         <td>0</td>
      *     </tr>
      *     <tr>
      *         <td>yCoordinate</td>
      *         <td>Yes</td>
-     *         <td>The identifier of the node</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
+     *         <td>double</td>
+     *         <td>0</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"xCoordinate", "yCoordinate"})
@@ -255,27 +235,25 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword moves the mouse to a node identified by the argument<br><br>
+     * <b>Description:</b>This keyword moves the mouse to a node identified by the argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The identifier of the node
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The identifier of the node</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -284,27 +262,25 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword right clicks on a node identified as the argument<br><br>
+     * <b>Description:</b>This keyword right clicks on a node identified as the argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The identifier of the node
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The identifier of the node</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -313,27 +289,25 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword scrolls left by the amount passed as argument<br><br>
+     * <b>Description:</b>This keyword scrolls left by the amount passed as argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param amount
+     * : The amount to be scrolled
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>amount</td>
      *         <td>No</td>
-     *         <td>The amount to be scrolled</td>
      *         <td>int</td>
      *         <td>0</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"amount"})
@@ -342,27 +316,24 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword scrolls right by the amount passed as argument<br><br>
+     * <b>Description:</b>This keyword scrolls right by the amount passed as argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param amount
+     * : The amount to be scrolled
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>amount</td>
      *         <td>No</td>
-     *         <td>The amount to be scrolled</td>
      *         <td>int</td>
      *         <td>0</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"amount"})
@@ -371,27 +342,25 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword scrolls up by the amount passed as argument<br><br>
+     * <b>Description:</b>This keyword scrolls up by the amount passed as argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param amount
+     * : The amount to be scrolled
+     * <br><br>
+     * <table summary ="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>amount</td>
      *         <td>No</td>
-     *         <td>The amount to be scrolled</td>
      *         <td>int</td>
      *         <td>0</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"amount"})
@@ -400,40 +369,67 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword scrolls down by the amount passed as argument<br><br>
+     * <b>Description:</b>This keyword scrolls down by the amount passed as argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param amount
+     * : The amount to be scrolled
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>amount</td>
      *         <td>No</td>
-     *         <td>The amount to be scrolled</td>
      *         <td>int</td>
      *         <td>0</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollDown(int amount) {
         new FxRobot().scroll(amount, VerticalDirection.DOWN);
     }
+
     /**
-     * Get Node list
+     * <b>Description:</b>This keyword gets the node list within the node passed as parameter.<br>
      *
      * @param identifier
-     *          The node identifier that has the list to be returned
+     * : The node from where you want to get list of nodes
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br>
      * @return
-     *          The nodes
+     * : Attribute value in a string
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Return</th>
+     *         <th>Values</th>
+     *     </tr>
+     *     <tr>
+     *         <td>attribute</td>
+     *         <td></td>
+     *         <td>string</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

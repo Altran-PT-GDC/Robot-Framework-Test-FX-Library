@@ -30,28 +30,26 @@ public class Keyboard {
     Misc misc;
 
     /**
-     *<b>Description:</b>This keyword presses the key passed as parameter.<br><br>
+     * <b>Description:</b>This keyword presses the key passed as parameter.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param keycode
+     * : The keycode of the key to be pressed. eg. "Enter"
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>keycode</td>
      *         <td>Yes</td>
-     *         <td>the keycode of the key to be pressed. eg. "Enter"</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -61,27 +59,25 @@ public class Keyboard {
 
     /**
      * <b>Description:</b>This keyword erases text from a text field. The number of characters
-     * erased is passed as argument.<br><br>
+     * erased is passed as argument.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param numberOfCharacters
+     * : The number of characters to be erased
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>numberOfCharacters</td>
      *         <td>Yes</td>
-     *         <td>The number of characters to be erased</td>
      *         <td>int</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"numberOfCharacters"})
@@ -90,22 +86,21 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword writes text on the focused node. (eg. a text field)<br><br>
+     * <b>Description:</b>This keyword writes text on the focused node. (eg. a text field)<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param text
+     * : The text to written
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>text</td>
      *         <td>Yes</td>
-     *         <td>The text to written</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
@@ -119,22 +114,21 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword releases the key passed as argument.<br><br>
+     * <b>Description:</b>This keyword releases the key passed as argument.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param keycode
+     * : The keycode of the key to be released. eg. "Enter"
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>keycode</td>
      *         <td>Yes</td>
-     *         <td>The keycode of the key to be released. eg. "Enter"</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
@@ -148,28 +142,25 @@ public class Keyboard {
     }
 
     /**
-     *<b>Description:</b>This keyword types the keycode passed as argument.<br><br>
+     * <b>Description:</b>This keyword types the keycode passed as argument.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param keycode
+     * : The keycode to be typed
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>keycode</td>
      *         <td>Yes</td>
-     *         <td>The keycode to be typed</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -178,28 +169,25 @@ public class Keyboard {
     }
 
     /**
-     *<b>Description:</b>This keyword erases all the text on the the text area passed as argument.<br><br>
+     * <b>Description:</b>This keyword erases all the text on the the text area passed as argument.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The text area to be cleared of text
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The text area to be cleared of text</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -209,23 +197,21 @@ public class Keyboard {
     }
 
     /**
+     * <b>Description:</b>This keyword erases all the text on the the text field passed as argument.<br>
      *
-     *<b>Description:</b>This keyword erases all the text on the the text field passed as argument.<br><br>
-     *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The text field to be cleared of text
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The text field to be cleared of text</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>

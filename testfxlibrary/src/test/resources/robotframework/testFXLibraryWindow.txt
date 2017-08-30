@@ -31,7 +31,7 @@ Test Window
 
 Test Capture Screen
     Start Application  testapp.JavafxExample2
-    ${fp}=  Set Variable    C:\\Users\\Altran\\Documents\\Test_ScreenShot\\
+    ${fp}=  Set Variable    C:\\Users\\Altran\\Documents\\ScreenSHOTS
     ${fname}=   Set Variable    ScreenShot
     Set File Path   ${fp}   ${fname}
     Capture Screen     bmp

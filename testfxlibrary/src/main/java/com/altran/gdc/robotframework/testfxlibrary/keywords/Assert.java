@@ -27,29 +27,29 @@ public class Assert {
     /**
      * <b>Description:</b> Verifies if a given node identified as the first parameter contains
      * a child node identified as the second parameter. If the child node is
-     * not present in the parent node an error message is displayed.<br><br>
+     * not present in the parent node an error message is displayed.<br>
      *
-     * <b>Input Arguments:</b><br>
-     *
-     * <table>
+     * @param identifier
+     * : The node you want to validate
+     * @param identifierToValidate
+     * : The node you want to verify
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The node you want to validate</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>identifierToValidate</td>
      *         <td>Yes</td>
-     *         <td>The node you want to verify</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
@@ -69,34 +69,35 @@ public class Assert {
     /**
      * <b>Description:</b> Verifies if a node identified as the first parameter contains text
      * passed as the second parameter. If the node does not contain the given
-     * text an error message is displayed.<br><br>
+     * text an error message is displayed.<br>
      *
-     * <b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The node you want to validate
+     * @param textToValidate
+     * : The text you want to validate
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The node you want to validate</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>textToValidate</td>
      *         <td>Yes</td>
-     *         <td>The text you want to validate</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *
      * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier","textToValidate"})
@@ -105,28 +106,28 @@ public class Assert {
     }
 
     /**
-     *<b>Description:</b> Verifies if a node identified as the parameter is enabled. If The
-     *given node is disabled an error message is displayed.<br><br>
+     * <b>Description:</b> Verifies if a node identified as the parameter is enabled. If The
+     * given node is disabled an error message is displayed.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The node you want to verify
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The node you want to verify</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *
      *</table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -136,23 +137,22 @@ public class Assert {
     }
 
     /**
-     *<b>Description:</b>Verifies if a node identified as the parameter is disabled. If the
-     *given node is enabled an error message is displayed.<br><br>
+     * <b>Description:</b>Verifies if a node identified as the parameter is disabled. If the
+     * given node is enabled an error message is displayed.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The node you want to verify
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The node you want to verify</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
@@ -167,28 +167,28 @@ public class Assert {
     }
 
     /**
-     *<b>Description:</b>Verifies if a node identified as the parameter is visible. If the
-     * given node is not visible an error message is displayed.<br><br>
+     * <b>Description:</b>Verifies if a node identified as the parameter is visible. If the
+     * given node is not visible an error message is displayed.<br>
      *
-     *<b>Input Arguments:</b><br>
+     * @param identifier
+     * : The node you want to verify
      *
-     *<table>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The node you want to verify</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *
      * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -197,38 +197,39 @@ public class Assert {
 
     }
 
+
     /**
-     *<b>Description:</b>Verifies if the node passed as the second parameter is a child
+     * <b>Description:</b>Verifies if the node passed as the second parameter is a child
      * to the node passed as the first parameter. If the node identified as
      * the second parameter is not a child of the node identified as the
-     * first parameter an error message is displayed.<br><br>
+     * first parameter an error message is displayed.<br>
      *
-     *<b>Input Arguments:</b><br>
+     * @param identifier
+     * : The node you want to verify as parent
+     * @param identifierToValidate
+     * : The node you want to verify as child
      *
-     *<table>
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The node you want to verify as parent</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>identifierToValidate</td>
      *         <td>Yes</td>
-     *         <td>The node you want to verify as child</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})

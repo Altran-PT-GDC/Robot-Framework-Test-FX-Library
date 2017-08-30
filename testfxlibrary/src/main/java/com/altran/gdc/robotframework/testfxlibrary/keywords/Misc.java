@@ -43,32 +43,27 @@ public class Misc {
     private Logging log;
 
     /**
-     * @param className
-     *
-     *
      * <b>Description:</b>This keyword launches JavaFX application. The classname
      * passed as argument must extend javafx.application.Application.<br>
-     * ATENTTION: The class must be added to the classpath beforehand.<br><br>
+     * ATENTTION: The class must be added to the classpath beforehand.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param className
+     * : The name of the class that extends javafx.application.Application to be launched
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>className</td>
      *         <td>Yes</td>
-     *         <td>The name of the class that extends javafx.application.Application to be launched</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"className"})
@@ -85,36 +80,35 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword launches Java FX application from external JAR.<br>
+     * <b>Description:</b>This keyword launches Java FX application from external JAR.<br>
      * The classname given must extend javafx.application.Application.<br>
-     * ATENTTION: The JAR must be added to the classpath beforehand.<br><br>
+     * ATENTTION: The JAR must be added to the classpath beforehand.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param applicationJAR
+     * : The path of the JAR that contains the application to be launched
+     * @param className
+     * : The name of the class im the JAR that extends javafx.application. Application to be launched
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>applicationJAR</td>
      *         <td>Yes</td>
-     *         <td>The path of the JAR that contains the application to be launched</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>className</td>
      *         <td>Yes</td>
-     *         <td>The name of the class im the JAR that extends javafx.application. Application to be launched.</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"applicationJAR", "className"})
@@ -183,27 +177,25 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword pauses the execution during the period defined in the argument
-     * in milliseconds.<br><br>
+     * in milliseconds.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param milliseconds
+     * : The number of milliseconds to pause the execution
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>milliseconds</td>
      *         <td>Yes</td>
-     *         <td>The number of milliseconds to pause the execution</td>
      *         <td>int</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"milliseconds"})
@@ -212,35 +204,34 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword implements a waiting period for an element to become visible within a
-     * timeout passed as second argument.<br><br>
+     * <b>Description:</b>This keyword implements a waiting period for an element to become visible within a
+     * timeout passed as second argument.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -262,28 +253,26 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword implements a waiting period for an element to become visible within the default
-     * timeout.<br><br>
+     * <b>Description:</b>This keyword implements a waiting period for an element to become visible within the default
+     * timeout.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeywordOverload
     public void waitUntilElementIsVisible(String identifier) {
@@ -298,35 +287,33 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword implements a waiting period for an element to disappear within
-     * a timeout passed as second argument.<br><br>
+     * a timeout passed as second argument.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -348,28 +335,25 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword implements a waiting period for an element to disappear within the default
-     * timeout.<br><br>
+     * timeout.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeywordOverload
     public void waitUntilElementIsNotVisible(String identifier) {
@@ -383,43 +367,43 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
+     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
      * argument contains a given text passed as the second argument. The waiting period is defined as the third
-     * argument<br><br>
+     * argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param textToValidate
+     * : The Text you want to validate
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>textToValidate</td>
      *         <td>Yes</td>
-     *         <td>The Text you want to validate</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
@@ -441,35 +425,33 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument contains a given text passed as the second argument. The waiting period is default<br><br>
+     * argument contains a given text passed as the second argument. The waiting period is default<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param textToValidate
+     * : The Text you want to validate
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>textToValidate</td>
      *         <td>Yes</td>
-     *         <td>The Text you want to validate</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeywordOverload
     public void waitUntilElementContains(String identifier, String textToValidate) {
@@ -485,42 +467,41 @@ public class Misc {
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
      * argument does not contains a given text passed as the second argument. The waiting period is defined as the
-     * third argument<br><br>
+     * third argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param textToValidate
+     * : The Text you want to validate
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameters</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>textToValidate</td>
      *         <td>Yes</td>
-     *         <td>The Text you want to validate</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
@@ -541,42 +522,34 @@ public class Misc {
     }
 
     /**
-     * Wait until an element has some text on it with the default timeout
+     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
+     * argument does not contains a given text passed as the second argument. The waiting period is default<br>
      *
      * @param identifier
-     *          The name of the element that you are going to test
+     * : The name of the element that you are going to test
      * @param textToValidate
-     *          The Text you want to validate
-     *
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument does not contains a given text passed as the second argument. The waiting period is default<br><br>
-     *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * : The Text you want to validate
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>textToValidate</td>
      *         <td>Yes</td>
-     *         <td>The Text you want to validate</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeywordOverload
     public void waitUntilElementDoesNotContains(String identifier, String textToValidate) {
@@ -591,29 +564,29 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument is disabled. The waiting period is defined as the second argument<br><br>
+     * argument is disabled. The waiting period is defined as the second argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
@@ -638,29 +611,26 @@ public class Misc {
     }
 
     /**
-     *
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument is disabled. The waiting period is default<br><br>
+     * argument is disabled. The waiting period is default<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeywordOverload
     public void waitUntilElementIsDisabled(String identifier) {
@@ -675,35 +645,33 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument is enabled. The waiting period is defined as the second argument<br><br>
+     * argument is enabled. The waiting period is defined as the second argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -724,30 +692,26 @@ public class Misc {
     }
 
     /**
-     *
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument is enabled. The waiting period is default<br><br>
+     * argument is enabled. The waiting period is default<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeywordOverload
     public void waitUntilElementIsEnabled(String identifier) {
@@ -758,36 +722,34 @@ public class Misc {
     }
 
     /**
-     *  <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
-     *  as the first argument is enabled. The waiting period is defined as the second argument<br><br>
+     * <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
+     *  as the first argument is enabled. The waiting period is defined as the second argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -810,28 +772,25 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
-     *  as the first argument is enabled. The waiting period is default<br><br>
+     *  as the first argument is enabled. The waiting period is default<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeywordOverload
     public void waitUntilPageContains(String identifier) {
@@ -847,35 +806,33 @@ public class Misc {
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
      *  as the first argument is deleted from the application. The waiting period is defined as the
-     *  second argument<br><br>
+     *  second argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -897,28 +854,26 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
-     *  as the first argument is deleted from the application. The waiting period is default<br><br>
+     * <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
+     *  as the first argument is deleted from the application. The waiting period is default<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      *
      */
     @RobotKeywordOverload
@@ -935,34 +890,33 @@ public class Misc {
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed
      *  as the first argument is created and present on the application. The waiting period is defined as the
-     *  second argument<br><br>
+     *  second argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -999,27 +953,25 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed
-     * as the argument is created and present on the application. The waiting period is default<br><br>
+     * as the argument is created and present on the application. The waiting period is default<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeywordOverload
     public void waitUntilPageContainsElement(String identifier) {
@@ -1041,35 +993,33 @@ public class Misc {
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed
      * as the first argument is deleted from the application. The waiting period is defined as the
-     * second argument<br><br>
+     * second argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>20</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -1106,28 +1056,25 @@ public class Misc {
 
     /**
      * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed
-     * as the argument is deleted from the application. The waiting period is default<br><br>
+     * as the argument is deleted from the application. The waiting period is default<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     *
      */
     @RobotKeywordOverload
     public void waitUntilPageDoesNotContainElement(String identifier) {
@@ -1147,51 +1094,47 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword gets the Nth element from a node list<br><br>
+     * <b>Description:</b>This keyword gets the Nth element from a node list<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The node to search
+     * @param nthElement
+     * : The index of the element to return from the list
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The node to search</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>nthElement</td>
      *         <td>Yes</td>
-     *         <td>The index of the element to return from the list</td>
      *         <td>int</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
+     * <br>
+     * @return
+     * : The Nth node from the list
      * <br><br>
-     *
-     * <b>Output Arguments:</b><br>
-     *
-     *<table>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
-     *         <th>Summary</th>
+     *         <th>Return</th>
      *         <th>Values</th>
      *     </tr>
      *     <tr>
      *         <td>node</td>
-     *         <td>The Nth node from the list</td>
      *         <td>string</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "nthElement"})
@@ -1200,40 +1143,36 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword gets the inner element from a given node passed as argument<br><br>
+     * <b>Description:</b>This keyword gets the inner element from a given node passed as argument<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The name of the element that you are going to test
+     * <br><br>
+     * <table summary ="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The name of the element that you are going to test</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
+     * <br>
+     * @return
+     * : The inner element of the provided node
      * <br><br>
-     *
-     * <b>Output Arguments:</b><br>
-     *
-     *<table>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
-     *         <th>Summary</th>
+     *         <th>Return</th>
      *         <th>Values</th>
      *     </tr>
      *     <tr>
      *         <td>element</td>
-     *         <td>The inner element of the provided node</td>
      *         <td>string</td>
      *     </tr>
      * </table>
@@ -1268,30 +1207,28 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword sets the default timeout of wait Until Support wait method<br><br>
+     * <b>Description:</b>This keyword sets the default timeout of wait Until Support wait method<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param timeout
+     * : The time limit to complete the test
+     * <br><br>
+     * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>timeout</td>
      *         <td>No</td>
-     *         <td>The time limit to complete the test</td>
      *         <td>int</td>
      *         <td>0</td>
      *     </tr>
      * </table>
-     *
+     * <br>
      * @throws IOException
-     *      If something goes wrong
-     *
+     * : If something goes wrong
      */
     @RobotKeyword()
     @ArgumentNames({"timeout"})
@@ -1304,52 +1241,48 @@ public class Misc {
     }
 
     /**
-     *<b>Description:</b>This keyword gets an attribute value of an element.<br><br>
+     * <b>Description:</b>This keyword gets an attribute value of an element.<br>
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
+     * @param identifier
+     * : The node where you want to get the attribute
+     * @param attribute
+     * : The method name of the attribute that you want
+     * <br><br>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
      *         <th>Mandatory</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *         <th>Default</th>
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
      *         <td>Yes</td>
-     *         <td>The node where you want to get the attribute</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      *     <tr>
      *         <td>attribute</td>
      *         <td>Yes</td>
-     *         <td>The method name of the attribute that you want</td>
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
+     * <br>
+     * @return
+     * : Attribute value in a string
      * <br><br>
-     *
-     * <b>Output Arguments:</b><br>
-     *
-     *<table>
+     * <table summary="">
      *     <tr>
      *         <th>Argument</th>
-     *         <th>Summary</th>
      *         <th>Values</th>
      *     </tr>
      *     <tr>
      *         <td>attribute</td>
-     *         <td>attribute value in a string</td>
      *         <td>string</td>
      *     </tr>
      * </table>
      */
-
     @RobotKeyword()
     @ArgumentNames({"identifier" , "attribute"})
     public String getComponentAtrribute(String identifier, String attribute) {
