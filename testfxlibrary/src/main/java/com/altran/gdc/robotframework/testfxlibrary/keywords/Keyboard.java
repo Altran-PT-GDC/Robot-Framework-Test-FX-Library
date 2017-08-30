@@ -105,7 +105,6 @@ public class Keyboard {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"text"})
@@ -133,7 +132,6 @@ public class Keyboard {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -225,9 +223,14 @@ public class Keyboard {
     }
 
     /**
-     * Verify if the text contained in a TextField is equals to the text you want to validate. The test fails if the text is diferent
+     * (Get Text from a text field)
+     *
+     * Gets text from the text field passed as parameter.
      *
      * @param identifier
+     *      (The node were you're going to write)
+     *
+     *      The text field from which to get text
      *          The identifier of the TextField you want to validate
      * @param textToValidate
      *          The text you want to validate
@@ -253,10 +256,15 @@ public class Keyboard {
     }
 
     /**
-     * Verify if the text contained in a TextArea is equals to the text you want to validate. The test fails if the text is diferent
+     * (Get Text from a text area)
+     *
+     * Gets text from the text area passed as parameter.
      *
      * @param identifier
-     *          The identifier of the TextField you want to validate
+     *      (The node were you're going to write)
+     *
+     *      The text field from which to get text
+     *          The identifier of the TextArea you want to validate
      * @param textToValidate
      *          The text you want to validate
      */
@@ -283,7 +291,7 @@ public class Keyboard {
     /**
      * Verify if the text contained in a Label is equals to the text you want to validate. The test fails if the text is diferent
      *
-     * @param identifier
+     *          The text present in the text field
      *          The identifier of the Label you want to validate
      * @param textToValidate
      *          The text you want to validate

@@ -8,10 +8,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
-import org.robotframework.javalib.annotation.RobotKeywordOverload;
-
 import java.util.function.Predicate;
-
 import static org.hamcrest.Matchers.contains;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.*;
@@ -56,11 +53,7 @@ public class Assert {
      *
      * </table>
      */
-    @RobotKeyword("*Description:* Verifies if a given node identified as the first parameter contains"
-            + " a child node identified as the second parameter. If the child node is"
-            + "not present in the parent node an error message is displayed. \n\n"
-            + "| *Argument* | *Mandatory* | *Summary*                     | *Values* | *Default* |\n"
-            + "| identifier | Yes         | The node you want to validate | <string> | N/A       |\n")
+    @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})
     public void verifyThatContains(String identifier, String identifierToValidate) {
         verifyThat(identifier, (Predicate) contains( identifierToValidate ));
@@ -97,7 +90,6 @@ public class Assert {
      *     </tr>
      *
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier","textToValidate"})
@@ -127,7 +119,6 @@ public class Assert {
      *     </tr>
      *
      *</table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

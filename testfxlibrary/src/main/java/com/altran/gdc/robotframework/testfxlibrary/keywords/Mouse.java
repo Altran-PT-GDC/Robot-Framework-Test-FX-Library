@@ -194,7 +194,6 @@ public class Mouse {
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"identifier"})
     public void dropTo(String identifier) {
         new FxRobot().dropTo(identifier);
     }

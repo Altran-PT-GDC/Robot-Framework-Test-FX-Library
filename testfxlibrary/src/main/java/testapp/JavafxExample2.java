@@ -98,6 +98,7 @@ public class JavafxExample2 extends Application {
         final ObservableList<String> oList = FXCollections.observableArrayList("one", "two", "three", "four", "five", "Six", "Seven");
 
         final ListView<String> listView = new ListView<>();
+        listView.setId("listView");
         listView.setItems(oList);
 
         final VBox rightVbox = new VBox();

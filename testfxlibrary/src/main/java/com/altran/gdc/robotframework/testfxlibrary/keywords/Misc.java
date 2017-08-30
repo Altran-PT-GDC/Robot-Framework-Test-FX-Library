@@ -158,9 +158,8 @@ public class Misc {
     }
 
     /**
-     *
-     * <b>Description:</b> This keyword closes the Java FX application. The primary
-     * stage is hidden and cleaned-up.<br><br>
+     * Closes the Java FX application.
+     * The primary stage is hidden and cleaned-up.
      *
      * @throws TestFxLibraryFatalException
      *      If something goes wrong
@@ -324,7 +323,7 @@ public class Misc {
 
         try{
 
-        new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isVisible()), timeout);
+            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isVisible()), timeout);
 
         } catch (IllegalArgumentException | NullPointerException e){
 
@@ -460,7 +459,7 @@ public class Misc {
 
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
 
-            waitUntilElementContains(identifier, textToValidate, waitTimeout);
+        waitUntilElementContains(identifier, textToValidate, waitTimeout);
 
     }
 
@@ -558,7 +557,7 @@ public class Misc {
 
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
 
-            waitUntilElementDoesNotContains(identifier, textToValidate, waitTimeout);
+        waitUntilElementDoesNotContains(identifier, textToValidate, waitTimeout);
 
     }
 
@@ -639,7 +638,7 @@ public class Misc {
 
         int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
 
-            waitUntilElementIsDisabled(identifier, waitTimeout);
+        waitUntilElementIsDisabled(identifier, waitTimeout);
 
     }
 
@@ -1199,7 +1198,6 @@ public class Misc {
      *      The index of the element to return from the list
      * @return
      *      The Node
-     *
      */
     public Node getNode(String identifier, int nthElement) {
         Set<Node> nodeList = new FxRobot().lookup(identifier).queryAll();
