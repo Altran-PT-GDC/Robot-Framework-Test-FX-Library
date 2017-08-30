@@ -112,7 +112,10 @@ public class JavafxExample2 extends Application {
         check.setId("check");
         check.setVisible(true);
 
-        rightVbox.getChildren().addAll(scrollPane, check);
+        final Label label = new Label("Label to test");
+        label.setId("label");
+
+        rightVbox.getChildren().addAll(scrollPane, check, label);
 
         componentLayout.setCenter(listPane);
         componentLayout.setRight(rightVbox);

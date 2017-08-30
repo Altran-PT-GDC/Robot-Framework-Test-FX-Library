@@ -1247,7 +1247,7 @@ public class Misc {
         return key;
     }
 
-    private Node getNode(String identifier) {
+    public Node getNode(String identifier) {
         return new FxRobot().lookup(identifier).query();
     }
 
@@ -1262,7 +1262,7 @@ public class Misc {
      *      The Node
      *
      */
-    private Node getNode(String identifier, int nthElement) {
+    public Node getNode(String identifier, int nthElement) {
         Set<Node> nodeList = new FxRobot().lookup(identifier).queryAll();
         return  Iterables.get(nodeList, nthElement);
     }
@@ -1355,7 +1355,6 @@ public class Misc {
     public String getComponentAtrribute(String identifier, String attribute) {
 
         TestFxLibraryValidation.validateArguments(identifier, attribute);
-
 
         Node node = getNode(identifier);
 

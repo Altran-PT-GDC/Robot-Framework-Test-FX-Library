@@ -34,9 +34,9 @@ Test Capture Screen
     ${fp}=  Set Variable    C:\\Users\\Altran\\Documents\\Test_ScreenShot\\
     ${fname}=   Set Variable    ScreenShot
     Set File Path   ${fp}   ${fname}
-    Capture Screen     jpg
-    Capture Screen     jpg
-    Capture Screen     jpg
+    Capture Screen     bmp
+    Capture Screen     bmp
+    Capture Screen     bmp
     Close Application
 
 

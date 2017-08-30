@@ -5,10 +5,14 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
@@ -19,6 +23,11 @@ import org.testfx.api.FxRobot;
  */
 @RobotKeywords
 public class Keyboard {
+
+    private static final String DIFERENT_TEXT = "The text is diferent";
+
+    @Autowired
+    Misc misc;
 
     /**
      *<b>Description:</b>This keyword presses the key passed as parameter.<br><br>
@@ -230,50 +239,87 @@ public class Keyboard {
     }
 
     /**
-     *<b>Description:</b>This keyword gets text from the text field passed as argument.<br><br>
+     * Verify if the text contained in a TextField is equals to the text you want to validate. The test fails if the text is diferent
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>The text field from which to get text</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br><br>
-     *
-     * <b>Output Arguments:</b><br>
-     *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *     </tr>
-     *     <tr>
-     *         <td>text</td>
-     *         <td>The text present in the text field</td>
-     *         <td>string</td>
-     *     </tr>
-     * </table>
-     *
+     * @param identifier
+     *          The identifier of the TextField you want to validate
+     * @param textToValidate
+     *          The text you want to validate
      */
     @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public String getText(String identifier) {
-        TextField textField = new FxRobot().lookup(identifier).query();
-        return textField.getText();
+    @ArgumentNames({"identifier", "textToValidate"})
+    public void textFieldTextShouldBe(String identifier, String textToValidate) {
+
+        misc.waitUntilPageContains(identifier);
+
+        try{
+
+            TextField node = new FxRobot().lookup(identifier).query();
+            String nodeText = node.getText();
+
+            if(!nodeText.equals(textToValidate)){
+                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT);
+            }
+
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * Verify if the text contained in a TextArea is equals to the text you want to validate. The test fails if the text is diferent
+     *
+     * @param identifier
+     *          The identifier of the TextField you want to validate
+     * @param textToValidate
+     *          The text you want to validate
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "textToValidate"})
+    public void textAreaTextShouldBe(String identifier, String textToValidate) {
+
+        misc.waitUntilPageContains(identifier);
+
+        try{
+
+            TextArea node = new FxRobot().lookup(identifier).query();
+            String nodeText = node.getText();
+
+            if(!nodeText.equals(textToValidate)){
+                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT);
+            }
+
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * Verify if the text contained in a Label is equals to the text you want to validate. The test fails if the text is diferent
+     *
+     * @param identifier
+     *          The identifier of the Label you want to validate
+     * @param textToValidate
+     *          The text you want to validate
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "textToValidate"})
+    public void labelTextShouldBe(String identifier, String textToValidate) {
+
+        misc.waitUntilPageContains(identifier);
+
+        try{
+
+            Label node = new FxRobot().lookup(identifier).query();
+            String nodeText = node.getText();
+
+            if(!nodeText.equals(textToValidate)){
+                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT);
+            }
+
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw new TestFxLibraryFatalException(e);
+        }
     }
 
 }

@@ -16,13 +16,6 @@ Test Click On Choice Box
     Test Fruits with Orange
     Close Application
 
-Test Get Text
-    Start Application  testapp.JavafxExample2
-    Click On Component    .text-field
-    ${text}    Get Text    .text-field
-    Log     ${text}     WARN
-    Close Application
-
 Test Scroll Down
     Start Application  testapp.JavafxExample2
     Click On Component    .scroll-pane
