@@ -30,28 +30,12 @@ public class Keyboard {
     Misc misc;
 
     /**
-     *<b>Description:</b>This keyword presses the key passed as parameter.<br><br>
+     * (Press a key)
      *
-     *<b>Input Arguments:</b><br>
+     * Presses the key passed as parameter.
      *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>keycode</td>
-     *         <td>Yes</td>
-     *         <td>the keycode of the key to be pressed. eg. "Enter"</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *
-     * </table>
-     *
+     * @param keycode
+     *          the keycode of the key to be pressed. eg. "Enter"
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -60,28 +44,13 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword erases text from a text field. The number of characters
-     * erased is passed as argument.<br><br>
+     * (Erase Text from a text field)
      *
-     *<b>Input Arguments:</b><br>
+     * Erases text from a text field. The number of characters erased is
+     * passed as parameter.
      *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>numberOfCharacters</td>
-     *         <td>Yes</td>
-     *         <td>The number of characters to be erased</td>
-     *         <td>int</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
+     * @param numberOfCharacters
+     *          The number of characters to be erased
      */
     @RobotKeyword
     @ArgumentNames({"numberOfCharacters"})
@@ -90,27 +59,10 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword writes text on the focused node. (eg. a text field)<br><br>
+     * Writes text on the focused node. (eg. a text field)
      *
-     *<b>Input Arguments:</b><br>
-     *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>text</td>
-     *         <td>Yes</td>
-     *         <td>The text to written</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
+     * @param text
+     *          The text to written
      */
     @RobotKeyword
     @ArgumentNames({"text"})
@@ -119,27 +71,12 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword releases the key passed as argument.<br><br>
+     * (Relese a key)
      *
-     *<b>Input Arguments:</b><br>
+     * Releases the key passed as parameter.
      *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>keycode</td>
-     *         <td>Yes</td>
-     *         <td>The keycode of the key to be released. eg. "Enter"</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
+     * @param keycode
+     *          The keycode of the key to be released. eg. "Enter"
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -148,28 +85,12 @@ public class Keyboard {
     }
 
     /**
-     *<b>Description:</b>This keyword types the keycode passed as argument.<br><br>
+     * (Type a keycode)
      *
-     *<b>Input Arguments:</b><br>
+     * Types the keycode passed as parameter.
      *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>keycode</td>
-     *         <td>Yes</td>
-     *         <td>The keycode to be typed</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     *
+     * @param keycode
+     *      The keycode to be typed
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -178,28 +99,14 @@ public class Keyboard {
     }
 
     /**
-     *<b>Description:</b>This keyword erases all the text on the the text area passed as argument.<br><br>
+     * (Erase All Text from a text area)
      *
-     *<b>Input Arguments:</b><br>
+     * Erases all the text on the the text area passed as parameter.
      *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>The text area to be cleared of text</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
+     * @param identifier
+     *      (The node were you're going to write)
      *
-     *
+     *      The text area to be cleared of text
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -209,27 +116,14 @@ public class Keyboard {
     }
 
     /**
+     * (Erase All Text from a text field)
      *
-     *<b>Description:</b>This keyword erases all the text on the the text field passed as argument.<br><br>
+     * Erases all the text on the text field passed as parameter.
      *
-     *<b>Input Arguments:</b><br>
+     * @param identifier
+     *      (The node were you're going to write)
      *
-     *<table>
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Summary</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>The text field to be cleared of text</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
+     *      The text field to be cleared of text
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -239,9 +133,14 @@ public class Keyboard {
     }
 
     /**
-     * Verify if the text contained in a TextField is equals to the text you want to validate. The test fails if the text is diferent
+     * (Get Text from a text field)
+     *
+     * Gets text from the text field passed as parameter.
      *
      * @param identifier
+     *      (The node were you're going to write)
+     *
+     *      The text field from which to get text
      *          The identifier of the TextField you want to validate
      * @param textToValidate
      *          The text you want to validate
@@ -269,18 +168,7 @@ public class Keyboard {
     /**
      * Verify if the text contained in a TextArea is equals to the text you want to validate. The test fails if the text is diferent
      *
-     * @param identifier
-     *          The identifier of the TextField you want to validate
-     * @param textToValidate
-     *          The text you want to validate
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "textToValidate"})
-    public void textAreaTextShouldBe(String identifier, String textToValidate) {
-
-        misc.waitUntilPageContains(identifier);
-
-        try{
+     * @return (The text from textfield)
 
             TextArea node = new FxRobot().lookup(identifier).query();
             String nodeText = node.getText();
@@ -297,7 +185,7 @@ public class Keyboard {
     /**
      * Verify if the text contained in a Label is equals to the text you want to validate. The test fails if the text is diferent
      *
-     * @param identifier
+     *          The text present in the text field
      *          The identifier of the Label you want to validate
      * @param textToValidate
      *          The text you want to validate

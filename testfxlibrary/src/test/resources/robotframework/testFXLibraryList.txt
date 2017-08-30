@@ -1,0 +1,17 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+
+Test Get List Items From ComboBox
+    Start Application  testapp.JavafxExample
+    ${count}    Get List Items From ComboBox  \#comboBox
+    Log     ${count}    WARN
+    Close Application
+
+Test Get List Items From ListView
+    Start Application  testapp.JavafxExample2
+    ${count}    Get List Items From ListView  \#listView
+    Log     ${count}    WARN
+    Close Application

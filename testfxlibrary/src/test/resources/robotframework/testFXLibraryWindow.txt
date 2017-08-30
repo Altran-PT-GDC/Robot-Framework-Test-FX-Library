@@ -29,14 +29,39 @@ Test Window
     Window   example Gui
     Close Application
 
-Test Capture Screen
-    Start Application  testapp.JavafxExample2
-    ${fp}=  Set Variable    C:\\Users\\Altran\\Documents\\Test_ScreenShot\\
-    ${fname}=   Set Variable    ScreenShot
-    Set File Path   ${fp}   ${fname}
-    Capture Screen     bmp
-    Capture Screen     bmp
-    Capture Screen     bmp
-    Close Application
+#Test Capture Screen
+#    Start Application  testapp.JavafxExample2
+#    ${fp}=  Set Variable    %{USERPROFILE}\\Documents\\Test_ScreenShot\\
+#    ${fname}=   Set Variable    ScreenShot
+#    Set File Path   ${fp}   ${fname}
+#    Capture Screen     jpg
+#    Capture Screen     jpg
+#    Capture Screen     jpg
+#    Close Application
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

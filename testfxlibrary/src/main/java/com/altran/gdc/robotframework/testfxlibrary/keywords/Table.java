@@ -230,6 +230,7 @@ public class Table {
     @ArgumentNames({"ientifier", "rowIndex"})
     public List<String> getTableRowValues(String identifier, int rowIndex){
         TestFxLibraryValidation.validateIndex(rowIndex);
+        
         TableView table = new FxRobot().lookup(identifier).query();
 
         // Item row
