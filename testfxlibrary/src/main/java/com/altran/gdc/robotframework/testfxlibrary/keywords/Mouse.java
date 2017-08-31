@@ -530,6 +530,57 @@ public class Mouse {
     }
 
     /**
+     * Test if checkbox is selected
+     *
+     * @param identifier
+     *          The identifier of the CheckBox
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void checkBoxShouldBeSelected(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        CheckBox checkBox = new FxRobot().lookup(identifier).query();
+
+        try{
+            if(!checkBox.isSelected()){
+                LOG.info("CheckBox is unselected!");
+                throw new TestFxLibraryNonFatalException("CheckBox is unselected!");
+            }
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
+
+    }
+
+    /**
+     * Test if checkbox is selected
+     *
+     * @param identifier
+     *          The identifier of the CheckBox
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void checkBoxShouldNotBeSelected(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        CheckBox checkBox = new FxRobot().lookup(identifier).query();
+
+        try{
+            if(checkBox.isSelected()){
+                LOG.info("CheckBox is selected!");
+                throw new TestFxLibraryNonFatalException("CheckBox is selected!");
+            }
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
+    }
+
+    /**
      * Select function from a popup menu of an element
      *
      * @param identifier
@@ -551,6 +602,5 @@ public class Mouse {
         } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
         }
-
     }
 }

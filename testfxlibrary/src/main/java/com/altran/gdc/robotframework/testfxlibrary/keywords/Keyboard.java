@@ -247,7 +247,7 @@ public class Keyboard {
             String nodeText = node.getText();
 
             if(!nodeText.equals(textToValidate)){
-                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT);
+                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT + " - " + nodeText);
             }
 
         } catch (IllegalArgumentException | NullPointerException e){
@@ -280,7 +280,7 @@ public class Keyboard {
             String nodeText = node.getText();
 
             if(!nodeText.equals(textToValidate)){
-                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT);
+                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT + " - " + nodeText);
             }
 
         } catch (IllegalArgumentException | NullPointerException e){
@@ -308,7 +308,7 @@ public class Keyboard {
             String nodeText = node.getText();
 
             if(!nodeText.equals(textToValidate)){
-                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT);
+                throw new TestFxLibraryNonFatalException(DIFERENT_TEXT + " - " + nodeText);
             }
 
         } catch (IllegalArgumentException | NullPointerException e){
