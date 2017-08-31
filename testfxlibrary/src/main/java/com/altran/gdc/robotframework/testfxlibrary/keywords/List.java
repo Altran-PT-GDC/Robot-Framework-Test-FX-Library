@@ -13,13 +13,28 @@ import java.util.ArrayList;
 public class List {
 
     /**
-     * Get values from ListView.
+     * <b>Description:</b> This keyword returns a list with the values in a ListView passed as parameter.<br>
      *
      * @param identifier
-     *      The id of the ListView
+     * : The id of the ListView
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      *
      * @return
-     *      The list of values
+     *  The list of values
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -37,13 +52,35 @@ public class List {
     }
 
     /**
-     * Select item from ListView by text.
+     * <b>Description:</b> This keyword selects an item in a ListView by text. The ListView is identified in the first
+     * parameter and the second parameter is the text that defines the item to be selected.<br>
      *
      * @param identifier
-     *      The id of the ListView.
-     *
+     * : The id of the ListView
      * @param text
-     *      The text to get the selected item
+     * : The text to get the selected item
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>text</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "text"})
@@ -62,16 +99,39 @@ public class List {
     }
 
     /**
-     * Select item from ListView by position.
+     * <b>Description:</b> This keyword selects an item in a ListView by position. The ListView is identified in the
+     * first parameter. The position that defines the item to be selected is defined in the second parameter,
+     * a value of -1 clears the selection.<br>
      *
      * @param identifier
-     *      The id of the ListView
-     *
+     * : The id of the ListView
      * @param position
-     *      The position to get the selected item
+     * : The position to get the selected item
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>posiotion</td>
+     *         <td>Yes</td>
+     *         <td>int (values from 1 to max number of items)</td>
+     *         <td>-1</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
-    @ArgumentNames({"identifier", "text"})
+    @ArgumentNames({"identifier", "position"})
     public void selectFromListViewByPosition(String identifier, int position){
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateIndex(position);

@@ -68,6 +68,9 @@ public class Mouse {
      * <b>Description:</b>This keyword clicks on an identifier using the node key as second parameter
      * when provided<br>
      *
+     * @throws TimeoutException
+     *  If something goes wrong
+     *
      * @param identifier
      * : The identifier of the node
      * @param nodeKey
@@ -75,7 +78,7 @@ public class Mouse {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -93,9 +96,6 @@ public class Mouse {
      *         <td>null</td>
      *     </tr>
      * </table>
-     * <br>
-     * @throws TimeoutException
-     * : If something goes wrong
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "nodeKey=null"})
@@ -164,7 +164,7 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b>This keyword drops a node that is being dragged<br><br>
+     *<b>Description:</b> This keyword drops a node that is being dragged<br>
      *
      */
     @RobotKeyword
@@ -180,7 +180,7 @@ public class Mouse {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -194,6 +194,7 @@ public class Mouse {
      * </table>
      */
     @RobotKeyword
+    @ArgumentNames({"identifier"})
     public void dropTo(String identifier) {
         new FxRobot().dropTo(identifier);
     }

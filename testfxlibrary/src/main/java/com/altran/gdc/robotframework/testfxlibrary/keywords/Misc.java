@@ -158,8 +158,7 @@ public class Misc {
     }
 
     /**
-     * Closes the Java FX application.
-     * The primary stage is hidden and cleaned-up.
+     * <b>Description:</b>This keyword closes the Java FX application. The primary stage is hidden and cleaned up.<br>
      *
      * @throws TestFxLibraryFatalException
      *      If something goes wrong
@@ -1224,9 +1223,8 @@ public class Misc {
      *         <td>0</td>
      *     </tr>
      * </table>
-     * <br>
      * @throws IOException
-     * : If something goes wrong
+     *  If something goes wrong
      */
     @RobotKeyword()
     @ArgumentNames({"timeout"})
@@ -1248,7 +1246,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -1266,20 +1264,9 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     * <br>
+     *
      * @return
      * : Attribute value in a string
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Values</th>
-     *     </tr>
-     *     <tr>
-     *         <td>attribute</td>
-     *         <td>string</td>
-     *     </tr>
-     * </table>
      */
     @RobotKeyword()
     @ArgumentNames({"identifier" , "attribute"})

@@ -223,17 +223,35 @@ public class Keyboard {
     }
 
     /**
-     * (Get Text from a text field)
-     *
-     * Gets text from the text field passed as parameter.
+     * <b>Description:</b>This keyword validates the text in a text field. The text filed is identified in the first
+     * parameter and the text to validate is defined in the second parameter. If the text in the text field does not
+     * match the text passed as a parameter a TestFxLibraryNonFatalException in thrown.<br>
      *
      * @param identifier
-     *      (The node were you're going to write)
-     *
-     *      The text field from which to get text
-     *          The identifier of the TextField you want to validate
+     * : The identifier of the text field you want to verify.
      * @param textToValidate
-     *          The text you want to validate
+     * : The text you want to validate
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>textToValidate</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate"})
@@ -256,17 +274,35 @@ public class Keyboard {
     }
 
     /**
-     * (Get Text from a text area)
-     *
-     * Gets text from the text area passed as parameter.
+     * <b>Description:</b>This keyword validates the text in a text area. The text area is identified in the first
+     * parameter and the text to validate is defined in the second parameter. If the text in the text area does not
+     * match the text passed as a parameter a TestFxLibraryNonFatalException in thrown.<br>
      *
      * @param identifier
-     *      (The node were you're going to write)
-     *
-     *      The text field from which to get text
-     *          The identifier of the TextArea you want to validate
+     * : The identifier of the text area you want to verify.
      * @param textToValidate
-     *          The text you want to validate
+     * : The text you want to validate
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>textToValidate</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate"})
@@ -289,12 +325,36 @@ public class Keyboard {
     }
 
     /**
-     * Verify if the text contained in a Label is equals to the text you want to validate. The test fails if the text is diferent
+     * <b>Description:</b>This keyword validates the text in a label. The label is identified in the first
+     * parameter and the text to validate is defined in the second parameter. If the text in the label does not
+     * match the text passed as a parameter a TestFxLibraryNonFatalException in thrown.<br>
      *
-     *          The text present in the text field
-     *          The identifier of the Label you want to validate
+     * @param identifier
+     * : The identifier of the label you want to verify.
      * @param textToValidate
-     *          The text you want to validate
+     * : The text you want to validate
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Argument</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>textToValidate</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate"})

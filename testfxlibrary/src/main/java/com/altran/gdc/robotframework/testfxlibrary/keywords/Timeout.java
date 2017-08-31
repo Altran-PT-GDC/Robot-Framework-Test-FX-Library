@@ -16,13 +16,36 @@ public class Timeout {
     };
 
     /**
-     * Sets the timeout used for waiting a component.
+     * <b>Description:</b>This keyword sets the timeout used for waiting for a component. The timeout name is passed
+     * as the first parameter and the timeout in seconds is defined by the second parameter.<br>
      *
      * @param timeoutName
-     *      The timeout name
+     * : The timeout name
      *
      * @param timeoutInSeconds
-     *      The timeout in seconds
+     * : The timeout in seconds
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>timeoutName</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>timeoutInSeconds</td>
+     *         <td>Yes</td>
+     *         <td>int (greater than 0)</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"timeoutName", "timeoutInSeconds"})

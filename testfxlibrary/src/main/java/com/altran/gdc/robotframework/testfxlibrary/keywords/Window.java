@@ -42,7 +42,8 @@ public class Window {
     Misc misc;
 
     /**
-     * Close the current focused window
+     * <b>Description:</b>This keyword closes the current focused window. If an error occurs
+     * a TestFxLibraryNonFatalException is thrown.<br>
      */
     @RobotKeyword
     public void closeCurrentWindow() {
@@ -55,10 +56,10 @@ public class Window {
     }
 
     /**
-     * List all target windows
+     * <b>Description:</b>This keyword returns a list of all target windows.<br>
      *
      * @return
-     *          A list of javafx.stage.Window
+     * : A list of javafx.stage.Window
      */
     @RobotKeyword
     public List<javafx.stage.Window> listTargetWindows() {
@@ -66,10 +67,10 @@ public class Window {
     }
 
     /**
-     * List all Windows
+     * <b>Description:</b>This keyword returns a list of all windows.<br>
      *
      * @return
-     *          A list of javafx.stage.Window
+     * : A list of javafx.stage.Window
      */
     @RobotKeyword
     public List<javafx.stage.Window> listWindows() {
@@ -78,10 +79,25 @@ public class Window {
     }
 
     /**
-     * Target a scpecific window
+     * <b>Description:</b>This keyword targets a specific window identified through the parameter.<br>
      *
      * @param identifier
-     *          the identifier of the window
+     * : the identifier of the window
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -90,10 +106,25 @@ public class Window {
     }
 
     /**
-     * Choose window
+     * <b>Description:</b>This keyword chooses a specific window identified through the parameter.<br>
      *
      * @param identifier
-     *          the identifier of the window8
+     * : the identifier of the window
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -102,10 +133,9 @@ public class Window {
     }
 
     /**
-     * Select the Main Window
+     * <b>Description:</b>This keyword selects the main window. If an error occurs
+     * a TestFxLibraryNonFatalException is thrown.<br>
      *
-     * Example:
-     * Select Main Window
      */
     @RobotKeyword("Select the mais Window\n\n" +
             "Example:\n" +
@@ -120,11 +150,26 @@ public class Window {
     }
 
     /**
-     * Take a screenshot of the application
+     * <b>Description:</b>This keyword takes a screenshot of the application. The file extension is defined by
+     * the parameter. If an error occurs a TestFxLibraryNonFatalException is thrown.<br>
      *
      * @param format
-     *          The image format of the ScreenShots
-     *
+     * : The image format of the ScreenShots
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>format</td>
+     *         <td>Yes</td>
+     *         <td>string (jpg, png, gif, bmp, wbmp)</td>
+     *         <td>png</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"format"})
@@ -151,15 +196,36 @@ public class Window {
     }
 
     /**
-     *
-     * Set the Path of the folder where you want to save the screenshots
-     * Delete the files with the same name on the directory set by the user
-     * Reset the counter of the Screenshots
+     * <b>Description:</b>This keyword sets the path of the folder where you want to save the screenshots, deletes
+     * the files with the same name on the directory set by the user and resets the counter of the Screenshots. If
+     * an error occurs a TestFxLibraryNonFatalException is thrown.<br>
      *
      * @param filePath
-     *          The Path of the folder where you want to save the ScreenShots
+     * : The Path of the folder where you want to save the ScreenShots
      * @param fileName
-     *          The name that you want to give to the Screenshots
+     * : The name that you want to give to the Screenshots
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>filePath</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>fileName</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"filePath" , "fileName"})
