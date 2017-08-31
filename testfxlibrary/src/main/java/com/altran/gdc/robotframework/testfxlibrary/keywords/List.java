@@ -144,4 +144,22 @@ public class List {
 
     }
 
+    /**
+     * Returns the items that's currently selected in the list.
+     *
+     * @param identifier
+     *      The id of the ListView
+     *
+     * @return
+     *      The items selected
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public java.util.List<String> getSelectedItemsFromList(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        ListView listView = new FxRobot().lookup(identifier).query();
+        return listView.getSelectionModel().getSelectedItems();
+    }
+
 }

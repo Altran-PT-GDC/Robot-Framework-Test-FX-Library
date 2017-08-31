@@ -493,7 +493,7 @@ public class Table {
      */
     @RobotKeyword
     @ArgumentNames({"ientifier", "text"})
-    public void getTableHeaderShouldContain(String identifier, String text) {
+    public void tableHeaderShouldContain(String identifier, String text) {
         TableView table = new FxRobot().lookup(identifier).query();
         ObservableList<TableColumn> columns = table.getColumns();
 
@@ -544,7 +544,7 @@ public class Table {
      */
     @RobotKeyword
     @ArgumentNames({"ientifier", "text"})
-    public void getTableShouldContain(String identifier, String text) {
+    public void tableShouldContain(String identifier, String text) {
         TableView table = new FxRobot().lookup(identifier).query();
 
         // Item row
