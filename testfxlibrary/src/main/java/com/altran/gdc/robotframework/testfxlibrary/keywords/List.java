@@ -44,9 +44,9 @@ public class List {
         ListView listView = new FxRobot().lookup(identifier).query();
 
         java.util.List<String> list = new ArrayList<>();
-        listView.getItems().forEach((item) -> {
-            list.add((String) item);
-        });
+        listView.getItems().forEach(item ->
+            list.add((String) item)
+        );
 
         return list;
     }
@@ -91,7 +91,7 @@ public class List {
 
         new FxRobot().clickOn(listView);
 
-        listView.getItems().forEach((item) -> {
+        listView.getItems().forEach(item -> {
             if(((String)item).equals(text)){
                 listView.getSelectionModel().select(item);
             }

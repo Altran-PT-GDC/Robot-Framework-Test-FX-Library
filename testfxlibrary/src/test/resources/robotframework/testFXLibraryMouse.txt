@@ -71,6 +71,19 @@ Test Component Sould Be Disabled
     CheckBox Should Be Disabled   .check-box
     Close Application
 
+Test CheckBox Sould Be Selected
+
+    Start Application  testapp.JavafxExample2
+    Set CheckBox State    .check-box   true
+    CheckBox Should Be Selected   .check-box
+    Close Application
+
+Test CheckBox Should Not Be Selected
+
+    Start Application  testapp.JavafxExample2
+    CheckBox Should Not Be Selected   .check-box
+    Close Application
+
 *** Keywords ***
 
 Test Fruits with ${fruit}

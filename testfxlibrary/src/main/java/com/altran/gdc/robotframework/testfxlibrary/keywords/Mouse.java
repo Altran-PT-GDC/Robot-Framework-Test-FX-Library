@@ -601,7 +601,92 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword selects a function from a popup menu of an element<br>
+     * <b>Description:</b> This keyword tests if a checkbox passed as parameter is selected. If this checkbox is not
+     * selected a TestFxLibraryFatalException is thrown.<br>
+     *
+     * @param identifier
+     * : The identifier of the CheckBox
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void checkBoxShouldBeSelected(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        CheckBox checkBox = new FxRobot().lookup(identifier).query();
+
+        try{
+            if(!checkBox.isSelected()){
+                LOG.info("CheckBox is unselected!");
+                throw new TestFxLibraryNonFatalException("CheckBox is unselected!");
+            }
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
+
+    }
+
+    /**
+     * <b>Description:</b> This keyword tests if a checkbox passed as parameter is not selected. If this checkbox is
+     * selected a TestFxLibraryFatalException is thrown.<br>
+     *
+     * @param identifier
+     * : The identifier of the CheckBox
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void checkBoxShouldNotBeSelected(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        CheckBox checkBox = new FxRobot().lookup(identifier).query();
+
+        try{
+            if(checkBox.isSelected()){
+                LOG.info("CheckBox is selected!");
+                throw new TestFxLibraryNonFatalException("CheckBox is selected!");
+            }
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw  new TestFxLibraryFatalException(e);
+        }
+
+    }
+
+    /**
+     * <b>Description:</b> This keyword selects a function from a popup menu of an element. The element is identified
+     * through the first parameter and the function is indetified through the second parameter. An Exception is thrown
+     * if an error occurs.<br>
      *
      * @param identifier
      * : The identifier of the element
@@ -642,6 +727,5 @@ public class Mouse {
         } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
         }
-
     }
 }
