@@ -1203,31 +1203,6 @@ public class Misc {
         return  Iterables.get(nodeList, nthElement);
     }
 
-    /**
-     * <b>Description:</b>This keyword sets the default timeout of wait Until Support wait method<br>
-     *
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>0</td>
-     *     </tr>
-     * </table>
-     * @throws IOException
-     *  If something goes wrong
-     */
-    @RobotKeyword()
-    @ArgumentNames({"timeout"})
     public void defaultWait(long timeout) throws IOException {
         try {
             new WaitUntilSupport().wait(timeout);

@@ -39,3 +39,8 @@ Test Capture Screen
     Capture Screen     jpg
     Capture Screen     jpg
     Close Application
+
+Test Get Component Position
+    Start Application  testapp.JavafxExample2
+    Get Component Position  \#listView
+    Close Application

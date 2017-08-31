@@ -8,6 +8,8 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
+import javafx.geometry.Point2D;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import org.robotframework.javalib.annotation.ArgumentNames;
@@ -26,7 +28,6 @@ import java.io.File;
 import java.util.List;
 
 /**
- *
  * @author pcosta
  */
 @RobotKeywords
@@ -253,6 +254,48 @@ public class Window {
             if (f.getName().startsWith(fileName)) {
                 f.delete();
             }
+        }
+    }
+
+    /**
+     * Get the position of the node on the screen
+     *
+     * @param identifier the identifier of the node
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public Point2D getComponentPosition(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+        misc.waitUntilPageContains(identifier);
+
+        try {
+
+            Point2D p = new FxRobot().point(identifier).query();
+            LOG.info("X - " + (int)p.getX() + " Y - " + (int)p.getY());
+            return p;
+
+        } catch (Exception e) {
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryFatalException("Something goes wrong");
+        }
+    }
+
+    /**
+     * Get the position of the node on the screen
+     *
+     */
+    @RobotKeyword
+    public void cancelFileChooser() {
+
+        //FileChooser fileChooser = new FxRobot().targetWindow().getScene();
+
+        try {
+            //TODO implement the method.
+
+        } catch (Exception e) {
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryFatalException("Something goes wrong");
         }
     }
 
