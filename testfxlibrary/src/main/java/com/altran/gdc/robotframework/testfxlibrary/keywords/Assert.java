@@ -164,6 +164,7 @@ public class Assert {
      * @param identifier
      * : The node you want to verify
      *
+     * <br><br>
      * <table summary="">
      *     <tr>
      *         <th>Parameter</th>
@@ -203,7 +204,7 @@ public class Assert {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>

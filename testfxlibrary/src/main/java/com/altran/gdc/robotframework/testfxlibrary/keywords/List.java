@@ -62,7 +62,7 @@ public class List {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -110,7 +110,7 @@ public class List {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>

@@ -58,7 +58,7 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword erases text from a text field. The number of characters
+     * <b>Description:</b> This keyword erases text from a text field. The number of characters
      * erased is passed as argument.<br>
      *
      * @param numberOfCharacters
@@ -66,7 +66,7 @@ public class Keyboard {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -86,7 +86,7 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword writes text on the focused node. (eg. a text field)<br>
+     * <b>Description:</b> This keyword writes text on the focused node. (eg. a text field)<br>
      *
      * @param text
      * : The text to written
@@ -147,7 +147,7 @@ public class Keyboard {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -167,14 +167,14 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword erases all the text on the the text area passed as argument.<br>
+     * <b>Description:</b> This keyword erases all the text on the the text area passed as argument.<br>
      *
      * @param identifier
      * : The text area to be cleared of text
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -195,14 +195,14 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword erases all the text on the the text field passed as argument.<br>
+     * <b>Description:</b> This keyword erases all the text on the the text field passed as argument.<br>
      *
      * @param identifier
      * : The text field to be cleared of text
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -234,7 +234,7 @@ public class Keyboard {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -285,7 +285,7 @@ public class Keyboard {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -336,7 +336,7 @@ public class Keyboard {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>

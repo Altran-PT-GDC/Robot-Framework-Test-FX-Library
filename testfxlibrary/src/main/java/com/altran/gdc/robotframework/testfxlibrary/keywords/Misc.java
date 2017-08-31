@@ -52,7 +52,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -91,7 +91,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -182,7 +182,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -212,7 +212,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -294,7 +294,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -340,7 +340,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -378,7 +378,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -432,7 +432,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -571,7 +571,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -652,7 +652,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -730,7 +730,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -777,7 +777,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -813,7 +813,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -860,7 +860,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -897,7 +897,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -1061,7 +1061,7 @@ public class Misc {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -1092,7 +1092,7 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword gets the Nth element from a node list<br>
+     * <b>Description:</b> This keyword gets the Nth element from a node list<br>
      *
      * @param identifier
      * : The node to search
@@ -1119,20 +1119,9 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     * <br>
+     *
      * @return
-     * : The Nth node from the list
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Return</th>
-     *         <th>Values</th>
-     *     </tr>
-     *     <tr>
-     *         <td>node</td>
-     *         <td>string</td>
-     *     </tr>
-     * </table>
+     *  The Nth node from the list
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "nthElement"})
@@ -1141,7 +1130,7 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword gets the inner element from a given node passed as argument<br>
+     * <b>Description:</b> This keyword gets the inner element from a given node passed as argument<br>
      *
      * @param identifier
      * : The name of the element that you are going to test
@@ -1160,20 +1149,9 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     * <br>
+     *
      * @return
-     * : The inner element of the provided node
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Return</th>
-     *         <th>Values</th>
-     *     </tr>
-     *     <tr>
-     *         <td>element</td>
-     *         <td>string</td>
-     *     </tr>
-     * </table>
+     *  The inner element of the provided node
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

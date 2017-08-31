@@ -144,7 +144,7 @@ public class Mouse {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -209,7 +209,7 @@ public class Mouse {
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -320,6 +320,7 @@ public class Mouse {
      *
      * @param amount
      * : The amount to be scrolled
+     * <br><br>
      * <table summary="">
      *     <tr>
      *         <th>Parameter</th>
@@ -396,14 +397,14 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword gets the node list within the node passed as parameter.<br>
+     * <b>Description:</b> This keyword gets the node list within the node passed as parameter.<br>
      *
      * @param identifier
      * : The node from where you want to get list of nodes
      * <br><br>
      * <table summary="">
      *     <tr>
-     *         <th>Argument</th>
+     *         <th>Parameter</th>
      *         <th>Mandatory</th>
      *         <th>Values</th>
      *         <th>Default</th>
@@ -416,19 +417,7 @@ public class Mouse {
      *     </tr>
      * </table>
      * @return
-     * : Attribute value in a string
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Return</th>
-     *         <th>Values</th>
-     *     </tr>
-     *     <tr>
-     *         <td>attribute</td>
-     *         <td></td>
-     *         <td>string</td>
-     *     </tr>
-     * </table>
+     *  Attribute value in a string
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
