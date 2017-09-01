@@ -3,6 +3,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.scene.control.ListView;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
@@ -11,6 +12,9 @@ import java.util.ArrayList;
 
 @RobotKeywords
 public class List {
+
+    @Autowired
+    Misc misc;
 
     /**
      * <b>Description:</b> This keyword returns a list with the values in a ListView passed as parameter.<br>
@@ -40,6 +44,8 @@ public class List {
     @ArgumentNames({"identifier"})
     public java.util.List<String> getListItemsFromListView(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 
@@ -86,6 +92,8 @@ public class List {
     @ArgumentNames({"identifier", "text"})
     public void selectFromListViewByText(String identifier, String text){
         TestFxLibraryValidation.validateArguments(identifier, text);
+
+        misc.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 
@@ -136,6 +144,8 @@ public class List {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateIndex(position);
 
+        misc.waitUntilPageContains(identifier);
+
         ListView listView = new FxRobot().lookup(identifier).query();
 
         new FxRobot().clickOn(listView);
@@ -158,8 +168,109 @@ public class List {
     public java.util.List<String> getSelectedItemsFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
+        misc.waitUntilPageContains(identifier);
+
         ListView listView = new FxRobot().lookup(identifier).query();
         return listView.getSelectionModel().getSelectedItems();
+    }
+
+    /**
+     * Count the number of items selected.
+     *
+     * @param identifier
+     *      The id of the ListView
+     *
+     * @return
+     *      The number of items selected
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public int getListItemCountFromList(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
+
+        ListView listView = new FxRobot().lookup(identifier).query();
+        return listView.getSelectionModel().getSelectedItems().size();
+    }
+
+    /**
+     * Clear all itemns selected from ListView
+     *
+     * @param identifier
+     *      The id of the ListView
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void clearSelectionFromList(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
+
+        ListView listView = new FxRobot().lookup(identifier).query();
+
+        listView.getSelectionModel().clearSelection();
+    }
+
+    /**
+     * Select all itemns from the ListView
+     *
+     * @param identifier
+     *      The id of the ListView
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void selectAllFromList(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
+
+        ListView listView = new FxRobot().lookup(identifier).query();
+
+        listView.getSelectionModel().selectAll();
+    }
+
+    /**
+     * Clear selection
+     * @param identifier
+     * @param position
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier","position"})
+    public void unselectFromListByPosition(String identifier, int position){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
+
+        ListView listView = new FxRobot().lookup(identifier).query();
+
+        listView.getSelectionModel().clearSelection(position);
+    }
+
+    /**
+     * Clear selection by specific text.
+     *
+     * @param identifier
+     *      The id of the ListView
+     *
+     * @param text
+     *      The text to clear the selection
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier","text"})
+    public void unselectFromListByText(String identifier, String text){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
+
+        ListView listView = new FxRobot().lookup(identifier).query();
+
+        for(int i=0 ; i< listView.getItems().size(); i++){
+            if(((String)listView.getItems().get(i)).equals(text)){
+                listView.getSelectionModel().clearSelection(i);
+            }
+        }
     }
 
 }
