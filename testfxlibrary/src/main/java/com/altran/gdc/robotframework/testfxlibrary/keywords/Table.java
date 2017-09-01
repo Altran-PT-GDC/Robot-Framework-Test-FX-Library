@@ -22,8 +22,8 @@ public class Table {
     private static final Logger LOG = LoggerFactory.getLogger(Table.class);
     private static String ERROR_MSG = "The table not contains the text %s";
     /**
-     * <b>Description:</b>This keyword returns the number of columns from a specific table identified through the
-     * parameter.<br>
+     * <b>Description:</b> This keyword returns the number of columns from a specific
+     * table specified with <i>identifier</i>.<br>
      *
      * @param identifier
      * : The id of the table
@@ -54,8 +54,8 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword checks if a table is visible. This table is identified through the parameter.
-     * If the table is not visible an exception is thrown.<br>
+     * <b>Description:</b> This keyword checks if a table is visible. This table is specified
+     * with <i>identifier</i>. If the table is not visible an exception is thrown.<br>
      *
      * @param identifier
      * : The id of the table
@@ -86,8 +86,8 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword checks if a table is not visible. This table is identified through the parameter.
-     * If the table is visible an exception is thrown.<br>
+     * <b>Description:</b> This keyword checks if a table is not visible. This table is
+     * specified with <i>identifier</i>. If the table is visible an exception is thrown.<br>
      *
      * @param identifier
      * : The id of the table
@@ -117,7 +117,8 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword returns the number of rows in a table identified through the parameter.<br>
+     * <b>Description:</b> This keyword returns the number of rows in a table specified
+     * with <i>identifier</i>.<br>
      *
      * @param identifier
      * : The if of the table
@@ -138,7 +139,7 @@ public class Table {
      * </table>
      *
      * @return
-     * : The number of rows
+     *  The number of rows
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -148,8 +149,8 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword returns a list of headers name of the table identified through
-     * the parameter.<br>
+     * <b>Description:</b> This keyword returns a list of header names from a table specified
+     * with <i>identifier</i>.<br>
      *
      * @param identifier
      * : The id of the table
@@ -170,7 +171,7 @@ public class Table {
      * </table>
      *
      * @return
-     * : List of names
+     *  List of names
      */
     @RobotKeyword
     @ArgumentNames({"ientifier"})
@@ -186,8 +187,8 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword returns a list with the values for all rows in the table. The table is
-     * identified through the parameter.<br>
+     * <b>Description:</b> This keyword returns a list with values from all rows in a table
+     * specified with <i>identifier</i>.<br>
      *
      * @param identifier
      * : The id of the table
@@ -208,7 +209,7 @@ public class Table {
      * </table>
      *
      * @return
-     * : The list of values
+     *  The list of values
      */
     @RobotKeyword
     @ArgumentNames({"ientifier"})
@@ -218,16 +219,16 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword returns the cell value from a table identified through the first parameter.
-     * The second and third parameters identify the row and column indexes. An Exception is thrown if the values are
-     * out of range.<br>
+     * <b>Description:</b> This keyword returns the cell value from a table specified with <i>identifier</i>.
+     * <i>rowIndex</i> and <i>columnIndex</i> identify row and column indexes. An Exception is thrown
+     * if values are out of range.<br>
      *
      * @param identifier
      * : The id of the table
      * @param rowIndex
-     * : The row to get the value from. The first row has 0 index.
+     * : Row to get the value from. First row has 0 index.
      * @param columnIndex
-     * : The column to get the value from. The first column has 0 index.
+     * : Column to get the value from. First column has 0 index.
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -257,7 +258,7 @@ public class Table {
      * </table>
      *
      * @return
-     * : The cell value
+     *  The cell value
      */
     @RobotKeyword
     @ArgumentNames({"ientifier", "rowIndex", "columnIndex"})
@@ -278,19 +279,19 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword checks if a given cell in a table contains a specified text. The table is
-     * identified through the first parameter; the second and third parameter identify the row index and the column
-     * indexes. The forth parameter defines the text to be validated. If the given cell does not contain the text
-     * a TestFxLibraryNonFatalException is thrown. An Exception is thrown if the index values are out of range.<br>
+     * <b>Description:</b> This keyword checks if a given cell in a table contains specified text. Table is
+     * specified with <i>identifier</i>; <i>rowIndex</i> and <i>columnIndex</i> identify row and column
+     * indexes. <i>text</i> specifies text to be validated. If the given cell does not contain <i>text</i>
+     * a TestFxLibraryNonFatalException is thrown. An Exception is thrown if index values are out of range.<br>
      *
      * @param identifier
      * : The id of the table
      * @param rowIndex
-     * : The row to get the value. 0 is the first line.
+     * : Row to get the value from. first line index is 0
      * @param columnIndex
-     * : The column to get the value. 0 is the first column
+     * : Column to get the value from. first column index is 0
      * @param text
-     * : The text to compare
+     * : Text to compare
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -349,14 +350,14 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword gets a list of values from a specific column of a given table. The table
-     * is identified through the first parameter and the second parameter identifies the column index. An Exception
-     * is thrown if the column index is out of bounds.<br>
+     * <b>Description:</b> This keyword gets a list of values from a specific column of a given table. Table
+     * is specified with <i>identifier</i> and <i>columnIndex</i> specifies column index. An Exception
+     * is thrown if column index is out of bounds.<br>
      *
      * @param identifier
      * : The id of the table
      * @param columnIndex
-     * : The column to get the values from for all rows. 0 is the first column
+     * : Column to get the values from for all rows. 0 is for first column
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -380,7 +381,7 @@ public class Table {
      * </table>
      *
      * @return
-     * : List of values
+     *  List of values
      */
     @RobotKeyword
     @ArgumentNames({"ientifier", "columnIndex"})
@@ -409,14 +410,14 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword gets a list of values from a specific row of a given table. The table
-     * is identified through the first parameter and the second parameter identifies the row index. An Exception
-     * is thrown if the row index is out of bounds.<br>
+     * <b>Description:</b> This keyword gets a list of values from a specific row of a given table. The table
+     * is specified with <i>identifier</i> and <i>rowIndex</i> specifies row index. An Exception
+     * is thrown if row index is out of bounds.<br>
      *
      * @param identifier
      * : The id of the table
      * @param rowIndex
-     * : The row to get the values for all rows. 0 is the first column
+     * : Row to get the values for all columns. 0 is for first row
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -440,7 +441,7 @@ public class Table {
      * </table>
      *
      * @return
-     * : List of values
+     *  List of values
      */
     @RobotKeyword
     @ArgumentNames({"ientifier", "rowIndex"})
@@ -462,7 +463,8 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b>This keyword validates if a text is equal to some text header in the table. If the text
+     * <b>Description:</b> This keyword validates if a text is equal to some text header in a table.
+     * <i>identifier</i> specifies table and <i>text</i> specifies text. If text
      * is not equal a TestFxLibraryNonFatalException is thrown.<br>
      *
      * @param identifier
@@ -511,14 +513,14 @@ public class Table {
 
 
     /**
-     * <b>Description:</b>This keyword validates if a text is present in a given table. The table is identified by
-     * the first parameter and the second parameter defines the text to compare. If the text is not found within the
-     * table a TestFxLibraryNonFatalException is thrown.<br>
+     * <b>Description:</b> This keyword validates if a text is present in a given table. Table
+     * is specified with <i>identifier</i> and <i>text</i> specifies text to compare. If
+     * <i>text</i> is not found within <i>identifier</i> a TestFxLibraryNonFatalException is thrown.<br>
      *
      * @param identifier
      * : The id of the table
      * @param text
-     * : The text to compare
+     * : Text to compare
      * <br><br>
      * <table summary="">
      *     <tr>

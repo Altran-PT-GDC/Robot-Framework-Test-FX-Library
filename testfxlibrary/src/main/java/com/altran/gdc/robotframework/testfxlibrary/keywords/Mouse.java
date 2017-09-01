@@ -36,10 +36,10 @@ public class Mouse {
     private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
 
     /**
-     * <b>Description:</b>This keyword clicks on an identifier<br>
+     * <b>Description:</b>This keyword clicks on a component specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The identifier of the node
+     * : The identifier of the component
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -65,16 +65,16 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword clicks on an identifier using the node key as second parameter
-     * when provided<br>
+     * <b>Description:</b>This keyword clicks on a component specified <i>nodeKey</i>.
+     * If <i>nodeKey</i> is not provided, <i>identifier</i> is used instead.<br>
      *
      * @throws TimeoutException
      *  If something goes wrong
      *
      * @param identifier
-     * : The identifier of the node
+     * : The identifier of the component
      * @param nodeKey
-     * : The node clicked on
+     * : The key of the component.
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -110,10 +110,10 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword double clicks on a node using the identifier as parameter<br>
+     * <b>Description:</b> This keyword double clicks on a component specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The identifier of the node
+     * : The identifier of the component
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -137,10 +137,10 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword drags a node using the identifier as argument<br>
+     * <b>Description:</b> This keyword drags a component specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The identifier of the node
+     * : The identifier of the component
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -164,7 +164,7 @@ public class Mouse {
     }
 
     /**
-     *<b>Description:</b> This keyword drops a node that is being dragged<br>
+     *<b>Description:</b> This keyword drops a component that is being dragged<br>
      *
      */
     @RobotKeyword
@@ -173,10 +173,11 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword drops a node that is being dragged to a node identified as argument<br>
+     * <b>Description:</b> This keyword drops a component that is being dragged
+     * into a component specified with <i>identifier</i><br>
      *
      * @param identifier
-     * : The identifier of the node
+     * : The identifier of the component
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -200,7 +201,8 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword moves the mouse to an x, y location identified as the two parameters.<br>
+     * <b>Description:</b> This keyword moves the mouse to an x, y location specified with
+     * <i>xCoordinate</i> and <i>yCoordinate</i>.<br>
      *
      * @param xCoordinate
      * : The x coordinate
@@ -235,10 +237,10 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword moves the mouse to a node identified by the argument<br>
+     * <b>Description:</b> This keyword moves the mouse to a component specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The identifier of the node
+     * : The identifier of the component
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -262,7 +264,7 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword right clicks on a node identified as the argument<br>
+     * <b>Description:</b> This keyword right clicks on a component specified with <i>identifier</i>.<br>
      *
      * @param identifier
      * : The identifier of the node
@@ -289,7 +291,7 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword scrolls left by the amount passed as argument<br>
+     * <b>Description:</b> This keyword scrolls left by the amount specified with <i>amount</i>.<br>
      *
      * @param amount
      * : The amount to be scrolled
@@ -316,7 +318,7 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword scrolls right by the amount passed as argument<br>
+     * <b>Description:</b> This keyword scrolls right by the amount specified with <i>amount</i>.<br>
      *
      * @param amount
      * : The amount to be scrolled
@@ -343,7 +345,7 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword scrolls up by the amount passed as argument<br>
+     * <b>Description:</b> This keyword scrolls up by the amount specified with <i>amount</i>.<br>
      *
      * @param amount
      * : The amount to be scrolled
@@ -370,7 +372,7 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword scrolls down by the amount passed as argument<br>
+     * <b>Description:</b>This keyword scrolls down by the amount specified with <i>amount</i>.<br>
      *
      * @param amount
      * : The amount to be scrolled
@@ -397,10 +399,11 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b> This keyword gets the node list within the node passed as parameter.<br>
+     * <b>Description:</b> This keyword gets the component list within the component specified
+     * with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The node from where you want to get list of nodes
+     * : The component from where you want to get list of components
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -426,13 +429,13 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword sets a given checkbox state passed as the first parameter. The second
-     * parameter is a boolean which defines the state<br>
+     * <b>Description:</b> This keyword sets the state of a checkbox specified with <i>identifier</i>.
+     * <i>booleanValue</i> is a boolean which defines the state<br>
      *
      * @param identifier
-     * : The identifier of the CheckBox
+     * : The identifier of the checkbox
      * @param booleanValue
-     * : Boolean value to set the CheckBox selection
+     * : Boolean value to set the checkbox selection
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -450,7 +453,7 @@ public class Mouse {
      *     <tr>
      *         <td>booleanValue</td>
      *         <td>Yes</td>
-     *         <td>string</td>
+     *         <td>boolean</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
@@ -472,11 +475,11 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword gets the boolean value state of a given checkbox passed as the
-     * parameter<br>
+     * <b>Description:</b> This keyword returns the boolean value state of a given
+     * checkbox identified with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The identifier of the CheckBox
+     * : The identifier of the checkbox
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -512,10 +515,10 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword tests if a given checkbox passed as the parameter is enabled<br>
+     * <b>Description:</b> This keyword tests if a given checkbox specified with <i>identifier</i> is enabled.<br>
      *
      * @param identifier
-     * : The identifier of the Component
+     * : The identifier of the checkbox
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -551,7 +554,8 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword tests if a given checkbox passed as the parameter is disabled<br>
+     * <b>Description:</b> This keyword tests if a given checkbox specified
+     * with <i>identifier</i> is disabled<br>
      *
      * @param identifier
      * : The identifier of the checkbox
@@ -590,11 +594,11 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b> This keyword tests if a checkbox passed as parameter is selected. If this checkbox is not
-     * selected a TestFxLibraryFatalException is thrown.<br>
+     * <b>Description:</b> This keyword tests if a checkbox specified with <i>identifier</i> is selected.
+     * If this checkbox is not selected a TestFxLibraryFatalException is thrown.<br>
      *
      * @param identifier
-     * : The identifier of the CheckBox
+     * : The identifier of the checkbox
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -632,11 +636,11 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b> This keyword tests if a checkbox passed as parameter is not selected. If this checkbox is
-     * selected a TestFxLibraryFatalException is thrown.<br>
+     * <b>Description:</b> This keyword tests if a checkbox specified with <i>identifier</i> is not selected.
+     * If this checkbox is selected a TestFxLibraryFatalException is thrown.<br>
      *
      * @param identifier
-     * : The identifier of the CheckBox
+     * : The identifier of the checkbox
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -673,12 +677,12 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b> This keyword selects a function from a popup menu of an element. The element is identified
-     * through the first parameter and the function is indetified through the second parameter. An Exception is thrown
-     * if an error occurs.<br>
+     * <b>Description:</b> This keyword selects a function from a popup menu of an component.
+     * The component is specified with <i>identifier</i> and the function is specified with
+     * <i>functionText</i>. An Exception is thrown if an error occurs.<br>
      *
      * @param identifier
-     * : The identifier of the element
+     * : The identifier of the component
      * @param functionText
      * : The name of the function that you want to select
      * <br><br>

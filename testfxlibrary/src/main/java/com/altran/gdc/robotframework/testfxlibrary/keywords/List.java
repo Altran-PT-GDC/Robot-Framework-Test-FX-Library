@@ -13,10 +13,11 @@ import java.util.ArrayList;
 public class List {
 
     /**
-     * <b>Description:</b> This keyword returns a list with the values in a ListView passed as parameter.<br>
+     * <b>Description:</b> This keyword returns a list with the values in a listview specified with
+     * <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The id of the ListView
+     * : The id of the listview
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -52,11 +53,11 @@ public class List {
     }
 
     /**
-     * <b>Description:</b> This keyword selects an item in a ListView by text. The ListView is identified in the first
-     * parameter and the second parameter is the text that defines the item to be selected.<br>
+     * <b>Description:</b> This keyword selects an item in a listview by text. The listview is specified with
+     * <i>identifier</i> and <i>text</i> is the text that specifies the item to be selected.<br>
      *
      * @param identifier
-     * : The id of the ListView
+     * : The id of the listview
      * @param text
      * : The text to get the selected item
      * <br><br>
@@ -99,12 +100,12 @@ public class List {
     }
 
     /**
-     * <b>Description:</b> This keyword selects an item in a ListView by position. The ListView is identified in the
-     * first parameter. The position that defines the item to be selected is defined in the second parameter,
-     * a value of -1 clears the selection.<br>
+     * <b>Description:</b> This keyword selects an item in a listview by position. The listview is
+     * specified with <i>identifier</i>. The position that defines the item to be selected is
+     * specified with <i>position</i>, a value of -1 clears the selection.<br>
      *
      * @param identifier
-     * : The id of the ListView
+     * : The id of the listview
      * @param position
      * : The position to get the selected item
      * <br><br>

@@ -22,14 +22,14 @@ import static org.testfx.matcher.base.NodeMatchers.hasChild;
 public class Assert {
 
     /**
-     * <b>Description:</b> Verifies if a given node identified as the first parameter contains
-     * a child node identified as the second parameter. If the child node is
-     * not present in the parent node an error message is displayed.<br>
+     * <b>Description:</b> This keyword verifies if a given component specified with <i>identifier</i>
+     * contains a child component specified with <i>identifierToValidate</i>. If child component is
+     * not present in parent component an error message is displayed.<br>
      *
      * @param identifier
-     * : The node you want to validate
+     * : Parent component you want to validate
      * @param identifierToValidate
-     * : The node you want to verify
+     * : Child component you want to verify
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -60,12 +60,12 @@ public class Assert {
     }
 
     /**
-     * <b>Description:</b> Verifies if a node identified as the first parameter contains text
-     * passed as the second parameter. If the node does not contain the given
+     * <b>Description:</b> This keyword verifies if a component specified with <i>identifier</i>
+     * contains text specified with <i>textToValidate</i>. If the component does not contain the given
      * text an error message is displayed.<br>
      *
      * @param identifier
-     * : The node you want to validate
+     * : The component you want to validate
      * @param textToValidate
      * : The text you want to validate
      * <br><br>
@@ -98,11 +98,11 @@ public class Assert {
     }
 
     /**
-     * <b>Description:</b> Verifies if a node identified as the parameter is enabled. If The
-     * given node is disabled an error message is displayed.<br>
+     * <b>Description:</b> This keyword verifies if a component specified with <i>identifier</i>
+     * is enabled. If the given component is disabled an error message is displayed.<br>
      *
      * @param identifier
-     * : The node you want to verify
+     * : The component you want to verify
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -128,11 +128,11 @@ public class Assert {
     }
 
     /**
-     * <b>Description:</b>Verifies if a node identified as the parameter is disabled. If the
-     * given node is enabled an error message is displayed.<br>
+     * <b>Description:</b> This keyword verifies if a component specified with <i>identifier</i>
+     * is disabled. If the given component is enabled an error message is displayed.<br>
      *
      * @param identifier
-     * : The node you want to verify
+     * : The component you want to verify
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -158,8 +158,8 @@ public class Assert {
     }
 
     /**
-     * <b>Description:</b>Verifies if a node identified as the parameter is visible. If the
-     * given node is not visible an error message is displayed.<br>
+     * <b>Description:</b> This keyword verifies if a component specified with <i>identifier</i> is
+     * visible. If the given component is not visible an error message is displayed.<br>
      *
      * @param identifier
      * : The node you want to verify
@@ -191,15 +191,14 @@ public class Assert {
 
 
     /**
-     * <b>Description:</b>Verifies if the node passed as the second parameter is a child
-     * to the node passed as the first parameter. If the node identified as
-     * the second parameter is not a child of the node identified as the
-     * first parameter an error message is displayed.<br>
+     * <b>Description:</b> This keyword verifies if the component specified with <i>identifierToValidate</i>
+     * is a child to the component specified with <i>identifier</i>. If <i>identifierToValidate</i> is not
+     * a child of <i>identifier</i> an error message is displayed.<br>
      *
      * @param identifier
-     * : The node you want to verify as parent
+     * : The component you want to verify as parent
      * @param identifierToValidate
-     * : The node you want to verify as child
+     * : The component you want to verify as child
      *
      * <br><br>
      * <table summary="">

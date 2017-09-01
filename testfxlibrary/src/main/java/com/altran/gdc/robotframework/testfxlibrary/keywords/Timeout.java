@@ -16,14 +16,15 @@ public class Timeout {
     };
 
     /**
-     * <b>Description:</b>This keyword sets the timeout used for waiting for a component. The timeout name is passed
-     * as the first parameter and the timeout in seconds is defined by the second parameter.<br>
+     * <b>Description:</b> This keyword sets the timeout used for waiting for a component.
+     * Timeout name is specified with <i>timeoutName</i> and timeout in seconds is specified
+     * with <i>timeoutInSeconds</i>.<br>
      *
      * @param timeoutName
-     * : The timeout name
+     * : Timeout name
      *
      * @param timeoutInSeconds
-     * : The timeout in seconds
+     * : Timeout in seconds
      * <br><br>
      * <table summary="">
      *     <tr>

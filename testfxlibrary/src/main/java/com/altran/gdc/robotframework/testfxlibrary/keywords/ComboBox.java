@@ -14,7 +14,7 @@ public class ComboBox {
 
 
     /**
-     * <b>Description:</b>This keyword returns a list of values from a ComboBox identified by the parameter.<br>
+     * <b>Description:</b> This keyword returns a list of values from a combobox specified with <i>identifier</i>.<br>
      *
      * @param identifier
      * : The id of the combobox.
@@ -53,11 +53,11 @@ public class ComboBox {
     }
 
     /**
-     * <b>Description:</b>This keyword selects an item from a ComboBox by text. The ComboBox is identified by the
-     * first parameter and the text is defined in the second parameter<br>
+     * <b>Description:</b> This keyword selects an item from a combobox by text. The combobox is specified with
+     * <i>identifier</i> and text is specified with <i>text</i><br>
      *
      * @param identifier
-     * : The id of the ComboBox.
+     * : The id of the combobox.
      * @param text
      * : The text to get the selected item
      * <br><br>
@@ -99,11 +99,12 @@ public class ComboBox {
     }
 
     /**
-     * <b>Description:</b>This keyword selects an item from a ComboBox by position. The ComboBox is identified by the
-     * first parameter and the position is defined in the second parameter, a value of -1 clears the selection.<br>
+     * <b>Description:</b> This keyword selects an item from a combobox by position. The
+     * combobox is specified with <i>identifier</i> and the position is specified with
+     * <i>position</i>, a value of -1 clears the selection.<br>
      *
      * @param identifier
-     * : The id of the ComboBox
+     * : The id of the combobox
      *
      * @param position
      * : The position to get the selected item

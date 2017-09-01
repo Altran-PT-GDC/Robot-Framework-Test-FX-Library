@@ -30,7 +30,7 @@ public class Keyboard {
     Misc misc;
 
     /**
-     * <b>Description:</b>This keyword presses the key passed as parameter.<br>
+     * <b>Description:</b> This keyword presses the key specified with <i>keycode</i>.<br>
      *
      * @param keycode
      * : The keycode of the key to be pressed. eg. "Enter"
@@ -59,7 +59,7 @@ public class Keyboard {
 
     /**
      * <b>Description:</b> This keyword erases text from a text field. The number of characters
-     * erased is passed as argument.<br>
+     * erased is specified with <i>numberOfCharacters</i>.<br>
      *
      * @param numberOfCharacters
      * : The number of characters to be erased
@@ -86,10 +86,10 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b> This keyword writes text on the focused node. (eg. a text field)<br>
+     * <b>Description:</b> This keyword writes text on the focused component. (eg. a text field)<br>
      *
      * @param text
-     * : The text to written
+     * : The text to be written
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -113,7 +113,7 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword releases the key passed as argument.<br>
+     * <b>Description:</b> This keyword releases the key specified with <i>keycode</i>.<br>
      *
      * @param keycode
      * : The keycode of the key to be released. eg. "Enter"
@@ -140,7 +140,7 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword types the keycode passed as argument.<br>
+     * <b>Description:</b> This keyword types the keycode specified with <i>keycode</i>.<br>
      *
      * @param keycode
      * : The keycode to be typed
@@ -167,7 +167,7 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b> This keyword erases all the text on the the text area passed as argument.<br>
+     * <b>Description:</b> This keyword erases all the text on the the text area specified with <i>identifier</i>.<br>
      *
      * @param identifier
      * : The text area to be cleared of text
@@ -195,7 +195,7 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b> This keyword erases all the text on the the text field passed as argument.<br>
+     * <b>Description:</b> This keyword erases all the text on the the text field specified with <i>identifier</i>.<br>
      *
      * @param identifier
      * : The text field to be cleared of text
@@ -223,9 +223,9 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword validates the text in a text field. The text filed is identified in the first
-     * parameter and the text to validate is defined in the second parameter. If the text in the text field does not
-     * match the text passed as a parameter a TestFxLibraryNonFatalException in thrown.<br>
+     * <b>Description:</b> This keyword validates text in a text field. Text field is specified with
+     * <i>identifier</i> and text to validate is specified with <i>textToValidate</i>. If text in the text
+     * field does not match <i>textToValidate</i> a TestFxLibraryNonFatalException in thrown.<br>
      *
      * @param identifier
      * : The identifier of the text field you want to verify.
@@ -274,9 +274,10 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword validates the text in a text area. The text area is identified in the first
-     * parameter and the text to validate is defined in the second parameter. If the text in the text area does not
-     * match the text passed as a parameter a TestFxLibraryNonFatalException in thrown.<br>
+     * <b>Description:</b> This keyword validates the text in a text area. The text area is specified with
+     * <i>identifier</i> and the text to validate is specified with <i>textToValidate</i>. If the text in the
+     * text area does not match <i>textToValidate</i> a TestFxLibraryNonFatalException
+     * is thrown.<br>
      *
      * @param identifier
      * : The identifier of the text area you want to verify.
@@ -325,9 +326,10 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b>This keyword validates the text in a label. The label is identified in the first
-     * parameter and the text to validate is defined in the second parameter. If the text in the label does not
-     * match the text passed as a parameter a TestFxLibraryNonFatalException in thrown.<br>
+     * <b>Description:</b> This keyword validates text in a label. The label is specified with
+     * <i>identifier</i> and text to validate is specified with <i>textToValidate</i>. If text
+     * in the label does not match <i>textToValidate</i> a
+     * TestFxLibraryNonFatalException in thrown.<br>
      *
      * @param identifier
      * : The identifier of the label you want to verify.

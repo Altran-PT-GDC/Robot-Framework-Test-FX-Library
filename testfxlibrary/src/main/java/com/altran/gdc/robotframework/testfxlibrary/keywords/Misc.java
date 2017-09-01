@@ -43,8 +43,8 @@ public class Misc {
     private Logging log;
 
     /**
-     * <b>Description:</b>This keyword launches JavaFX application. The classname
-     * passed as argument must extend javafx.application.Application.<br>
+     * <b>Description:</b> This keyword launches JavaFX application. The classname
+     * passed as <i>className</i> must extend javafx.application.Application.<br>
      * ATENTTION: The class must be added to the classpath beforehand.<br>
      *
      * @param className
@@ -80,7 +80,7 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword launches Java FX application from external JAR.<br>
+     * <b>Description:</b> This keyword launches JavaFX application from external JAR.<br>
      * The classname given must extend javafx.application.Application.<br>
      * ATENTTION: The JAR must be added to the classpath beforehand.<br>
      *
@@ -158,7 +158,7 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword closes the Java FX application. The primary stage is hidden and cleaned up.<br>
+     * <b>Description:</b> This keyword closes the JavaFX application. The primary stage is hidden and cleaned up.<br>
      *
      * @throws TestFxLibraryFatalException
      *      If something goes wrong
@@ -174,7 +174,7 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword pauses the execution during the period defined in the argument
+     * <b>Description:</b> This keyword pauses the execution during a period specified with <i>milliseconds</i>
      * in milliseconds.<br>
      *
      * @param milliseconds
@@ -202,11 +202,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period for an element to become visible within a
-     * timeout passed as second argument.<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is
+     * visible. Fails if <i>timeout</i> expires before the component is visible.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * @param timeout
      * : The time limit to complete the test
      * <br><br>
@@ -251,8 +251,8 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period for an element to become visible within the default
-     * timeout.<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is
+     * visible. Fails if default timeout expires before the component is visible.<br>
      *
      * @param identifier
      * : The name of the element that you are going to test
@@ -284,8 +284,8 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period for an element to disappear within
-     * a timeout passed as second argument.<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is
+     * not visible. Fails if <i>timeout</i> expires before the component is not visible.<br>
      *
      * @param identifier
      * : The name of the element that you are going to test
@@ -332,8 +332,8 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period for an element to disappear within the default
-     * timeout.<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is
+     * not visible. Fails if default timeout expires before the component is not visible.<br>
      *
      * @param identifier
      * : The name of the element that you are going to test
@@ -365,12 +365,12 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument contains a given text passed as the second argument. The waiting period is defined as the third
-     * argument<br>
+     * <b>Description:</b>This keyword waits until given component contains <i>textToValidate</i>.
+     * Fails if <i>timeout</i> expires before the text appears on given component specified with
+     * <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * @param textToValidate
      * : The Text you want to validate
      * @param timeout
@@ -422,11 +422,12 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument contains a given text passed as the second argument. The waiting period is default<br>
+     * <b>Description:</b>This keyword waits until given component contains <i>textToValidate</i>.
+     * Fails if default timeout expires before the text appears on given component specified with
+     * <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * @param textToValidate
      * : The Text you want to validate
      * <br><br>
@@ -463,12 +464,12 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument does not contains a given text passed as the second argument. The waiting period is defined as the
-     * third argument<br>
+     * <b>Description:</b> This keyword waits until given component does not contain <i>textToValidate</i>.
+     * Fails if <i>timeout</i> expires before the text disappears from given component specified with
+     * <i>identifier</i>. <br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * @param textToValidate
      * : The Text you want to validate
      * @param timeout
@@ -520,11 +521,12 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument does not contains a given text passed as the second argument. The waiting period is default<br>
+     * <b>Description:</b> This keyword waits until given component does not contain <i>textToValidate</i>.
+     * Fails if default timeout expires before the text disappears from given component specified with
+     * <i>identifier</i>. <br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * @param textToValidate
      * : The Text you want to validate
      * <br><br>
@@ -561,11 +563,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument is disabled. The waiting period is defined as the second argument<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is disabled.
+     * Fails if <i>timeout</i> expires before the component is disabled.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * @param timeout
      * : The time limit to complete the test
      * <br><br>
@@ -609,11 +611,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument is disabled. The waiting period is default<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is disabled.
+     * Fails if default timeout expires before the component is disabled.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -642,11 +644,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument is enabled. The waiting period is defined as the second argument<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is enabled.
+     * Fails if <i>timeout</i> expires before the component is enabled.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * @param timeout
      * : The time limit to complete the test
      * <br><br>
@@ -690,11 +692,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed as the first
-     * argument is enabled. The waiting period is default<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is enabled.
+     * Fails if default timeout expires before the component is disabled.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -720,11 +722,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
-     *  as the first argument is enabled. The waiting period is defined as the second argument<br>
+     * <b>Description:</b> This keyword waits until component specified with text containing <i>identifier</i>
+     * appears on current page. Fails if <i>timeout</i> expires before the element appears.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : Text to identify the component that you are going to test
      * @param timeout
      * : The time limit to complete the test
      * <br><br>
@@ -769,11 +771,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
-     *  as the first argument is enabled. The waiting period is default<br>
+     * <b>Description:</b> This keyword waits until component specified with text containing <i>identifier</i>
+     * appears on current page. Fails if default timeout expires before the element appears.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : Text to identify the component that you are going to test
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -802,12 +804,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
-     *  as the first argument is deleted from the application. The waiting period is defined as the
-     *  second argument<br>
+     * <b>Description:</b> This keyword waits until component specified with text containing <i>identifier</i>
+     * disappears from current page. Fails if <i>timeout</i> expires before the element disappears.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : Text to identify the component that you are going to test
      * @param timeout
      * : The time limit to complete the test
      * <br><br>
@@ -852,11 +853,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element with text passed
-     *  as the first argument is deleted from the application. The waiting period is default<br>
+     * <b>Description:</b> This keyword waits until component specified with text containing <i>identifier</i>
+     * disappears from current page. Fails if default timeout expires before the element disappears.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : Text to identify the component that you are going to test
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -872,7 +873,6 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeywordOverload
     public void waitUntilPageDoesNotContains(String identifier) {
@@ -886,12 +886,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed
-     *  as the first argument is created and present on the application. The waiting period is defined as the
-     *  second argument<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> appears on
+     * current page. Fails if <i>timeout</i> expires before the element appears.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * @param timeout
      * : The time limit to complete the test
      * <br><br>
@@ -950,11 +949,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed
-     * as the argument is created and present on the application. The waiting period is default<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> appears on
+     * current page. Fails if default timeout expires before the element appears.<br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -989,9 +988,8 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed
-     * as the first argument is deleted from the application. The waiting period is defined as the
-     * second argument<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> disappears from
+     * current page. Fails if <i>timeout</i> expires before the element disappears.<br>
      *
      * @param identifier
      * : The name of the element that you are going to test
@@ -1053,8 +1051,8 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword implements a waiting period to verify if a given element passed
-     * as the argument is deleted from the application. The waiting period is default<br>
+     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> disappears from
+     * current page. Fails if default timeout expires before the element disappears.<br>
      *
      * @param identifier
      * : The name of the element that you are going to test
@@ -1092,12 +1090,13 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b> This keyword gets the Nth element from a node list<br>
+     * <b>Description:</b> This keyword gets the Nth element from a component list specified
+     * with <i>identifier</i>; <i>nthElement</i> identifies the index.<br>
      *
      * @param identifier
-     * : The node to search
+     * : The component to search
      * @param nthElement
-     * : The index of the element to return from the list
+     * : The index of the component to return from the list
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -1121,7 +1120,7 @@ public class Misc {
      * </table>
      *
      * @return
-     *  The Nth node from the list
+     *  The Nth component from the list
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "nthElement"})
@@ -1130,10 +1129,11 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b> This keyword gets the inner element from a given node passed as argument<br>
+     * <b>Description:</b> This keyword gets the inner component from a given component
+     * specified with <i>identifier</i><br>
      *
      * @param identifier
-     * : The name of the element that you are going to test
+     * : The name of the component that you are going to test
      * <br><br>
      * <table summary ="">
      *     <tr>
@@ -1151,7 +1151,7 @@ public class Misc {
      * </table>
      *
      * @return
-     *  The inner element of the provided node
+     *  The inner component of the provided component
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -1182,7 +1182,8 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword sets the default timeout of wait Until Support wait method<br>
+     * <b>Description:</b> This keyword sets the default <i>timeout</i> for wait keywords.
+     * This value is used if another timeout is not specified.<br>
      *
      * @param timeout
      * : The time limit to complete the test
@@ -1215,10 +1216,10 @@ public class Misc {
     }
 
     /**
-     * <b>Description:</b>This keyword gets an attribute value of an element.<br>
+     * <b>Description:</b> This keyword gets an attribute value of a component.<br>
      *
      * @param identifier
-     * : The node where you want to get the attribute
+     * : The component where you want to get the attribute
      * @param attribute
      * : The method name of the attribute that you want
      * <br><br>

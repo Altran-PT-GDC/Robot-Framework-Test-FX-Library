@@ -42,7 +42,7 @@ public class Window {
     Misc misc;
 
     /**
-     * <b>Description:</b>This keyword closes the current focused window. If an error occurs
+     * <b>Description:</b> This keyword closes the current focused window. If an error occurs
      * a TestFxLibraryNonFatalException is thrown.<br>
      */
     @RobotKeyword
@@ -56,10 +56,10 @@ public class Window {
     }
 
     /**
-     * <b>Description:</b>This keyword returns a list of all target windows.<br>
+     * <b>Description:</b> This keyword returns a list of all target windows.<br>
      *
      * @return
-     * : A list of javafx.stage.Window
+     *  A list of javafx.stage.Window
      */
     @RobotKeyword
     public List<javafx.stage.Window> listTargetWindows() {
@@ -67,10 +67,10 @@ public class Window {
     }
 
     /**
-     * <b>Description:</b>This keyword returns a list of all windows.<br>
+     * <b>Description:</b> This keyword returns a list of all windows.<br>
      *
      * @return
-     * : A list of javafx.stage.Window
+     *  A list of javafx.stage.Window
      */
     @RobotKeyword
     public List<javafx.stage.Window> listWindows() {
@@ -79,10 +79,10 @@ public class Window {
     }
 
     /**
-     * <b>Description:</b>This keyword targets a specific window identified through the parameter.<br>
+     * <b>Description:</b> This keyword targets a specific window specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : the identifier of the window
+     * : The identifier of the window
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -106,10 +106,10 @@ public class Window {
     }
 
     /**
-     * <b>Description:</b>This keyword chooses a specific window identified through the parameter.<br>
+     * <b>Description:</b> This keyword chooses a specific window specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : the identifier of the window
+     * : The identifier of the window
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -133,7 +133,7 @@ public class Window {
     }
 
     /**
-     * <b>Description:</b>This keyword selects the main window. If an error occurs
+     * <b>Description:</b> This keyword selects the main window. If an error occurs
      * a TestFxLibraryNonFatalException is thrown.<br>
      *
      */
@@ -150,11 +150,12 @@ public class Window {
     }
 
     /**
-     * <b>Description:</b>This keyword takes a screenshot of the application. The file extension is defined by
-     * the parameter. If an error occurs a TestFxLibraryNonFatalException is thrown.<br>
+     * <b>Description:</b> This keyword takes a screenshot of the application. File
+     * extension is specified with <i>format</i>. If an error occurs a TestFxLibraryNonFatalException
+     * is thrown.<br>
      *
      * @param format
-     * : The image format of the ScreenShots
+     * : The image format of ScreenShots
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -196,14 +197,15 @@ public class Window {
     }
 
     /**
-     * <b>Description:</b>This keyword sets the path of the folder where you want to save the screenshots, deletes
-     * the files with the same name on the directory set by the user and resets the counter of the Screenshots. If
-     * an error occurs a TestFxLibraryNonFatalException is thrown.<br>
+     * <b>Description:</b> This keyword sets the folder path where you want to save screenshots,
+     * sets the filename, deletes files with the same name in this folder and resets the counter
+     * of screenshots. <i>filePath</i> specifies the path and <i>fileName</i> specifies the filename</i>.
+     * If an error occurs a TestFxLibraryNonFatalException is thrown.<br>
      *
      * @param filePath
-     * : The Path of the folder where you want to save the ScreenShots
+     * : Path of the folder where you want to save screenShots
      * @param fileName
-     * : The name that you want to give to the Screenshots
+     * : Name that you want to give to Screenshots
      * <br><br>
      * <table summary="">
      *     <tr>

@@ -18,7 +18,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <downloadSources>true</downloadSources>
-        <downloadJavadocs>true</downloadJavadocs>
+        <downloadJavados>true</downloadJavados>
         <java.version>1.8</java.version>
         <robotframework.version>3.0.2</robotframework.version>
         <xml.doclet.version>1.0.3</xml.doclet.version>
@@ -209,7 +209,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
