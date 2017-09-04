@@ -174,7 +174,7 @@ public class Table {
      *  List of names
      */
     @RobotKeyword
-    @ArgumentNames({"ientifier"})
+    @ArgumentNames({"identifier"})
     public List<String> getTableHeaders(String identifier){
         TableView table = new FxRobot().lookup(identifier).query();
         ObservableList<TableColumn> columns = table.getColumns();
@@ -212,7 +212,7 @@ public class Table {
      *  The list of values
      */
     @RobotKeyword
-    @ArgumentNames({"ientifier"})
+    @ArgumentNames({"identifier"})
     public List<String> getTableValues(String identifier){
         TableView table = new FxRobot().lookup(identifier).query();
         return table.getItems();
@@ -261,7 +261,7 @@ public class Table {
      *  The cell value
      */
     @RobotKeyword
-    @ArgumentNames({"ientifier", "rowIndex", "columnIndex"})
+    @ArgumentNames({"identifier", "rowIndex", "columnIndex"})
     public String getTableCellValue(String identifier, int rowIndex, int columnIndex){
         TestFxLibraryValidation.validateIndex(rowIndex);
         TestFxLibraryValidation.validateIndex(columnIndex);
@@ -328,7 +328,7 @@ public class Table {
      *
      */
     @RobotKeyword
-    @ArgumentNames({"ientifier", "rowIndex", "columnIndex", "text"})
+    @ArgumentNames({"identifier", "rowIndex", "columnIndex", "text"})
     public void tableCellShouldContain(String identifier, int rowIndex, int columnIndex, String text){
         TestFxLibraryValidation.validateIndex(rowIndex);
         TestFxLibraryValidation.validateIndex(columnIndex);
@@ -384,7 +384,7 @@ public class Table {
      *  List of values
      */
     @RobotKeyword
-    @ArgumentNames({"ientifier", "columnIndex"})
+    @ArgumentNames({"identifier", "columnIndex"})
     public List<String> getTableColumnValues(String identifier, int columnIndex){
         TestFxLibraryValidation.validateIndex(columnIndex);
 
@@ -444,7 +444,7 @@ public class Table {
      *  List of values
      */
     @RobotKeyword
-    @ArgumentNames({"ientifier", "rowIndex"})
+    @ArgumentNames({"identifier", "rowIndex"})
     public List<String> getTableRowValues(String identifier, int rowIndex){
         TestFxLibraryValidation.validateIndex(rowIndex);
         
@@ -494,7 +494,7 @@ public class Table {
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"ientifier", "text"})
+    @ArgumentNames({"identifier", "text"})
     public void getTableHeaderShouldContain(String identifier, String text) {
         TableView table = new FxRobot().lookup(identifier).query();
         ObservableList<TableColumn> columns = table.getColumns();
@@ -545,7 +545,7 @@ public class Table {
      *
      */
     @RobotKeyword
-    @ArgumentNames({"ientifier", "text"})
+    @ArgumentNames({"identifier", "text"})
     public void getTableShouldContain(String identifier, String text) {
         TableView table = new FxRobot().lookup(identifier).query();
 

@@ -64,6 +64,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Start Application</td>
+     *         <td>AnApplication</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"className"})
@@ -107,6 +116,16 @@ public class Misc {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Start Jar Application</td>
+     *         <td>ajarfile.jar</td>
+     *         <td>AnApplication</td>
      *     </tr>
      * </table>
      */
@@ -194,6 +213,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Sleep</td>
+     *         <td>250</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"milliseconds"})
@@ -228,6 +256,21 @@ public class Misc {
      *         <td>No</td>
      *         <td>int</td>
      *         <td>20</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Is Visible</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Element Is Visible</td>
+     *         <td>idComponent3A2</td>
+     *         <td></td>
      *     </tr>
      * </table>
      */
@@ -271,6 +314,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Is Visible</td>
+     *         <td>idComponent01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeywordOverload
     public void waitUntilElementIsVisible(String identifier) {
@@ -312,6 +364,21 @@ public class Misc {
      *         <td>20</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Is Not Visible</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Element Is Not Visible</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -350,6 +417,15 @@ public class Misc {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Is Not Visible</td>
+     *         <td>idComponent01</td>
      *     </tr>
      * </table>
      */
@@ -402,6 +478,21 @@ public class Misc {
      *         <td>20</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Contains</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Element Contains</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
@@ -449,6 +540,15 @@ public class Misc {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Contains</td>
+     *         <td>idComponent01</td>
      *     </tr>
      * </table>
      */
@@ -501,6 +601,21 @@ public class Misc {
      *         <td>20</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Does Not Contain</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Element Does Not Contain</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
@@ -550,6 +665,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Does Not Contain</td>
+     *         <td>idComponent01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeywordOverload
     public void waitUntilElementDoesNotContains(String identifier, String textToValidate) {
@@ -591,6 +715,21 @@ public class Misc {
      *         <td>20</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Is Disabled</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Element Is Disabled</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -629,6 +768,15 @@ public class Misc {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Is Disabled</td>
+     *         <td>idComponent01</td>
      *     </tr>
      * </table>
      */
@@ -672,6 +820,21 @@ public class Misc {
      *         <td>20</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Is Enabled</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Element Is Enabled</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -712,6 +875,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Element Is Enabled</td>
+     *         <td>idComponent01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeywordOverload
     public void waitUntilElementIsEnabled(String identifier) {
@@ -748,6 +920,21 @@ public class Misc {
      *         <td>No</td>
      *         <td>int</td>
      *         <td>20</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Page Contains</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Page Contains</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
      *     </tr>
      * </table>
      */
@@ -791,6 +978,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Page Contains</td>
+     *         <td>idComponent01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeywordOverload
     public void waitUntilPageContains(String identifier) {
@@ -830,6 +1026,21 @@ public class Misc {
      *         <td>No</td>
      *         <td>int</td>
      *         <td>20</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Page Does Not Contain</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Page Does Not Contain</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
      *     </tr>
      * </table>
      */
@@ -873,6 +1084,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Page Does Not Contain</td>
+     *         <td>idComponent01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeywordOverload
     public void waitUntilPageDoesNotContains(String identifier) {
@@ -914,6 +1134,22 @@ public class Misc {
      *         <td>20</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Page Contains Element</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Page Contains Element</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "timeout=20"})
@@ -969,6 +1205,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Page Contains Element</td>
+     *         <td>idComponent01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeywordOverload
     public void waitUntilPageContainsElement(String identifier) {
@@ -1014,6 +1259,21 @@ public class Misc {
      *         <td>No</td>
      *         <td>int</td>
      *         <td>20</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Page Does Not Contain Element</td>
+     *         <td>idComponent01</td>
+     *         <td>250</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Wait Until Page Does Not Contain Element</td>
+     *         <td>idComponent3a</td>
+     *         <td></td>
      *     </tr>
      * </table>
      */
@@ -1071,6 +1331,15 @@ public class Misc {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Page Does Not Contain Element</td>
+     *         <td>idComponent01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeywordOverload
     public void waitUntilPageDoesNotContainElement(String identifier) {
@@ -1121,6 +1390,17 @@ public class Misc {
      *
      * @return
      *  The Nth component from the list
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${component}=</td>
+     *         <td>Get Nth Element</td>
+     *         <td>idComponent02</td>
+     *         <td>12</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "nthElement"})
@@ -1152,6 +1432,16 @@ public class Misc {
      *
      * @return
      *  The inner component of the provided component
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${component}=</td>
+     *         <td>Get Node Key</td>
+     *         <td>idComponent02</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -1186,7 +1476,7 @@ public class Misc {
      * This value is used if another timeout is not specified.<br>
      *
      * @param timeout
-     * : The time limit to complete the test
+     * : The time limit to complete the test in milliseconds
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -1200,6 +1490,15 @@ public class Misc {
      *         <td>No</td>
      *         <td>int</td>
      *         <td>0</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Default Wait</td>
+     *         <td>1000</td>
      *     </tr>
      * </table>
      * @throws IOException
@@ -1246,6 +1545,17 @@ public class Misc {
      *
      * @return
      * : Attribute value in a string
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${method}=</td>
+     *         <td>Get Component Attribute</td>
+     *         <td>idComponent02</td>
+     *         <td>attributeXYZ</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword()
     @ArgumentNames({"identifier" , "attribute"})

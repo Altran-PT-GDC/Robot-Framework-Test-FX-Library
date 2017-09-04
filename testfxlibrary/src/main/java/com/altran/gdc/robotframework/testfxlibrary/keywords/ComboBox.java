@@ -36,6 +36,16 @@ public class ComboBox {
      *
      * @return
      *  The list of values
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{list}=</td>
+     *         <td>Get List Items From Combo Box</td>
+     *         <td>idComboBox01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -79,6 +89,16 @@ public class ComboBox {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select From Combo Box By Text</td>
+     *         <td>idComboBox01</td>
+     *         <td>hello world</td>
      *     </tr>
      * </table>
      */
@@ -127,6 +147,16 @@ public class ComboBox {
      *         <td>Yes</td>
      *         <td>int (values from 1 to max number of items)</td>
      *         <td>-1</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select From Combo Box By Position</td>
+     *         <td>idComboBox01</td>
+     *         <td>1</td>
      *     </tr>
      * </table>
      */

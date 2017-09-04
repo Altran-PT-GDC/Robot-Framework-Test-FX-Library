@@ -50,6 +50,29 @@ public class Keyboard {
      *     </tr>
      *
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Press</td>
+     *         <td>Enter</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Press</td>
+     *         <td>Control</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Press</td>
+     *         <td>A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Press</td>
+     *         <td>F10</td>
+     *     </tr>
+     * </table>
+     *
+     * For more information on keycodes see: https://docs.oracle.com/javafx/2/api/javafx/scene/input/KeyCode.html
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -76,6 +99,15 @@ public class Keyboard {
      *         <td>Yes</td>
      *         <td>int</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Erase Text</td>
+     *         <td>12</td>
      *     </tr>
      * </table>
      */
@@ -105,6 +137,15 @@ public class Keyboard {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Write</td>
+     *         <td>Hello world</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"text"})
@@ -132,6 +173,29 @@ public class Keyboard {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Release</td>
+     *         <td>Enter</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Release</td>
+     *         <td>Control</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Release</td>
+     *         <td>A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Release</td>
+     *         <td>F10</td>
+     *     </tr>
+     * </table>
+     *
+     * For more information on keycodes see: https://docs.oracle.com/javafx/2/api/javafx/scene/input/KeyCode.html
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -159,6 +223,29 @@ public class Keyboard {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Type</td>
+     *         <td>A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Type</td>
+     *         <td>b</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Type</td>
+     *         <td>DIGIT0</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Type</td>
+     *         <td>F10</td>
+     *     </tr>
+     * </table>
+     *
+     * For more information on keycodes see: https://docs.oracle.com/javafx/2/api/javafx/scene/input/KeyCode.html
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -184,6 +271,15 @@ public class Keyboard {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Clear Text Area</td>
+     *         <td>TextArea02</td>
      *     </tr>
      * </table>
      */
@@ -212,6 +308,15 @@ public class Keyboard {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Clear Text Field</td>
+     *         <td>TextField02</td>
      *     </tr>
      * </table>
      */
@@ -250,6 +355,16 @@ public class Keyboard {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Text Field Text Should Be</td>
+     *         <td>TextField02</td>
+     *         <td>Hello world</td>
      *     </tr>
      * </table>
      */
@@ -304,6 +419,17 @@ public class Keyboard {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Text Area Text Should Be</td>
+     *         <td>TextArea02</td>
+     *         <td>Hello world</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "textToValidate"})
@@ -354,6 +480,17 @@ public class Keyboard {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Label Text Should Be</td>
+     *         <td>Label02</td>
+     *         <td>Hello world</td>
+     *     </tr>
      *     </tr>
      * </table>
      *

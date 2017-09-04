@@ -52,6 +52,16 @@ public class Assert {
      *     </tr>
      *
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Verify That Contains</td>
+     *         <td>idPane</td>
+     *         <td>idButton</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})
@@ -90,6 +100,16 @@ public class Assert {
      *     </tr>
      *
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Verify That Has Name</td>
+     *         <td>idButton</td>
+     *         <td>click here</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier","textToValidate"})
@@ -119,6 +139,15 @@ public class Assert {
      *     </tr>
      *
      *</table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Verify That Is Enabled</td>
+     *         <td>idButton</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -148,6 +177,15 @@ public class Assert {
      *         <td>N/A</td>
      *     </tr>
      *
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Verify That Is Disabled</td>
+     *         <td>idButton</td>
+     *     </tr>
      * </table>
      */
     @RobotKeyword
@@ -179,6 +217,15 @@ public class Assert {
      *         <td>N/A</td>
      *     </tr>
      *
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Component Should Be Visible</td>
+     *         <td>idButton</td>
+     *     </tr>
      * </table>
      *
      */
@@ -221,6 +268,16 @@ public class Assert {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Verify That Has Child</td>
+     *         <td>idPane</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})

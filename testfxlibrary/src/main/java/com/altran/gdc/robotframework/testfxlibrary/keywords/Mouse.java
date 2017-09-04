@@ -56,6 +56,15 @@ public class Mouse {
      *     </tr>
      * </table>
      * <br>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Click On Component</td>
+     *         <td>idComponent05</td>
+     *     </tr>
+     * </table>
      * @throws TimeoutException
      * : If something goes wrong
      */
@@ -96,6 +105,21 @@ public class Mouse {
      *         <td>null</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Click On Component</td>
+     *         <td>idComponent05</td>
+     *         <td>aNodeKey</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Click On Component</td>
+     *         <td>idComponent05</td>
+     *         <td></td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "nodeKey=null"})
@@ -129,6 +153,15 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Double Click On Component</td>
+     *         <td>idComponent05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -154,6 +187,15 @@ public class Mouse {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Drag</td>
+     *         <td>idComponent05</td>
      *     </tr>
      * </table>
      */
@@ -193,6 +235,15 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Drop To</td>
+     *         <td>idComponent05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -202,7 +253,7 @@ public class Mouse {
 
     /**
      * <b>Description:</b> This keyword moves the mouse to an x, y location specified with
-     * <i>xCoordinate</i> and <i>yCoordinate</i>.<br>
+     * <i>xCoordinate</i> and <i>yCoordinate</i>, respectively.<br>
      *
      * @param xCoordinate
      * : The x coordinate
@@ -227,6 +278,16 @@ public class Mouse {
      *         <td>Yes</td>
      *         <td>double</td>
      *         <td>0</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Move By</td>
+     *         <td>10.2</td>
+     *         <td>21.0</td>
      *     </tr>
      * </table>
      */
@@ -256,6 +317,15 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Move To</td>
+     *         <td>idComponent05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -267,7 +337,7 @@ public class Mouse {
      * <b>Description:</b> This keyword right clicks on a component specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     * : The identifier of the node
+     * : The identifier of the component
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -281,6 +351,15 @@ public class Mouse {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Right Click On Component</td>
+     *         <td>idComponent05</td>
      *     </tr>
      * </table>
      */
@@ -310,6 +389,15 @@ public class Mouse {
      *         <td>0</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Scroll Left</td>
+     *         <td>25</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"amount"})
@@ -335,6 +423,15 @@ public class Mouse {
      *         <td>No</td>
      *         <td>int</td>
      *         <td>0</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Scroll Right</td>
+     *         <td>25</td>
      *     </tr>
      * </table>
      */
@@ -364,6 +461,15 @@ public class Mouse {
      *         <td>0</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Scroll Up</td>
+     *         <td>25</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"amount"})
@@ -389,6 +495,15 @@ public class Mouse {
      *         <td>No</td>
      *         <td>int</td>
      *         <td>0</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Scroll Down</td>
+     *         <td>25</td>
      *     </tr>
      * </table>
      */
@@ -421,6 +536,16 @@ public class Mouse {
      * </table>
      * @return
      *  Attribute value in a string
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{list}=</td>
+     *         <td>Get Node List</td>
+     *         <td>idComponent05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -457,6 +582,9 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     *
+     *
      *
      */
     @RobotKeyword
@@ -594,7 +722,7 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b> This keyword tests if a checkbox specified with <i>identifier</i> is selected.
+     * <b>Description:</b> This keyword verifies if a checkbox specified with <i>identifier</i> is selected.
      * If this checkbox is not selected a TestFxLibraryFatalException is thrown.<br>
      *
      * @param identifier
@@ -636,7 +764,7 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b> This keyword tests if a checkbox specified with <i>identifier</i> is not selected.
+     * <b>Description:</b> This keyword verifies if a checkbox specified with <i>identifier</i> is not selected.
      * If this checkbox is selected a TestFxLibraryFatalException is thrown.<br>
      *
      * @param identifier

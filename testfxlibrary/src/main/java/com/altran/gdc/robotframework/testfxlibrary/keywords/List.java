@@ -36,6 +36,16 @@ public class List {
      *
      * @return
      *  The list of values
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{list}=</td>
+     *         <td>Get List Items From List View</td>
+     *         <td>idListView01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -79,6 +89,16 @@ public class List {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select From List View By Text</td>
+     *         <td>idListView01</td>
+     *         <td>hello world</td>
      *     </tr>
      * </table>
      *
@@ -127,6 +147,16 @@ public class List {
      *         <td>Yes</td>
      *         <td>int (values from 1 to max number of items)</td>
      *         <td>-1</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select From List View By Position</td>
+     *         <td>idListView01</td>
+     *         <td>1</td>
      *     </tr>
      * </table>
      *
