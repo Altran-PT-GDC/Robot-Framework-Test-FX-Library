@@ -43,8 +43,19 @@ public class Table {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
      * @return
      * : The number of columns
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${integer}=</td>
+     *         <td>Get Table Column Count</td>
+     *         <td>idTable05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -72,6 +83,15 @@ public class Table {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Table Should Be Visible</td>
+     *         <td>idTable05</td>
      *     </tr>
      * </table>
      *
@@ -106,6 +126,16 @@ public class Table {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Table Should Not Be Visible</td>
+     *         <td>idTable05</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -140,6 +170,16 @@ public class Table {
      *
      * @return
      *  The number of rows
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${integer}=</td>
+     *         <td>Get Table Row Count</td>
+     *         <td>idTable05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -172,6 +212,16 @@ public class Table {
      *
      * @return
      *  List of names
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{list}=</td>
+     *         <td>Get Table Headers</td>
+     *         <td>idTable05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -210,6 +260,16 @@ public class Table {
      *
      * @return
      *  The list of values
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{list}=</td>
+     *         <td>Get Table Values</td>
+     *         <td>idTable05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -259,6 +319,18 @@ public class Table {
      *
      * @return
      *  The cell value
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${string}=</td>
+     *         <td>Get Table Cell Value</td>
+     *         <td>idTable05</td>
+     *         <td>2</td>
+     *         <td>12</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "rowIndex", "columnIndex"})
@@ -326,6 +398,18 @@ public class Table {
      *     </tr>
      * </table>
      *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Table Cell Should Contain</td>
+     *         <td>idTable05</td>
+     *         <td>5</td>
+     *         <td>15</td>
+     *         <td>Hello World</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "rowIndex", "columnIndex", "text"})
@@ -382,6 +466,18 @@ public class Table {
      *
      * @return
      *  List of values
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{list}=</td>
+     *         <td>Get Table Column Values</td>
+     *         <td>idTable23</td>
+     *         <td>12</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "columnIndex"})
@@ -442,6 +538,18 @@ public class Table {
      *
      * @return
      *  List of values
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{list}=</td>
+     *         <td>Get Table Row Values</td>
+     *         <td>idTable3A</td>
+     *         <td>8</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "rowIndex"})
@@ -492,6 +600,17 @@ public class Table {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Get Table Header Should Contain</td>
+     *         <td>idTable12</td>
+     *         <td>Hello World</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "text"})
@@ -540,6 +659,16 @@ public class Table {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Get Table Should Contain</td>
+     *         <td>idTable12</td>
+     *         <td>Hello World</td>
      *     </tr>
      * </table>
      *

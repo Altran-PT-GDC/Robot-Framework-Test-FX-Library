@@ -47,6 +47,16 @@ public class Timeout {
      *     </tr>
      * </table>
      *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Set Timeout</td>
+     *         <td>GenericTimeout</td>
+     *         <td>20</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"timeoutName", "timeoutInSeconds"})

@@ -98,6 +98,15 @@ public class Window {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select Window</td>
+     *         <td>idWindow02</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -123,6 +132,15 @@ public class Window {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Window</td>
+     *         <td>idWindow23</td>
      *     </tr>
      * </table>
      */
@@ -171,6 +189,20 @@ public class Window {
      *         <td>png</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Capture Screen</td>
+     *         <td>jgp</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Capture Screen</td>
+     *         <td>gif</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"format"})
@@ -225,6 +257,16 @@ public class Window {
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Set File Path</td>
+     *         <td>E:\MyFolder\MyInnerFolder\</td>
+     *         <td>myFile</td>
      *     </tr>
      * </table>
      *

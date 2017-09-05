@@ -583,8 +583,15 @@ public class Mouse {
      *     </tr>
      * </table>
      *
-     *
-     *
+     *<br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Set Check Box State</td>
+     *         <td>idCheckBox05</td>
+     *         <td>true</td>
+     *     </tr>
+     * </table>
      *
      */
     @RobotKeyword
@@ -626,6 +633,16 @@ public class Mouse {
      *
      * @return
      * : Boolean value if the checkbox is selected (true) or not (false).
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${boolean}=</td>
+     *         <td>Get Check Box State</td>
+     *         <td>idCheckBox05</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -662,6 +679,16 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Check Box Should Be Enabled</td>
+     *         <td>idCheckBox05</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -702,6 +729,16 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Check Box Should Be Disabled</td>
+     *         <td>idCheckBox05</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -742,6 +779,16 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Check Box Should Be Selected</td>
+     *         <td>idCheckBox05</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -784,6 +831,16 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Check Box Should Not Be Selected</td>
+     *         <td>idCheckBox05</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -834,6 +891,17 @@ public class Mouse {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select From Popup Menu</td>
+     *         <td>idComponent05</td>
+     *         <td>aFunctionToSelect</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "functionText"})
