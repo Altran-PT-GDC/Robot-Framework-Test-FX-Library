@@ -9,7 +9,7 @@ import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatal
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.geometry.Point2D;
-import javafx.stage.FileChooser;
+import javafx.scene.Node;
 import javafx.stage.Stage;
 
 import org.robotframework.javalib.annotation.ArgumentNames;
@@ -36,6 +36,7 @@ public class Window {
     private String filePath;
     private int counter;
     private String fileName;
+    private String format;
     private static final Logger LOG = LoggerFactory.getLogger(Window.class);
     private static final String ERROR_MSG = "Error";
 
@@ -175,7 +176,6 @@ public class Window {
      * If an error occurs a TestFxLibraryNonFatalException
      * is thrown.<br>
      *
-     * @param format
      * : The image format of ScreenShots
      * <br><br>
      * <table summary="">
@@ -215,8 +215,7 @@ public class Window {
      *
      */
     @RobotKeyword
-    @ArgumentNames({"format"})
-    public void captureScreen(String format){
+    public void captureScreen(){
 
         TestFxLibraryValidation.validateArguments(format);
 
@@ -241,13 +240,15 @@ public class Window {
     /**
      * <b>Description:</b> This keyword sets the folder path where you want to save screenshots,
      * sets the filename, deletes files with the same name in this folder and resets the counter
-     * of screenshots. <i>filePath</i> specifies the path and <i>fileName</i> specifies the filename</i>.
+     * of screenshots. <i>filePath</i> specifies the path and <i>fileName</i> specifies the filename.
      * If an error occurs a TestFxLibraryNonFatalException is thrown.<br>
      *
      * @param filePath
      * : Path of the folder where you want to save screenShots
      * @param fileName
      * : Name that you want to give to Screenshots
+     * @param format
+     * : Image format
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -282,14 +283,19 @@ public class Window {
      *
      */
     @RobotKeyword
-    @ArgumentNames({"filePath" , "fileName"})
-    public void setFilePath(String filePath, String fileName){
+    @ArgumentNames({"filePath" , "fileName", "format"})
+    public void setFilePath(String filePath, String fileName, String format){
 
         TestFxLibraryValidation.validateArguments(filePath, fileName);
 
         try {
-            this.filePath = filePath;
+            if (!filePath.endsWith("/")) {
+                this.filePath = filePath + "/";
+            }else {
+                this.filePath = filePath;
+            }
             this.fileName = fileName;
+            this.format = format;
             deleteFiles();
             counter = 1;
 
@@ -300,23 +306,16 @@ public class Window {
     }
 
     public void deleteFiles(){
+
         File directory = new File(filePath);
 
         File[] files = directory.listFiles();
         for (File f : files) {
-            if (f.getName().startsWith(fileName)) {
+            if (f.getName().startsWith(fileName + format)) {
                 f.delete();
             }
         }
     }
-
-    /**
-     *
-     *
-     * Get the position of the node on the screen
-     *
-     * @param identifier the identifier of the node
-     */
 
     /**
      * <b>Description:</b> This keyword returns the position of a component on
@@ -374,20 +373,47 @@ public class Window {
 
     /**
      *
-     * Get the position of the node on the screen
+     * Get the size of a component
      *
+     * @param identifier the identifier of the node
+     *
+     * @return an int array with the Width and Height of the component
      */
     @RobotKeyword
-    public void cancelFileChooser() {
+    @ArgumentNames({"identifier"})
+    public int[] getComponentSize(String identifier) {
 
-        //FileChooser fileChooser = new FxRobot().targetWindow().getScene();
+        TestFxLibraryValidation.validateArguments(identifier);
+        misc.waitUntilPageContains(identifier);
 
         try {
-            //TODO implement the method.
+
+            Node node = new FxRobot().lookup(identifier).query();
+
+            LOG.info("Width - " + (int)node.getBoundsInLocal().getWidth() + " Height - " + (int)node.getBoundsInLocal().getHeight());
+
+            return new int[]{(int) node.getBoundsInLocal().getWidth(), (int) node.getBoundsInLocal().getHeight()};
+
 
         } catch (Exception e) {
             LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryFatalException("Something goes wrong");
+        }
+    }
+
+    /**
+     * <b>Description:</b>This keyword returns the title of the current window. If an error occurs
+     * a TestFxLibraryNonFatalException is thrown.<br>
+     *
+     */
+    @RobotKeyword
+    public void getSelectedWindowTitle(){
+
+        try {
+            LOG.info(new FxToolkitContext().getPrimaryStageFuture().get().getTitle());
+        } catch (Exception e){
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryNonFatalException("Error get main window");
         }
     }
 

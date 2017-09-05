@@ -1,5 +1,6 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
@@ -12,6 +13,8 @@ import java.util.List;
 
 @RobotKeywords
 public class ComboBox {
+
+    private boolean verifyComboBoxText = false;
 
     @Autowired
     Misc misc;
@@ -52,18 +55,17 @@ public class ComboBox {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public List<String> getListItemsFromComboBox(String identifier){
+    public List<Object> getListItemsFromComboBox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
         misc.waitUntilPageContains(identifier);
 
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 
-        List<String> list = new ArrayList<>();
+        List<Object> list = new ArrayList<>();
         comboBox.getItems().forEach(item ->
-            list.add((String) item)
+            list.add(item)
         );
-
         return list;
     }
 
@@ -119,10 +121,32 @@ public class ComboBox {
         new FxRobot().clickOn(comboBox);
 
         comboBox.getItems().forEach(item -> {
-            if(((String)item).equals(text)){
+            if((item).equals(text)){
                 comboBox.getSelectionModel().select(item);
+                comboBox.setValue(item);
+
+                verifyComboBoxText = true;
             }
         });
+        if (!verifyComboBoxText){
+            throw new TestFxLibraryFatalException("Item does not match with " + text);
+        }
+    }
+
+    /**
+     * Select the first element from a combobox
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void selectFristFromComboBox(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
+
+        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+
+        new FxRobot().clickOn(comboBox);
+        comboBox.getSelectionModel().selectFirst();
     }
 
     /**
@@ -181,6 +205,7 @@ public class ComboBox {
         new FxRobot().clickOn(comboBox);
 
         comboBox.getSelectionModel().select(position);
+        comboBox.setValue(comboBox.getItems().get(position));
 
     }
 

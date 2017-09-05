@@ -86,3 +86,9 @@ Test Get Component Attribute
      ${attribute}=      Get Component Atrribute    \#check     isSelected
      Log    ${attribute}     WARN
      Close Application
+
+Test List Component Methods
+     Start Application  testapp.JavafxExample2
+     ${attribute}=      List Component Methods    \#check
+     Log    ${attribute}     WARN
+     Close Application

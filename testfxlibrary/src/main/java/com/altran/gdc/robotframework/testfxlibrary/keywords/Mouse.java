@@ -597,13 +597,13 @@ public class Mouse {
      */
     @RobotKeyword
     @ArgumentNames({"identifier" , "booleanValue"})
-    public void setCheckBoxState(String identifier, Boolean booleanValue) {
+    public void setCheckBoxState(String identifier, String booleanValue) {
 
         TestFxLibraryValidation.validateArguments(identifier, booleanValue);
 
         try{
             CheckBox check = new FxRobot().lookup(identifier).query();
-            check.setSelected(booleanValue);
+            check.setSelected(Boolean.valueOf(booleanValue));
         } catch (IllegalArgumentException | NullPointerException e) {
             throw  new TestFxLibraryFatalException(e);
         }

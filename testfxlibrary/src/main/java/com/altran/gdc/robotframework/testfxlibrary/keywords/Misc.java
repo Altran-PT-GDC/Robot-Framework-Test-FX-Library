@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;
 import org.python.google.common.collect.Iterables;
+import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
@@ -196,8 +197,8 @@ public class Misc {
      * <b>Description:</b> This keyword pauses the execution during a period specified with <i>milliseconds</i>
      * in milliseconds.<br>
      *
-     * @param milliseconds
-     * : The number of milliseconds to pause the execution
+     * @param secunds
+     * : The number of secunds to pause the execution
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -207,7 +208,7 @@ public class Misc {
      *         <th>Default</th>
      *     </tr>
      *     <tr>
-     *         <td>milliseconds</td>
+     *         <td>secunds</td>
      *         <td>Yes</td>
      *         <td>int</td>
      *         <td>N/A</td>
@@ -224,9 +225,9 @@ public class Misc {
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"milliseconds"})
-    public void sleep(int milliseconds) {
-        new FxRobot().sleep(milliseconds);
+    @ArgumentNames({"secunds"})
+    public void sleep(int secunds) {
+        new FxRobot().sleep(secunds, TimeUnit.SECONDS);
     }
 
     /**
@@ -1575,6 +1576,37 @@ public class Misc {
             return o.toString();
 
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * List the methods of a component
+     *
+     * @param identifier
+     *          The component where you want to get the list of Methods
+     */
+    @RobotKeyword()
+    @ArgumentNames({"identifier"})
+    public void listComponentMethods(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        Node node = getNode(identifier);
+
+        try {
+            Class clazz = Class.forName(node.getClass().getName());
+
+            Object obj = clazz.newInstance();
+
+            Method[] methods = obj.getClass().getMethods();
+
+            for (int i=0; i < methods.length; i++){
+
+                Log.info(methods[i].getName());
+            }
+
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException  e) {
             throw new TestFxLibraryFatalException(e);
         }
     }

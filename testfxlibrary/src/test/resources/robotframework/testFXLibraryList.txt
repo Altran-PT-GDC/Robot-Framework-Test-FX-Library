@@ -19,7 +19,12 @@ Test Get List Items From ListView
 
 Test Select From Combo Box By Text
     Start Application  testapp.JavafxExample
-    Select From Combo Box By Text  \#comboBox   JD
+    Select From Combo Box By Text   \#comboBox   B
+    Close Application
+
+Test Select Frist From Combo Box
+    Start Application  testapp.JavafxExample
+    Select Frist From Combo Box   \#comboBox
     Close Application
 
 Test Select From Combo Box By Position

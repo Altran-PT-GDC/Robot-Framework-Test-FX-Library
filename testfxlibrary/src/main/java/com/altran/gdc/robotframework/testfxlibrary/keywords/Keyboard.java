@@ -496,7 +496,6 @@ public class Keyboard {
      *         <td>Label02</td>
      *         <td>Hello world</td>
      *     </tr>
-     *     </tr>
      * </table>
      *
      */

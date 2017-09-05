@@ -77,10 +77,25 @@ public class JavafxExample2 extends Application {
                 , "Pepper", "Radish", "Shallot", "Spinach", "Swede"
                 , "Turnip"));
 
+        HBox a = new HBox();
+        a.getChildren().add(new Label("First"));
+
+        HBox b = new HBox();
+        b.getChildren().add(new Label("Secund"));
+
+        HBox c = new HBox();
+        c.getChildren().add(new Label("Third"));
+
+
+        ComboBox cb = new ComboBox();
+        cb.setId("cb");
+
+        cb.getItems().addAll(a,b,c);
 
         //Add the label and choicebox to the flowpane
         choicePane.getChildren().add(choiceLbl);
         choicePane.getChildren().add(fruits);
+        choicePane.getChildren().add(cb);
 
         //put the flowpane in the top area of the BorderPane
         componentLayout.setTop(choicePane);

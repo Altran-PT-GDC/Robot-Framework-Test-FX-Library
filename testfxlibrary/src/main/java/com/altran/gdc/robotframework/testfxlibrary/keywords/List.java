@@ -407,6 +407,7 @@ public class List {
      *     </tr>
      * </table>
      *
+     *          the position of the component
      */
     @RobotKeyword
     @ArgumentNames({"identifier","position"})
