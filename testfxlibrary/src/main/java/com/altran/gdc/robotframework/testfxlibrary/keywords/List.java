@@ -186,13 +186,39 @@ public class List {
     }
 
     /**
-     * Returns the items that's currently selected in the list.
+     * <b>Description:</b> This keyword returns a list of items which are currently selected on a
+     * list. This list is specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     *      The id of the ListView
+     * : The id of the list
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      *
      * @return
-     *      The items selected
+     *  The items selected
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{list}=</td>
+     *         <td>Get Selected Items From List</td>
+     *         <td>idList23</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -206,13 +232,39 @@ public class List {
     }
 
     /**
-     * Count the number of items selected.
+     * <b>Description:</b> This keyword returns the number of selected items on a list.
+     * This list is specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     *      The id of the ListView
+     * : The id of the list
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      *
      * @return
-     *      The number of items selected
+     *  The number of items selected
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${integer}=</td>
+     *         <td>Get List Item Count From List</td>
+     *         <td>idList76</td>
+     *     </tr>
+     * </table>
      *
      */
     @RobotKeyword
@@ -227,10 +279,35 @@ public class List {
     }
 
     /**
-     * Clear all itemns selected from ListView
+     * <b>Description:</b> This keyword clears all items selected on a listview.
+     * <i>identifier</i> specifies the listview to be cleared.<br>
      *
      * @param identifier
-     *      The id of the ListView
+     * : The id of the listview
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Clear Selection From List</td>
+     *         <td>idListView2J</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -245,10 +322,37 @@ public class List {
     }
 
     /**
-     * Select all itemns from the ListView
+     * <b>Description:</b> This keyword selects all items on a listview. <i>identifier</i>
+     * specifies the listview.<br>
      *
      * @param identifier
-     *      The id of the ListView
+     * : The id of the listview
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select All From List</td>
+     *         <td>idListView56</td>
+     *         <td>hello world</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -263,9 +367,45 @@ public class List {
     }
 
     /**
-     * Clear selection
+     * <b>Description:</b> This keyword clears selection on a listview by position.
+     * <i>identifier</i> specifies listview and <i>position</i> specifies position.<br>
+     *
      * @param identifier
+     * : The id of the listview
      * @param position
+     * : position on listview
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>position</td>
+     *         <td>Yes</td>
+     *         <td>integer</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Unselect From List By Position</td>
+     *         <td>idListView8B</td>
+     *         <td>12</td>
+     *     </tr>
+     * </table>
+     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier","position"})
@@ -280,13 +420,45 @@ public class List {
     }
 
     /**
-     * Clear selection by specific text.
+     * <b>Description:</b> This keyword clears selection on a listview by text.
+     * <i>identifier</i> specifies listview and <i>text</i> specifies text to
+     * identify item.<br>
      *
      * @param identifier
-     *      The id of the ListView
-     *
+     * : The id of the listview
      * @param text
-     *      The text to clear the selection
+     * : The text to identify selection to clear
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>text</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Unselect From List By Text</td>
+     *         <td>idListView8B</td>
+     *         <td>Hello world</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier","text"})

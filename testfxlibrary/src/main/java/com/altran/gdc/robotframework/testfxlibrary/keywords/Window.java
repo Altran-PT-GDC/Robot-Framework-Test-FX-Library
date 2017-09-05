@@ -302,9 +302,47 @@ public class Window {
     }
 
     /**
+     *
+     *
      * Get the position of the node on the screen
      *
      * @param identifier the identifier of the node
+     */
+
+    /**
+     * <b>Description:</b> This keyword returns the position of a component on
+     * the screen. This component is specified with <i>identifier</i>.<br>
+     *
+     * @param identifier
+     * : Component identifier
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * @return
+     *  Position of component on screen
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${position2D}=</td>
+     *         <td>Get Component Position</td>
+     *         <td>idComponent02</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -326,6 +364,7 @@ public class Window {
     }
 
     /**
+     * 
      * Get the position of the node on the screen
      *
      */

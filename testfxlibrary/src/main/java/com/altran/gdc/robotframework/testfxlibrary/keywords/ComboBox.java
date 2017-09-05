@@ -184,13 +184,39 @@ public class ComboBox {
     }
 
     /**
-     * Return the selected item from ComboBox.
+     * <b>Description:</b> This keyword returns a selected item from a combobox. The
+     * combobox is specified with <i>identifier</i>.<br>
      *
      * @param identifier
-     *      The id of the ComboBox
+     * : The id of the ComboBox
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      *
      * @return
-     *      The text of the selected item
+     *  The text of the selected item
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${item}=</td>
+     *         <td>Get Selected Item From Combo Box</td>
+     *         <td>idComboBox23</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
