@@ -23,7 +23,7 @@ public class Table {
     private static String ERROR_MSG = "The table not contains the text %s";
     /**
      * <b>Description:</b> This keyword returns the number of columns from a specific
-     * table specified with <i>identifier</i>.<br>
+     * table specified with <i>identifier</i>. Headers do not count to total.<br>
      *
      * @param identifier
      * : The id of the table
@@ -148,7 +148,7 @@ public class Table {
 
     /**
      * <b>Description:</b> This keyword returns the number of rows in a table specified
-     * with <i>identifier</i>.<br>
+     * with <i>identifier</i>. Headers do not count to total.<br>
      *
      * @param identifier
      * : The if of the table
@@ -189,7 +189,7 @@ public class Table {
     }
 
     /**
-     * <b>Description:</b> This keyword returns a list of header names from a table specified
+     * <b>Description:</b> This keyword returns a list of header values from a table specified
      * with <i>identifier</i>.<br>
      *
      * @param identifier
@@ -238,7 +238,8 @@ public class Table {
 
     /**
      * <b>Description:</b> This keyword returns a list with values from all rows in a table
-     * specified with <i>identifier</i>.<br>
+     * specified with <i>identifier</i>. Values in this list are organized by rows: values
+     * from first row come first followed by values from second row, etc.<br>
      *
      * @param identifier
      * : The id of the table
@@ -280,8 +281,10 @@ public class Table {
 
     /**
      * <b>Description:</b> This keyword returns the cell value from a table specified with <i>identifier</i>.
-     * <i>rowIndex</i> and <i>columnIndex</i> identify row and column indexes. An Exception is thrown
-     * if values are out of range.<br>
+     * <i>rowIndex</i> and <i>columnIndex</i> identify row and column indexes, respectively.
+     * Indexes can take values from 0 to max row and column respectively. Index of 0 correspond to the first
+     * entry of both rows and columns. Negative numbers and indexes larger than max value for row or column
+     * throw an Exception.<br>
      *
      * @param identifier
      * : The id of the table
@@ -353,8 +356,10 @@ public class Table {
     /**
      * <b>Description:</b> This keyword checks if a given cell in a table contains specified text. Table is
      * specified with <i>identifier</i>; <i>rowIndex</i> and <i>columnIndex</i> identify row and column
-     * indexes. <i>text</i> specifies text to be validated. If the given cell does not contain <i>text</i>
-     * a TestFxLibraryNonFatalException is thrown. An Exception is thrown if index values are out of range.<br>
+     * indexes, respectively. <i>text</i> specifies text to be validated. If the given cell does
+     * not contain <i>text</i> a TestFxLibraryNonFatalException is thrown. First row and column indexes
+     * are 0, which does not correspond to headers. An Exception is thrown
+     * if index values are out of range.<br>
      *
      * @param identifier
      * : The id of the table
@@ -435,7 +440,8 @@ public class Table {
 
     /**
      * <b>Description:</b> This keyword gets a list of values from a specific column of a given table. Table
-     * is specified with <i>identifier</i> and <i>columnIndex</i> specifies column index. An Exception
+     * is specified with <i>identifier</i> and <i>columnIndex</i> specifies column index. Index of 0
+     * does not correspond to header but to first actual column. An Exception
      * is thrown if column index is out of bounds.<br>
      *
      * @param identifier
@@ -507,7 +513,8 @@ public class Table {
 
     /**
      * <b>Description:</b> This keyword gets a list of values from a specific row of a given table. The table
-     * is specified with <i>identifier</i> and <i>rowIndex</i> specifies row index. An Exception
+     * is specified with <i>identifier</i> and <i>rowIndex</i> specifies row index. First row is specified
+     * with index 0, which does not correspond to headers. An Exception
      * is thrown if row index is out of bounds.<br>
      *
      * @param identifier

@@ -128,7 +128,8 @@ public class ComboBox {
     /**
      * <b>Description:</b> This keyword selects an item from a combobox by position. The
      * combobox is specified with <i>identifier</i> and the position is specified with
-     * <i>position</i>, a value of -1 clears the selection.<br>
+     * <i>position</i>, which can take values from 0 to item count minus 1; a value
+     * of -1 clears the selection.<br>
      *
      * @param identifier
      * : The id of the combobox
@@ -152,7 +153,7 @@ public class ComboBox {
      *     <tr>
      *         <td>position</td>
      *         <td>Yes</td>
-     *         <td>int (values from 1 to max number of items)</td>
+     *         <td>int (values from 0 to item count - 1)</td>
      *         <td>-1</td>
      *     </tr>
      * </table>

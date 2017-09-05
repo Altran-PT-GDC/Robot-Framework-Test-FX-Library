@@ -170,7 +170,9 @@ public class Window {
 
     /**
      * <b>Description:</b> This keyword takes a screenshot of the application. File
-     * extension is specified with <i>format</i>. If an error occurs a TestFxLibraryNonFatalException
+     * extension is specified with <i>format</i>. This file is saved with the filename
+     * and filepath specified with the keyword Set File Path.
+     * If an error occurs a TestFxLibraryNonFatalException
      * is thrown.<br>
      *
      * @param format
@@ -197,10 +199,17 @@ public class Window {
      *     <tr>
      *         <td>Capture Screen</td>
      *         <td>jgp</td>
+     *         <td></td>
      *     </tr>
      *     <tr>
-     *         <td>Capture Screen</td>
-     *         <td>gif</td>
+     *         <td>Set File Path</td>
+     *         <td>E:\MyFolder\MyInnerFolder\</td>
+     *         <td>myFile</td>
+     *     </tr>
+     *     <tr>
+     *         <td>Saved file:</td>
+     *         <td>E:\MyFolder\MyInnerFolder\myFile.jpg</td>
+     *         <td></td>
      *     </tr>
      * </table>
      *
@@ -364,7 +373,7 @@ public class Window {
     }
 
     /**
-     * 
+     *
      * Get the position of the node on the screen
      *
      */

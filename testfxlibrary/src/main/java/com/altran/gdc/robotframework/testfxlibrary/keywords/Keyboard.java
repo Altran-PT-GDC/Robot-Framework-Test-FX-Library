@@ -118,7 +118,8 @@ public class Keyboard {
     }
 
     /**
-     * <b>Description:</b> This keyword writes text on the focused component. (eg. a text field)<br>
+     * <b>Description:</b> This keyword writes text on the focused component.
+     * It does not accept special characters (eg. a text field). <br>
      *
      * @param text
      * : The text to be written
@@ -141,6 +142,10 @@ public class Keyboard {
      * <br>
      * <b>Examples:</b>
      * <table summary="">
+     *     <tr>
+     *         <td>Write</td>
+     *         <td>Hello world</td>
+     *     </tr>
      *     <tr>
      *         <td>Write</td>
      *         <td>Hello world</td>

@@ -74,8 +74,9 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword clicks on a component specified <i>nodeKey</i>.
-     * If <i>nodeKey</i> is not provided, <i>identifier</i> is used instead.<br>
+     * <b>Description:</b>This keyword clicks on a component specified with
+     * <i>identifier</i> within a parent component specified with <i>nodeKey</i>.
+     * If <i>nodeKey</i> is not provided, <i>identifier</i> is used alone.<br>
      *
      * @throws TimeoutException
      *  If something goes wrong
@@ -83,7 +84,7 @@ public class Mouse {
      * @param identifier
      * : The identifier of the component
      * @param nodeKey
-     * : The key of the component.
+     * : The parent component of <i>identifier</i>.
      * <br><br>
      * <table summary="">
      *     <tr>

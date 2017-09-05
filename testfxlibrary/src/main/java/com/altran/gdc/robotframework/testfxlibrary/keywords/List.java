@@ -130,7 +130,8 @@ public class List {
     /**
      * <b>Description:</b> This keyword selects an item in a listview by position. The listview is
      * specified with <i>identifier</i>. The position that defines the item to be selected is
-     * specified with <i>position</i>, a value of -1 clears the selection.<br>
+     * specified with <i>position</i>, which can take values from 0 to item count minus 1; a value
+     * of -1 clears the selection.<br>
      *
      * @param identifier
      * : The id of the listview
@@ -153,7 +154,7 @@ public class List {
      *     <tr>
      *         <td>posiotion</td>
      *         <td>Yes</td>
-     *         <td>int (values from 1 to max number of items)</td>
+     *         <td>int (values from 0 to item count - 1)</td>
      *         <td>-1</td>
      *     </tr>
      * </table>
