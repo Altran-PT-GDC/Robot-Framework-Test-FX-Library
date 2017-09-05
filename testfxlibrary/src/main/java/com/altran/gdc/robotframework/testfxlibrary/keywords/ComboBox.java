@@ -2,6 +2,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
@@ -12,6 +13,8 @@ import java.util.List;
 @RobotKeywords
 public class ComboBox {
 
+    @Autowired
+    Misc misc;
 
     /**
      * <b>Description:</b> This keyword returns a list of values from a combobox specified with <i>identifier</i>.<br>
@@ -51,6 +54,8 @@ public class ComboBox {
     @ArgumentNames({"identifier"})
     public List<String> getListItemsFromComboBox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
 
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 
@@ -106,6 +111,8 @@ public class ComboBox {
     @ArgumentNames({"identifier", "text"})
     public void selectFromComboBoxByText(String identifier, String text){
         TestFxLibraryValidation.validateArguments(identifier, text);
+
+        misc.waitUntilPageContains(identifier);
 
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 
@@ -166,11 +173,35 @@ public class ComboBox {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateIndex(position);
 
+        misc.waitUntilPageContains(identifier);
+
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 
         new FxRobot().clickOn(comboBox);
 
         comboBox.getSelectionModel().select(position);
+
+    }
+
+    /**
+     * Return the selected item from ComboBox.
+     *
+     * @param identifier
+     *      The id of the ComboBox
+     *
+     * @return
+     *      The text of the selected item
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public String getSelectedItemFromCombox(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        misc.waitUntilPageContains(identifier);
+
+        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+
+        return (String)comboBox.getSelectionModel().getSelectedItem();
 
     }
 }

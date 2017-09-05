@@ -605,7 +605,7 @@ public class Table {
      * <b>Examples:</b>
      * <table summary="">
      *     <tr>
-     *         <td>Get Table Header Should Contain</td>
+     *         <td>Table Header Should Contain</td>
      *         <td>idTable12</td>
      *         <td>Hello World</td>
      *     </tr>
@@ -613,8 +613,8 @@ public class Table {
      *
      */
     @RobotKeyword
-    @ArgumentNames({"identifier", "text"})
-    public void getTableHeaderShouldContain(String identifier, String text) {
+    @ArgumentNames({"ientifier", "text"})
+    public void tableHeaderShouldContain(String identifier, String text) {
         TableView table = new FxRobot().lookup(identifier).query();
         ObservableList<TableColumn> columns = table.getColumns();
 
@@ -666,7 +666,7 @@ public class Table {
      * <b>Examples:</b>
      * <table summary="">
      *     <tr>
-     *         <td>Get Table Should Contain</td>
+     *         <td>Table Should Contain</td>
      *         <td>idTable12</td>
      *         <td>Hello World</td>
      *     </tr>
@@ -674,8 +674,8 @@ public class Table {
      *
      */
     @RobotKeyword
-    @ArgumentNames({"identifier", "text"})
-    public void getTableShouldContain(String identifier, String text) {
+    @ArgumentNames({"ientifier", "text"})
+    public void tableShouldContain(String identifier, String text) {
         TableView table = new FxRobot().lookup(identifier).query();
 
         // Item row

@@ -63,14 +63,14 @@ Test Get Table Row Values
     Close Application
 
 
-Test Get Table Header Should Contain
+Test Table Header Should Contain
     Start Application  testapp.JavafxExample
-    Get Table Header Should Contain  \#table    Email
+    Table Header Should Contain  \#table    Email
     Close Application
 
-Test Get Table Should Contain
+Test Table Should Contain
     Start Application  testapp.JavafxExample
-    Get Table Should Contain  \#table    Dow
+    Table Should Contain  \#table    Dow
     Close Application
 
 

@@ -37,3 +37,9 @@ Test Select From List View By Position
     Start Application  testapp.JavafxExample2
     Select From List View By Position  \#listView   1
     Close Application
+
+Test Get Selected Items From List
+    Start Application  testapp.JavafxExample2
+     ${count}   Get Selected Items From List  \#listView
+     Log     ${count}    WARN
+    Close Application
