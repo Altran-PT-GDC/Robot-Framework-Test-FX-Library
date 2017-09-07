@@ -1586,6 +1586,42 @@ public class Misc {
      * @param identifier
      *          The component where you want to get the list of Methods
      */
+    /**
+     * <b>Description:</b> This keyword lists the methods of a component.<br>
+     *
+     * @param identifier
+     * : The component identifier
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>attribute</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${method}=</td>
+     *         <td>List Component Methods</td>
+     *         <td>idComponent02</td>
+     *     </tr>
+     * </table>
+     */
     @RobotKeyword()
     @ArgumentNames({"identifier"})
     public void listComponentMethods(String identifier) {
@@ -1607,6 +1643,71 @@ public class Misc {
             }
 
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException  e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword gets an attribute value of a component.<br>
+     *
+     * @param identifier
+     * : The component where you want to get the attribute
+     * @param attribute
+     * : The method name of the attribute that you want
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>attribute</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * @return
+     * : Attribute value in a string
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${method}=</td>
+     *         <td>Get Component Attribute</td>
+     *         <td>idComponent02</td>
+     *         <td>attributeXYZ</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword()
+    @ArgumentNames({"identifier" , "attribute"})
+    public String getImageName(String identifier, String attribute) {
+
+        TestFxLibraryValidation.validateArguments(identifier, attribute);
+
+        Node node = getNode(identifier);
+
+        try {
+            Class clazz = Class.forName(node.getClass().getName());
+
+            Object obj = clazz.newInstance();
+            Method m = obj.getClass().getMethod(attribute);
+            Object o = m.invoke(obj);
+
+            return o.toString();
+
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
             throw new TestFxLibraryFatalException(e);
         }
     }

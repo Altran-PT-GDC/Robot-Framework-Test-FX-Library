@@ -54,3 +54,8 @@ Test Get Selected Window Title
     Start Application  testapp.JavafxExample2
     Get Selected Window Title
     Close Application
+
+Test Maximizing Window
+    Start Application  testapp.JavafxExample2
+    Maximize Window
+    Close Application

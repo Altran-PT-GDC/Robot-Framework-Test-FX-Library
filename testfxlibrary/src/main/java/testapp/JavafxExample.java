@@ -35,6 +35,7 @@ public class JavafxExample extends Application {
     private static final int TEXTFIELD_PREF_WIDTH = 50;
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
+    private static final int TREEITEMS_AMOUNT = 6;
 
 
 
@@ -130,6 +131,15 @@ public class JavafxExample extends Application {
             TableColumn phone = new TableColumn("Phone");
             table1.getColumns().addAll(address, phone);
 
+            TreeItem<String> rootItem = new TreeItem<String> ("Inbox");
+            rootItem.setExpanded(true);
+            for (int i = 1; i < TREEITEMS_AMOUNT; i++) {
+                TreeItem<String> item = new TreeItem<String> ("Message" + i);
+                rootItem.getChildren().add(item);
+            }
+            TreeView<String> tree = new TreeView<String> (rootItem);
+            tree.setId("treeView");
+            tree.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
             ComboBox combo = new ComboBox();
             combo.setId("comboBox");
@@ -138,7 +148,7 @@ public class JavafxExample extends Application {
 
 
             // create and add containers.
-            HBox box = new HBox(HBOX_SPACING, countButton, countValue, btnDisable, chooser, table, table1, combo);
+            HBox box = new HBox(HBOX_SPACING, countButton, countValue, btnDisable, chooser, table, table1, tree, combo);
             box.setPadding(new Insets(HBOX_INSETS));
             box.setAlignment(Pos.CENTER);
 

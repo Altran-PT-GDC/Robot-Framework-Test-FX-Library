@@ -84,6 +84,12 @@ Test CheckBox Should Not Be Selected
     CheckBox Should Not Be Selected   .check-box
     Close Application
 
+Test Click Component At Coordinates
+
+    Start Application  testapp.JavafxExample2
+    Click Component At Coordinates      300    400
+    Close Application
+
 *** Keywords ***
 
 Test Fruits with ${fruit}

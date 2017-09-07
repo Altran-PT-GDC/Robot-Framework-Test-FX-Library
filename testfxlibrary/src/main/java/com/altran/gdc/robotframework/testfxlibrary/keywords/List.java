@@ -1,6 +1,8 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 @RobotKeywords
 public class List {
@@ -476,6 +479,134 @@ public class List {
                 listView.getSelectionModel().clearSelection(i);
             }
         }
+    }
+
+    /**
+     * <b>Description:</b> This keyword validates if a text is present in a given list. ListView
+     * is specified with <i>identifier</i> and <i>text</i> specifies text to compare. If
+     * <i>text</i> is not found within <i>identifier</i> a TestFxLibraryNonFatalException is thrown.<br>
+     *
+     * @param identifier
+     * : The id of the table
+     * @param text
+     * : Text to compare
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>text</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>List View Should Contain</td>
+     *         <td>listView</td>
+     *         <td>one</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "text"})
+    public void listViewShouldContain(String identifier, String text) {
+        ListView listView = new FxRobot().lookup(identifier).query();
+
+        ObservableList items = listView.getItems();
+
+        Iterator it = items.iterator();
+        boolean validateItem = false;
+        while (it.hasNext()) {
+            String s = it.next().toString();
+            if (s.equals(text)) {
+                validateItem = true;
+            }
+        }
+        if(!validateItem){
+             throw new TestFxLibraryFatalException("The list does not contain the text " + text);
+        }
+
+
+    }
+
+    /**
+     * <b>Description:</b> This keyword validates if a text is present in a given list. ListView
+     * is specified with <i>identifier</i> and <i>text</i> specifies text to compare. If
+     * <i>text</i> is not found within <i>identifier</i> a TestFxLibraryNonFatalException is thrown.<br>
+     *
+     * @param identifier
+     * : The id of the table
+     * @param text
+     * : Text to compare
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>text</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>List View Should Contain</td>
+     *         <td>listView</td>
+     *         <td>one</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "text"})
+    public void listViewShouldNotContain(String identifier, String text) {
+        ListView listView = new FxRobot().lookup(identifier).query();
+
+        ObservableList items = listView.getItems();
+
+        Iterator it = items.iterator();
+        boolean validateItem = false;
+        while (it.hasNext()) {
+            String s = it.next().toString();
+            if (s.equals(text)) {
+                validateItem = true;
+            }
+        }
+        if(validateItem){
+            throw new TestFxLibraryFatalException("The list does not contain the text " + text);
+        }
+
+
     }
 
 }

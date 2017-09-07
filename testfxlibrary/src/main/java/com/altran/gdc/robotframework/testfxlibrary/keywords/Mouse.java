@@ -10,6 +10,7 @@ import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFa
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.geometry.HorizontalDirection;
+import javafx.geometry.Point2D;
 import javafx.geometry.VerticalDirection;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
@@ -71,6 +72,55 @@ public class Mouse {
     @RobotKeywordOverload
     public void clickOnComponent(String identifier) throws TimeoutException {
         clickOnComponent(identifier, null);
+    }
+
+    /**
+     * <b>Description:</b>This keyword clicks on a component specified with <i>identifier</i>.<br>
+     *
+     * @param x
+     * : position value on X
+     *
+     * @param y
+     * : position value on Y
+     *
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>x</td>
+     *         <td>Yes</td>
+     *         <td>int</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>y</td>
+     *         <td>Yes</td>
+     *         <td>int</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Click On Component At Coordinates</td>
+     *         <td>200, 200</td>
+     *     </tr>
+     * </table>
+     * @throws TimeoutException
+     * : If something goes wrong
+     */
+    @RobotKeyword
+    @ArgumentNames({"x", "y"})
+    public void clickComponentAtCoordinates(int x, int y) throws TimeoutException {
+        new FxRobot().clickOn(new Point2D(x,y));
     }
 
     /**
@@ -897,7 +947,7 @@ public class Mouse {
      * <b>Examples:</b>
      * <table summary="">
      *     <tr>
-     *         <td>Select From Popup Menu</td>
+     *         <td>Select From Popup Spinner</td>
      *         <td>idComponent05</td>
      *         <td>aFunctionToSelect</td>
      *     </tr>

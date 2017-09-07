@@ -45,6 +45,16 @@ Test Select From List View By Position
 
 Test Get Selected Items From List
     Start Application  testapp.JavafxExample2
-     ${count}   Get Selected Items From List  \#listView
-     Log     ${count}    WARN
+    ${count}   Get Selected Items From List  \#listView
+    Log     ${count}    WARN
+    Close Application
+
+Test List View Should Contain
+    Start Application  testapp.JavafxExample2
+    List View Should Contain    \#listView    one
+    Close Application
+
+Test List View Should Not Contain
+    Start Application  testapp.JavafxExample2
+    List View Should Not Contain    \#listView    zzz
     Close Application

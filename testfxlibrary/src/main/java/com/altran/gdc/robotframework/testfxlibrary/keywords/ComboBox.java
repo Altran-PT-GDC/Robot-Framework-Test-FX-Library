@@ -60,6 +60,7 @@ public class ComboBox {
 
         misc.waitUntilPageContains(identifier);
 
+        try{
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 
         List<Object> list = new ArrayList<>();
@@ -67,6 +68,9 @@ public class ComboBox {
             list.add(item)
         );
         return list;
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw new TestFxLibraryFatalException(e);
+        }
     }
 
     /**
@@ -116,6 +120,8 @@ public class ComboBox {
 
         misc.waitUntilPageContains(identifier);
 
+        try{
+
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 
         new FxRobot().clickOn(comboBox);
@@ -131,10 +137,42 @@ public class ComboBox {
         if (!verifyComboBoxText){
             throw new TestFxLibraryFatalException("Item does not match with " + text);
         }
+
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw new TestFxLibraryFatalException(e);
+        }
     }
 
     /**
-     * Select the first element from a combobox
+     * <b>Description:</b> This keyword selects the first item from a combobox. The combobox is specified with
+     * <i>identifier</i> and text is specified with <i>text</i><br>
+     *
+     * @param identifier
+     * : The id of the combobox.
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select First From Combo Box</td>
+     *         <td>idComboBox01</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

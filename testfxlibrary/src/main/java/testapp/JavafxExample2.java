@@ -44,6 +44,7 @@ public class JavafxExample2 extends Application {
     private static final int BORDERPANE_INSETS_RIGHT = 0;
     private static final int FLOWPANE_HGAP = 100;
     private static final int WAIT_TIME = 5;
+    private static final int SPINNER_DEFAULT_VALUE = 100;
 
     //JavaFX applicatoin still use the main method.
     //It should only ever contain the call to the launch method
@@ -86,6 +87,22 @@ public class JavafxExample2 extends Application {
         HBox c = new HBox();
         c.getChildren().add(new Label("Third"));
 
+        Spinner spinner = new Spinner();
+        SpinnerValueFactory<Integer> value = new SpinnerValueFactory<Integer>() {
+            @Override
+            public void decrement(int steps) {
+                spinner.getValueFactory ().setValue((int)spinner.getValueFactory().getValue() + steps);
+            }
+
+            @Override
+            public void increment(int steps) {
+                spinner.getValueFactory ().setValue((int)spinner.getValueFactory().getValue() - steps);
+            }
+        };
+        value.setValue(SPINNER_DEFAULT_VALUE);
+        spinner.setValueFactory(value);
+        spinner.setId("spinner");
+
 
         ComboBox cb = new ComboBox();
         cb.setId("cb");
@@ -96,6 +113,7 @@ public class JavafxExample2 extends Application {
         choicePane.getChildren().add(choiceLbl);
         choicePane.getChildren().add(fruits);
         choicePane.getChildren().add(cb);
+        choicePane.getChildren().add(spinner);
 
         //put the flowpane in the top area of the BorderPane
         componentLayout.setTop(choicePane);

@@ -684,7 +684,6 @@ public class Table {
     @ArgumentNames({"ientifier", "text"})
     public void tableShouldContain(String identifier, String text) {
         TableView table = new FxRobot().lookup(identifier).query();
-
         // Item row
         ObservableList items = table.getItems();
 

@@ -8,6 +8,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.stage.Stage;
@@ -26,6 +27,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author pcosta
@@ -39,6 +41,7 @@ public class Window {
     private String format;
     private static final Logger LOG = LoggerFactory.getLogger(Window.class);
     private static final String ERROR_MSG = "Error";
+    private static final String GENERAL_ERROR_MSG = "Something goes wrong";
 
     @Autowired
     Misc misc;
@@ -367,17 +370,43 @@ public class Window {
 
         } catch (Exception e) {
             LOG.error(ERROR_MSG, e);
-            throw new TestFxLibraryFatalException("Something goes wrong");
+            throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
         }
     }
 
     /**
+     * <b>Description:</b> This keyword returns the component size with <i>Width</i> and <i>Height</i>.
+     * This component is specified with <i>identifier</i>.<br>
      *
-     * Get the size of a component
+     * @param identifier
+     * : Component identifier
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
      *
-     * @param identifier the identifier of the node
+     * @return
+     *  Position of component on screen
      *
-     * @return an int array with the Width and Height of the component
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#textField</td>
+     *         <td>Get Component Size</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
@@ -397,7 +426,7 @@ public class Window {
 
         } catch (Exception e) {
             LOG.error(ERROR_MSG, e);
-            throw new TestFxLibraryFatalException("Something goes wrong");
+            throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
         }
     }
 
@@ -414,6 +443,33 @@ public class Window {
         } catch (Exception e){
             LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryNonFatalException("Error get main window");
+        }
+    }
+
+    /**
+     * <b>Description:</b>This keyword maximizes the application window. If an error occurs
+     * a TestFxLibraryNonFatalException is thrown.<br>
+     *
+     */
+    @RobotKeyword
+    public void maximizeWindow(){
+
+        try {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        new FxToolkitContext().getPrimaryStageFuture().get().setMaximized(true);
+                    } catch (InterruptedException | ExecutionException e) {
+                        LOG.error(ERROR_MSG,e);
+                        throw new TestFxLibraryNonFatalException(GENERAL_ERROR_MSG, e);
+                    }
+                }
+            });
+
+        } catch (Exception e){
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryNonFatalException(GENERAL_ERROR_MSG);
         }
     }
 

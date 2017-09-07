@@ -519,4 +519,122 @@ public class Keyboard {
         }
     }
 
+    /**
+     * <b>Description:</b> This keyword add text to the current text in the TextField. The TextField is specified with
+     * <i>identifier</i> and text to add is specified with <i>textToValidate</i>.
+     *
+     * @param identifier
+     * : The identifier of the label you want to verify.
+     * @param text
+     * : The text you want to add
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>textToValidate</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Text Field Append Text</td>
+     *         <td>textField2</td>
+     *         <td>Text to add</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "text"})
+    public void textFieldAppendText(String identifier, String text) {
+
+        misc.waitUntilPageContains(identifier);
+
+        try{
+
+            TextField node = new FxRobot().lookup(identifier).query();
+            String nodeText = node.getText();
+
+            node.setText(nodeText + " " + text);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword add text to the current text in the TextArea. The TextArea is specified with
+     * <i>identifier</i> and text to add is specified with <i>textToValidate</i>.
+     *
+     * @param identifier
+     * : The identifier of the label you want to verify.
+     * @param text
+     * : The text you want to add
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>textToValidate</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Text Area Append Text</td>
+     *         <td>textArea2</td>
+     *         <td>Text to add</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "text"})
+    public void textAreaAppendText(String identifier, String text) {
+
+        misc.waitUntilPageContains(identifier);
+
+        try{
+
+            TextArea node = new FxRobot().lookup(identifier).query();
+            String nodeText = node.getText();
+
+            node.setText(nodeText + " " + text);
+
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
 }
