@@ -48,6 +48,8 @@ public class Javadoc2Libdoc {
 
     protected Map<String, String> loadKeywordDocumentationMap(Root root, String className) {
         Map<String, String> keywordDocumentation = new HashMap<String, String>();
+        // This for loop sequence was the best way we can find to do this keyword for now. It may be can simplified,
+        // but needs some investigation and tests.
         for (Package packageNode : root.getPackage()) {
             for (Class classNode : packageNode.getClazz()) {
                 if (className.equals(classNode.getQualified())) {

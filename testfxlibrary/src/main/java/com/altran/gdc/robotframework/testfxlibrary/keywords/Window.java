@@ -231,6 +231,7 @@ public class Window {
             BufferedImage image = new Robot().createScreenCapture(r);
             String fp = filePath + fileName + counter + "." + format;
             ImageIO.write(image, format, new File(fp));
+            //This System out print can't be removed since it is respossible for the enbbeding of the ScreenShot on the Log file
             System.out.println("*HTML* <img src=\"" + fp + "\">");
             counter++;
 
