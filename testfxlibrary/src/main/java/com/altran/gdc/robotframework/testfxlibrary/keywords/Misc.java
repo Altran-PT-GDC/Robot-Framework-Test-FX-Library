@@ -197,7 +197,7 @@ public class Misc {
      * <b>Description:</b> This keyword pauses the execution during a period specified with <i>milliseconds</i>
      * in milliseconds.<br>
      *
-     * @param secunds
+     * @param seconds
      * : The number of secunds to pause the execution
      * <br><br>
      * <table summary="">
@@ -208,7 +208,7 @@ public class Misc {
      *         <th>Default</th>
      *     </tr>
      *     <tr>
-     *         <td>secunds</td>
+     *         <td>seconds</td>
      *         <td>Yes</td>
      *         <td>int</td>
      *         <td>N/A</td>
@@ -225,9 +225,9 @@ public class Misc {
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"secunds"})
-    public void sleep(int secunds) {
-        new FxRobot().sleep(secunds, TimeUnit.SECONDS);
+    @ArgumentNames({"seconds"})
+    public void sleep(int seconds) {
+        new FxRobot().sleep(seconds, TimeUnit.SECONDS);
     }
 
     /**

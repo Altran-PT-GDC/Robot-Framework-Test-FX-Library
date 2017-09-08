@@ -15,6 +15,9 @@ import org.robotframework.javalib.library.RobotJavaLibrary;
  * <br>
  * <b>Insert library introduction here.</b>
  */
+
+//This class can't be moved to a named package.
+//Is necessary to have the class in the root path, otherwise the lib doesn't work in the RobotFramework.
 public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary {
 
     /**
