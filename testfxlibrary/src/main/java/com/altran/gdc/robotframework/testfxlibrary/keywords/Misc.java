@@ -9,6 +9,11 @@ import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatal
 import com.altran.gdc.robotframework.testfxlibrary.utils.*;
 import javafx.application.Application;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.layout.*;
+import javafx.stage.Window;
 import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;
 import org.python.google.common.collect.Iterables;
@@ -23,9 +28,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Enumeration;
+import java.util.*;
+import java.util.List;
 import java.util.concurrent.*;
-import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -1645,5 +1650,30 @@ public class Misc {
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException  e) {
             throw new TestFxLibraryFatalException(e);
         }
+    }
+
+    @RobotKeyword()
+    public void listComponentsInContext(){
+
+        try {
+
+            List<Window> windows = new FxRobot().listWindows();
+            for(Window w : windows){
+                Scene scene = w.getScene();
+                Parent p = scene.getRoot();
+                getParents(p);
+            }
+
+        } catch (Exception e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    private void getParents(Parent parent){
+       for(int i = 0; i<parent.getChildrenUnmodifiable().size() && parent.getChildrenUnmodifiable().size() > 1; i++){
+           Parent p = (Parent)parent.getChildrenUnmodifiable().get(i);
+           System.out.println(String.format("Compoment: %s", p));
+           getParents(p);
+       }
     }
 }

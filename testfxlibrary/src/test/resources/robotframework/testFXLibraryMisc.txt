@@ -92,3 +92,8 @@ Test List Component Methods
      ${attribute}=      List Component Methods    \#check
      Log    ${attribute}     WARN
      Close Application
+
+Test List Components In Context
+     Start Application  testapp.JavafxExample2
+     List Components In Context
+     Close Application

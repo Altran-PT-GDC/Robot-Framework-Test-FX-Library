@@ -20,6 +20,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -59,6 +60,7 @@ public class JavafxExample2 extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        //BorderPane root = new BorderPane();
         //The primaryStage is the top-level container
         primaryStage.setTitle("example Gui");
 
@@ -108,6 +110,10 @@ public class JavafxExample2 extends Application {
         cb.setId("cb");
 
         cb.getItems().addAll(a,b,c);
+        Pane p = new Pane();
+        p.setId("PANE_COMBO");
+        p.setBackground(new Background(new BackgroundFill(Paint.valueOf("black"), CornerRadii.EMPTY,Insets.EMPTY)));
+        cb.getItems().add(p);
 
         //Add the label and choicebox to the flowpane
         choicePane.getChildren().add(choiceLbl);
@@ -198,6 +204,7 @@ public class JavafxExample2 extends Application {
         hBox.getChildren().addAll(vegFruitBut, testWait, text, textArea, toBeErase);
 
         componentLayout.setBottom(hBox);
+        //root.setCenter(componentLayout);
 
 
         //Add the BorderPane to the Scene
