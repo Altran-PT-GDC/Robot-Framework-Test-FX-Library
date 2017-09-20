@@ -1,0 +1,61 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+
+Test Close Window
+    Start Application  testapp.JavafxExample2
+    Close Current Window
+    Close Application
+
+Test List Target Windows
+    Start Application  testapp.JavafxExample2
+    List Target Windows
+    Close Application
+
+Test List Windows
+    Start Application  testapp.JavafxExample2
+    List Windows
+    Close Application
+
+Test Target Window
+    Start Application  testapp.JavafxExample2
+    Select Window   example Gui
+    Close Application
+
+Test Window
+    Start Application  testapp.JavafxExample2
+    Window   example Gui
+    Close Application
+
+
+Test Capture Screen
+    Start Application  testapp.JavafxExample2
+    ${fp}=  Set Variable    %{USERPROFILE}\\Documents\\Test_ScreenShot\\
+    ${fname}=   Set Variable    ScreenShot
+    Set File Path   ${fp}   ${fname}    png
+    Capture Screen
+    Capture Screen
+    Capture Screen
+    Close Application
+
+Test Get Component Position
+    Start Application  testapp.JavafxExample2
+    Get Component Position  \#listView
+    Close Application
+
+Test Get Component Size
+    Start Application  testapp.JavafxExample2
+    Get Component Size  \#listView
+    Close Application
+
+Test Get Selected Window Title
+    Start Application  testapp.JavafxExample2
+    Get Selected Window Title
+    Close Application
+
+Test Maximizing Window
+    Start Application  testapp.JavafxExample2
+    Maximize Window
+    Close Application

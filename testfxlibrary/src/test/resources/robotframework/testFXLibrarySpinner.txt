@@ -1,0 +1,38 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+Test Spinner Get Value
+    Start Application  testapp.JavafxExample2
+    ${value}      Spinner Get Value    \#spinner
+    Log     ${value}     WARN
+    Close Application
+
+Test Spinner Set Value
+    Start Application  testapp.JavafxExample2
+    Spinner Set Value    \#spinner    200
+    Close Application
+
+Test Spinner Increment
+    Start Application  testapp.JavafxExample2
+    Spinner Increment    \#spinner      1
+    Spinner Increment    \#spinner      1
+    Spinner Increment    \#spinner      1
+    Spinner Increment    \#spinner      1
+    Spinner Increment    \#spinner      1
+    Close Application
+
+Test Spinner Decrement
+    Start Application  testapp.JavafxExample2
+    Spinner Decrement    \#spinner      1
+    Spinner Decrement    \#spinner      1
+    Spinner Decrement    \#spinner      1
+    Spinner Decrement    \#spinner      1
+    Spinner Decrement    \#spinner      1
+    Close Application
+
+Test Spinner Value Should Be
+    Start Application  testapp.JavafxExample2
+    Spinner Value Should Be    \#spinner      100
+    Close Application

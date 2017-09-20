@@ -1,0 +1,94 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+Test Wait Until Element Contains
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     Wait Until Element Contains   Fruit or Veg  Fruit or Veg
+     Log     OK      WARN
+     Close Application
+
+Test Wait Until Element Does Not Contains
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     Wait Until Element Does Not Contains   Fruit or Veg  Batatas
+     Log     OK      WARN
+     Close Application
+
+Test Wait Until Element Is Enabled
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     Wait Until Element Is Enabled   Fruit or Veg
+     Log     OK      WARN
+     Close Application
+
+Test Wait Until Element Is Visible
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     Wait Until Element Is Enabled   Fruit or Veg
+     Log     OK      WARN
+     Close Application
+
+Test Wait Until Element Is Enabled Time Out
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     Set Timeout     Timeout   1
+     ${status}=  Run Keyword and return status   Wait Until Element Is Enabled   Fruit or Veg
+     Run keyword if  ${status} is ${TRUE}   Fail
+     Close Application
+
+Test Wait Until Page Contains on Application
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     Set Timeout     Timeout   20
+     Wait Until Page Contains       test
+     Click On Component    test
+     Close Application
+
+Test Wait Until Page Contains on Application Time Out
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     ${status}=  Run Keyword and return status   Wait Until Page Contains       test    1
+     Run keyword if  ${status} is ${TRUE}   Fail
+     Log     ${status}   WARN
+     Close Application
+
+Test Wait Until Page Does Not Contains on Application
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     Wait Until Page Does Not Contains   To Be Erase
+     Close Application
+
+Test Wait Until Page Does Not Contains on Application Time Out
+     Start Application  testapp.JavafxExample2
+     Click On Component    Wait Button
+     ${status}=  Run Keyword and return status      Wait Until Page Does Not Contains   To Be Erase    2
+     Run keyword if  ${status} is ${TRUE}   Fail
+     Log     ${status}   WARN
+     Close Application
+
+Test Node Key
+     Start Application  testapp.JavafxExample
+     ${node}=   Get Node Key   \#counterPane
+     Click On Component   \#countButton   ${node}
+     Close Application
+
+Test Get NTH Element
+     Start Application  testapp.JavafxExample
+     ${node}=   Get Nth Element  \#counterPane      0
+     Log    ${node}     WARN
+     Close Application
+
+Test Get Component Attribute
+     Start Application  testapp.JavafxExample2
+     ${attribute}=      Get Component Atrribute    \#check     isSelected
+     Log    ${attribute}     WARN
+     Close Application
+
+Test List Component Methods
+     Start Application  testapp.JavafxExample2
+     ${attribute}=      List Component Methods    \#check
+     Log    ${attribute}     WARN
+     Close Application

@@ -1,0 +1,34 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+#Test Verify That Contains
+#    Start Application  testapp.JavafxExample
+#    Verify That Contains    \#countValue     \#countValue
+#    Close Application
+
+Test Verify That Has Text
+    Start Application  testapp.JavafxExample
+    Verify That Has Text    \#countValue  0
+    Close Application
+
+Test Verify That Is Enabled
+    Start Application  testapp.JavafxExample
+    Verify That Is Enabled  \#countValue
+    Close Application
+
+Test Verify That Is Disabled
+    Start Application  testapp.JavafxExample
+    Verify That Is Disabled  \#btnDisable
+    Close Application
+
+Test Component Should Be Visible
+    Start Application  testapp.JavafxExample
+    Component Should Be Visible  \#countValue
+    Close Application
+
+Test Verify That Has Child
+    Start Application  testapp.JavafxExample
+    Verify That Has Child  \#counterPane     \#btnDisable
+    Close Application

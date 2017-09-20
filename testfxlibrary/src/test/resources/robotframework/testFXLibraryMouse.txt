@@ -1,0 +1,98 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+Test Click On Count Button
+    Start Application  testapp.JavafxExample
+    Click On Component    count
+    Click On Component    count
+    Click On Component    count
+    Close Application
+
+Test Click On Choice Box
+    Start Application  testapp.JavafxExample2
+    Click On Component    .choice-box
+    Test Fruits with Orange
+    Close Application
+
+Test Scroll Down
+    Start Application  testapp.JavafxExample2
+    Click On Component    .scroll-pane
+    Scroll Down   7
+    Scroll Up   7
+    Close Application
+
+Test Drag & Drop
+
+    Start Application  testapp.JavafxExample2
+    Drag    .scroll-bar
+    Move By     -50   -50
+    Drop
+    Close Application
+
+Test Get Node List
+
+    Start Application  testapp.JavafxExample2
+    Click On Component    .list-view
+    ${list}   Get Node List  .list-view
+    Log     ${list}     WARN
+    Close Application
+
+Test Get CheckBox State
+
+    Start Application  testapp.JavafxExample2
+    ${status}     Get CheckBox State    .check-box
+    Log     ${status}     WARN
+    Close Application
+
+Test Set CheckBox State
+
+    Start Application  testapp.JavafxExample2
+    Set CheckBox State    .check-box   true
+    Close Application
+
+Test Select From PopUp Menu
+
+    Start Application  testapp.JavafxExample2
+    Select From PopupMenu   \#text  Select All
+    Close Application
+
+Test Component Sould Be Enabled
+
+    Start Application  testapp.JavafxExample2
+    Set CheckBox State    .check-box   true
+    CheckBox Should Be Enabled   .check-box
+    Close Application
+
+Test Component Sould Be Disabled
+
+    Start Application  testapp.JavafxExample2
+    CheckBox Should Be Disabled   .check-box
+    Close Application
+
+Test CheckBox Sould Be Selected
+
+    Start Application  testapp.JavafxExample2
+    Set CheckBox State    .check-box   true
+    CheckBox Should Be Selected   .check-box
+    Close Application
+
+Test CheckBox Should Not Be Selected
+
+    Start Application  testapp.JavafxExample2
+    CheckBox Should Not Be Selected   .check-box
+    Close Application
+
+Test Click Component At Coordinates
+
+    Start Application  testapp.JavafxExample2
+    Click Component At Coordinates      300    400
+    Close Application
+
+*** Keywords ***
+
+Test Fruits with ${fruit}
+    Click On Component    Beans
+    Click On Component    Fruit or Veg
+    Click On Component    ${fruit}

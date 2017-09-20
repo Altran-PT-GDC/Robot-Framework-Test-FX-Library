@@ -1,0 +1,58 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+#Test Press And Release
+#    Start Application  testapp.JavafxExample
+#    Click On Component    \#countValue
+#    Press       8
+#    Release     8
+#    Close Application
+
+Test Erase Text
+    Start Application  testapp.JavafxExample
+    Click On Component    \#countValue
+    Erase Text  1
+    Close Application
+
+Test Erase All Text From TextField
+    Start Application  testapp.JavafxExample2
+    Clear Text Field    \#text
+    Close Application
+
+Test Erase All Text From TextArea
+    Start Application  testapp.JavafxExample2
+    Clear Text Area     \#textArea
+    Close Application
+
+Test Write
+    Start Application  testapp.JavafxExample
+    Click On Component    \#countValue
+    Write    test
+    Close Application
+
+Test Text Field Text Should Be
+    Start Application  testapp.JavafxExample2
+    Text Field Text Should Be    \#text    OLA TEST
+    Close Application
+
+Test Text Area Text Should Be
+    Start Application  testapp.JavafxExample2
+    Text Area Text Should Be    \#textArea    PARA APAGAR
+    Close Application
+
+Test Label Text Should Be
+    Start Application  testapp.JavafxExample2
+    Label Text Should Be    \#label    Label to test
+    Close Application
+
+Test Text Field Append Text
+    Start Application  testapp.JavafxExample2
+    Text Field Append Text    \#text    APPEND
+    Close Application
+
+Test Text Area Append Text
+    Start Application  testapp.JavafxExample2
+    Text Area Append Text    \#textArea    TEXT TO APPEND
+    Close Application

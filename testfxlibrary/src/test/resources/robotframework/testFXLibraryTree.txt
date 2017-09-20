@@ -1,0 +1,28 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+
+Test Select Tree Node By Index
+    Start Application  testapp.JavafxExample
+    Select Tree Node By Index   \#treeView   1
+    Close Application
+
+Test Clear Tree Selection
+    Start Application  testapp.JavafxExample
+    Select Tree Node By Index   \#treeView  2
+    Clear Tree Selection   \#treeView
+    Close Application
+
+Test Unselect Tree Node By Index
+    Start Application  testapp.JavafxExample
+    Select Tree Node By Index   \#treeView  2
+    Select Tree Node By Index   \#treeView  3
+    Unselect Tree Node By Index   \#treeView  2
+    Close Application
+
+Test Collapse Tree Node
+    Start Application  testapp.JavafxExample
+    Collapse Tree Node     \#treeView
+    Close Application

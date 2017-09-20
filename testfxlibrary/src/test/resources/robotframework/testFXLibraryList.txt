@@ -1,0 +1,60 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+
+*** Test Cases ***
+
+Test Get List Items From ComboBox
+    Start Application  testapp.JavafxExample
+    ${count}    Get List Items From ComboBox  \#comboBox
+    Log     ${count}    WARN
+    Close Application
+
+Test Get List Items From ListView
+    Start Application  testapp.JavafxExample2
+    ${count}    Get List Items From ListView  \#listView
+    Log     ${count}    WARN
+    Close Application
+
+
+Test Select From Combo Box By Text
+    Start Application  testapp.JavafxExample
+    Select From Combo Box By Text   \#comboBox   B
+    Close Application
+
+Test Select Frist From Combo Box
+    Start Application  testapp.JavafxExample
+    Select Frist From Combo Box   \#comboBox
+    Close Application
+
+Test Select From Combo Box By Position
+    Start Application  testapp.JavafxExample
+    Select From Combo Box By Position  \#comboBox   1
+    Close Application
+
+
+Test Select From List View By Text
+    Start Application  testapp.JavafxExample2
+    Select From List View By Text  \#listView   two
+    Close Application
+
+Test Select From List View By Position
+    Start Application  testapp.JavafxExample2
+    Select From List View By Position  \#listView   1
+    Close Application
+
+Test Get Selected Items From List
+    Start Application  testapp.JavafxExample2
+    ${count}   Get Selected Items From List  \#listView
+    Log     ${count}    WARN
+    Close Application
+
+Test List View Should Contain
+    Start Application  testapp.JavafxExample2
+    List View Should Contain    \#listView    one
+    Close Application
+
+Test List View Should Not Contain
+    Start Application  testapp.JavafxExample2
+    List View Should Not Contain    \#listView    zzz
+    Close Application
