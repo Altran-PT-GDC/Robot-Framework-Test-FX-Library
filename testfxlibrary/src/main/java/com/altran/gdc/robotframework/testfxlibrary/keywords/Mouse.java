@@ -14,6 +14,7 @@ import javafx.geometry.Point2D;
 import javafx.geometry.VerticalDirection;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
+import org.python.google.common.collect.Iterables;
 import org.robotframework.javalib.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,9 @@ public class Mouse {
 
     @Autowired
     private Wait wait;
+
+    @Autowired
+    private Misc misc;
 
     private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
 
@@ -73,6 +77,62 @@ public class Mouse {
     @RobotKeywordOverload
     public void clickOnComponent(String identifier) throws TimeoutException {
         clickOnComponent(identifier, null);
+    }
+
+    /**
+     * <b>Description:</b>This keyword clicks on a component specified with <i>identifier</i>.<br>
+     *
+     * @param identifier
+     * : The identifier of the component
+     * @param n
+     * : Position of the component
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>n</td>
+     *         <td>Yes</td>
+     *         <td>int</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#button</td>
+     *         <td>2</td>
+     *         <td>Click On Nth Component</td>
+     *     </tr>
+     * </table>
+     * @throws TimeoutException
+     * : If something goes wrong
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "n"})
+    public void clickOnNthComponent(String identifier, int n) throws TimeoutException {
+        TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateIndex(n);
+
+        try {
+            Set<Node> nodes = new FxRobot().lookup(identifier).queryAll();
+            new FxRobot().clickOn(Iterables.get(nodes, n));
+        }catch (IllegalArgumentException e){
+            throw new TestFxLibraryFatalException(e);
+        }
     }
 
     /**

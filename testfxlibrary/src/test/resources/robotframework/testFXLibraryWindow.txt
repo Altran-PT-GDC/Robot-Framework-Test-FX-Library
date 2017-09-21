@@ -59,3 +59,13 @@ Test Maximizing Window
     Start Application  testapp.JavafxExample2
     Maximize Window
     Close Application
+
+Test Scroll Component To View
+    Start Application  testapp.JavafxExample2
+    Scroll Component To View    \#scrollPane    Seven
+    Close Application
+
+Test Focus To Component
+    Start Application  testapp.JavafxExample2
+    Focus To Component    \#scrollPane
+    Close Application

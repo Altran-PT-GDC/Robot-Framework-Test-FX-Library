@@ -150,6 +150,7 @@ public class JavafxExample2 extends Application {
         scrollPane.setMaxWidth(SCROLLPANE_MAX_WIDTH);
         vBox.getChildren().addAll(name, listView);
         scrollPane.setContent(vBox);
+        scrollPane.setId("scrollPane");
 
         final CheckBox check = new CheckBox();
         check.setId("check");

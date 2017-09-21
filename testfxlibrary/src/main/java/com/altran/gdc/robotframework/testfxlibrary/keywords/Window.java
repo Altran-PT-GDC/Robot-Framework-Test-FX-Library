@@ -11,6 +11,9 @@ import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import org.robotframework.javalib.annotation.ArgumentNames;
@@ -471,6 +474,144 @@ public class Window {
         } catch (Exception e){
             LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryNonFatalException(GENERAL_ERROR_MSG);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword scrolls the component to view in the ScrollPane witch is specified with the <i>scrollPaneIdentifier</i>.
+     * This component is specified with <i>identifier</i>.<br>
+     *
+     * @param scrollPaneIdentifier
+     * : ScrollPane where component is contained
+     * @param identifier
+     * : Component identifier
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>scrollPaneIdentifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * @return
+     *  Position of component on screen
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#scrollPane</td>
+     *         <td>#textField</td>
+     *         <td>Scroll Component To View</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"scrollPaneIdentifier","identifier"})
+    public void scrollComponentToView(String scrollPaneIdentifier , String identifier) {
+
+        TestFxLibraryValidation.validateArguments(scrollPaneIdentifier,identifier);
+        wait.waitUntilPageContains(scrollPaneIdentifier);
+        wait.waitUntilPageContains(identifier);
+
+        try {
+
+            Node node = new FxRobot().lookup(identifier).query();
+
+            double x = node.getBoundsInParent().getMaxX();
+            double y = node.getBoundsInParent().getMaxY();
+
+            ScrollPane pane = (ScrollPane)new FxRobot().lookup(scrollPaneIdentifier).query();
+
+            double width = pane.getContent().getBoundsInLocal().getWidth();
+            double height = pane.getContent().getBoundsInLocal().getHeight();
+
+            //pane.setHvalue(x/width);
+            pane.setVvalue(y/height);
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    node.requestFocus();
+                }
+            });
+
+        } catch (Exception e) {
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword requests the focus to the component.
+     * This component is specified with <i>identifier</i>.<br>
+     *
+     * @param identifier
+     * : Component identifier
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * @return
+     *  Position of component on screen
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#textField</td>
+     *         <td>Focus To Component</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void focusToComponent(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
+
+        try {
+            Node node = new FxRobot().lookup(identifier).query();
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    node.setFocusTraversable(true);
+                    node.requestFocus();
+                }
+            });
+
+        } catch (Exception e) {
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
         }
     }
 
