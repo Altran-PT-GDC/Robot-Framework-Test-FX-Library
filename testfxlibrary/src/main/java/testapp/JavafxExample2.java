@@ -151,7 +151,7 @@ public class JavafxExample2 extends Application {
         vBox.getChildren().addAll(name, listView);
         scrollPane.setContent(vBox);
 
-        final CheckBox check = new CheckBox("Check Here");
+        final CheckBox check = new CheckBox();
         check.setId("check");
         check.setVisible(true);
 

@@ -14,7 +14,7 @@ import org.testfx.api.FxRobot;
 public class Spinner {
 
     @Autowired
-    Misc misc;
+    Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns the value on a spinner <i>identifier</i>.<br>
@@ -55,7 +55,7 @@ public class Spinner {
     public int spinnerGetValue(String identifier) {
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
@@ -111,7 +111,7 @@ public class Spinner {
     public void spinnerSetValue(String identifier, int value) {
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
@@ -170,7 +170,7 @@ public class Spinner {
     public void spinnerIncrement(String identifier, int steps) {
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
         try{
 
             javafx.scene.control.Spinner spinner = new FxRobot().lookup(identifier).query();
@@ -227,7 +227,7 @@ public class Spinner {
     public void spinnerDecrement(String identifier, int steps) {
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try {
 
@@ -283,7 +283,7 @@ public class Spinner {
     public void spinnerValueShouldBe(String identifier, int valueToValidate) {
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try {
             

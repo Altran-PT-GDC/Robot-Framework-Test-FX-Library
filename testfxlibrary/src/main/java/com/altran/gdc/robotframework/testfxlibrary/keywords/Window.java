@@ -44,7 +44,7 @@ public class Window {
     private static final String GENERAL_ERROR_MSG = "Something goes wrong";
 
     @Autowired
-    Misc misc;
+    Wait wait;
 
     /**
      * <b>Description:</b> This keyword closes the current focused window. If an error occurs
@@ -361,7 +361,7 @@ public class Window {
     public Point2D getComponentPosition(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try {
 
@@ -414,7 +414,7 @@ public class Window {
     public int[] getComponentSize(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try {
 

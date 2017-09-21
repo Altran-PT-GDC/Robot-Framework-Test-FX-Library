@@ -17,7 +17,7 @@ import java.util.Iterator;
 public class List {
 
     @Autowired
-    Misc misc;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns a list with the values in a listview specified with
@@ -59,7 +59,7 @@ public class List {
     public java.util.List<String> getListItemsFromListView(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 
@@ -117,7 +117,7 @@ public class List {
     public void selectFromListViewByText(String identifier, String text){
         TestFxLibraryValidation.validateArguments(identifier, text);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 
@@ -179,7 +179,7 @@ public class List {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateIndex(position);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 
@@ -229,7 +229,7 @@ public class List {
     public java.util.List<String> getSelectedItemsFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
         return listView.getSelectionModel().getSelectedItems();
@@ -276,7 +276,7 @@ public class List {
     public int getListItemCountFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
         return listView.getSelectionModel().getSelectedItems().size();
@@ -318,7 +318,7 @@ public class List {
     public void clearSelectionFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 
@@ -363,7 +363,7 @@ public class List {
     public void selectAllFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 
@@ -417,7 +417,7 @@ public class List {
     public void unselectFromListByPosition(String identifier, int position){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 
@@ -470,7 +470,7 @@ public class List {
     public void unselectFromListByText(String identifier, String text){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ListView listView = new FxRobot().lookup(identifier).query();
 

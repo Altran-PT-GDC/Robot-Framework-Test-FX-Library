@@ -31,8 +31,9 @@ public class Mouse {
 
     @Autowired
     private Logging logging;
+
     @Autowired
-    private Misc misc;
+    private Wait wait;
 
     private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
 
@@ -961,7 +962,7 @@ public class Mouse {
         TestFxLibraryValidation.validateArguments(identifier, functionText);
 
         try{
-            misc.waitUntilPageContains(identifier);
+            wait.waitUntilPageContains(identifier);
             rightClickOnComponent(identifier);
             clickOnComponent(functionText);
         } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {

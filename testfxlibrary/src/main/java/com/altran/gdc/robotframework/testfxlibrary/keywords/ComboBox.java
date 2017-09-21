@@ -17,7 +17,7 @@ public class ComboBox {
     private boolean verifyComboBoxText = false;
 
     @Autowired
-    Misc misc;
+    Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns a list of values from a combobox specified with <i>identifier</i>.<br>
@@ -58,7 +58,7 @@ public class ComboBox {
     public List<Object> getListItemsFromComboBox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
@@ -118,7 +118,7 @@ public class ComboBox {
     public void selectFromComboBoxByText(String identifier, String text){
         TestFxLibraryValidation.validateArguments(identifier, text);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
@@ -179,7 +179,7 @@ public class ComboBox {
     public void selectFristFromComboBox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 
@@ -236,7 +236,7 @@ public class ComboBox {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateIndex(position);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 
@@ -287,7 +287,7 @@ public class ComboBox {
     public String getSelectedItemFromCombox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
 

@@ -27,7 +27,7 @@ public class Keyboard {
     private static final String DIFERENT_TEXT = "The text is diferent";
 
     @Autowired
-    Misc misc;
+    Wait wait;
 
     /**
      * <b>Description:</b> This keyword presses the key specified with <i>keycode</i>.<br>
@@ -377,7 +377,7 @@ public class Keyboard {
     @ArgumentNames({"identifier", "textToValidate"})
     public void textFieldTextShouldBe(String identifier, String textToValidate) {
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
@@ -440,7 +440,7 @@ public class Keyboard {
     @ArgumentNames({"identifier", "textToValidate"})
     public void textAreaTextShouldBe(String identifier, String textToValidate) {
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
@@ -503,7 +503,7 @@ public class Keyboard {
     @ArgumentNames({"identifier", "textToValidate"})
     public void labelTextShouldBe(String identifier, String textToValidate) {
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
@@ -564,7 +564,7 @@ public class Keyboard {
     @ArgumentNames({"identifier", "text"})
     public void textFieldAppendText(String identifier, String text) {
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
@@ -623,7 +623,7 @@ public class Keyboard {
     @ArgumentNames({"identifier", "text"})
     public void textAreaAppendText(String identifier, String text) {
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
