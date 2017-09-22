@@ -133,6 +133,7 @@ public class JavafxExample2 extends Application {
         listPane.getChildren().add(listLbl);
         listPane.getChildren().add(vegetables);
         listPane.setVisible(false);
+        vegetables.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         final TextField name = new TextField();
         name.setText("Diogo");
@@ -142,6 +143,7 @@ public class JavafxExample2 extends Application {
         final ListView<String> listView = new ListView<>();
         listView.setId("listView");
         listView.setItems(oList);
+        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         final VBox rightVbox = new VBox();
         final VBox vBox = new VBox();

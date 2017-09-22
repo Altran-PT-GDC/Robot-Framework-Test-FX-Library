@@ -4,6 +4,7 @@ import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatal
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
+import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
@@ -12,6 +13,7 @@ import org.testfx.api.FxRobot;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
 
 @RobotKeywords
 public class List {
@@ -607,6 +609,132 @@ public class List {
         }
 
 
+    }
+
+    /**
+     * <b>Description:</b> This keyword selects all items on a listview. <i>identifier</i>
+     * specifies the listview.<br>
+     *
+     * @param identifier
+     * : The id of the listview
+     * @param elements
+     * : The id of the elements that you want to validate if they are selected. The list of elements should be splited by <b>//</b>.
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>elements</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select All From List</td>
+     *         <td>idListView56</td>
+     *         <td>first//Secund//Third//Fourth</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier","elements"})
+    public void listSelectionShouldBe(String identifier, String elements) {
+        TestFxLibraryValidation.validateArguments(identifier, elements);
+
+        wait.waitUntilPageContains(identifier);
+
+        try {
+            ListView listView = new FxRobot().lookup(identifier).query();
+
+            String[] items = elements.split("//");
+            System.out.println(items.toString());
+
+            for (int i = 0; i < items.length; i++) {
+                Log.info(items[i].toString());
+                if (!listView.getSelectionModel().getSelectedItems().contains(items[i])) {
+                    throw new TestFxLibraryFatalException("Item " + items[i] + " is not selected.");
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword selects items on a listview specified by <i>identifier</i> and a list of <i>elements</i>.<br>
+     *
+     * @param identifier
+     * : The id of the listview
+     * @param elements
+     * : The id of the elements that you want to validate if they are selected. The list of elements should be splited by <b>//</b>.
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>elements</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select Items From List View</td>
+     *         <td>idListView</td>
+     *         <td>first//Secund//Third//Fourth</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier","elements"})
+    public void selectItemsFromListView(String identifier, String elements) {
+        TestFxLibraryValidation.validateArguments(identifier, elements);
+
+        wait.waitUntilPageContains(identifier);
+
+        try {
+            ListView listView = new FxRobot().lookup(identifier).query();
+
+            String[] items = elements.split("//");
+
+            for (int i = 0; i < items.length; i++) {
+                listView.getSelectionModel().select(items[i]);
+            }
+
+        } catch (IllegalArgumentException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
     }
 
 }

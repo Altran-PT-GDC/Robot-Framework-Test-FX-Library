@@ -58,3 +58,9 @@ Test List View Should Not Contain
     Start Application  testapp.JavafxExample2
     List View Should Not Contain    \#listView    zzz
     Close Application
+
+Test List Selection Should Be
+    Start Application  testapp.JavafxExample2
+    Select Items From List View     \#listView    one//two//three//four//five
+    List Selection Should Be    \#listView    one//two//three//four//five
+    Close Application
