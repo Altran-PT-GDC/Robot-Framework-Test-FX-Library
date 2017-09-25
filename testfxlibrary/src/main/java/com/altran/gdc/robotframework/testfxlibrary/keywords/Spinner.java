@@ -38,7 +38,7 @@ public class Spinner {
      * </table>
      *
      * @return
-     *  the int valeu of the spinner
+     *  the int value of the spinner
      *
      * <br><br>
      * <b>Examples:</b>
