@@ -90,10 +90,29 @@ Test Click Component At Coordinates
     Click Component At Coordinates      300    400
     Close Application
 
-Test Click Second Button
+Test Click Button2
     Start Application  testapp.JavaFxExample3
-    Click on component    \#vbox2//\#hbox1//\#pane1//Button2
-    #   Click on component  Button      ${a}
+    Click on component    \#vbuttons2//Button 2
+    Close Application
+
+Test Click Button By Position
+    Start Application  testapp.JavaFxExample3
+    Click on component    \#vbuttons1[1]//Button 2
+    Close Application
+
+#Test Click Button 2 parents
+#    Start Application  testapp.JavaFxExample3
+#    Click on component    /\#hbox1//\#vbuttons2//Button 2
+#    Close Application
+
+#Test Click Button By Position 2
+#    Start Application  testapp.JavaFxExample3
+#    Click on component    \#vbuttons2//\#btn[2]
+#    Close Application
+
+Test Click Table
+    Start Application  testapp.JavaFxExample3
+    Click on component    \#hboxtables//Williams[1]
     Close Application
 
 *** Keywords ***

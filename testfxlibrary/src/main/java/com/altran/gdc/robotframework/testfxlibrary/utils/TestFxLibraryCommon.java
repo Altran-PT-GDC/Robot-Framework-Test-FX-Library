@@ -50,8 +50,11 @@ public class TestFxLibraryCommon {
         if(lookupStr.length > 1){
 
             if(hasPosition(lookupStr[0])){
-                String index = position.substring(lookupStr[0].length()-SECOND_POSITION, lookupStr[0].length()-FIRST_POSITION);
-                String id = position.substring(0, lookupStr[0].length()-THIRD_POSITION);
+
+                System.out.println("lookupStr[0]: " + lookupStr[0]);
+
+                String index = lookupStr[0].substring(lookupStr[0].length()-SECOND_POSITION, lookupStr[0].length()-FIRST_POSITION);
+                String id = lookupStr[0].substring(0, lookupStr[0].length()-THIRD_POSITION);
                 Set<Node> n = new FxRobot().lookup(id).queryAll();
                 nodes.add(Iterables.get(n,Integer.valueOf(index)));
             } else {
