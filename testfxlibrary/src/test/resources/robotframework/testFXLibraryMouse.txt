@@ -90,10 +90,10 @@ Test Click Component At Coordinates
     Click Component At Coordinates      300    400
     Close Application
 
-Test Click On Nth Component
-
+Test Click Second Button
     Start Application  testapp.JavaFxExample3
-    Click On Nth Component      .button    2
+    Click on component    \#vbox2//\#hbox1//\#pane1//Button2
+    #   Click on component  Button      ${a}
     Close Application
 
 *** Keywords ***
@@ -102,3 +102,5 @@ Test Fruits with ${fruit}
     Click On Component    Beans
     Click On Component    Fruit or Veg
     Click On Component    ${fruit}
+
+

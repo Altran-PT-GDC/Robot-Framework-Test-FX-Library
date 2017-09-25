@@ -8,6 +8,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.geometry.HorizontalDirection;
 import javafx.geometry.Point2D;
@@ -76,7 +77,9 @@ public class Mouse {
      */
     @RobotKeywordOverload
     public void clickOnComponent(String identifier) throws TimeoutException {
-        clickOnComponent(identifier, null);
+        //clickOnComponent(identifier, null);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().clickOn(n);
     }
 
     /**
