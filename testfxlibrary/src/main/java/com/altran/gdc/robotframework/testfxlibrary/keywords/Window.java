@@ -7,6 +7,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
@@ -47,7 +48,7 @@ public class Window {
     private static final String GENERAL_ERROR_MSG = "Something goes wrong";
 
     @Autowired
-    Wait wait;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword closes the current focused window. If an error occurs
@@ -71,6 +72,7 @@ public class Window {
      */
     @RobotKeyword
     public List<javafx.stage.Window> listTargetWindows() {
+
         return new FxRobot().listTargetWindows();
     }
 
@@ -119,6 +121,7 @@ public class Window {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void selectWindow(String identifier) {
+
         new FxRobot().targetWindow(identifier);
     }
 
@@ -155,6 +158,7 @@ public class Window {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void window(String identifier) {
+
         new FxRobot().window(identifier);
     }
 
@@ -530,12 +534,12 @@ public class Window {
 
         try {
 
-            Node node = new FxRobot().lookup(identifier).query();
+            Node node = TestFxLibraryCommon.lookup(identifier);
 
             double x = node.getBoundsInParent().getMaxX();
             double y = node.getBoundsInParent().getMaxY();
 
-            ScrollPane pane = (ScrollPane)new FxRobot().lookup(scrollPaneIdentifier).query();
+            ScrollPane pane = (ScrollPane)TestFxLibraryCommon.lookup(scrollPaneIdentifier);
 
             double width = pane.getContent().getBoundsInLocal().getWidth();
             double height = pane.getContent().getBoundsInLocal().getHeight();
@@ -599,7 +603,7 @@ public class Window {
         wait.waitUntilPageContains(identifier);
 
         try {
-            Node node = new FxRobot().lookup(identifier).query();
+            Node node = TestFxLibraryCommon.lookup(identifier);
 
             Platform.runLater(new Runnable() {
                 @Override

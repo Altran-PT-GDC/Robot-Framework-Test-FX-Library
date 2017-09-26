@@ -1,6 +1,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
@@ -63,7 +64,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         java.util.List<String> list = new ArrayList<>();
         listView.getItems().forEach(item ->
@@ -121,7 +122,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(listView);
 
@@ -183,7 +184,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(listView);
 
@@ -233,7 +234,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
         return listView.getSelectionModel().getSelectedItems();
     }
 
@@ -280,7 +281,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
         return listView.getSelectionModel().getSelectedItems().size();
     }
 
@@ -322,7 +323,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         listView.getSelectionModel().clearSelection();
     }
@@ -367,7 +368,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         listView.getSelectionModel().selectAll();
     }
@@ -421,7 +422,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         listView.getSelectionModel().clearSelection(position);
     }
@@ -474,7 +475,7 @@ public class List {
 
         wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         for(int i=0 ; i< listView.getItems().size(); i++){
             if(((String)listView.getItems().get(i)).equals(text)){
@@ -528,7 +529,7 @@ public class List {
     @RobotKeyword
     @ArgumentNames({"identifier", "text"})
     public void listViewShouldContain(String identifier, String text) {
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         ObservableList items = listView.getItems();
 
@@ -592,7 +593,7 @@ public class List {
     @RobotKeyword
     @ArgumentNames({"identifier", "text"})
     public void listViewShouldNotContain(String identifier, String text) {
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         ObservableList items = listView.getItems();
 
@@ -660,7 +661,7 @@ public class List {
         wait.waitUntilPageContains(identifier);
 
         try {
-            ListView listView = new FxRobot().lookup(identifier).query();
+            ListView listView = TestFxLibraryCommon.lookup(identifier);
 
             String[] items = elements.split("//");
             System.out.println(items.toString());
@@ -724,7 +725,7 @@ public class List {
         wait.waitUntilPageContains(identifier);
 
         try {
-            ListView listView = new FxRobot().lookup(identifier).query();
+            ListView listView = TestFxLibraryCommon.lookup(identifier);
 
             String[] items = elements.split("//");
 

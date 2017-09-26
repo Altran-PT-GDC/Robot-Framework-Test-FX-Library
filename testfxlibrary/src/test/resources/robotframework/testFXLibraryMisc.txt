@@ -5,13 +5,12 @@ Library           Dialogs
 *** Test Cases ***
 Test Node Key
      Start Application  testapp.JavafxExample
-     ${node}=   Get Node Key   \#counterPane
-     Click On Component   \#countButton   ${node}
+     Click On Component   \#counterPane//\#countButton
      Close Application
 
 Test Get NTH Element
      Start Application  testapp.JavafxExample
-     ${node}=   Get Nth Element  \#counterPane      0
+     ${node}=   Get Nth Element  \#counterPane[0]
      Log    ${node}     WARN
      Close Application
 

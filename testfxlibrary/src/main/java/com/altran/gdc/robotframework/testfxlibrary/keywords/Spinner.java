@@ -1,6 +1,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.ArgumentNames;
@@ -14,7 +15,7 @@ import org.testfx.api.FxRobot;
 public class Spinner {
 
     @Autowired
-    Wait wait;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns the value on a spinner <i>identifier</i>.<br>
@@ -59,7 +60,7 @@ public class Spinner {
 
         try{
 
-        javafx.scene.control.Spinner spinner = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.Spinner spinner = TestFxLibraryCommon.lookup(identifier);
 
         return (int) spinner.getValueFactory().getValue();
         }catch (IllegalArgumentException | NullPointerException e){
@@ -115,7 +116,7 @@ public class Spinner {
 
         try{
 
-        javafx.scene.control.Spinner spinner = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.Spinner spinner = TestFxLibraryCommon.lookup(identifier);
 
         spinner.getValueFactory().setValue(value);
         Log.info("Value - " + value);
@@ -173,7 +174,7 @@ public class Spinner {
         wait.waitUntilPageContains(identifier);
         try{
 
-            javafx.scene.control.Spinner spinner = new FxRobot().lookup(identifier).query();
+            javafx.scene.control.Spinner spinner = TestFxLibraryCommon.lookup(identifier);
             spinnerSetValue(identifier, (int)spinner.getValueFactory().getValue()+steps);
 
         }catch (IllegalArgumentException | NullPointerException e){
@@ -231,7 +232,7 @@ public class Spinner {
 
         try {
 
-            javafx.scene.control.Spinner spinner = new FxRobot().lookup(identifier).query();
+            javafx.scene.control.Spinner spinner = TestFxLibraryCommon.lookup(identifier);
             spinnerSetValue(identifier, (int) spinner.getValueFactory().getValue() - steps);
 
         }catch (IllegalArgumentException | NullPointerException e){
@@ -291,7 +292,8 @@ public class Spinner {
 
 
             if (value != valueToValidate){
-                throw new TestFxLibraryFatalException("Value on the spinner does not match " + valueToValidate + ".");
+
+                throw new TestFxLibraryFatalException(String.format("Value on the spinner does not match:  %s", valueToValidate));
             }
 
         }catch (IllegalArgumentException | NullPointerException e){

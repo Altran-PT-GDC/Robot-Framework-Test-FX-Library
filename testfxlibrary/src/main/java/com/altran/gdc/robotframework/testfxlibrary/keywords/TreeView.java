@@ -1,6 +1,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
@@ -64,7 +65,7 @@ public class TreeView {
 
         try{
 
-            javafx.scene.control.TreeView treeView = new FxRobot().lookup(identifier).query();
+            javafx.scene.control.TreeView treeView = TestFxLibraryCommon.lookup(identifier);
 
             treeView.getSelectionModel().select(index);
 
@@ -114,7 +115,7 @@ public class TreeView {
 
         try{
 
-            javafx.scene.control.TreeView treeView = new FxRobot().lookup(identifier).query();
+            javafx.scene.control.TreeView treeView = TestFxLibraryCommon.lookup(identifier);
 
             treeView.getSelectionModel().clearSelection();
 
@@ -173,7 +174,7 @@ public class TreeView {
 
         try{
 
-            javafx.scene.control.TreeView treeView = new FxRobot().lookup(identifier).query();
+            javafx.scene.control.TreeView treeView = TestFxLibraryCommon.lookup(identifier);
 
             treeView.getSelectionModel().clearSelection(index);
 
@@ -229,7 +230,7 @@ public class TreeView {
 
         try{
 
-            javafx.scene.control.TreeView treeView = new FxRobot().lookup(identifier).query();
+            javafx.scene.control.TreeView treeView = TestFxLibraryCommon.lookup(identifier);
 
             treeView.getRoot().setExpanded(false);
 

@@ -226,6 +226,7 @@ public class Misc {
     @RobotKeyword
     @ArgumentNames({"seconds"})
     public void sleep(int seconds) {
+
         new FxRobot().sleep(seconds, TimeUnit.SECONDS);
     }
 
@@ -235,8 +236,6 @@ public class Misc {
      *
      * @param identifier
      * : The component to search
-     * @param nthElement
-     * : The index of the component to return from the list
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -251,12 +250,6 @@ public class Misc {
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
-     *     <tr>
-     *         <td>nthElement</td>
-     *         <td>Yes</td>
-     *         <td>int</td>
-     *         <td>N/A</td>
-     *     </tr>
      * </table>
      *
      * @return
@@ -269,14 +262,14 @@ public class Misc {
      *         <td>${component}=</td>
      *         <td>Get Nth Element</td>
      *         <td>idComponent02</td>
-     *         <td>12</td>
      *     </tr>
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"identifier", "nthElement"})
-    public Node getNthElement(String identifier, int nthElement) {
-        return getNode(identifier, nthElement);
+    @ArgumentNames({"identifier"})
+    public Node getNthElement(String identifier) {
+
+        return getNode(identifier);
     }
 
     /**
@@ -324,7 +317,8 @@ public class Misc {
     }
 
     public Node getNode(String identifier) {
-        return new FxRobot().lookup(identifier).query();
+
+        return TestFxLibraryCommon.lookup(identifier);
     }
 
     /**
@@ -338,7 +332,7 @@ public class Misc {
      *      The Node
      */
     public Node getNode(String identifier, int nthElement) {
-        Set<Node> nodeList = new FxRobot().lookup(identifier).queryAll();
+        Set<Node> nodeList = TestFxLibraryCommon.lookup(identifier);
         return  Iterables.get(nodeList, nthElement);
     }
 

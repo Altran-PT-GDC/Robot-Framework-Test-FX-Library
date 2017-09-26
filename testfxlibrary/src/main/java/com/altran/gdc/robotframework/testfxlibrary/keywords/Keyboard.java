@@ -7,6 +7,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -27,7 +28,7 @@ public class Keyboard {
     private static final String DIFERENT_TEXT = "The text is diferent";
 
     @Autowired
-    Wait wait;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword presses the key specified with <i>keycode</i>.<br>
@@ -291,7 +292,7 @@ public class Keyboard {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void  clearTextArea(String identifier) {
-        TextArea text = new FxRobot().lookup(identifier).query();
+        TextArea text = TestFxLibraryCommon.lookup(identifier);
         text.setText("");
     }
 
@@ -328,7 +329,7 @@ public class Keyboard {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void  clearTextField(String identifier) {
-        TextField text = new FxRobot().lookup(identifier).query();
+        TextField text = TestFxLibraryCommon.lookup(identifier);
         text.setText("");
     }
 
@@ -381,7 +382,7 @@ public class Keyboard {
 
         try{
 
-            TextField node = new FxRobot().lookup(identifier).query();
+            TextField node = TestFxLibraryCommon.lookup(identifier);
             String nodeText = node.getText();
 
             if(!nodeText.equals(textToValidate)){
@@ -444,7 +445,7 @@ public class Keyboard {
 
         try{
 
-            TextArea node = new FxRobot().lookup(identifier).query();
+            TextArea node = TestFxLibraryCommon.lookup(identifier);
             String nodeText = node.getText();
 
             if(!nodeText.equals(textToValidate)){
@@ -507,7 +508,7 @@ public class Keyboard {
 
         try{
 
-            Label node = new FxRobot().lookup(identifier).query();
+            Label node = TestFxLibraryCommon.lookup(identifier);
             String nodeText = node.getText();
 
             if(!nodeText.equals(textToValidate)){
@@ -568,7 +569,7 @@ public class Keyboard {
 
         try{
 
-            TextField node = new FxRobot().lookup(identifier).query();
+            TextField node = TestFxLibraryCommon.lookup(identifier);
             String nodeText = node.getText();
 
             node.setText(nodeText + " " + text);
@@ -627,7 +628,7 @@ public class Keyboard {
 
         try{
 
-            TextArea node = new FxRobot().lookup(identifier).query();
+            TextArea node = TestFxLibraryCommon.lookup(identifier);
             String nodeText = node.getText();
 
             node.setText(nodeText + " " + text);

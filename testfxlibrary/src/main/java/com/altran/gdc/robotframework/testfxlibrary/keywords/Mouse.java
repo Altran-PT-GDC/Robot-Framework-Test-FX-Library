@@ -75,9 +75,8 @@ public class Mouse {
      * @throws TimeoutException
      * : If something goes wrong
      */
-    @RobotKeywordOverload
+    @RobotKeyword
     public void clickOnComponent(String identifier) throws TimeoutException {
-        //clickOnComponent(identifier, null);
         Node n = TestFxLibraryCommon.lookup(identifier);
         new FxRobot().clickOn(n);
     }
@@ -126,13 +125,12 @@ public class Mouse {
      */
     @RobotKeyword
     @ArgumentNames({"identifier", "n"})
-    public void clickOnNthComponent(String identifier, int n) throws TimeoutException {
+    public void clickOnNthComponent(String identifier) throws TimeoutException {
         TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateIndex(n);
 
         try {
-            Set<Node> nodes = new FxRobot().lookup(identifier).queryAll();
-            new FxRobot().clickOn(Iterables.get(nodes, n));
+            Node node = TestFxLibraryCommon.lookup(identifier);
+            new FxRobot().clickOn(node);
         }catch (IllegalArgumentException e){
             throw new TestFxLibraryFatalException(e);
         }
@@ -188,67 +186,6 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword clicks on a component specified with
-     * <i>identifier</i> within a parent component specified with <i>nodeKey</i>.
-     * If <i>nodeKey</i> is not provided, <i>identifier</i> is used alone.<br>
-     *
-     * @throws TimeoutException
-     *  If something goes wrong
-     *
-     * @param identifier
-     * : The identifier of the component
-     * @param nodeKey
-     * : The parent component of <i>identifier</i>.
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>nodeKey</td>
-     *         <td>No</td>
-     *         <td>string</td>
-     *         <td>null</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Click On Component</td>
-     *         <td>idComponent05</td>
-     *         <td>aNodeKey</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Click On Component</td>
-     *         <td>idComponent05</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "nodeKey=null"})
-    public void clickOnComponent(String identifier, String nodeKey) throws TimeoutException {
-        if(nodeKey != null){
-            Node node = (Node) TestFXLibraryCache.getIstance().get(nodeKey);
-            Node n = new FxRobot().from(node).lookup(identifier).query();
-            new FxRobot().clickOn(n);
-        } else {
-            new FxRobot().clickOn(identifier);
-        }
-    }
-
-    /**
      * <b>Description:</b> This keyword double clicks on a component specified with <i>identifier</i>.<br>
      *
      * @param identifier
@@ -281,6 +218,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void doubleClickOnComponent(String identifier) {
+
         new FxRobot().doubleClickOn(identifier);
     }
 
@@ -317,6 +255,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void drag(String identifier) {
+
         new FxRobot().drag(identifier);
     }
 
@@ -326,6 +265,7 @@ public class Mouse {
      */
     @RobotKeyword
     public void drop() {
+
         new FxRobot().drop();
     }
 
@@ -445,6 +385,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void moveTo(String identifier) {
+
         new FxRobot().moveTo(identifier, Motion.DIRECT);
     }
 
@@ -481,6 +422,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void rightClickOnComponent(String identifier) {
+
         new FxRobot().rightClickOn(identifier, Motion.DIRECT);
     }
 
@@ -517,6 +459,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollLeft(int amount) {
+
         new FxRobot().scroll(amount, HorizontalDirection.LEFT);
     }
 
@@ -553,6 +496,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollRight(int amount) {
+
         new FxRobot().scroll(amount, HorizontalDirection.RIGHT);
     }
 
@@ -589,6 +533,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollUp(int amount) {
+
         new FxRobot().scroll(amount, VerticalDirection.UP);
     }
 
@@ -625,6 +570,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollDown(int amount) {
+
         new FxRobot().scroll(amount, VerticalDirection.DOWN);
     }
 
@@ -665,6 +611,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public Set<Node> getNodeList(String identifier) {
+
         return new FxRobot().lookup(identifier).queryAll();
     }
 
@@ -716,7 +663,7 @@ public class Mouse {
         TestFxLibraryValidation.validateArguments(identifier, booleanValue);
 
         try{
-            CheckBox check = new FxRobot().lookup(identifier).query();
+            CheckBox check = TestFxLibraryCommon.lookup(identifier);
             check.setSelected(Boolean.valueOf(booleanValue));
         } catch (IllegalArgumentException | NullPointerException e) {
             throw  new TestFxLibraryFatalException(e);
@@ -766,7 +713,7 @@ public class Mouse {
         TestFxLibraryValidation.validateArguments(identifier);
 
         try{
-            CheckBox check = new FxRobot().lookup(identifier).query();
+            CheckBox check = TestFxLibraryCommon.lookup(identifier);
             return check.isSelected();
         } catch (IllegalArgumentException | NullPointerException e) {
             throw  new TestFxLibraryFatalException(e);
@@ -911,7 +858,7 @@ public class Mouse {
 
         TestFxLibraryValidation.validateArguments(identifier);
 
-        CheckBox checkBox = new FxRobot().lookup(identifier).query();
+        CheckBox checkBox = TestFxLibraryCommon.lookup(identifier);
 
         try{
             if(!checkBox.isSelected()){
@@ -963,7 +910,7 @@ public class Mouse {
 
         TestFxLibraryValidation.validateArguments(identifier);
 
-        CheckBox checkBox = new FxRobot().lookup(identifier).query();
+        CheckBox checkBox = TestFxLibraryCommon.lookup(identifier);
 
         try{
             if(checkBox.isSelected()){

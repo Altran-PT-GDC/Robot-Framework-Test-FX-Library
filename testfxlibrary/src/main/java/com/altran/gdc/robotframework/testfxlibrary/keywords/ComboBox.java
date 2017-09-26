@@ -1,6 +1,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
@@ -17,7 +18,7 @@ public class ComboBox {
     private boolean verifyComboBoxText = false;
 
     @Autowired
-    Wait wait;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns a list of values from a combobox specified with <i>identifier</i>.<br>
@@ -61,7 +62,7 @@ public class ComboBox {
         wait.waitUntilPageContains(identifier);
 
         try{
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         List<Object> list = new ArrayList<>();
         comboBox.getItems().forEach(item ->
@@ -122,7 +123,7 @@ public class ComboBox {
 
         try{
 
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(comboBox);
 
@@ -181,7 +182,7 @@ public class ComboBox {
 
         wait.waitUntilPageContains(identifier);
 
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(comboBox);
         comboBox.getSelectionModel().selectFirst();
@@ -238,7 +239,7 @@ public class ComboBox {
 
         wait.waitUntilPageContains(identifier);
 
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(comboBox);
 
@@ -289,7 +290,7 @@ public class ComboBox {
 
         wait.waitUntilPageContains(identifier);
 
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         return (String)comboBox.getSelectionModel().getSelectedItem();
 

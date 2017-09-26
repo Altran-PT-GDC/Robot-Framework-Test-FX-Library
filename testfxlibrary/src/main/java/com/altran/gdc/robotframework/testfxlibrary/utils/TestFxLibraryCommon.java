@@ -25,8 +25,9 @@ public class TestFxLibraryCommon {
      * @return
      *      The Node
      */
-    public static Node lookup(String lookup){
-        Node node = null;
+    public static <T extends Node> T lookup(String lookup){
+        T node = null;
+
         List<Node> nodes = new ArrayList<>();
         String nth = null;
         String identifier = null;
@@ -51,11 +52,9 @@ public class TestFxLibraryCommon {
 
             if(hasPosition(lookupStr[0])){
 
-                System.out.println("lookupStr[0]: " + lookupStr[0]);
-
                 String index = lookupStr[0].substring(lookupStr[0].length()-SECOND_POSITION, lookupStr[0].length()-FIRST_POSITION);
                 String id = lookupStr[0].substring(0, lookupStr[0].length()-THIRD_POSITION);
-                Set<Node> n = new FxRobot().lookup(id).queryAll();
+                Set<T> n = new FxRobot().lookup(id).queryAll();
                 nodes.add(Iterables.get(n,Integer.valueOf(index)));
             } else {
                 for(int i=0 ; i<lookupStr.length - 1; i++){
@@ -65,7 +64,7 @@ public class TestFxLibraryCommon {
             }
 
             if(nth != null){
-                Set<Node> nodeList = new FxRobot().from(nodes).lookup(identifier).queryAll();
+                Set<T> nodeList = new FxRobot().from(nodes).lookup(identifier).queryAll();
                 node = Iterables.get(nodeList, Integer.valueOf(nth));
             } else {
                 node = new FxRobot().from(nodes).lookup(identifier).query();
@@ -73,7 +72,7 @@ public class TestFxLibraryCommon {
 
         }else{
             if(nth != null){
-                Set<Node> nodeList = new FxRobot().lookup(identifier).queryAll();
+                Set<T> nodeList = new FxRobot().lookup(identifier).queryAll();
                 node = Iterables.get(nodeList, Integer.valueOf(nth));
             } else {
                 node = new FxRobot().lookup(identifier).query();

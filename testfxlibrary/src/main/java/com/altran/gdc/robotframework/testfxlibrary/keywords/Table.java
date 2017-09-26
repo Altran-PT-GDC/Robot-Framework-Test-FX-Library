@@ -1,6 +1,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -60,7 +61,7 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public int getTableColumnCount(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
         return table.getColumns().size();
     }
 
@@ -99,7 +100,7 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void tableShouldBeVisible(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
         if (!table.isVisible()){
            throw new TestFxLibraryNonFatalException("Table is not visible");
         }
@@ -140,7 +141,7 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void tableShouldNotBeVisible(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
         if (table.isVisible()){
             throw new TestFxLibraryNonFatalException("Table is visible");
         }
@@ -184,7 +185,7 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public int getTableRowCount(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
         return table.getItems().size();
     }
 
@@ -226,7 +227,7 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public List<String> getTableHeaders(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
         ObservableList<TableColumn> columns = table.getColumns();
 
         List<String> columnName = new ArrayList<>();
@@ -275,7 +276,7 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public List<String> getTableValues(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
         return table.getItems();
     }
 
@@ -341,7 +342,7 @@ public class Table {
         TestFxLibraryValidation.validateIndex(rowIndex);
         TestFxLibraryValidation.validateIndex(columnIndex);
 
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
 
         // Item row
         Object item = table.getItems().get(rowIndex);
@@ -422,7 +423,7 @@ public class Table {
         TestFxLibraryValidation.validateIndex(rowIndex);
         TestFxLibraryValidation.validateIndex(columnIndex);
 
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
 
         // Item row
         Object item = table.getItems().get(rowIndex);
@@ -490,7 +491,7 @@ public class Table {
     public List<String> getTableColumnValues(String identifier, int columnIndex){
         TestFxLibraryValidation.validateIndex(columnIndex);
 
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
 
         // Item row
         ObservableList items = table.getItems();
@@ -563,7 +564,7 @@ public class Table {
     public List<String> getTableRowValues(String identifier, int rowIndex){
         TestFxLibraryValidation.validateIndex(rowIndex);
         
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
 
         // Item row
         Object item = table.getItems().get(rowIndex);
@@ -622,7 +623,7 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"ientifier", "text"})
     public void tableHeaderShouldContain(String identifier, String text) {
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
         ObservableList<TableColumn> columns = table.getColumns();
 
         boolean flag = false;
@@ -683,7 +684,7 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"ientifier", "text"})
     public void tableShouldContain(String identifier, String text) {
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
         // Item row
         ObservableList items = table.getItems();
 
