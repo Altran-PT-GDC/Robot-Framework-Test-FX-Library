@@ -316,6 +316,15 @@ public class Misc {
         return key;
     }
 
+    /**
+     * Search if the specific Node exists.
+     *
+     * @param identifier
+     *      The id of the Node to search.
+     *
+     * @return
+     *      The Node.
+     */
     public Node getNode(String identifier) {
 
         return TestFxLibraryCommon.lookup(identifier);
@@ -505,11 +514,21 @@ public class Misc {
         return list;
     }
 
+    /**
+     * Get Parents from component.
+     *
+     * @param parent
+     *      The root parent to check if contains more components.
+     * @param mapComponents
+     *      List of components search to add more.
+     * @return
+     *      The List of components
+     */
     private List<String> getParents(Parent parent, List<String> mapComponents){
         for (int i = 0; i < parent.getChildrenUnmodifiable().size() && parent.getChildrenUnmodifiable().size() > 1; i++) {
             if(parent.getChildrenUnmodifiable().get(i) instanceof Parent){
                 Parent p = (Parent) parent.getChildrenUnmodifiable().get(i);
-                mapComponents.add("Component: " + parent + " - Child: " + p + "\n");
+                mapComponents.add(String.format("Component: %s - Child: %s \\n", parent, p));
                 getParents(p, mapComponents);
             }
         }

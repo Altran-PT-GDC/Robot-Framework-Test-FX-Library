@@ -664,7 +664,6 @@ public class List {
             ListView listView = TestFxLibraryCommon.lookup(identifier);
 
             String[] items = elements.split("//");
-            System.out.println(items.toString());
 
             for (int i = 0; i < items.length; i++) {
                 Log.info(items[i].toString());

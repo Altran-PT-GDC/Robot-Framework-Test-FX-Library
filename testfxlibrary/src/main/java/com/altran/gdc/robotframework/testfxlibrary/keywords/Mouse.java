@@ -7,7 +7,6 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
-import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.geometry.HorizontalDirection;
@@ -15,7 +14,6 @@ import javafx.geometry.Point2D;
 import javafx.geometry.VerticalDirection;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
-import org.python.google.common.collect.Iterables;
 import org.robotframework.javalib.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

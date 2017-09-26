@@ -12,9 +12,7 @@ import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import org.robotframework.javalib.annotation.ArgumentNames;
@@ -536,15 +534,13 @@ public class Window {
 
             Node node = TestFxLibraryCommon.lookup(identifier);
 
-            double x = node.getBoundsInParent().getMaxX();
+
             double y = node.getBoundsInParent().getMaxY();
 
             ScrollPane pane = (ScrollPane)TestFxLibraryCommon.lookup(scrollPaneIdentifier);
 
-            double width = pane.getContent().getBoundsInLocal().getWidth();
             double height = pane.getContent().getBoundsInLocal().getHeight();
 
-            //pane.setHvalue(x/width);
             pane.setVvalue(y/height);
 
             Platform.runLater(new Runnable() {

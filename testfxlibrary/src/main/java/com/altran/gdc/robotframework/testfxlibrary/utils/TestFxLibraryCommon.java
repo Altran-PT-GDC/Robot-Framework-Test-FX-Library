@@ -19,7 +19,9 @@ public class TestFxLibraryCommon {
 
     /**
      * Method lookup to search specific Node.
+     *
      * Example: {id_parent}//{id_component}[x]
+     *
      * @param lookup
      *      The string to search
      * @return
@@ -81,6 +83,14 @@ public class TestFxLibraryCommon {
         return node;
     }
 
+    /**
+     * Verify if the string has the characters [x]
+     *
+     * @param position
+     *      The string to validate the text
+     * @return
+     *      true if contains or false if not contains.
+     */
     private static boolean hasPosition(String position){
         Pattern pattern = Pattern.compile(PATTERN_COMPILE);
         Matcher matcher = pattern.matcher(position);
