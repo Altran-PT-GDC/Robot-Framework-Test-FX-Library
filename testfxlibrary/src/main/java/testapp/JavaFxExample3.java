@@ -1,18 +1,14 @@
 package testapp;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -47,9 +43,6 @@ public class JavaFxExample3 extends Application {
     public void start(Stage primaryStage) throws InterruptedException {
         Pane p = new Pane();
         p.setPrefSize(800, 600);
-
-        //Label backgroundImage = new Label("TestFXLibrary");
-        //p.setBackground(new Label(backgroundImage));
 
         VBox vBoxMaster = new VBox();
         HBox hBoxMaster1 = new HBox();
@@ -151,7 +144,38 @@ public class JavaFxExample3 extends Application {
         Label labelCombo = new Label();
         labelCombo.setText("Comboboxes with same items and same parents:");
         labelCombo.setFont(Font.font(null, FontWeight.BOLD, 12));
-        vBoxCombo.getChildren().addAll(hBoxCombo2, hBoxCombo1);
+
+        Button buttonNewWindow = new Button("Open New Window");
+        buttonNewWindow.setId("btnwindow");
+        buttonNewWindow.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Pane p2 = new Pane();
+                p2.setPrefSize(50, 50);
+                Scene scene2 = new Scene(p2);
+                Stage secondaryStage = new Stage();
+                secondaryStage.setScene(scene2);
+                secondaryStage.setTitle("New Window For Test");
+                secondaryStage.show();
+            }
+        });
+
+        Button buttonNewWindow2 = new Button("Open New Window V2");
+        buttonNewWindow2.setId("btnwindow2");
+        buttonNewWindow2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Pane p3 = new Pane();
+                p3.setPrefSize(50, 50);
+                Scene scene3 = new Scene(p3);
+                Stage thirdStage = new Stage();
+                thirdStage.setScene(scene3);
+                thirdStage.setTitle("New Window For Test V2");
+                thirdStage.show();
+            }
+        });
+
+        vBoxCombo.getChildren().addAll(hBoxCombo2, hBoxCombo1, buttonNewWindow, buttonNewWindow2);
         vBoxCombo.setSpacing(10);
         hBoxCombo1.setSpacing(10);
         hBoxCombo1.getChildren().addAll(comboBox1, comboBox2);
@@ -169,7 +193,6 @@ public class JavaFxExample3 extends Application {
         }
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);
         listView1.setItems(myObservableList);
-
 
         HBox hBoxTables = new HBox();
         hBoxTables.setId("hboxtables");
@@ -239,6 +262,7 @@ public class JavaFxExample3 extends Application {
         hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables);
         Scene scene = new Scene(p);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("JavaFX Example Application 3");
         primaryStage.show();
     }
 }

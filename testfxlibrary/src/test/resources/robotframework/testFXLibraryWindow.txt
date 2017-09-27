@@ -20,8 +20,8 @@ Test List Windows
     Close Application
 
 Test Target Window
-    Start Application  testapp.JavafxExample2
-    Select Window   example Gui
+    Start Application  testapp.JavaFxExample3
+    Select Window   JavaFX Example Application 3
     Close Application
 
 Test Window
@@ -51,8 +51,12 @@ Test Get Component Size
     Close Application
 
 Test Get Selected Window Title
-    Start Application  testapp.JavafxExample2
-    Get Selected Window Title
+    Start Application  testapp.JavaFxExample3
+    Click On Component  \#btnwindow
+    Click On Component  \#btnwindow2
+    Select Window   New Window For Test
+    ${window_title}=    Get Selected Window Title
+    Log     ${window_title}     INFO
     Close Application
 
 Test Maximizing Window

@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
+import org.python.antlr.ast.Str;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
@@ -28,6 +29,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -120,7 +122,14 @@ public class Window {
     @ArgumentNames({"identifier"})
     public void selectWindow(String identifier) {
 
-        new FxRobot().targetWindow(identifier);
+        javafx.stage.Window window = new FxRobot().targetWindow(identifier).targetWindow();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                window.requestFocus();
+            }
+        });
+
     }
 
     /**
@@ -442,15 +451,24 @@ public class Window {
      *
      */
     @RobotKeyword
-    public void getSelectedWindowTitle(){
-
+    public String getSelectedWindowTitle(){
         try {
-            LOG.info(new FxToolkitContext().getPrimaryStageFuture().get().getTitle());
+            Stage stage= null;
+            String windowTitle = "";
+            List<javafx.stage.Window> windows = new FxRobot().listTargetWindows();
+            for (int i =0; i < windows.size(); i++){
+                stage = (Stage) windows.get(i);
+                if (stage.isFocused()) {
+                    windowTitle = stage.getTitle();
+                }
+            }
+            return windowTitle;
         } catch (Exception e){
             LOG.error(ERROR_MSG, e);
-            throw new TestFxLibraryNonFatalException("Error get main window");
+            throw new TestFxLibraryNonFatalException("Error retrieving current window");
         }
     }
+
 
     /**
      * <b>Description:</b>This keyword maximizes the application window. If an error occurs
@@ -614,5 +632,4 @@ public class Window {
             throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
         }
     }
-
 }
