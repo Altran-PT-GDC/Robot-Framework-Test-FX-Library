@@ -84,8 +84,6 @@ public class Mouse {
      *
      * @param identifier
      * : The identifier of the component
-     * @param n
-     * : Position of the component
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -122,7 +120,7 @@ public class Mouse {
      * : If something goes wrong
      */
     @RobotKeyword
-    @ArgumentNames({"identifier", "n"})
+    @ArgumentNames({"identifier"})
     public void clickOnNthComponent(String identifier) throws TimeoutException {
         TestFxLibraryValidation.validateArguments(identifier);
 

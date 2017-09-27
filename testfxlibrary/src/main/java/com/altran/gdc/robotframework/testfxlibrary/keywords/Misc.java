@@ -225,9 +225,11 @@ public class Misc {
      */
     @RobotKeyword
     @ArgumentNames({"seconds"})
-    public void sleep(int seconds) {
+    public void sleep(float seconds) {
 
-        new FxRobot().sleep(seconds, TimeUnit.SECONDS);
+        int convertedInt = (int)(seconds * 1000);
+        System.out.println("Resultado: " + convertedInt);
+        new FxRobot().sleep(convertedInt);
     }
 
     /**

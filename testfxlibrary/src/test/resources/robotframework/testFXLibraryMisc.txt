@@ -5,6 +5,7 @@ Library           Dialogs
 *** Test Cases ***
 Test Node Key
      Start Application  testapp.JavafxExample
+     TestFXLibrary.Sleep      2.532
      Click On Component   \#counterPane//\#countButton
      Close Application
 

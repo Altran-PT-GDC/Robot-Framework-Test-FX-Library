@@ -448,7 +448,28 @@ public class Window {
     /**
      * <b>Description:</b>This keyword returns the title of the current window. If an error occurs
      * a TestFxLibraryNonFatalException is thrown.<br>
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     * </table>
      *
+     *  @return
+     *  Title of the component
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#scrollPane</td>
+     *         <td>#textField</td>
+     *         <td>Scroll Component To View</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
     public String getSelectedWindowTitle(){
@@ -468,7 +489,6 @@ public class Window {
             throw new TestFxLibraryNonFatalException("Error retrieving current window");
         }
     }
-
 
     /**
      * <b>Description:</b>This keyword maximizes the application window. If an error occurs
@@ -526,10 +546,6 @@ public class Window {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     * @return
-     *  Position of component on screen
-     *
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -596,10 +612,6 @@ public class Window {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     * @return
-     *  Position of component on screen
-     *
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
