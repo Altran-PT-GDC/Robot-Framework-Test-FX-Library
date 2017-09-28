@@ -1,34 +1,42 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
 
 *** Test Cases ***
 
 Test Get List Items From ComboBox
     Start Application  testapp.JavafxExample
-    ${count}    Get List Items From ComboBox  \#comboBox
-    Log     ${count}    WARN
+    @{cb_items}=   Set Variable    B   C   D
+    ${list_items}=    Get List Items From ComboBox  \#comboBox
+    Should Be Equal     ${list_items}   ${cb_items}
     Close Application
 
-Test Get List Items From ListView
-    Start Application  testapp.JavafxExample2
-    ${count}    Get List Items From ListView  \#listView
-    Log     ${count}    WARN
+Test Get Selected Item From Combox
+    Start Application  testapp.JavafxExample
+    ${cb_first_item}=   Set Variable    B
+    ${item}=    Get Selected Item From Combox   \#comboBox
+    Should Be Equal     ${item}   ${cb_first_item}
     Close Application
-
 
 Test Select From Combo Box By Text
     Start Application  testapp.JavafxExample
-    Select From Combo Box By Text   \#comboBox   B
+    ${item_to_select}=   Set Variable    C
+    Select From Combo Box By Text   \#comboBox   C
+    ${item}=    Get Selected Item From Combox   \#comboBox
+    Should Be Equal     ${item}   ${item_to_select}
     Close Application
 
-Test Select Frist From Combo Box
+Test Select First From Combo Box
     Start Application  testapp.JavafxExample
-    Select Frist From Combo Box   \#comboBox
+    ${cb_first_item}=   Set Variable    B
+    Select First From Combo Box   \#comboBox
+    ${item}=    Get Selected Item From Combox   \#comboBox
+    Should Be Equal     ${item}   ${cb_first_item}
     Close Application
 
 Test Select From Combo Box By Position
     Start Application  testapp.JavafxExample
-    Select From Combo Box By Position  \#comboBox   1
+    ${cb_third_item}=   Set Variable    D
+    Select From Combo Box By Position  \#comboBox   2
+    ${item}=    Get Selected Item From Combox   \#comboBox
+    Should Be Equal     ${item}   ${cb_third_item}
     Close Application
-
