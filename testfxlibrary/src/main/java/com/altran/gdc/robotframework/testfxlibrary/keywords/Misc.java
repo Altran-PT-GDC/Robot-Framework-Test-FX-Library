@@ -51,6 +51,77 @@ public class Misc {
      *
      * @param className
      * : The name of the class that extends javafx.application.Application to be launched
+     * @param distinctiveName
+     * : The name to identify the session of the application
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>className</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>distinctiveName</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Start Application</td>
+     *         <td>AnApplication</td>
+     *         <td>Application1</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"className" , "distinctiveName=null"})
+    public void startApplication(String className, String distinctiveName){
+        TestFxLibraryValidation.validateArguments(className, distinctiveName);
+        final Stage[] stage = {null};
+        try {
+            int size = new FxRobot().listTargetWindows().size();
+            if(size == 0) {
+                FxToolkit.registerPrimaryStage();
+                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+                FxToolkit.showStage();
+                TestFXLibraryCache.getIstance().put(distinctiveName, FxToolkit.toolkitContext().getPrimaryStageFuture());
+            } else {
+                FxToolkit.registerStage(new Supplier<Stage>() {
+                    @Override
+                    public Stage get() {
+                        stage[0] = new Stage();
+                        return stage[0];
+                    }
+                });
+                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+                FxToolkit.showStage();
+                TestFXLibraryCache.getIstance().put(distinctiveName, stage[0]);
+            }
+
+        } catch (TimeoutException | ClassNotFoundException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword launches JavaFX application. The classname
+     * passed as <i>className</i> must extend javafx.application.Application.<br>
+     * ATENTTION: The class must be added to the classpath beforehand.<br>
+     *
+     * @param className
+     * : The name of the class that extends javafx.application.Application to be launched
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -76,31 +147,12 @@ public class Misc {
      *     </tr>
      * </table>
      */
-    @RobotKeyword
-    @ArgumentNames({"className"})
+    @RobotKeywordOverload
     public void startApplication(String className){
         TestFxLibraryValidation.validateArguments(className);
 
-        try {
-            int size = new FxRobot().listTargetWindows().size();
-            if(size == 0) {
-                FxToolkit.registerPrimaryStage();
-                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
-                FxToolkit.showStage();
-            } else {
-                FxToolkit.registerStage(new Supplier<Stage>() {
-                    @Override
-                    public Stage get() {
-                        return new Stage();
-                    }
-                });
-                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
-                FxToolkit.showStage();
-            }
+        startApplication(className, " ");
 
-        } catch (TimeoutException | ClassNotFoundException e) {
-            throw new TestFxLibraryFatalException(e);
-        }
     }
 
     /**

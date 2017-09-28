@@ -155,7 +155,7 @@ public class JavafxExample2 extends Application {
         check.setId("check");
         check.setVisible(true);
         check2.setId("disabledCheckbox");
-        check.setDisable(true);
+        check2.setDisable(true);
 
         final Label label = new Label("Label to test");
         label.setId("label");

@@ -10,6 +10,14 @@ Test Multiple Start Application
      Pause Execution
      Close Application
 
+Test Multiple Start Application Overload KeyWord
+     Start Application  testapp.JavafxExample2  app1
+     Start Application  testapp.JavafxExample2  app2
+     ${windows} =      List Windows
+     Log     ${windows}      WARN
+     Pause Execution
+     Close Application
+
 Test Node Key
      Start Application  testapp.JavafxExample
      TestFXLibrary.Sleep      2.532

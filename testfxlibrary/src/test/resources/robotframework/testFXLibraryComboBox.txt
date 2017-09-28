@@ -28,7 +28,7 @@ Test Select From Combo Box By Text
 Test Select First From Combo Box
     Start Application  testapp.JavafxExample
     ${cb_first_item}=   Set Variable    B
-    Select First From Combo Box   \#comboBox
+    Select First From ComboBox      \#comboBox
     ${item}=    Get Selected Item From Combox   \#comboBox
     Should Be Equal     ${item}   ${cb_first_item}
     Close Application

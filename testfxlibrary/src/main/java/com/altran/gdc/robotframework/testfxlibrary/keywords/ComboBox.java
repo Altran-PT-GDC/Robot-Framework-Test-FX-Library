@@ -177,7 +177,7 @@ public class ComboBox {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void selectFristFromComboBox(String identifier){
+    public void selectFirstFromComboBox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
         wait.waitUntilPageContains(identifier);

@@ -9,6 +9,7 @@ import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testfx.api.FxRobot;
 
 @RobotKeywords
 public class CheckBox {
@@ -158,11 +159,13 @@ public class CheckBox {
 
         TestFxLibraryValidation.validateArguments(identifier);
 
+        javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
+
         try{
-            if(getCheckBoxState(identifier).equals(true)){
+            if(!checkBox.isDisable()){
                 LOG.info("CheckBox is enabled!");
             } else {
-                throw new TestFxLibraryNonFatalException("Component is disabled");
+                throw new TestFxLibraryNonFatalException("CheckBox is disabled");
             }
         } catch (IllegalArgumentException | NullPointerException e) {
             throw  new TestFxLibraryFatalException(e);
@@ -208,11 +211,13 @@ public class CheckBox {
 
         TestFxLibraryValidation.validateArguments(identifier);
 
+        javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
+
         try{
-            if(getCheckBoxState(identifier).equals(false)){
+            if(checkBox.isDisable()){
                 LOG.info("CheckBox is disabled!");
             } else {
-                throw new TestFxLibraryNonFatalException("Component is enabled");
+                throw new TestFxLibraryNonFatalException("CheckBox is enabled");
             }
         } catch (IllegalArgumentException | NullPointerException e) {
             throw  new TestFxLibraryFatalException(e);
