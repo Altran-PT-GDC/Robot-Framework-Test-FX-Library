@@ -197,7 +197,11 @@ public class JavaFxExample3 extends Application {
             }
         });
 
-        vBoxCombo.getChildren().addAll(hBoxCombo2, hBoxCombo1, buttonNewWindow, buttonNewWindow2);
+        //Add text field with default text
+        TextField textField = new TextField("Default Text");
+        textField.setId("textfield");
+
+        vBoxCombo.getChildren().addAll(hBoxCombo2, hBoxCombo1, buttonNewWindow, buttonNewWindow2, textField);
         vBoxCombo.setSpacing(DEFAULT_SPACING);
         hBoxCombo1.setSpacing(DEFAULT_SPACING);
         hBoxCombo1.getChildren().addAll(comboBox1, comboBox2);
