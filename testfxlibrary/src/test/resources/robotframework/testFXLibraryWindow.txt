@@ -1,6 +1,7 @@
 *** Settings ***
 Library           TestFXLibrary
 Library           Dialogs
+Library           OperatingSystem
 
 *** Test Cases ***
 
@@ -32,9 +33,10 @@ Test Window
 
 Test Capture Screen
     Start Application  testapp.JavafxExample2
-    ${fp}=  Set Variable    %{USERPROFILE}\\Documents\\Test_ScreenShot\\
-    ${fname}=   Set Variable    ScreenShot
-    Set File Path   ${fp}   ${fname}    png
+    ${screens_directory}=       Set Variable        %{USERPROFILE}/TestFxLibrary/Screenshots
+    Create Directory   ${screens_directory}
+    ${screen_name}=   Set Variable    ScreenShot
+    Set File Path   ${screens_directory}   ${screen_name}    png
     Capture Screen
     Capture Screen
     Capture Screen
@@ -59,7 +61,7 @@ Test Get Selected Window Title
     Log     ${window_title}     INFO
     Close Application
 
-Test Maximizing Window
+#Test Maximizing Window
     Start Application  testapp.JavafxExample2
     Maximize Window
     Close Application

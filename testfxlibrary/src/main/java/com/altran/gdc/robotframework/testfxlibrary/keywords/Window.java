@@ -15,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
-import org.python.antlr.ast.Str;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
@@ -29,7 +28,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 

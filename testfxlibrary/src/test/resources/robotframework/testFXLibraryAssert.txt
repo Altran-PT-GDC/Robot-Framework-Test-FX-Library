@@ -3,10 +3,6 @@ Library           TestFXLibrary
 Library           Dialogs
 
 *** Test Cases ***
-#Test Verify That Contains
-#    Start Application  testapp.JavafxExample
-#    Verify That Contains    \#countValue     \#countValue
-#    Close Application
 
 Test Verify That Has Text
     Start Application  testapp.JavafxExample

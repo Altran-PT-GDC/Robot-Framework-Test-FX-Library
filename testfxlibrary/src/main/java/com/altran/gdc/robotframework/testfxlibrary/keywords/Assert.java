@@ -8,7 +8,6 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
-import java.util.function.Predicate;
 import static org.hamcrest.Matchers.contains;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.*;
@@ -20,54 +19,6 @@ import static org.testfx.matcher.base.NodeMatchers.hasChild;
  */
 @RobotKeywords
 public class Assert {
-
-    /**
-     * <b>Description:</b> This keyword verifies if a given component specified with <i>identifier</i>
-     * contains a child component specified with <i>identifierToValidate</i>. If child component is
-     * not present in parent component an error message is displayed.<br>
-     *
-     * @param identifier
-     * : Parent component you want to validate
-     * @param identifierToValidate
-     * : Child component you want to verify
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>identifierToValidate</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Verify That Contains</td>
-     *         <td>idPane</td>
-     *         <td>idButton</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier","identifierToValidate"})
-    public void verifyThatContains(String identifier, String identifierToValidate) {
-        verifyThat(identifier, (Predicate) contains( identifierToValidate ));
-    }
 
     /**
      * <b>Description:</b> This keyword verifies if a component specified with <i>identifier</i>
@@ -233,7 +184,6 @@ public class Assert {
     @ArgumentNames({"identifier"})
     public void componentShouldBeVisible(String identifier) {
         verifyThat( identifier, isVisible() );
-
     }
 
 
@@ -284,4 +234,6 @@ public class Assert {
     public void verifyThatHasChild(String identifier, String identifierToValidate) {
         verifyThat( identifier, hasChild(identifierToValidate) );
     }
+
+
 }
