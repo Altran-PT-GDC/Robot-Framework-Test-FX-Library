@@ -18,7 +18,6 @@ import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
-import org.testfx.api.FxToolkitContext;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -83,9 +82,21 @@ public class Misc {
         TestFxLibraryValidation.validateArguments(className);
 
         try {
+            int size = new FxRobot().listTargetWindows().size();
+            if(size == 0) {
                 FxToolkit.registerPrimaryStage();
                 FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
                 FxToolkit.showStage();
+            } else {
+                FxToolkit.registerStage(new Supplier<Stage>() {
+                    @Override
+                    public Stage get() {
+                        return new Stage();
+                    }
+                });
+                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+                FxToolkit.showStage();
+            }
 
         } catch (TimeoutException | ClassNotFoundException e) {
             throw new TestFxLibraryFatalException(e);

@@ -3,12 +3,12 @@ Library           TestFXLibrary
 Library           Dialogs
 
 *** Test Cases ***
+
 Test Multiple Start Application
-    Start Application  testapp.JavafxExample
-    Start Application  testapp.JavafxExample2
-    Pause Execution
-
-
+     Start Application  testapp.JavafxExample2
+     Start Application  testapp.JavafxExample2
+     Pause Execution
+     Close Application
 
 Test Node Key
      Start Application  testapp.JavafxExample

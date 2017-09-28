@@ -17,7 +17,8 @@ Test List Target Windows
 
 Test List Windows
     Start Application  testapp.JavafxExample2
-    List Windows
+    ${windows} =      List Windows
+    Log     ${windows}      WARN
     Close Application
 
 Test Target Window
