@@ -156,7 +156,6 @@ public class CheckBox {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void checkBoxShouldBeEnabled(String identifier) {
-
         TestFxLibraryValidation.validateArguments(identifier);
 
         javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
@@ -208,7 +207,6 @@ public class CheckBox {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void checkBoxShouldBeDisabled(String identifier) {
-
         TestFxLibraryValidation.validateArguments(identifier);
 
         javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();

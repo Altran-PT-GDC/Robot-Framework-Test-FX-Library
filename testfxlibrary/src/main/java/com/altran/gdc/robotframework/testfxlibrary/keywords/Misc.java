@@ -8,6 +8,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -644,5 +645,45 @@ public class Misc {
     public String getNodeAll(String identifier) {
         Set<Node> nodes = new FxRobot().lookup(identifier).queryAll();
         return nodes.toString();
+    }
+
+    /**
+     * <b>Description:</b> Switch application if more than one is running.
+     * @param application
+     * : The name of the application to request the focus
+     * <br><br>
+     * <table summary ="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>application</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Switch Application</td>
+     *         <td>my application</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword()
+    @ArgumentNames({"application"})
+    public void switchApplication(String application){
+        Stage stage = (Stage)TestFXLibraryCache.getIstance().get(application);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                stage.requestFocus();
+            }
+        });
     }
 }
