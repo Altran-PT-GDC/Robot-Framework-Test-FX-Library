@@ -60,12 +60,8 @@ public class JavafxExample2 extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        //BorderPane root = new BorderPane();
-        //The primaryStage is the top-level container
         primaryStage.setTitle("example Gui");
 
-        //The BorderPane has the same areas laid out as the
-        //BorderLayout layout manager
         componentLayout = new BorderPane();
         componentLayout.setPadding(new Insets(BORDERPANE_INSETS_TOP, BORDERPANE_INSETS_RIGHT,BORDERPANE_INSETS_BOTTOM, BORDERPANE_INSETS_LEFT));
 
@@ -207,7 +203,6 @@ public class JavafxExample2 extends Application {
         hBox.getChildren().addAll(vegFruitBut, testWait, text, textArea, toBeErase);
 
         componentLayout.setBottom(hBox);
-        //root.setCenter(componentLayout);
 
 
         //Add the BorderPane to the Scene

@@ -61,7 +61,7 @@ Test Get Selected Window Title
     Log     ${window_title}     INFO
     Close Application
 
-#Test Maximizing Window
+Test Maximizing Window
     Start Application  testapp.JavafxExample2
     Maximize Window
     Close Application
@@ -74,4 +74,11 @@ Test Scroll Component To View
 Test Focus To Component
     Start Application  testapp.JavafxExample2
     Focus To Component    \#scrollPane
+    Close Application
+
+Test Close Current Window
+    Start Application  testapp.JavaFxExample3
+    Click On Component  \#btnwindow
+    Click On Component  \#btnwindow2
+    Close Current Window
     Close Application

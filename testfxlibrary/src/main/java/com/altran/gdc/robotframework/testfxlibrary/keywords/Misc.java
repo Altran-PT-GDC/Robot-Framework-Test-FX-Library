@@ -11,12 +11,14 @@ import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.python.google.common.collect.Iterables;
 import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
+import org.testfx.api.FxToolkitContext;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -26,6 +28,7 @@ import java.net.URLClassLoader;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.function.Supplier;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -80,9 +83,10 @@ public class Misc {
         TestFxLibraryValidation.validateArguments(className);
 
         try {
-            FxToolkit.registerPrimaryStage();
-            FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
-            FxToolkit.showStage();
+                FxToolkit.registerPrimaryStage();
+                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+                FxToolkit.showStage();
+
         } catch (TimeoutException | ClassNotFoundException e) {
             throw new TestFxLibraryFatalException(e);
         }

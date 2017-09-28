@@ -39,49 +39,10 @@ Test Get Node List
     Log     ${list}     WARN
     Close Application
 
-Test Get CheckBox State
-
-    Start Application  testapp.JavafxExample2
-    ${status}     Get CheckBox State    .check-box
-    Log     ${status}     WARN
-    Close Application
-
-Test Set CheckBox State
-
-    Start Application  testapp.JavafxExample2
-    Set CheckBox State    .check-box   true
-    Close Application
-
 Test Select From PopUp Menu
 
     Start Application  testapp.JavafxExample2
     Select From PopupMenu   \#text  Select All
-    Close Application
-
-Test Component Sould Be Enabled
-
-    Start Application  testapp.JavafxExample2
-    Set CheckBox State    .check-box   true
-    CheckBox Should Be Enabled   .check-box
-    Close Application
-
-Test Component Sould Be Disabled
-
-    Start Application  testapp.JavafxExample2
-    CheckBox Should Be Disabled   .check-box
-    Close Application
-
-Test CheckBox Sould Be Selected
-
-    Start Application  testapp.JavafxExample2
-    Set CheckBox State    .check-box   true
-    CheckBox Should Be Selected   .check-box
-    Close Application
-
-Test CheckBox Should Not Be Selected
-
-    Start Application  testapp.JavafxExample2
-    CheckBox Should Not Be Selected   .check-box
     Close Application
 
 Test Click Component At Coordinates
