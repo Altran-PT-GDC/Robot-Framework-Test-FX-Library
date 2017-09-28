@@ -53,6 +53,8 @@ public class JavaFxExample3 extends Application {
     private static  final int LIST_VIEW_MAX_HEIGHT = 200;
     private static  final int DEFAULT_FONT_SIZE = 12;
     private static  final int LIST_ITEMS = 10;
+    private static  final int TEXT_AREA_WIDTH = 100;
+    private static  final int TEXT_AREA_HEIGHT = 50;
 
     public static void main(String[] args) {
         launch(args);
@@ -198,10 +200,15 @@ public class JavaFxExample3 extends Application {
         });
 
         //Add text field with default text
+        HBox hBoxText = new HBox();
         TextField textField = new TextField("Default Text");
         textField.setId("textfield");
+        TextArea textArea = new TextArea("Text Area Text");
+        textArea.setId("textarea");
+        textArea.setMaxSize(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT);
+        hBoxText.getChildren().addAll(textField, textArea);
 
-        vBoxCombo.getChildren().addAll(hBoxCombo2, hBoxCombo1, buttonNewWindow, buttonNewWindow2, textField);
+        vBoxCombo.getChildren().addAll(hBoxCombo2, hBoxCombo1, buttonNewWindow, buttonNewWindow2, hBoxText);
         vBoxCombo.setSpacing(DEFAULT_SPACING);
         hBoxCombo1.setSpacing(DEFAULT_SPACING);
         hBoxCombo1.getChildren().addAll(comboBox1, comboBox2);
