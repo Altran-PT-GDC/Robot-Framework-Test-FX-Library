@@ -151,13 +151,16 @@ public class JavafxExample2 extends Application {
         scrollPane.setId("scrollPane");
 
         final CheckBox check = new CheckBox();
+        final CheckBox check2 = new CheckBox();
         check.setId("check");
         check.setVisible(true);
+        check2.setId("disabledCheckbox");
+        check.setDisable(true);
 
         final Label label = new Label("Label to test");
         label.setId("label");
 
-        rightVbox.getChildren().addAll(scrollPane, check, label);
+        rightVbox.getChildren().addAll(scrollPane, check, check2, label);
 
         componentLayout.setCenter(listPane);
         componentLayout.setRight(rightVbox);
