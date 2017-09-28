@@ -144,6 +144,7 @@ public class JavafxExample extends Application {
             ComboBox combo = new ComboBox();
             combo.setId("comboBox");
             combo.getItems().addAll("B", "C", "D");
+            combo.getSelectionModel().select(0);
 
 
 
