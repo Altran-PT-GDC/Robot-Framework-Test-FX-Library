@@ -214,8 +214,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void doubleClickOnComponent(String identifier) {
-
-        new FxRobot().doubleClickOn(identifier);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().doubleClickOn(n);
     }
 
     /**
@@ -251,8 +251,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void drag(String identifier) {
-
-        new FxRobot().drag(identifier);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().drag(n);
     }
 
     /**
@@ -299,7 +299,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void dropTo(String identifier) {
-        new FxRobot().dropTo(identifier);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().dropTo(n);
     }
 
     /**
@@ -381,8 +382,9 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void moveTo(String identifier) {
+        Node n = TestFxLibraryCommon.lookup(identifier);
 
-        new FxRobot().moveTo(identifier, Motion.DIRECT);
+        new FxRobot().moveTo(n, Motion.DIRECT);
     }
 
     /**
@@ -418,8 +420,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void rightClickOnComponent(String identifier) {
-
-        new FxRobot().rightClickOn(identifier, Motion.DIRECT);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().rightClickOn(n, Motion.DIRECT);
     }
 
     /**
