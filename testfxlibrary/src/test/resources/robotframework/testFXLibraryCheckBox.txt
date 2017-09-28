@@ -1,44 +1,38 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
 
 *** Test Cases ***
 
 Test Get CheckBox State
-
     Start Application  testapp.JavafxExample2
     ${status}     Get CheckBox State    .check-box
-    Log     ${status}     WARN
+    Log     ${status}     INFO
     Close Application
 
 Test Set CheckBox State
-
     Start Application  testapp.JavafxExample2
     Set CheckBox State    .check-box   true
+    ${status}=     Get CheckBox State    .check-box
+    Should Be Equal     "${status}"     "True"
     Close Application
 
-Test CheckBox Sould Be Enabled
-
+Test CheckBox Should Be Enabled
     Start Application  testapp.JavafxExample2
-    Set CheckBox State    .check-box   true
-    CheckBox Should Be Enabled   .check-box
+    CheckBox Should Be Enabled   \#check
     Close Application
 
-Test CheckBox Sould Be Disabled
-
+Test CheckBox Should Be Disabled
     Start Application  testapp.JavafxExample2
-    CheckBox Should Be Disabled   .check-box
+    CheckBox Should Be Disabled   \#disabledCheckbox
     Close Application
 
-Test CheckBox Sould Be Selected
-
+Test CheckBox Should Be Selected
     Start Application  testapp.JavafxExample2
     Set CheckBox State    .check-box   true
     CheckBox Should Be Selected   .check-box
     Close Application
 
 Test CheckBox Should Not Be Selected
-
     Start Application  testapp.JavafxExample2
     CheckBox Should Not Be Selected   .check-box
     Close Application
