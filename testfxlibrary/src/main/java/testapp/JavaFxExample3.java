@@ -44,7 +44,7 @@ public class JavaFxExample3 extends Application {
     private static  final int RIGHT_PADDING = 10;
     private static  final int BOTTOM_PADDING = 10;
     private static  final int LEFT_PADDING = 10;
-    private static  final int MAIN_PANE_WIDTH = 800;
+    private static  final int MAIN_PANE_WIDTH = 1000;
     private static  final int MAIN_PANE_HEIGHT = 600;
     private static  final int SEC_PANE_WIDTH = 50;
     private static  final int SEC_PANE_HEIGHT = 50;
@@ -56,6 +56,8 @@ public class JavaFxExample3 extends Application {
     private static  final int TEXT_AREA_WIDTH = 100;
     private static  final int TEXT_AREA_HEIGHT = 50;
     private static  final int DEFAULT_SELECTED_LIST_ITEM = 0;
+    private static  final int LIST_VIEW_SIMPLE_WIDTH = 100;
+    private static  final int LIST_VIEW_SIMPLE_HEIGHT = 150;
 
     public static void main(String[] args) {
         launch(args);
@@ -215,6 +217,22 @@ public class JavaFxExample3 extends Application {
         hBoxCombo1.getChildren().addAll(comboBox1, comboBox2);
         hBoxCombo2.getChildren().addAll(labelCombo);
 
+        VBox vBoxListViewSimple = new VBox();
+        HBox hBoxLabelSimpleListView = new HBox();
+        HBox hBoxSimpleListView = new HBox();
+        ListView listViewSimple = new ListView();
+        listViewSimple.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        final ObservableList<String> oList = FXCollections.observableArrayList("one", "two", "three", "four", "five", "six");
+        listViewSimple.setItems(oList);
+        listViewSimple.getSelectionModel().selectFirst();
+        listViewSimple.setId("listviewsimple");
+        Label labelSimpleListView = new Label("Simple List View Items:");
+        labelSimpleListView.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
+        vBoxListViewSimple.getChildren().addAll(hBoxLabelSimpleListView, hBoxSimpleListView);
+        listViewSimple.setMaxSize(LIST_VIEW_SIMPLE_WIDTH, LIST_VIEW_SIMPLE_HEIGHT);
+        hBoxLabelSimpleListView.getChildren().add(labelSimpleListView);
+        hBoxSimpleListView.getChildren().add(listViewSimple);
+
         //List view with text and buttons for each element
         VBox vBoxListView = new VBox();
         ListView<HBoxCell> listView1 = new ListView<>();
@@ -298,9 +316,11 @@ public class JavaFxExample3 extends Application {
         vBoxCombo.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
         vBoxListView.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
         hBoxTables.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
+        hBoxLabelSimpleListView.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
+        hBoxSimpleListView.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
 
         //Add elements to master elements and start primary stage
-        hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo);
+        hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple);
         hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables);
         Scene scene = new Scene(p);
         primaryStage.setScene(scene);
