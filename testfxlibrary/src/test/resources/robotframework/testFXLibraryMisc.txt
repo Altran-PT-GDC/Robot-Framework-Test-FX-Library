@@ -1,5 +1,6 @@
 *** Settings ***
 Library           TestFXLibrary
+Library           Dialogs
 
 *** Test Cases ***
 
@@ -11,6 +12,12 @@ Test Multiple Start Application
 Test Multiple Start Application Overload KeyWord
      Start Application  testapp.JavaFxExample3  app1
      Start Application  testapp.JavaFxExample3  app2
+     Close Application
+
+Test Switch Application
+     Start Application  testapp.JavaFxExample3  app1
+     Start Application  testapp.JavaFxExample3  app2
+     Switch Application     app1
      Close Application
 
 Test Sleep
