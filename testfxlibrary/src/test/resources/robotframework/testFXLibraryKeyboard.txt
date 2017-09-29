@@ -3,56 +3,72 @@ Library           TestFXLibrary
 Library           Dialogs
 
 *** Test Cases ***
-#Test Press And Release
-#    Start Application  testapp.JavafxExample
-#    Click On Component    \#countValue
-#    Press       8
-#    Release     8
-#    Close Application
-
-Test Erase Text
+Test Press And Release
     Start Application  testapp.JavafxExample
     Click On Component    \#countValue
-    Erase Text  1
-    Close Application
-
-Test Erase All Text From TextField
-    Start Application  testapp.JavafxExample2
-    Clear Text Field    \#text
-    Close Application
-
-Test Erase All Text From TextArea
-    Start Application  testapp.JavafxExample2
-    Clear Text Area     \#textArea
-    Close Application
-
-Test Write
-    Start Application  testapp.JavafxExample
-    Click On Component    \#countValue
-    Write    test
+    Press       8
+    Release     8
     Close Application
 
 Test Text Field Text Should Be
-    Start Application  testapp.JavafxExample2
-    Text Field Text Should Be    \#text    OLA TEST
+    Start Application  testapp.JavaFxExample3
+    ${default_text}=    Set Variable    Default Text
+    Text Field Text Should Be    \#textfield    ${default_text}
     Close Application
 
 Test Text Area Text Should Be
-    Start Application  testapp.JavafxExample2
-    Text Area Text Should Be    \#textArea    PARA APAGAR
+    Start Application  testapp.JavaFxExample3
+    ${default_text}=    Set Variable    Text Area Text
+    Text Area Text Should Be    \#textarea    ${default_text}
+    Close Application
+
+Test Erase Text
+    Start Application  testapp.JavaFxExample3
+    ${del_text}=    Set Variable    Default T
+    Click On Component    \#textfield
+    Erase Text  3
+    Text Field Text Should Be    \#textfield    ${del_text}
+    Close Application
+
+Test Erase All Text From TextField
+    Start Application  testapp.JavaFxExample3
+    Clear Text Field    \#textfield
+    Text Field Text Should Be    \#textfield    ${EMPTY}
+    Close Application
+
+Test Erase All Text From TextArea
+    Start Application  testapp.JavaFxExample3
+    Clear Text Area     \#textarea
+    Text Area Text Should Be    \#textarea    ${EMPTY}
+    Close Application
+
+Test Write
+    Start Application  testapp.JavaFxExample3
+    ${default_text}=    Set Variable    Default Text
+    ${new_text}=    Set Variable    V2
+    Click On Component    \#textfield
+    Write    ${new_text}
+    Text Field Text Should Be    \#textfield    ${default_text}${new_text}
     Close Application
 
 Test Label Text Should Be
     Start Application  testapp.JavafxExample2
-    Label Text Should Be    \#label    Label to test
+    ${default_text}=    Set Variable    Label to test
+    Label Text Should Be    \#label    ${default_text}
     Close Application
 
 Test Text Field Append Text
-    Start Application  testapp.JavafxExample2
-    Text Field Append Text    \#text    APPEND
+    Start Application  testapp.JavaFxExample3
+    ${default_text}=    Set Variable    Default Text
+    ${new_text}=    Set Variable    appended text
+    Text Field Append Text    \#textfield    ${new_text}
+    Text Field Text Should Be    \#textfield    ${default_text}${new_text}
     Close Application
 
 Test Text Area Append Text
-    Start Application  testapp.JavafxExample2
-    Text Area Append Text    \#textArea    TEXT TO APPEND
+    Start Application  testapp.JavaFxExample3
+    ${default_text}=    Set Variable    Text Area Text
+    ${new_text}=    Set Variable    appended text
+    Text Area Append Text    \#textarea    ${new_text}
+    Text Area Text Should Be    \#textarea    ${default_text}${new_text}
     Close Application
