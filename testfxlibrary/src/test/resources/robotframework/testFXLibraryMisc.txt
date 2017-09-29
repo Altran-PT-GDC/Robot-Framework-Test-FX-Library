@@ -1,56 +1,49 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
 
 *** Test Cases ***
 
 Test Multiple Start Application
-     Start Application  testapp.JavafxExample2
-     Start Application  testapp.JavafxExample2
-     Pause Execution
+     Start Application  testapp.JavaFxExample3
+     Start Application  testapp.JavaFxExample3
      Close Application
 
 Test Multiple Start Application Overload KeyWord
-     Start Application  testapp.JavafxExample2  app1
-     Start Application  testapp.JavafxExample2  app2
-     ${windows} =      List Windows
-     Log     ${windows}      WARN
-     Pause Execution
+     Start Application  testapp.JavaFxExample3  app1
+     Start Application  testapp.JavaFxExample3  app2
      Close Application
 
-Test Node Key
-     Start Application  testapp.JavafxExample
-     TestFXLibrary.Sleep      2.532
-     Click On Component   \#counterPane//\#countButton
+Test Sleep
+     Start Application  testapp.JavaFxExample3
+     ${before_kw_time}=   Get Time      sec
+     TestFXLibrary.Sleep      1
+     ${after_kw_time}=   Get Time       sec
+     ${time_passed}=    Set Variable    ${after_kw_time}-${before_kw_time}
+     Evaluate   ${time_passed} < 2
      Close Application
 
 Test Get NTH Element
-     Start Application  testapp.JavafxExample
-     ${node}=   Get Nth Element  \#counterPane[0]
-     Log    ${node}     WARN
+     Start Application  testapp.JavaFxExample3
+     ${node}=   Get Nth Element  \#vbuttons1[0]
      Close Application
 
 Test Get Component Attribute
-     Start Application  testapp.JavafxExample2
-     ${attribute}=      Get Component Atrribute    \#check     isSelected
-     Log    ${attribute}     WARN
+     Start Application  testapp.JavaFxExample3
+     ${attribute}=      Get Component Atrribute    \#checkbox     isSelected
      Close Application
 
 Test List Component Methods
-     Start Application  testapp.JavafxExample2
-     ${attribute}=      List Component Methods    \#check
-     Log    ${attribute}     WARN
+     Start Application  testapp.JavaFxExample3
+     ${components}=      List Component Methods    \#checkbox
      Close Application
 
 Test List Components In Context
-     Start Application  testapp.JavafxExample2
+     Start Application  testapp.JavaFxExample3
      ${attribute}=      List Components In Context
-     Log    ${attribute}     WARN
      Close Application
 
 Test Get Node All
      Start Application  testapp.JavaFxExample3
-     ${nodes}=  Get Node All       \#button
-     Log    ${nodes}     WARN
+     ${nodes}=      Get Node All       \#button1
      Close Application
 
