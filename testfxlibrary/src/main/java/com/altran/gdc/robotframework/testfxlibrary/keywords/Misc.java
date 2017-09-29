@@ -6,6 +6,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.*;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -19,6 +20,7 @@ import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
+import org.testfx.toolkit.PrimaryStageFuture;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -678,7 +680,20 @@ public class Misc {
     @RobotKeyword()
     @ArgumentNames({"application"})
     public void switchApplication(String application){
-        Stage stage = (Stage)TestFXLibraryCache.getIstance().get(application);
+        PrimaryStageFuture a;
+        Stage stage;
+        Object obj = TestFXLibraryCache.getIstance().get(application);
+
+        if(obj instanceof PrimaryStageFuture){
+            try {
+                stage = ((PrimaryStageFuture) obj).get();
+            } catch (Exception e) {
+                throw new TestFxLibraryNonFatalException(e);
+            }
+        } else {
+            stage = (Stage) obj;
+        }
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {

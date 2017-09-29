@@ -7,7 +7,6 @@ Library           Dialogs
 Test Multiple Start Application
      Start Application  testapp.JavafxExample2
      Start Application  testapp.JavafxExample2
-     Pause Execution
      Close Application
 
 Test Multiple Start Application Overload KeyWord
@@ -15,6 +14,12 @@ Test Multiple Start Application Overload KeyWord
      Start Application  testapp.JavafxExample2  app2
      ${windows} =      List Windows
      Log     ${windows}      WARN
+     Close Application
+
+Test Switch Application
+     Start Application  testapp.JavafxExample  app1
+     Start Application  testapp.JavafxExample2  app2
+     Switch Application     app1
      Pause Execution
      Close Application
 
