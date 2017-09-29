@@ -4,34 +4,41 @@ Library           TestFXLibrary
 *** Test Cases ***
 Test Spinner Get Value
     Start Application  testapp.JavafxExample2
-    ${value}      Spinner Get Value    \#spinner
-    Log     ${value}     WARN
+    ${default_value}=   Set Variable    100
+    ${real_value}=      Spinner Get Value    \#spinner
+    Should Be Equal     ${real_value}   ${${default_value}}
     Close Application
 
 Test Spinner Set Value
     Start Application  testapp.JavafxExample2
-    Spinner Set Value    \#spinner    200
+    ${new_value}=   Set Variable    200
+    Spinner Set Value    \#spinner    ${new_value}
+    ${real_value}=      Spinner Get Value    \#spinner
+    Should Be Equal     ${real_value}   ${${new_value}}
     Close Application
 
 Test Spinner Increment
     Start Application  testapp.JavafxExample2
-    Spinner Increment    \#spinner      1
-    Spinner Increment    \#spinner      1
-    Spinner Increment    \#spinner      1
-    Spinner Increment    \#spinner      1
-    Spinner Increment    \#spinner      1
+    ${default_value}=     Set Variable    100
+    ${increment_value}=     Set Variable    1
+    Spinner Increment    \#spinner      ${increment_value}
+    ${current_value}=      Spinner Get Value    \#spinner
+    Should Be Equal     ${current_value}   ${${default_value}+${increment_value}}
     Close Application
 
 Test Spinner Decrement
     Start Application  testapp.JavafxExample2
+    ${default_value}=     Set Variable    100
+    ${decrement_value}=     Set Variable    1
     Spinner Decrement    \#spinner      1
-    Spinner Decrement    \#spinner      1
-    Spinner Decrement    \#spinner      1
-    Spinner Decrement    \#spinner      1
-    Spinner Decrement    \#spinner      1
+    ${current_value}=      Spinner Get Value    \#spinner
+    Should Be Equal     ${current_value}   ${${default_value}-${decrement_value}}
     Close Application
 
 Test Spinner Value Should Be
     Start Application  testapp.JavafxExample2
-    Spinner Value Should Be    \#spinner      100
+    ${default_value}=     Set Variable    100
+    Spinner Value Should Be    \#spinner      ${default_value}
+    ${current_value}=      Spinner Get Value    \#spinner
+    Should Be Equal     ${current_value}   ${${default_value}}
     Close Application
