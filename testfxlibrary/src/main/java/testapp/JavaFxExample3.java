@@ -55,6 +55,7 @@ public class JavaFxExample3 extends Application {
     private static  final int LIST_ITEMS = 10;
     private static  final int TEXT_AREA_WIDTH = 100;
     private static  final int TEXT_AREA_HEIGHT = 50;
+    private static  final int DEFAULT_SELECTED_LIST_ITEM = 0;
 
     public static void main(String[] args) {
         launch(args);
@@ -227,6 +228,7 @@ public class JavaFxExample3 extends Application {
         }
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);
         listView1.setItems(myObservableList);
+        listView1.getSelectionModel().select(DEFAULT_SELECTED_LIST_ITEM);
 
         //Tables with same items and same IDs
         HBox hBoxTables = new HBox();
