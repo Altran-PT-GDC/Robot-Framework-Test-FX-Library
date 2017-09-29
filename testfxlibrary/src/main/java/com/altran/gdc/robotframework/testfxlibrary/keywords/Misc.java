@@ -43,6 +43,7 @@ import static java.net.URLClassLoader.newInstance;
 public class Misc {
 
     private static final int CLASS_VALUE = 6;
+    private static final int MILLISECONDS = 1000;
 
     @Autowired
     private Logging log;
@@ -297,8 +298,7 @@ public class Misc {
     @ArgumentNames({"seconds"})
     public void sleep(float seconds) {
 
-        int convertedInt = (int)(seconds * 1000);
-        System.out.println("Resultado: " + convertedInt);
+        int convertedInt = (int)(seconds * MILLISECONDS);
         new FxRobot().sleep(convertedInt);
     }
 
@@ -680,7 +680,6 @@ public class Misc {
     @RobotKeyword()
     @ArgumentNames({"application"})
     public void switchApplication(String application){
-        PrimaryStageFuture a;
         Stage stage;
         Object obj = TestFXLibraryCache.getIstance().get(application);
 
