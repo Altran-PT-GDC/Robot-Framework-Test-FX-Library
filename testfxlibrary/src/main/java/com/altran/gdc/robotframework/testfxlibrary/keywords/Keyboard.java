@@ -572,7 +572,7 @@ public class Keyboard {
             TextField node = TestFxLibraryCommon.lookup(identifier);
             String nodeText = node.getText();
 
-            node.setText(nodeText + " " + text);
+            node.setText(nodeText + text);
 
         } catch (IllegalArgumentException | NullPointerException e){
             throw new TestFxLibraryFatalException(e);
@@ -631,7 +631,7 @@ public class Keyboard {
             TextArea node = TestFxLibraryCommon.lookup(identifier);
             String nodeText = node.getText();
 
-            node.setText(nodeText + " " + text);
+            node.setText(nodeText + text);
 
         } catch (IllegalArgumentException | NullPointerException e){
             throw new TestFxLibraryFatalException(e);
