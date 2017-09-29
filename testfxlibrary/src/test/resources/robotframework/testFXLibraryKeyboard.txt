@@ -1,6 +1,5 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
 
 *** Test Cases ***
 Test Press And Release
