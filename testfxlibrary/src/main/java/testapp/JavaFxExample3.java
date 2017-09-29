@@ -248,6 +248,20 @@ public class JavaFxExample3 extends Application {
         listView1.setItems(myObservableList);
         listView1.getSelectionModel().select(DEFAULT_SELECTED_LIST_ITEM);
 
+        //Add two checkboxes, one enabled and another disabled
+        VBox vBoxCheckBoxes = new VBox();
+        HBox hBoxCheckBoxes = new HBox();
+        Label labelCheckBoxes = new Label("Two checkboxes, enabled and disabled:");
+        labelCheckBoxes.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
+        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes);
+        final CheckBox check = new CheckBox();
+        final CheckBox checkDisabled = new CheckBox();
+        hBoxCheckBoxes.getChildren().addAll(check, checkDisabled);
+        check.setId("checkbox");
+        check.setVisible(true);
+        checkDisabled.setId("disabledCheckbox");
+        checkDisabled.setDisable(true);
+
         //Tables with same items and same IDs
         HBox hBoxTables = new HBox();
         hBoxTables.setId("hboxtables");
@@ -304,7 +318,7 @@ public class JavaFxExample3 extends Application {
         tableView1.setPrefSize(TABLE_WIDTH, TABLE_HEIGHT);
         tableView2.setPrefSize(TABLE_WIDTH, TABLE_HEIGHT);
         vBoxTables.getChildren().addAll(tableView1, tableView2);
-        vBoxListView.getChildren().addAll(labelListView, listView1);
+        vBoxListView.getChildren().addAll(labelListView, listView1, vBoxCheckBoxes);
 
         //Elements padding
         vBoxMaster.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
@@ -318,6 +332,8 @@ public class JavaFxExample3 extends Application {
         hBoxTables.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
         hBoxLabelSimpleListView.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
         hBoxSimpleListView.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
+        hBoxCheckBoxes.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
+        vBoxCheckBoxes.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
 
         //Add elements to master elements and start primary stage
         hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple);
