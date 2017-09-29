@@ -1,42 +1,34 @@
 *** Settings ***
 Library           TestFXLibrary
+Suite Setup       Start Application     testapp.JavafxExample
+Suite Teardown    Close Application
 
 *** Test Cases ***
 
 Test Get List Items From ComboBox
-    Start Application  testapp.JavafxExample
     @{cb_items}=   Set Variable    B   C   D
     ${list_items}=    Get List Items From ComboBox  \#comboBox
     Should Be Equal     ${list_items}   ${cb_items}
-    Close Application
 
 Test Get Selected Item From Combox
-    Start Application  testapp.JavafxExample
     ${cb_first_item}=   Set Variable    B
     ${item}=    Get Selected Item From Combox   \#comboBox
     Should Be Equal     ${item}   ${cb_first_item}
-    Close Application
 
 Test Select From Combo Box By Text
-    Start Application  testapp.JavafxExample
     ${item_to_select}=   Set Variable    C
     Select From Combo Box By Text   \#comboBox   C
     ${item}=    Get Selected Item From Combox   \#comboBox
     Should Be Equal     ${item}   ${item_to_select}
-    Close Application
 
 Test Select First From Combo Box
-    Start Application  testapp.JavafxExample
     ${cb_first_item}=   Set Variable    B
     Select First From ComboBox      \#comboBox
     ${item}=    Get Selected Item From Combox   \#comboBox
     Should Be Equal     ${item}   ${cb_first_item}
-    Close Application
 
 Test Select From Combo Box By Position
-    Start Application  testapp.JavafxExample
     ${cb_third_item}=   Set Variable    D
     Select From Combo Box By Position  \#comboBox   2
     ${item}=    Get Selected Item From Combox   \#comboBox
     Should Be Equal     ${item}   ${cb_third_item}
-    Close Application

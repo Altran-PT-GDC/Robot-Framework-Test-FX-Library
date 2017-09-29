@@ -1,42 +1,33 @@
 *** Settings ***
 Library           TestFXLibrary
+Suite Setup       Start Application     testapp.JavaFxExample3
+Suite Teardown    Close Application
 
 *** Test Cases ***
 
 Test Get CheckBox State
-    Start Application  testapp.JavaFxExample3
     ${status}     Get CheckBox State    \#checkbox
     Should Be Equal     "${status}"       "False"
-    Close Application
 
 Test Set CheckBox State
-    Start Application  testapp.JavaFxExample3
     Set CheckBox State    \#checkbox   true
     ${status}=     Get CheckBox State    \#checkbox
     Should Be Equal     "${status}"     "True"
-    Close Application
 
 Test CheckBox Should Be Enabled
-    Start Application  testapp.JavaFxExample3
     CheckBox Should Be Enabled   \#checkbox
-    Close Application
 
 Test CheckBox Should Be Disabled
-    Start Application  testapp.JavaFxExample3
     CheckBox Should Be Disabled   \#disabledCheckbox
-    Close Application
 
 Test CheckBox Should Be Selected
-    Start Application  testapp.JavaFxExample3
     Set CheckBox State    \#checkbox   true
     CheckBox Should Be Selected   \#checkbox
     ${status}=     Get CheckBox State    \#checkbox
     Should Be Equal     "${status}"     "True"
-    Close Application
 
 Test CheckBox Should Not Be Selected
-    Start Application  testapp.JavaFxExample3
+    Set CheckBox State    \#checkbox   false
     CheckBox Should Not Be Selected   \#checkbox
     ${status}     Get CheckBox State    \#checkbox
     Should Be Equal     "${status}"       "False"
-    Close Application

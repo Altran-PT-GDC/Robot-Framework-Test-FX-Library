@@ -1,0 +1,8 @@
+*** Settings ***
+Library           TestFXLibrary
+
+*** Test Cases ***
+Test Set Timeout
+    Start Application  testapp.JavaFxExample3
+    Set Timeout     newtimeout      20
+    Close Application
