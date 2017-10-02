@@ -1,5 +1,7 @@
 package testapp;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +63,11 @@ public class JavaFxExample3 extends Application {
     private static  final int DEFAULT_SELECTED_LIST_ITEM = 0;
     private static  final int LIST_VIEW_SIMPLE_WIDTH = 100;
     private static  final int LIST_VIEW_SIMPLE_HEIGHT = 150;
+    private static  final int TREE_VIEW_MAX_HEIGHT = 300;
+    private static final int WAIT_TIME = 5;
+    private static final int SPINNER_DEFAULT_VALUE = 100;
+    private static final int FLOWPANE_HGAP = 100;
+    private static final int TREEITEMS_AMOUNT = 6;
 
     public static void main(String[] args) {
         launch(args);
@@ -187,8 +197,9 @@ public class JavaFxExample3 extends Application {
         });
 
         //Open new window second button
-        Button buttonNewWindow2 = new Button("Open New Window V2");
-        buttonNewWindow2.setId("btnwindow2");
+        Button buttonNewWindow2 = new Button("Disabled Button");
+        buttonNewWindow2.setId("disableBtn");
+        buttonNewWindow2.setDisable(true);
         buttonNewWindow2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -289,24 +300,24 @@ public class JavaFxExample3 extends Application {
 
         //Table columns definition
         TableColumn firstNameCol = new TableColumn("First Name");
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<Person,String>("firstName"));
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
         TableColumn lastNameCol = new TableColumn("Last Name");
         lastNameCol.setCellValueFactory(
-                new PropertyValueFactory<Person,String>("lastName")
+                new PropertyValueFactory<Person, String>("lastName")
         );
         TableColumn emailCol = new TableColumn("Email");
         emailCol.setCellValueFactory(
-                new PropertyValueFactory<Person,String>("email")
+                new PropertyValueFactory<Person, String>("email")
         );
         TableColumn firstNameCol2 = new TableColumn("First Name");
-        firstNameCol2.setCellValueFactory(new PropertyValueFactory<Person,String>("firstName"));
+        firstNameCol2.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
         TableColumn lastNameCol2 = new TableColumn("Last Name");
         lastNameCol2.setCellValueFactory(
-                new PropertyValueFactory<Person,String>("lastName")
+                new PropertyValueFactory<Person, String>("lastName")
         );
         TableColumn emailCol2 = new TableColumn("Email");
         emailCol2.setCellValueFactory(
-                new PropertyValueFactory<Person,String>("email")
+                new PropertyValueFactory<Person, String>("email")
         );
         tableView1.getSelectionModel().setCellSelectionEnabled(true);
         tableView2.getSelectionModel().setCellSelectionEnabled(true);
@@ -321,26 +332,115 @@ public class JavaFxExample3 extends Application {
         vBoxListView.getChildren().addAll(labelListView, listView1, vBoxCheckBoxes);
 
         //Elements padding
-        vBoxMaster.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        hBoxMaster1.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        hBoxMaster2.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        border.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        vBox1.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        vbButtons3.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        vBoxCombo.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        vBoxListView.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        hBoxTables.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        hBoxLabelSimpleListView.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        hBoxSimpleListView.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        hBoxCheckBoxes.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
-        vBoxCheckBoxes.setPadding(new Insets(TOP_PADDING,RIGHT_PADDING,BOTTOM_PADDING,LEFT_PADDING));
+        vBoxMaster.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        hBoxMaster1.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        hBoxMaster2.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        border.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        vBox1.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        vbButtons3.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        vBoxCombo.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        vBoxListView.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        hBoxTables.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        hBoxLabelSimpleListView.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        hBoxSimpleListView.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        hBoxCheckBoxes.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        vBoxCheckBoxes.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+
+        VBox vboxWait = new VBox();
+
+        //Wait Button
+        final FlowPane choicePane = new FlowPane();
+        choicePane.setHgap(FLOWPANE_HGAP);
+        Label choiceLbl = new Label("Fruits");
+        final FlowPane listPane = new FlowPane();
+        listPane.setHgap(FLOWPANE_HGAP);
+        Label listLbl = new Label("Vegetables");
+
+        final ListView<String> vegetables = new ListView<>(FXCollections.observableArrayList("Apple", "Apricot", "Banana"
+                , "Cherry", "Date", "Kiwi", "Orange", "Pear", "Strawberry"));
+        listPane.getChildren().add(listLbl);
+        listPane.getChildren().add(vegetables);
+        listPane.setVisible(false);
+        vegetables.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        final Button vegFruitBut = new Button("Fruit or Veg");
+        vegFruitBut.setOnAction(event -> {
+            //switch the visibility for each FlowPane
+            choicePane.setVisible(!choicePane.isVisible());
+            listPane.setVisible(!listPane.isVisible());
+        });
+
+        final Button toBeErase = new Button("To Be Erase");
+        toBeErase.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Open Resource File");
+                fileChooser.showOpenDialog(primaryStage);
+            }
+        });
+
+        Button testWait = new Button("Wait Button");
+        testWait.setOnAction(event -> {
+            vegFruitBut.setDisable(!vegFruitBut.isDisable());
+            Timeline timer = new Timeline(
+                    new KeyFrame(Duration.seconds(WAIT_TIME), events -> changeElementForWait(vegFruitBut, false, vboxWait, toBeErase))
+            );
+            timer.play();
+        });
+
+        choicePane.getChildren().add(choiceLbl);
+        //choicePane.getChildren().add(fruits);
+        //choicePane.getChildren().add(cb);
+        //choicePane.getChildren().add(spinner);
+
+        //Spinner
+        Spinner spinner = new Spinner();
+        SpinnerValueFactory<Integer> value = new SpinnerValueFactory<Integer>() {
+            @Override
+            public void decrement(int steps) {
+                spinner.getValueFactory ().setValue((int)spinner.getValueFactory().getValue() + steps);
+            }
+
+            @Override
+            public void increment(int steps) {
+                spinner.getValueFactory ().setValue((int)spinner.getValueFactory().getValue() - steps);
+            }
+        };
+        value.setValue(SPINNER_DEFAULT_VALUE);
+        spinner.setValueFactory(value);
+        spinner.setId("spinner");
+
+        vboxWait.getChildren().add(spinner);
+        vboxWait.getChildren().add(testWait);
+        vboxWait.getChildren().add(toBeErase);
+        vboxWait.getChildren().add(vegFruitBut);
+        vboxWait.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+
+        //TreeView
+        TreeItem<String> rootItem = new TreeItem<String> ("Inbox");
+        rootItem.setExpanded(true);
+        for (int i = 1; i < TREEITEMS_AMOUNT; i++) {
+            TreeItem<String> item = new TreeItem<String> ("Message" + i);
+            rootItem.getChildren().add(item);
+        }
+        TreeView<String> tree = new TreeView<String> (rootItem);
+        tree.setId("treeView");
+        tree.setMaxHeight(TREE_VIEW_MAX_HEIGHT);
+        tree.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         //Add elements to master elements and start primary stage
-        hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple);
-        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables);
+        hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple, vboxWait);
+        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, tree);
         Scene scene = new Scene(p);
         primaryStage.setScene(scene);
         primaryStage.setTitle("JavaFX Example Application 3");
         primaryStage.show();
+
+    }
+    private void changeElementForWait(Button vegFruitBut, boolean value, VBox vboxWait, Button toBeErase) {
+        vegFruitBut.setDisable(value);
+        vboxWait.getChildren().add(new Label("test"));
+        vboxWait.getChildren().remove(toBeErase);
     }
 }
