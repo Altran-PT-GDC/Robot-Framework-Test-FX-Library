@@ -6,8 +6,10 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +20,7 @@ import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
+import org.testfx.toolkit.PrimaryStageFuture;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -40,6 +43,7 @@ import static java.net.URLClassLoader.newInstance;
 public class Misc {
 
     private static final int CLASS_VALUE = 6;
+    private static final int MILLISECONDS = 1000;
 
     @Autowired
     private Logging log;
@@ -294,8 +298,7 @@ public class Misc {
     @ArgumentNames({"seconds"})
     public void sleep(float seconds) {
 
-        int convertedInt = (int)(seconds * 1000);
-        System.out.println("Resultado: " + convertedInt);
+        int convertedInt = (int)(seconds * MILLISECONDS);
         new FxRobot().sleep(convertedInt);
     }
 
@@ -644,5 +647,57 @@ public class Misc {
     public String getNodeAll(String identifier) {
         Set<Node> nodes = new FxRobot().lookup(identifier).queryAll();
         return nodes.toString();
+    }
+
+    /**
+     * <b>Description:</b> Switch application if more than one is running.
+     * @param application
+     * : The name of the application to request the focus
+     * <br><br>
+     * <table summary ="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>application</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Switch Application</td>
+     *         <td>my application</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword()
+    @ArgumentNames({"application"})
+    public void switchApplication(String application){
+        Stage stage;
+        Object obj = TestFXLibraryCache.getIstance().get(application);
+
+        if(obj instanceof PrimaryStageFuture){
+            try {
+                stage = ((PrimaryStageFuture) obj).get();
+            } catch (Exception e) {
+                throw new TestFxLibraryNonFatalException(e);
+            }
+        } else {
+            stage = (Stage) obj;
+        }
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                stage.requestFocus();
+            }
+        });
     }
 }
