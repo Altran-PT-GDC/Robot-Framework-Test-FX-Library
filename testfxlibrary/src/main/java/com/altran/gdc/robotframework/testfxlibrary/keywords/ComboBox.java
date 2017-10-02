@@ -285,7 +285,7 @@ public class ComboBox {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public String getSelectedItemFromCombox(String identifier){
+    public String getSelectedItemFromCombobox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
         wait.waitUntilPageContains(identifier);
