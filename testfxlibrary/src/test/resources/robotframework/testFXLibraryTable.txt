@@ -5,63 +5,73 @@ Library           Dialogs
 *** Test Cases ***
 
 Test Get Table Column Count
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Column Count  \#table
-    Log     ${count}    WARN
+    Start Application  testapp.JavaFxExample3
+    ${count}    Get Table Column Count  \#tableview
+    ${column}=  Set Variable    3
+    Should Be Equal    "${count}"    "${column}"
     Close Application
 
 Test Table Should Be Visible
     Start Application  testapp.JavafxExample
-    Table Should Be Visible  \#table
+    ${table}=    Table Should Be Visible  \#table
+    #Should Be Equal     "${table}"      "True"
     Close Application
 
 Test Table Should Not Be Visible
     Start Application  testapp.JavafxExample
-    Table Should Not Be Visible  \#table1
+    ${table}=   Table Should Not Be Visible  \#table1
+    Log     ${table}    WARN
     Close Application
 
 Test Get Table Row Count
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Row Count  \#table
+    Start Application  testapp.JavaFxExample3
+    ${count}    Get Table Row Count  \#tableview
     Log     ${count}    WARN
+    ${row}=   Set Variable    5
+    Should Be Equal    "${count}"   "${row}"
     Close Application
 
 Test Get Table Headers
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Headers  \#table
-    Log     ${count}    WARN
+    Start Application  testapp.JavaFxExample3
+    ${count}    Get Table Headers  \#tableview
+    ${header}=  Set Variable    "[First Name, Last Name, Email]"
+    Should Be Equal     "${count}"  ${header}
     Close Application
 
 Test Get Table Values
     Start Application  testapp.JavafxExample
     ${count}    Get Table Values  \#table
-    Log     ${count}    WARN
+    ${values}=  Set Variable    "[A, B, s@s.s, Jonh, Dow, jonhdoe@s.s]"
+    #Should Be Equal     ${count}    ${values}
     Close Application
 
 Test Get Table Cell Value
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Cell Value  \#table   0   2
-    Log     ${count}    WARN
+    Start Application  testapp.JavaFxExample3
+    ${count}    Get Table Cell Value  \#tableview   0   2
+    ${value}=   Set Variable    "jacob.smith@example.com"
+    Should Be Equal     "${count}"  ${value}
     Close Application
 
 Test Table Cell Should Contain
     Start Application  testapp.JavafxExample
-    Table Cell Should Contain   \#table   1   0     Jonh
+    ${table}=   Table Cell Should Contain   \#table   1   0     Jonh
+    Log     ${table}    WARN
     Close Application
 
-
 Test Get Table Column Values
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Column Values  \#table    0
+    Start Application  testapp.JavaFxExample3
+    ${count}    Get Table Column Values  \#tableview    0
     Log     ${count}    WARN
+    ${value}=   Set Variable   "[Jacob, Isabella, Ethan, Emma, Michael]"
     Close Application
 
 Test Get Table Row Values
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Row Values  \#table    0
+    Start Application  testapp.JavaFxExample3
+    ${count}    Get Table Row Values  \#tableview    0
     Log     ${count}    WARN
+    ${value}=   Set Variable    "[Jacob, Smith, jacob.smith@example.com]"
+    Should Be Equal     ${value}    "${count}"
     Close Application
-
 
 Test Table Header Should Contain
     Start Application  testapp.JavafxExample
@@ -73,8 +83,10 @@ Test Table Should Contain
     Table Should Contain  \#table    Dow
     Close Application
 
-
-
+Test Table Row Should Contains
+    Start Application   testapp.JavafxExample
+    Table Row Should Contains  \#table    0      A
+    Close Application
 
 
 

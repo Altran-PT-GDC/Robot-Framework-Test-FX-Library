@@ -299,6 +299,7 @@ public class JavaFxExample3 extends Application {
                 );
         TableView<Person> tableView1 = new TableView<>();
         TableView<Person> tableView2 = new TableView<>();
+        tableView1.setId("tableview");
 
         //Table columns definition
         TableColumn firstNameCol = new TableColumn("First Name");
