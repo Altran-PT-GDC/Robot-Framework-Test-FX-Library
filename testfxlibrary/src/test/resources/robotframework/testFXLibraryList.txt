@@ -5,7 +5,7 @@ Library           TestFXLibrary
 
 Test Get List Items From ListView
     Start Application  testapp.JavaFxExample3
-    @{default_list_items}=      Set Variable    one     two     three      four     five    six
+    @{default_list_items}=      Set Variable    one     two     three      four     five    six     seven   eight
     @{list_items}=    Get List Items From ListView  \#listviewsimple
     :FOR    ${item}    IN    @{list_items}
     \    Should Contain     "${default_list_items}"     ${item}
@@ -85,7 +85,7 @@ Test List View Should Contain
 
 Test List View Should Not Contain
     Start Application  testapp.JavaFxExample3
-    ${item_not_in_list}=    Set Variable    seven
+    ${item_not_in_list}=    Set Variable    nine
     List View Should Not Contain    \#listviewsimple    ${item_not_in_list}
     ${all_list_items}=    Get List Items From ListView      \#listviewsimple
     Should Not Contain      "${all_list_items}"       ${item_not_in_list}

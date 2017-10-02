@@ -2,84 +2,67 @@
 Library           TestFXLibrary
 Library           Dialogs
 Library           OperatingSystem
+Suite Setup       Start Application     testapp.JavaFxExample3
+Suite Teardown    Close Application
 
 *** Test Cases ***
 
 Test Close Window
-    Start Application  testapp.JavafxExample2
     Close Current Window
-    Close Application
+    Start Application     testapp.JavaFxExample3
 
 Test List Target Windows
-    Start Application  testapp.JavafxExample2
-    List Target Windows
-    Close Application
+    ${target_windows}=      List Target Windows
+    Log     ${target_windows}   INFO
 
 Test List Windows
-    Start Application  testapp.JavafxExample2
-    ${windows} =      List Windows
-    Log     ${windows}      WARN
-    Close Application
+    ${list_windows}=      List Windows
+    Log     ${list_windows}      INFO
 
 Test Target Window
-    Start Application  testapp.JavaFxExample3
-    Select Window   JavaFX Example Application 3
-    Close Application
+    ${window}=      Set Variable      JavaFX Example Application 3
+    Select Window   ${window}
 
 Test Window
-    Start Application  testapp.JavafxExample2
-    Window   example Gui
-    Close Application
-
+    ${window}=      Set Variable      JavaFX Example Application 3
+    Window   ${window}
 
 Test Capture Screen
-    Start Application  testapp.JavafxExample2
-    ${screens_directory}=       Set Variable        %{USERPROFILE}/TestFxLibrary/Screenshots
+    ${screens_directory}=       Set Variable        %{USERPROFILE}/TestFxLibrary/Screenshots/
     Create Directory   ${screens_directory}
     ${screen_name}=   Set Variable    ScreenShot
-    Set File Path   ${screens_directory}   ${screen_name}    png
+    ${file_format}=     Set Variable    png
+    Set File Path   ${screens_directory}   ${screen_name}    ${file_format}
     Capture Screen
     Capture Screen
     Capture Screen
-    Close Application
+    :FOR    ${index}  IN RANGE    1   4
+    \   File Should Exist   ${screens_directory}${screen_name}${index}.${file_format}
 
 Test Get Component Position
-    Start Application  testapp.JavafxExample2
-    Get Component Position  \#listView
-    Close Application
+    ${component_position}=  Get Component Position  \#listviewsimple
+    Log     ${component_position}   INFO
 
 Test Get Component Size
-    Start Application  testapp.JavafxExample2
-    Get Component Size  \#listView
-    Close Application
+    ${component_size}=      Get Component Size  \#listviewsimple
+    Log     ${component_size}   INFO
 
 Test Get Selected Window Title
-    Start Application  testapp.JavaFxExample3
-    Click On Component  \#btnwindow
-    Click On Component  \#btnwindow2
-    Select Window   New Window For Test
-    ${window_title}=    Get Selected Window Title
-    Log     ${window_title}     INFO
-    Close Application
-
-Test Maximizing Window
-    Start Application  testapp.JavafxExample2
-    Maximize Window
-    Close Application
+    ${window_title}=   Set Variable    JavaFX Example Application 3
+    ${get_title}=    Get Selected Window Title
+    Should Be Equal     ${get_title}     ${window_title}
 
 Test Scroll Component To View
-    Start Application  testapp.JavafxExample2
-    Scroll Component To View    \#scrollPane    Seven
-    Close Application
+    ${item_to_scroll_to}=   Set Variable    eight
+    #UPDATE AFTER KW REWORK
+    #Scroll Component To View    \#listviewsimple    ${item_to_scroll_to}
 
 Test Focus To Component
-    Start Application  testapp.JavafxExample2
-    Focus To Component    \#scrollPane
-    Close Application
+    Focus To Component    \#checkbox
 
 Test Close Current Window
-    Start Application  testapp.JavaFxExample3
     Click On Component  \#btnwindow
-    Click On Component  \#btnwindow2
     Close Current Window
-    Close Application
+
+Test Maximizing Window
+    Maximize Window
