@@ -162,6 +162,7 @@ public class JavaFxExample3 extends Application {
                         "Option 5"
                 );
         final ComboBox comboBox1 = new ComboBox(observableList1);
+        comboBox1.getSelectionModel().selectFirst();
 
         ObservableList<String> observableList2 =
                 FXCollections.observableArrayList(
@@ -238,6 +239,7 @@ public class JavaFxExample3 extends Application {
         listViewSimple.getSelectionModel().selectFirst();
         listViewSimple.setId("listviewsimple");
         Label labelSimpleListView = new Label("Simple List View Items:");
+        labelSimpleListView.setId("label");
         labelSimpleListView.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
         vBoxListViewSimple.getChildren().addAll(hBoxLabelSimpleListView, hBoxSimpleListView);
         listViewSimple.setMaxSize(LIST_VIEW_SIMPLE_WIDTH, LIST_VIEW_SIMPLE_HEIGHT);
@@ -390,9 +392,6 @@ public class JavaFxExample3 extends Application {
         });
 
         choicePane.getChildren().add(choiceLbl);
-        //choicePane.getChildren().add(fruits);
-        //choicePane.getChildren().add(cb);
-        //choicePane.getChildren().add(spinner);
 
         //Spinner
         Spinner spinner = new Spinner();
