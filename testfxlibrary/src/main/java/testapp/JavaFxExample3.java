@@ -239,8 +239,8 @@ public class JavaFxExample3 extends Application {
         listViewSimple.getSelectionModel().selectFirst();
         listViewSimple.setId("listviewsimple");
         Label labelSimpleListView = new Label("Simple List View Items:");
-        labelSimpleListView.setId("label");
         labelSimpleListView.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
+        labelSimpleListView.setId("label");
         vBoxListViewSimple.getChildren().addAll(hBoxLabelSimpleListView, hBoxSimpleListView);
         listViewSimple.setMaxSize(LIST_VIEW_SIMPLE_WIDTH, LIST_VIEW_SIMPLE_HEIGHT);
         hBoxLabelSimpleListView.getChildren().add(labelSimpleListView);

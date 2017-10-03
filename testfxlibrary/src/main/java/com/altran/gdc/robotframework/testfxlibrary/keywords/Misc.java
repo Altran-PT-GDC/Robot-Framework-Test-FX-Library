@@ -44,6 +44,9 @@ public class Misc {
 
     private static final int CLASS_VALUE = 6;
     private static final int MILLISECONDS = 1000;
+    private static final String ATTRIBUTES_STRING = "Attributes";
+    private static final String METHODS_STRING = "Methods";
+
 
     @Autowired
     private Logging log;
@@ -526,7 +529,7 @@ public class Misc {
      */
     @RobotKeyword()
     @ArgumentNames({"identifier"})
-    public void listComponentMethods(String identifier) {
+    public String listComponentMethods(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
 
@@ -539,10 +542,27 @@ public class Misc {
 
             Method[] methods = obj.getClass().getMethods();
 
-            for (int i=0; i < methods.length; i++){
+            List<String> attr = new ArrayList<>();
+            List<String> methodsList = new ArrayList<>();
+            HashMap<String,List<String>> list = new HashMap<>();
+            list.put(ATTRIBUTES_STRING, attr);
+            list.put(METHODS_STRING, methodsList);
+            for (Method method : methods) {
 
-                Log.info(methods[i].getName());
+                try {
+                    getComponentAtrribute(identifier, method.getName());
+
+                    attr.add(method.getName());
+                } catch (Exception e) {
+                    methodsList.add(method.getName());
+                }
+
             }
+
+            Log.info(ATTRIBUTES_STRING + list.get(ATTRIBUTES_STRING));
+            Log.info(METHODS_STRING + list.get(METHODS_STRING));
+
+            return list.toString();
 
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException  e) {
             throw new TestFxLibraryFatalException(e);
