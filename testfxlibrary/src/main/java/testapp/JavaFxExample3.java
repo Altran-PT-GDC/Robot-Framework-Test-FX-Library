@@ -139,7 +139,6 @@ public class JavaFxExample3 extends Application {
         Button btn10 = new Button(SECOND_BUTTON_TEXT);
         Button btn11 = new Button(THIRD_BUTTON_TEXT);
         Button btn12 = new Button(FOURTH_BUTTON_TEXT);
-
         btn9.setMaxWidth(Double.MAX_VALUE);
         btn10.setMaxWidth(Double.MAX_VALUE);
         btn11.setMaxWidth(Double.MAX_VALUE);
@@ -300,6 +299,10 @@ public class JavaFxExample3 extends Application {
         TableView<Person> tableView1 = new TableView<>();
         TableView<Person> tableView2 = new TableView<>();
         tableView1.setId("tableview");
+        tableView1.setVisible(true);
+        tableView2.setId("tableView2");
+        tableView2.setVisible(false);
+
 
         //Table columns definition
         TableColumn firstNameCol = new TableColumn("First Name");
@@ -410,7 +413,6 @@ public class JavaFxExample3 extends Application {
         value.setValue(SPINNER_DEFAULT_VALUE);
         spinner.setValueFactory(value);
         spinner.setId("spinner");
-
         vboxWait.getChildren().add(spinner);
         vboxWait.getChildren().add(testWait);
         vboxWait.getChildren().add(toBeErase);

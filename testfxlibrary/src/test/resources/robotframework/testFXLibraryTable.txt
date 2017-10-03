@@ -12,15 +12,15 @@ Test Get Table Column Count
     Close Application
 
 Test Table Should Be Visible
-    Start Application  testapp.JavafxExample
-    ${table}=    Table Should Be Visible  \#table
-    #Should Be Equal     "${table}"      "True"
+    Start Application  testapp.JavaFxExample3
+    ${table}=    Table Should Be Visible  \#tableview
+    Component Should Be Visible   \#tableview
     Close Application
 
 Test Table Should Not Be Visible
-    Start Application  testapp.JavafxExample
-    ${table}=   Table Should Not Be Visible  \#table1
-    Log     ${table}    WARN
+    Start Application  testapp.JavaFxExample3
+    Table Should Not Be Visible  \#tableView2
+    Component Should Be Invisible   \#tableView2
     Close Application
 
 Test Get Table Row Count
@@ -35,14 +35,16 @@ Test Get Table Headers
     Start Application  testapp.JavaFxExample3
     ${count}    Get Table Headers  \#tableview
     ${header}=  Set Variable    "[First Name, Last Name, Email]"
+    Log     ${header}   WARN
     Should Be Equal     "${count}"  ${header}
     Close Application
 
 Test Get Table Values
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Values  \#table
-    ${values}=  Set Variable    "[A, B, s@s.s, Jonh, Dow, jonhdoe@s.s]"
-    #Should Be Equal     ${count}    ${values}
+    Start Application  testapp.JavaFxExample3
+    ${count}=    Get Table Values  \#tableview
+    ${values}=  Set Variable    Jacob   Smith  jacob.smith@example.com      Isabella    Johnson     isabella.johnson@example.com    Ethan    Williams    ethan.williams@example.com      Emma    Jones   emma.jones@example.com      Michael     Brown       michael.brown@example.com
+    :FOR    ${item_it}    IN    @{values}
+    \    Should Contain     "${count}"     ${item_it}
     Close Application
 
 Test Get Table Cell Value
@@ -53,8 +55,11 @@ Test Get Table Cell Value
     Close Application
 
 Test Table Cell Should Contain
-    Start Application  testapp.JavafxExample
-    ${table}=   Table Cell Should Contain   \#table   1   0     Jonh
+    Start Application  testapp.JavaFxExample3
+    ${table}=   Table Cell Should Contain   \#tableview   1   0     Isabella
+    ${value}=       Set Variable    Isabella
+    ${value2}=      Get Table Cell Value    \#tableview     1   0
+    Should Be Equal     ${value2}    ${value}
     Log     ${table}    WARN
     Close Application
 
@@ -74,18 +79,28 @@ Test Get Table Row Values
     Close Application
 
 Test Table Header Should Contain
-    Start Application  testapp.JavafxExample
-    Table Header Should Contain  \#table    Email
+    Start Application  testapp.JavaFxExample3
+    ${header}=      Get Table Headers    \#tableview
+    ${item_to_find}=    Set Variable    Email
+    Should Contain  ${header}   ${item_to_find}
+    Table Header Should Contain  \#tableview    Email
     Close Application
 
 Test Table Should Contain
-    Start Application  testapp.JavafxExample
-    Table Should Contain  \#table    Dow
+    Start Application  testapp.JavaFxExample3
+    Table Should Contain  \#tableview    Jacob
+    ${item_values}=    Get Table Values    \#tableview
+    ${item_to_find}=    Set Variable    Jacob
+    Should Contain  "${item_values}"  ${item_to_find}
     Close Application
 
 Test Table Row Should Contains
-    Start Application   testapp.JavafxExample
-    Table Row Should Contains  \#table    0      A
+    Start Application   testapp.JavaFxExample3
+    ${all_row_items}=   Get Table Row Values    \#tableview     0
+    ${item_to_find}=    Set Variable    Jacob
+    Log     ${all_row_items}    WARN
+    Should Contain  ${all_row_items}    ${item_to_find}
+    Table Row Should Contains  \#tableview    0      Jacob
     Close Application
 
 

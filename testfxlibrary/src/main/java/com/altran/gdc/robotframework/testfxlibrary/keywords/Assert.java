@@ -107,6 +107,7 @@ public class Assert {
 
     }
 
+
     /**
      * <b>Description:</b> This keyword verifies if a component specified with <i>identifier</i>
      * is disabled. If the given component is enabled an error message is displayed.<br>
@@ -184,6 +185,45 @@ public class Assert {
     @ArgumentNames({"identifier"})
     public void componentShouldBeVisible(String identifier) {
         verifyThat( identifier, isVisible() );
+    }
+
+    /**
+     * <b>Description:</b> This keyword verifies if a component specified with <i>identifier</i> is
+     * invisible. If the given component is visible an error message is displayed.<br>
+     *
+     * @param identifier
+     * : The node you want to verify
+     *
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Component Should Be Invisible</td>
+     *         <td>idButton</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void componentShouldBeInvisible(String identifier){
+        verifyThat(identifier, isInvisible());
     }
 
 
