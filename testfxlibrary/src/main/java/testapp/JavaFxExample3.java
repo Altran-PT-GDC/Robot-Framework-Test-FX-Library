@@ -245,6 +245,7 @@ public class JavaFxExample3 extends Application {
         listViewSimple.setMaxSize(LIST_VIEW_SIMPLE_WIDTH, LIST_VIEW_SIMPLE_HEIGHT);
         hBoxLabelSimpleListView.getChildren().add(labelSimpleListView);
         hBoxSimpleListView.getChildren().add(listViewSimple);
+        
 
         //List view with text and buttons for each element
         VBox vBoxListView = new VBox();
