@@ -8,6 +8,10 @@ Test Press
     Press       Enter
     Verify That Is Enabled      \#disableBtn
 
+Test Release
+    Release       Enter
+    Verify That Is Disabled      \#disableBtn
+
 Test Text Field Text Should Be
     ${default_text}=    Set Variable    Default Text
     Text Field Text Should Be    \#textfield    ${default_text}
