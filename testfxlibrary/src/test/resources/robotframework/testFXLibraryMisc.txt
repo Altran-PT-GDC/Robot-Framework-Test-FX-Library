@@ -26,7 +26,6 @@ Test Switch Application not exist
      Start Application  testapp.JavaFxExample3  app1
      Start Application  testapp.JavaFxExample3  app2
      ${listApp} =   Switch Application     app4
-     Log    ${listApp}      WARN
      Close Application
      [Teardown]     Start Application   testapp.JavaFxExample3
 

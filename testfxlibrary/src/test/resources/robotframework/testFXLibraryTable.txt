@@ -26,7 +26,6 @@ Test Table Should Not Be Visible
 Test Get Table Row Count
     Start Application  testapp.JavaFxExample3
     ${count}    Get Table Row Count  \#tableView
-    Log     ${count}    WARN
     ${row}=   Set Variable    5
     Should Be Equal    "${count}"   "${row}"
     Close Application
@@ -35,7 +34,6 @@ Test Get Table Headers
     Start Application  testapp.JavaFxExample3
     ${count}    Get Table Headers  \#tableView
     ${header}=  Set Variable    "[First Name, Last Name, Email]"
-    Log     ${header}   WARN
     Should Be Equal     "${count}"  ${header}
     Close Application
 
@@ -60,20 +58,17 @@ Test Table Cell Should Contain
     ${value}=       Set Variable    Isabella
     ${value2}=      Get Table Cell Value    \#tableView     1   0
     Should Be Equal     ${value2}    ${value}
-    Log     ${table}    WARN
     Close Application
 
 Test Get Table Column Values
     Start Application  testapp.JavaFxExample3
     ${count}    Get Table Column Values  \#tableView    0
-    Log     ${count}    WARN
     ${value}=   Set Variable   "[Jacob, Isabella, Ethan, Emma, Michael]"
     Close Application
 
 Test Get Table Row Values
     Start Application  testapp.JavaFxExample3
     ${count}    Get Table Row Values  \#tableView    0
-    Log     ${count}    WARN
     ${value}=   Set Variable    "[Jacob, Smith, jacob.smith@example.com]"
     Should Be Equal     ${value}    "${count}"
     Close Application
@@ -98,7 +93,6 @@ Test Table Row Should Contains
     Start Application   testapp.JavaFxExample3
     ${all_row_items}=   Get Table Row Values    \#tableView     0
     ${item_to_find}=    Set Variable    Jacob
-    Log     ${all_row_items}    WARN
     Should Contain  ${all_row_items}    ${item_to_find}
     Table Row Should Contains  \#tableView    0      Jacob
     Close Application

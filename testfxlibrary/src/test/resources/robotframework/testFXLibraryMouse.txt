@@ -36,7 +36,6 @@ Test Get Node List
     Start Application  testapp.JavafxExample2
     Click On Component    .list-view
     ${list}   Get Node List  .list-view
-    Log     ${list}     WARN
     Close Application
 
 Test Select From PopUp Menu
