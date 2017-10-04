@@ -17,6 +17,7 @@ import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
+import org.testfx.api.FxRobotContext;
 
 /**
  *
@@ -206,7 +207,7 @@ public class Keyboard {
     @RobotKeyword
     @ArgumentNames({"keycode"})
     public void release(String keycode) {
-        new FxRobot().release(KeyCode.getKeyCode(keycode));
+        new FxRobotContext().getBaseRobot().releaseKeyboard(KeyCode.getKeyCode(keycode));
     }
 
     /**
