@@ -139,6 +139,7 @@ public class JavaFxExample3 extends Application {
         Button btn10 = new Button(SECOND_BUTTON_TEXT);
         Button btn11 = new Button(THIRD_BUTTON_TEXT);
         Button btn12 = new Button(FOURTH_BUTTON_TEXT);
+
         btn9.setMaxWidth(Double.MAX_VALUE);
         btn10.setMaxWidth(Double.MAX_VALUE);
         btn11.setMaxWidth(Double.MAX_VALUE);
@@ -244,7 +245,7 @@ public class JavaFxExample3 extends Application {
         listViewSimple.setMaxSize(LIST_VIEW_SIMPLE_WIDTH, LIST_VIEW_SIMPLE_HEIGHT);
         hBoxLabelSimpleListView.getChildren().add(labelSimpleListView);
         hBoxSimpleListView.getChildren().add(listViewSimple);
-        
+
 
         //List view with text and buttons for each element
         VBox vBoxListView = new VBox();
@@ -269,11 +270,14 @@ public class JavaFxExample3 extends Application {
         vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes);
         final CheckBox check = new CheckBox();
         final CheckBox checkDisabled = new CheckBox();
-        hBoxCheckBoxes.getChildren().addAll(check, checkDisabled);
+        final CheckBox checkInvisible = new CheckBox();
+        hBoxCheckBoxes.getChildren().addAll(check, checkDisabled, checkInvisible);
         check.setId("checkbox");
         check.setVisible(true);
         checkDisabled.setId("disabledCheckbox");
         checkDisabled.setDisable(true);
+        checkInvisible.setId("checkInvisible");
+        checkInvisible.setVisible(false);
 
         //Tables with same items and same IDs
         HBox hBoxTables = new HBox();
@@ -299,11 +303,7 @@ public class JavaFxExample3 extends Application {
                 );
         TableView<Person> tableView1 = new TableView<>();
         TableView<Person> tableView2 = new TableView<>();
-        tableView1.setId("tableview");
-        tableView1.setVisible(true);
-        tableView2.setId("tableView2");
-        tableView2.setVisible(false);
-
+        TableView<Object> tableView3 = new TableView<>();
 
         //Table columns definition
         TableColumn firstNameCol = new TableColumn("First Name");
@@ -330,12 +330,16 @@ public class JavaFxExample3 extends Application {
         tableView2.getSelectionModel().setCellSelectionEnabled(true);
 
         tableView1.setItems(data);
+        tableView1.setId("tableView");
         tableView1.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
         tableView2.setItems(data2);
+        tableView2.setId("tableView2");
         tableView2.getColumns().addAll(firstNameCol2, lastNameCol2, emailCol2);
         tableView1.setPrefSize(TABLE_WIDTH, TABLE_HEIGHT);
         tableView2.setPrefSize(TABLE_WIDTH, TABLE_HEIGHT);
-        vBoxTables.getChildren().addAll(tableView1, tableView2);
+        tableView3.setId("tableView3");
+        tableView3.setVisible(false);
+        vBoxTables.getChildren().addAll(tableView1, tableView2, tableView3);
         vBoxListView.getChildren().addAll(labelListView, listView1, vBoxCheckBoxes);
 
         //Elements padding
@@ -414,6 +418,7 @@ public class JavaFxExample3 extends Application {
         value.setValue(SPINNER_DEFAULT_VALUE);
         spinner.setValueFactory(value);
         spinner.setId("spinner");
+
         vboxWait.getChildren().add(spinner);
         vboxWait.getChildren().add(testWait);
         vboxWait.getChildren().add(toBeErase);

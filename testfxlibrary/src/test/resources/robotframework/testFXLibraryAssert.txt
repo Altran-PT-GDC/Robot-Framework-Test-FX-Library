@@ -19,7 +19,7 @@ Test Component Should Be Visible
     Component Should Be Visible  \#btnwindow
 
 Test Component Should Be Invisible
-    Component Should Be Invisible   \#tableView2
+    Component Should Be Invisible   \#checkInvisible
 
 Test Verify That Has Child
     Verify That Has Child  \#listviewsimple     \#virtual-flow
