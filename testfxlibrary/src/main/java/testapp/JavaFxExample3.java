@@ -196,6 +196,9 @@ public class JavaFxExample3 extends Application {
                 secondaryStage.setScene(scene2);
                 secondaryStage.setTitle("New Window For Test");
                 secondaryStage.show();
+                Label label = new Label("Test");
+                label.setId("testLabel");
+                p2.getChildren().add(label);
             }
         });
 
