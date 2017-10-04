@@ -103,10 +103,9 @@ Test Table Row Should Contains
     Table Row Should Contains  \#tableview    0      Jacob
     Close Application
 
-Test Clear Table Cell
-    Start Application   testapp.JavaFxExample3
-    Clear Table Cell    \#tableview     1   1
-    Close Application
+
+
+
 
 
 
