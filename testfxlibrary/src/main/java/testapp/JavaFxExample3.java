@@ -66,7 +66,7 @@ public class JavaFxExample3 extends Application {
     private static  final int LIST_VIEW_SIMPLE_WIDTH = 100;
     private static  final int LIST_VIEW_SIMPLE_HEIGHT = 150;
     private static  final int TREE_VIEW_MAX_HEIGHT = 300;
-    private static final int WAIT_TIME = 5;
+    private static final int WAIT_TIME = 3;
     private static final int SPINNER_DEFAULT_VALUE = 100;
     private static final int FLOWPANE_HGAP = 100;
     private static final int TREEITEMS_AMOUNT = 6;
