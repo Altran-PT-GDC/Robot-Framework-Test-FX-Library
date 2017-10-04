@@ -22,6 +22,14 @@ Test Switch Application
      Close Application
      [Teardown]     Start Application   testapp.JavaFxExample3
 
+Test Switch Application not exist
+     Start Application  testapp.JavaFxExample3  app1
+     Start Application  testapp.JavaFxExample3  app2
+     ${listApp} =   Switch Application     app4
+     Log    ${listApp}      WARN
+     Close Application
+     [Teardown]     Start Application   testapp.JavaFxExample3
+
 Test Sleep
      ${before_kw_time}=   Get Time      sec
      TestFXLibrary.Sleep      1

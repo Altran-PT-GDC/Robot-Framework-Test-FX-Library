@@ -11,6 +11,7 @@ import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -709,6 +710,85 @@ public class Table {
             }
             break;
         }
+
+        if(!flag){
+            throw new TestFxLibraryNonFatalException(String.format(ERROR_MSG, text));
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword validates if a text is present on a given table and row.
+     * <i>identifier</i> specifies the table, <i>row</i> specifies the row number and
+     * <i>text</i> specifies the text to be found on that table row. If text is not found
+     * a TestFxLibraryNonFatalException is thrown.<br>
+     *
+     * @param identifier
+     * :The id of the table
+     * @param row
+     * :row oh the table
+     * @param text
+     * :text to compare
+     *
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>rowIndex</td>
+     *         <td>Yes</td>
+     *         <td>int (0 to max row index)</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>text</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>tableRowShouldContains</td>
+     *         <td>idTable05</td>
+     *         <td>5</td>
+     *         <td>Hello World</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "row", "text"})
+    public void tableRowShouldContains(String identifier, int row, String text){
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+
+        boolean flag=false;
+        // Item row
+        Object item = table.getItems().get(row);
+
+        LOG.info("INFO"+item);
+        List<String> list = new ArrayList<>();
+        for(int i = 0; i < table.getColumns().size(); i++){
+            TableColumn col = (TableColumn) table.getColumns().get(i);
+            list.add((String) col.getCellObservableValue(item).getValue());
+        }
+        for (int i=0;i<list.size();i++){
+            if(list.get(i).contains(text))
+                flag=true;
+        }
+        LOG.info("INFO :" +flag);
 
         if(!flag){
             throw new TestFxLibraryNonFatalException(String.format(ERROR_MSG, text));

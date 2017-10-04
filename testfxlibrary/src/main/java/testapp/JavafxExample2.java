@@ -19,11 +19,16 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * @author pcosta
@@ -47,6 +52,8 @@ public class JavafxExample2 extends Application {
     private static final int WAIT_TIME = 5;
     private static final int SPINNER_DEFAULT_VALUE = 100;
 
+
+
     //JavaFX applicatoin still use the main method.
     //It should only ever contain the call to the launch method
     public static void main(String[] args) {
@@ -58,7 +65,7 @@ public class JavafxExample2 extends Application {
     //starting point for the application
     //this is where we put the code for the user interface
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws FileNotFoundException {
 
         primaryStage.setTitle("example Gui");
 
@@ -134,7 +141,7 @@ public class JavafxExample2 extends Application {
         final TextField name = new TextField();
         name.setText("Diogo");
 
-        final ObservableList<String> oList = FXCollections.observableArrayList("one", "two", "three", "four", "five", "Six", "Seven");
+        final ObservableList<String> oList = FXCollections.observableArrayList("one", "two", "three", "four", "five", "Six", "Seven", "Eight", "Nine", "Ten");
 
         final ListView<String> listView = new ListView<>();
         listView.setId("listView");
@@ -164,6 +171,14 @@ public class JavafxExample2 extends Application {
 
         componentLayout.setCenter(listPane);
         componentLayout.setRight(rightVbox);
+
+        final Tooltip tooltip = new Tooltip();
+        //tooltip.setText("Fruit or Veg TOOLTIP");
+        Image image = new Image(new FileInputStream("C:\\Users\\Altran\\Desktop\\teste.jpg"));
+        tooltip.setGraphic(new ImageView(image));
+        tooltip.setText("Ola 1234567");
+
+
         //The button uses an inner class to handle the button click event
         final Button vegFruitBut = new Button("Fruit or Veg");
         vegFruitBut.setOnAction(event -> {
@@ -171,6 +186,12 @@ public class JavafxExample2 extends Application {
             choicePane.setVisible(!choicePane.isVisible());
             listPane.setVisible(!listPane.isVisible());
         });
+        vegFruitBut.setId("fruitorveg");
+        vegFruitBut.setTooltip(tooltip);
+
+
+
+
 
         Button testWait = new Button("Wait Button");
         testWait.setOnAction(event -> {
@@ -205,15 +226,18 @@ public class JavafxExample2 extends Application {
         hBox = new HBox();
         hBox.getChildren().addAll(vegFruitBut, testWait, text, textArea, toBeErase);
 
+
         componentLayout.setBottom(hBox);
 
 
         //Add the BorderPane to the Scene
         Scene appScene = new Scene(componentLayout, SCENE_WIDTH, SCENE_HIGHT);
+        //vegFruitBut.requestFocus();
 
         //Add the Scene to the Stage
         primaryStage.setScene(appScene);
         primaryStage.show();
+
     }
 
     private void changeElementForWait(Button vegFruitBut, boolean value) {

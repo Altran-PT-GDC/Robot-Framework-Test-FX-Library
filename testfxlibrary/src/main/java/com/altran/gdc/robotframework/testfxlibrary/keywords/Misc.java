@@ -45,6 +45,7 @@ public class Misc {
     private static final int CLASS_VALUE = 6;
     private static final int MILLISECONDS = 1000;
     private static final String ATTRIBUTES_STRING = "Attributes";
+    private static final String KEY = "APP_";
     private static final String METHODS_STRING = "Methods";
 
 
@@ -95,7 +96,9 @@ public class Misc {
     @RobotKeyword
     @ArgumentNames({"className" , "distinctiveName=null"})
     public void startApplication(String className, String distinctiveName){
+
         TestFxLibraryValidation.validateArguments(className, distinctiveName);
+
         final Stage[] stage = {null};
         try {
             int size = new FxRobot().listTargetWindows().size();
@@ -103,7 +106,7 @@ public class Misc {
                 FxToolkit.registerPrimaryStage();
                 FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
                 FxToolkit.showStage();
-                TestFXLibraryCache.getIstance().put(distinctiveName, FxToolkit.toolkitContext().getPrimaryStageFuture());
+                TestFXLibraryCache.getIstance().put(KEY + distinctiveName, FxToolkit.toolkitContext().getPrimaryStageFuture());
             } else {
                 FxToolkit.registerStage(new Supplier<Stage>() {
                     @Override
@@ -114,7 +117,7 @@ public class Misc {
                 });
                 FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
                 FxToolkit.showStage();
-                TestFXLibraryCache.getIstance().put(distinctiveName, stage[0]);
+                TestFXLibraryCache.getIstance().put(KEY + distinctiveName, stage[0]);
             }
 
         } catch (TimeoutException | ClassNotFoundException e) {
@@ -699,25 +702,38 @@ public class Misc {
      */
     @RobotKeyword()
     @ArgumentNames({"application"})
-    public void switchApplication(String application){
+    public List<String> switchApplication(String application){
         Stage stage;
+        List<String> listAppKey = new ArrayList<>();
+
         Object obj = TestFXLibraryCache.getIstance().get(application);
 
-        if(obj instanceof PrimaryStageFuture){
-            try {
-                stage = ((PrimaryStageFuture) obj).get();
-            } catch (Exception e) {
-                throw new TestFxLibraryNonFatalException(e);
+        if(obj == null){
+            for (String key : TestFXLibraryCache.getIstance().getMap().keySet()) {
+                if(key != null && key.startsWith(KEY)){
+                    listAppKey.add(key.replace(KEY, ""));
+                }
             }
         } else {
-            stage = (Stage) obj;
+            if(obj instanceof PrimaryStageFuture){
+                try {
+                    stage = ((PrimaryStageFuture) obj).get();
+                } catch (Exception e) {
+                    throw new TestFxLibraryNonFatalException(e);
+                }
+            } else {
+                stage = (Stage) obj;
+            }
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    stage.requestFocus();
+                }
+            });
         }
 
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                stage.requestFocus();
-            }
-        });
+        return listAppKey;
+
     }
 }
