@@ -6,7 +6,7 @@ Suite Teardown    Close Application
 *** Test Cases ***
 
 Test Get Table Column Count
-    ${count}    Get Table Column Count  \#tableView
+    ${count}=    Get Table Column Count  \#tableView
     ${column}=  Set Variable    3
     Should Be Equal    "${count}"    "${column}"
 
@@ -19,12 +19,12 @@ Test Table Should Not Be Visible
     Component Should Be Invisible   \#tableView3
 
 Test Get Table Row Count
-    ${count}    Get Table Row Count  \#tableView
+    ${count}=    Get Table Row Count  \#tableView
     ${row}=   Set Variable    5
     Should Be Equal    "${count}"   "${row}"
 
 Test Get Table Headers
-    ${count}    Get Table Headers  \#tableView
+    ${count}=    Get Table Headers  \#tableView
     ${header}=  Set Variable    "[First Name, Last Name, Email]"
     Should Be Equal     "${count}"  ${header}
 
@@ -46,11 +46,12 @@ Test Table Cell Should Contain
     Should Be Equal     ${value2}    ${value}
 
 Test Get Table Column Values
-    ${count}    Get Table Column Values  \#tableView    0
+    ${count}=    Get Table Column Values  \#tableView    0
     ${value}=   Set Variable   "[Jacob, Isabella, Ethan, Emma, Michael]"
+    Should Be Equal     ${value}    "${count}"
 
 Test Get Table Row Values
-    ${count}    Get Table Row Values  \#tableView    0
+    ${count}=    Get Table Row Values  \#tableView    0
     ${value}=   Set Variable    "[Jacob, Smith, jacob.smith@example.com]"
     Should Be Equal     ${value}    "${count}"
 
