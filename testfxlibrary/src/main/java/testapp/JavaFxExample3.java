@@ -11,6 +11,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -199,6 +201,23 @@ public class JavaFxExample3 extends Application {
 
         //Open new window second button
         Button buttonNewWindow2 = new Button("Disabled Button");
+        p.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.ENTER){
+                    buttonNewWindow2.setDisable(false);
+                }
+            }
+        });
+        p.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.ENTER){
+                    buttonNewWindow2.setDisable(true);
+                }
+            }
+        });
+
         buttonNewWindow2.setId("disableBtn");
         buttonNewWindow2.setDisable(true);
         buttonNewWindow2.setOnAction(new EventHandler<ActionEvent>() {
