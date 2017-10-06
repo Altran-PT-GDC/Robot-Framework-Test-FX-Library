@@ -532,7 +532,8 @@ public class Misc {
      */
     @RobotKeyword()
     @ArgumentNames({"identifier"})
-    public String listComponentMethods(String identifier) {
+    public String listComponentMethods(String identifier) throws IOException {
+        HashMap<String,List<String>> list = new HashMap<>();
 
         TestFxLibraryValidation.validateArguments(identifier);
 
@@ -547,29 +548,27 @@ public class Misc {
 
             List<String> attr = new ArrayList<>();
             List<String> methodsList = new ArrayList<>();
-            HashMap<String,List<String>> list = new HashMap<>();
+
             list.put(ATTRIBUTES_STRING, attr);
             list.put(METHODS_STRING, methodsList);
             for (Method method : methods) {
 
                 try {
                     getComponentAtrribute(identifier, method.getName());
-
                     attr.add(method.getName());
                 } catch (Exception e) {
+                    Log.info(String.format("The %s is not attribute", identifier), e);
                     methodsList.add(method.getName());
                 }
-
             }
 
             Log.info(ATTRIBUTES_STRING + list.get(ATTRIBUTES_STRING));
             Log.info(METHODS_STRING + list.get(METHODS_STRING));
 
-            return list.toString();
-
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException  e) {
             throw new TestFxLibraryFatalException(e);
         }
+        return list.toString();
     }
 
     /**
@@ -710,8 +709,8 @@ public class Misc {
 
         if(obj == null){
             for (String key : TestFXLibraryCache.getIstance().getMap().keySet()) {
-                if(key != null && key.startsWith(KEY)){
-                    listAppKey.add(key.replace(KEY, ""));
+                if(key != null && key.startsWith(KEY) && !" ".equals(key.split("_")[1])){
+                    listAppKey.add(key);
                 }
             }
         } else {
