@@ -1,85 +1,62 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
+Library           Collections
+Suite Setup       Start Application     testapp.JavaFxExample3
+Suite Teardown    Close Application
 
 *** Test Cases ***
-Test Click On Count Button
-    Start Application  testapp.JavafxExample
-    Click On Component    count
-    Click On Component    count
-    Click On Component    count
-    Close Application
+Test Click On Component By ID
+    Click On Component    \#btnwindow
+    Component Should Be Visible    \#testLabel
+    Close Current Window
 
-Test Click On Choice Box
-    Start Application  testapp.JavafxExample2
-    Click On Component    .choice-box
-    Test Fruits with Orange
-    Close Application
+Test Click On Component By Text
+    Click on component    \#vbuttons2//Button 2
 
-Test Scroll Down
-    Start Application  testapp.JavafxExample2
-    Click On Component    .scroll-pane
-    Scroll Down   7
-    Scroll Up   7
-    Close Application
+Test Click On Component By Parent
+    Click on component    \#vbuttons1[1]//Button 2
 
-Test Drag & Drop
+Test Click On Component By Parent Position
+    Click on component    \#vbuttons2//Button 2
 
-    Start Application  testapp.JavafxExample2
-    Drag    .scroll-bar
-    Move By     -50   -50
-    Drop
-    Close Application
-
-Test Get Node List
-
-    Start Application  testapp.JavafxExample2
-    Click On Component    .list-view
-    ${list}   Get Node List  .list-view
-    Close Application
-
-Test Select From PopUp Menu
-
-    Start Application  testapp.JavafxExample2
-    Select From PopupMenu   \#text  Select All
-    Close Application
+Test Click On Component With Parent By Position
+    Click on component    \#hboxtables//Williams[1]
 
 Test Click Component At Coordinates
+    @{comp_position}=       Get Component Position      \#btnwindow
+    ${pos_x}=   Get From List   ${comp_position}    0
+    ${pos_y}=   Get From List   ${comp_position}    1
+    Click Component At Coordinates      ${pos_x}    ${pos_y}
+    Component Should Be Visible    \#testLabel
+    Close Current Window
 
-    Start Application  testapp.JavafxExample2
-    Click Component At Coordinates      300    400
-    Close Application
+Test Scroll Down
+    Click On Component    .scroll-bar[8]
+    Scroll Down   7
+    Click On Component    Item 8
 
-Test Click Button2
-    Start Application  testapp.JavaFxExample3
-    Click on component    \#vbuttons2//Button 2
-    Close Application
+Test Scroll Up
+    Click On Component    .scroll-bar[8]
+    Scroll Up   7
+    Click On Component    Item 1
 
-Test Click Button By Position
-    Start Application  testapp.JavaFxExample3
-    Click on component    \#vbuttons1[1]//Button 2
-    Close Application
+Test Scroll Left
+    ${append_text}=     Set Variable    ${SPACE}Test Horizontal Scroll
+    Text Area Append Text    \#textarea    ${append_text}
+    Click On Component    .scroll-bar[5]
+    Scroll Left   20
 
-#Test Click Button 2 parents
-#    Start Application  testapp.JavaFxExample3
-#    Click on component    /\#hbox1//\#vbuttons2//Button 2
-#    Close Application
+Test Scroll Right
+    Click On Component    .scroll-bar[5]
+    Scroll Right   20
 
-#Test Click Button By Position 2
-#    Start Application  testapp.JavaFxExample3
-#    Click on component    \#vbuttons2//\#btn[2]
-#    Close Application
+Test Get Node List
+    ${expected_list}=    Set Variable    [ListView[id=listviewsimple, styleClass=list-view]]
+    ${list}=    Get Node List   \#listviewsimple
+    Should Be Equal     "${list}"     "${expected_list}"
 
-Test Click Table
-    Start Application  testapp.JavaFxExample3
-    Click on component    \#hboxtables//Williams[1]
-    Close Application
-
-*** Keywords ***
-
-Test Fruits with ${fruit}
-    Click On Component    Beans
-    Click On Component    Fruit or Veg
-    Click On Component    ${fruit}
-
-
+Test Select From Popup Menu
+    Select From Popup Menu   \#textfield  Select All
+    Press   Backspace
+    Release     Backspace
+    Text Field Text Should Be    \#textfield    ${EMPTY}
