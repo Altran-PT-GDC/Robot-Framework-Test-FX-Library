@@ -5,7 +5,7 @@ Suite Teardown    Close Application
 
 *** Test Cases ***
 
-Test Multiple Start Application
+Test Start Application
      Close Application
      Start Application  testapp.JavaFxExample3
      Close Application
@@ -48,6 +48,7 @@ Test Get Component Attribute
 
 Test List Component Methods
      List Component Methods    \#vbuttons1[0]
+
 
 Test List Components In Context
      ${component_context}=       List Components In Context
