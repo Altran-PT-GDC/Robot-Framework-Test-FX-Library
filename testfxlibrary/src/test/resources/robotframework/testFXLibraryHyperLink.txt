@@ -1,12 +1,11 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
 Suite Setup       Start Application     testapp.JavaFxExample3
 Suite Teardown    Close Application
 
 *** Test Cases ***
 
 Test Get Hyperlink Text
-
+     ${default_text}=   Set Variable    Hyperlink Button
      ${text}    Get Hyperlink Text     .hyperlink[1]
-     LOG        ${text}     WARN
+     Should Be Equal    ${text}     ${default_text}
