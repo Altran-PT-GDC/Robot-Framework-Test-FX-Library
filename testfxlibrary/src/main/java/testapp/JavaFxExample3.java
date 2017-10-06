@@ -397,6 +397,8 @@ public class JavaFxExample3 extends Application {
         vegetables.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         final Button vegFruitBut = new Button("Fruit or Veg");
+        final Tooltip tooltip = new Tooltip("Test Tooltip");
+        vegFruitBut.setTooltip(tooltip);
         vegFruitBut.setOnAction(event -> {
             //switch the visibility for each FlowPane
             choicePane.setVisible(!choicePane.isVisible());
