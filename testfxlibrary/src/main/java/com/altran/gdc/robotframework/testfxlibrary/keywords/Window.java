@@ -43,7 +43,8 @@ public class Window {
     private String format;
     private static final Logger LOG = LoggerFactory.getLogger(Window.class);
     private static final String ERROR_MSG = "Error";
-    private static final String GENERAL_ERROR_MSG = "Something goes wrong";
+    private static final String GENERAL_ERROR_MSG = "Something went wrong";
+    private static final int COMP_POSITION_SIZE = 2;
 
     @Autowired
     private Wait wait;
@@ -370,7 +371,7 @@ public class Window {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public Point2D getComponentPosition(String identifier) {
+    public int[] getComponentPosition(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
         wait.waitUntilPageContains(identifier);
@@ -379,7 +380,10 @@ public class Window {
 
             Point2D p = new FxRobot().point(identifier).query();
             LOG.info("X - " + (int)p.getX() + " Y - " + (int)p.getY());
-            return p;
+            int[] position = new int[COMP_POSITION_SIZE];
+            position[0] = (int)p.getX();
+            position[1] = (int)p.getY();
+            return position;
 
         } catch (Exception e) {
             LOG.error(ERROR_MSG, e);
