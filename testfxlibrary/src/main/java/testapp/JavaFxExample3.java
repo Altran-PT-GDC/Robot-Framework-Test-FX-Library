@@ -404,6 +404,7 @@ public class JavaFxExample3 extends Application {
         });
 
         final Button toBeErase = new Button("To Be Erase");
+        toBeErase.setId("toErase");
         toBeErase.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

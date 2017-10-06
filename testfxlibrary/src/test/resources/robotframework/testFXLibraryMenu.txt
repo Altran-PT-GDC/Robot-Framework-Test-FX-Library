@@ -1,0 +1,16 @@
+*** Settings ***
+Library           TestFXLibrary
+Library           Dialogs
+Suite Setup       Start Application     testapp.JavafxExample
+Suite Teardown    Close Application
+
+*** Test Cases ***
+
+Test Get Menus
+    Get Menu Items  \#menuBar
+
+Test Menu Should Have Item
+    Menu Should Have Item  \#menuBar   Save
+
+Test Menu Should Not Have Item
+    Menu Should Not Have Item  \#menuBar   Exit

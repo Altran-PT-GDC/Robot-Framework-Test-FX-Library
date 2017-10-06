@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -147,6 +148,21 @@ public class JavafxExample extends Application {
             combo.getSelectionModel().select(0);
 
 
+            MenuBar menuBar = new MenuBar();
+            menuBar.setId("menuBar");
+
+            Menu menuFile = new Menu("File");
+            menuFile.setId("menuFile");
+
+            Menu menuView = new Menu("View");
+            menuView.setId("menuView");
+
+
+            MenuItem item = new MenuItem("Save");
+            menuFile.getItems().addAll(item);
+
+
+            menuBar.getMenus().addAll(menuFile, menuView);
 
             // create and add containers.
             HBox box = new HBox(HBOX_SPACING, countButton, countValue, btnDisable, chooser, table, table1, tree, combo);
@@ -154,7 +170,10 @@ public class JavafxExample extends Application {
             box.setAlignment(Pos.CENTER);
 
 
-            getChildren().add(box);
+            VBox vBox = new VBox(menuBar, box);
+
+
+            getChildren().add(vBox);
 
         }
 
