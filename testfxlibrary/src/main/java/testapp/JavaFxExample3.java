@@ -52,7 +52,7 @@ public class JavaFxExample3 extends Application {
     private static  final int BOTTOM_PADDING = 10;
     private static  final int LEFT_PADDING = 10;
     private static  final int MAIN_PANE_WIDTH = 1000;
-    private static  final int MAIN_PANE_HEIGHT = 600;
+    private static  final int MAIN_PANE_HEIGHT = 650;
     private static  final int SEC_PANE_WIDTH = 50;
     private static  final int SEC_PANE_HEIGHT = 50;
     private static  final int TABLE_WIDTH = 370;
@@ -82,12 +82,25 @@ public class JavaFxExample3 extends Application {
         Pane p = new Pane();
         p.setPrefSize(MAIN_PANE_WIDTH, MAIN_PANE_HEIGHT);
 
+        //Add Menu to test
+        MenuBar menuBar = new MenuBar();
+        menuBar.setId("menuBar");
+        Menu menuFile = new Menu("File");
+        menuFile.setId("menuFile");
+        Menu menuView = new Menu("View");
+        menuView.setId("menuView");
+        MenuItem menuItemSave = new MenuItem("Save");
+        MenuItem menuItemExit = new MenuItem("Exit");
+        menuFile.getItems().addAll(menuItemSave, menuItemExit);
+        menuBar.getMenus().addAll(menuFile, menuView);
+
         //Set master VBox and HBox
         VBox vBoxMaster = new VBox();
         HBox hBoxMaster1 = new HBox();
         HBox hBoxMaster2 = new HBox();
         p.getChildren().addAll(vBoxMaster);
-        vBoxMaster.getChildren().addAll(hBoxMaster1, hBoxMaster2);
+
+        vBoxMaster.getChildren().addAll(menuBar, hBoxMaster1, hBoxMaster2);
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();
