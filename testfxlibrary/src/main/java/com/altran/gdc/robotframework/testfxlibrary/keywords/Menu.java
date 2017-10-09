@@ -187,14 +187,8 @@ public class Menu {
         try {
             javafx.scene.control.MenuBar menuBar = TestFxLibraryCommon.lookup(identifier);
 
-            for(javafx.scene.control.Menu menu : menuBar.getMenus()){
-                for (MenuItem menuItem: menu.getItems()){
-                    if (menuItem.getText().equals(item)){
-                        found = true;
-                        break;
-                    }
-                }
-            }
+            found = this.compareItem(menuBar, item);
+
         }catch (Exception e){
             throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
         }
@@ -253,14 +247,8 @@ public class Menu {
         try {
             javafx.scene.control.MenuBar menuBar = TestFxLibraryCommon.lookup(identifier);
 
-            for(javafx.scene.control.Menu menu : menuBar.getMenus()){
-                for (MenuItem menuItem: menu.getItems()){
-                    if (menuItem.getText().equals(item)){
-                        found = true;
-                        break;
-                    }
-                }
-            }
+            found = this.compareItem(menuBar, item);
+
         }catch (Exception e){
             throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier),e);
         }
@@ -268,6 +256,29 @@ public class Menu {
         if(found){
             throw new TestFxLibraryNonFatalException(String.format("The item %s exists ", item));
         }
+    }
+
+    /**
+     * Compare if the Menu passed in the parameter contains the item.
+     *
+     * @param menuBar
+     *      The MenuBar
+     * @param item
+     *      The item to compare
+     * @return
+     *      true is contains or false if not contains.
+     */
+    private boolean compareItem(javafx.scene.control.MenuBar menuBar, String item){
+        boolean found = false;
+        for(javafx.scene.control.Menu menu : menuBar.getMenus()){
+            for (MenuItem menuItem: menu.getItems()){
+                if (menuItem.getText().equals(item)){
+                    found = true;
+                    break;
+                }
+            }
+        }
+        return found;
     }
 
     /**
