@@ -3,6 +3,7 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
+import javafx.collections.ObservableList;
 import javafx.scene.control.MenuItem;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
@@ -14,12 +15,70 @@ import java.util.ArrayList;
 public class Menu {
 
     private static final String IDENTIFIER_NOT_EXIST = "The identifier %s not exists!";
+
     /**
-     * <b>Description:</b> This keyword returns the items in a Menu
+     * <b>Description:</b> This keyword returns the Menus
      * specified with <i>identifier</i>.
      *
      * @param identifier
      * : The menu id
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * @return
+     *  The list of menus
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Get Menu Items</td>
+     *         <td>\# menuId</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public java.util.List<String> getMenus(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        java.util.List<String> list = new ArrayList<>();
+
+        try {
+            javafx.scene.control.MenuBar menuBar = TestFxLibraryCommon.lookup(identifier);
+
+            for(javafx.scene.control.Menu menu : menuBar.getMenus()){
+                list.add(menu.getText());
+            }
+        } catch (Exception e){
+            throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
+        }
+
+        return list;
+    }
+
+
+    /**
+     * <b>Description:</b> This keyword returns the items for specific menu.
+     *
+     * @param identifier
+     * : The menu id
+     *
+     * @param menuName
+     * : The menu name to get the items
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -44,13 +103,13 @@ public class Menu {
      * <table summary="">
      *     <tr>
      *         <td>Get Menu Items</td>
-     *         <td>\# menuId</td>
+     *         <td>\# menuId menuName</td>
      *     </tr>
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public java.util.List<String> getMenuItems(String identifier){
+    @ArgumentNames({"identifier","menuName"})
+    public java.util.List<String> getMenuItems(String identifier, String menuName){
         TestFxLibraryValidation.validateArguments(identifier);
 
         java.util.List<String> list = new ArrayList<>();
@@ -58,9 +117,19 @@ public class Menu {
         try {
             javafx.scene.control.MenuBar menuBar = TestFxLibraryCommon.lookup(identifier);
 
+            ObservableList<MenuItem> menuItemList = null;
             for(javafx.scene.control.Menu menu : menuBar.getMenus()){
-                list.add(menu.getText());
+                if(menu.getText().equals(menuName)){
+                    menuItemList = menu.getItems();
+                }
             }
+            
+            if(menuItemList != null && !menuItemList.isEmpty()){
+                for(MenuItem item : menuItemList){
+                    list.add(item.getText());
+                }
+            }
+            
         } catch (Exception e){
             throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
         }
