@@ -1,13 +1,8 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
-import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
-import javafx.application.Platform;
-import javafx.scene.Parent;
 import javafx.scene.control.Control;
-import javafx.scene.control.Tooltip;
-import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
@@ -16,8 +11,6 @@ import org.testfx.api.FxRobot;
 
 import java.util.ArrayList;
 
-import static javafx.application.Platform.*;
-import static org.python.jline.internal.Log.*;
 
 @RobotKeywords
 public class Component {
@@ -65,17 +58,11 @@ public class Component {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public int getMatchingLocatorCount(String identifier){
-
         TestFxLibraryValidation.validateArguments(identifier);
         wait.waitUntilPageContains(identifier);
-        java.util.ArrayList<Object> resultado = new ArrayList<Object>();
-        resultado.addAll(new FxRobot().lookup(identifier).queryAll());
-
-        for (int i=0; i<resultado.size();i++){
-            info("result2 "+resultado.get(i));
-        }
-        info("RESULT2: "+ resultado.size());
-        return resultado.size();
+        java.util.ArrayList<Object> count = new ArrayList<Object>();
+        count.addAll(new FxRobot().lookup(identifier).queryAll());
+        return count.size();
     }
 
     /**
@@ -121,7 +108,7 @@ public class Component {
 
         Control object=new FxRobot().lookup(identifier).query();
 
-        System.out.println(object.getTooltip().getText());
+
 
 
         return object.getTooltip().getText();
@@ -174,7 +161,7 @@ public class Component {
         wait.waitUntilPageContains(identifier);
 
         Control object= new FxRobot().lookup(identifier).query();
-        Log.info("INFO:"+object.getTooltip().getText());
+
         if (!object.getTooltip().getText().equals(text)){
             throw new TestFxLibraryNonFatalException("Tooltip text does not match");
         }
