@@ -11,7 +11,6 @@ import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -785,8 +784,9 @@ public class Table {
             list.add((String) col.getCellObservableValue(item).getValue());
         }
         for (int i=0;i<list.size();i++){
-            if(list.get(i).contains(text))
-                flag=true;
+            if(list.get(i).contains(text)) {
+                flag = true;
+            }
         }
         LOG.info("INFO :" +flag);
 
