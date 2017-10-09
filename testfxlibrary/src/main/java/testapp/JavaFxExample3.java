@@ -465,15 +465,21 @@ public class JavaFxExample3 extends Application {
         spinner.setId("spinner");
 
         //RadioButton
+        ToggleGroup group=new ToggleGroup();
         RadioButton rb1 = new RadioButton("Radio Button1");
+        rb1.setToggleGroup(group);
         rb1.setId("rb1");
         rb1.setSelected(true);
 
         RadioButton rb2 = new RadioButton("Radio Button2");
+        rb2.setToggleGroup(group);
         rb2.setId("rb2");
+        rb2.setDisable(true);
 
         RadioButton rb3 = new RadioButton("Radio Button3");
+        rb3.setToggleGroup(group);
         rb3.setId("rb3");
+        rb3.isDisable();
 
         vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip, rb1, rb2, rb3);
         vboxWait.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));

@@ -11,3 +11,9 @@ Test Radio Button Should Be Selected
 
 Test Radio Button Should Not Be Selected
     Radio Button Should Not Be Selected    \#rb2
+
+Test Radio Button Should Be Enabled
+    Radio Button Should Be Enabled      \#rb1
+
+Test Radio Button Should Be Disabled
+    Radio Button Should Be Disabled     \#rb2
