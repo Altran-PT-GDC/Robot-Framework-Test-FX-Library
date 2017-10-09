@@ -110,7 +110,7 @@ public class Menu {
     @RobotKeyword
     @ArgumentNames({"identifier","menuName"})
     public java.util.List<String> getMenuItems(String identifier, String menuName){
-        TestFxLibraryValidation.validateArguments(identifier);
+        TestFxLibraryValidation.validateArguments(identifier, menuName);
 
         java.util.List<String> list = new ArrayList<>();
 
@@ -267,6 +267,24 @@ public class Menu {
 
         if(found){
             throw new TestFxLibraryNonFatalException(String.format("The item %s exists ", item));
+        }
+    }
+
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void menuShouldBeVisible(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        javafx.scene.control.MenuBar menuBar;
+        try {
+            menuBar = TestFxLibraryCommon.lookup(identifier);
+
+        } catch (Exception e){
+            throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier),e);
+        }
+
+        if(!menuBar.isVisible()){
+            throw new TestFxLibraryNonFatalException(String.format("The menu %s is not visible ", menuBar));
         }
     }
 }

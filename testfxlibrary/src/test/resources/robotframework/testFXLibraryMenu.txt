@@ -26,3 +26,7 @@ Test Menu Should Not Have Item
     Menu Should Not Have Item  \#menuBar   ${false_item}
     @{menu_items}=   Get Menu Items  \#menuBar  File
     Should Not Contain    ${menu_items}     ${false_item}
+
+
+Test Menu Should Be Visible
+    Menu Should Be Visible  \#menuBar
