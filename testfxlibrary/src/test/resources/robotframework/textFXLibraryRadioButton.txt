@@ -6,5 +6,8 @@ Suite Teardown    Close Application
 
 *** Test Cases ***
 
-#Test Radio Button Should Be Selected
-#    Radio Button Should Be Selected     \#Rradiobutton1
+Test Radio Button Should Be Selected
+    Radio Button Should Be Selected    \#rb1
+
+Test Radio Button Should Not Be Selected
+    Radio Button Should Not Be Selected    \#rb2
