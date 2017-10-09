@@ -1,63 +1,58 @@
 *** Settings ***
 Library           TestFXLibrary
+Test Setup       Start Application     testapp.JavaFxExample3
+Test Teardown    Close Application
 
 *** Test Cases ***
 Test Wait Until Element Contains
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
-     Wait Until Element Contains   Fruit or Veg  Fruit or Veg
-     Close Application
+     ${text}=   Set Variable    Tooltip Button
+     Click On Component    \#btnwait
+     Wait Until Element Contains   \#btntooltip     ${text}
+     Verify That Has Text   \#btntooltip    ${text}
 
 Test Wait Until Element Does Not Contains
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
-     Wait Until Element Does Not Contains   Fruit or Veg  Batatas
-     Close Application
+     ${false_text}=     Set Variable    False Text
+     Click On Component    \#btnwait
+     Wait Until Element Does Not Contains   \#btntooltip    ${false_text}
+     ${status}=  Run Keyword and return status   Verify That Has Text   \#btntooltip    ${false_text}
+     Run keyword if  ${status} is ${TRUE}   Fail
 
 Test Wait Until Element Is Enabled
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
-     Wait Until Element Is Enabled   Fruit or Veg
-     Close Application
+     Click On Component    \#btnwait
+     Wait Until Element Is Enabled   \#btntooltip
+     Verify That Is Enabled     \#btntooltip
 
 Test Wait Until Element Is Visible
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
-     Wait Until Element Is Enabled   Fruit or Veg
-     Close Application
+     Click On Component    \#btnwait
+     Wait Until Element Is Visible   \#btntooltip
+     Component Should Be Visible     \#btntooltip
 
 Test Wait Until Element Is Enabled Time Out
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
+     Click On Component    \#btnwait
      Set Timeout     Timeout   1
-     ${status}=  Run Keyword and return status   Wait Until Element Is Enabled   Fruit or Veg
+     ${status}=  Run Keyword and return status   Wait Until Element Is Enabled   \#btntooltip
      Run keyword if  ${status} is ${TRUE}   Fail
-     Close Application
 
-Test Wait Until Page Contains on Application
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
+Test Wait Until Page Contains
+     ${label_test}=   Set Variable    test
+     Click On Component    \#btnwait
      Set Timeout     Timeout   20
-     Wait Until Page Contains       test
-     Click On Component    test
-     Close Application
+     Wait Until Page Contains       ${label_test}
+     Component Should Be Visible    ${label_test}
 
-Test Wait Until Page Contains on Application Time Out
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
-     ${status}=  Run Keyword and return status   Wait Until Page Contains       test    1
+Test Wait Until Page Contains Time Out
+     ${label_test}=   Set Variable    test
+     Click On Component    \#btnwait
+     ${status}=  Run Keyword and return status   Wait Until Page Contains    ${label_test}    1
      Run keyword if  ${status} is ${TRUE}   Fail
-     Close Application
 
-Test Wait Until Page Does Not Contains on Application
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
-     Wait Until Page Does Not Contains   To Be Erase
-     Close Application
+Test Wait Until Page Does Not Contains
+     ${button_text}=    Set Variable    To Be Erased
+     Click On Component    \#btnwait
+     Wait Until Page Does Not Contains   ${button_text}
 
-Test Wait Until Page Does Not Contains on Application Time Out
-     Start Application  testapp.JavaFxExample3
-     Click On Component    Wait Button
-     ${status}=  Run Keyword and return status      Wait Until Page Does Not Contains   To Be Erase    2
+Test Wait Until Page Does Not Contains Time Out
+     ${button_text}=    Set Variable    To Be Erased
+     Click On Component    \#btnwait
+     ${status}=  Run Keyword and return status   Wait Until Page Does Not Contains   ${button_text}    2
      Run keyword if  ${status} is ${TRUE}   Fail
-     Close Application
