@@ -17,6 +17,9 @@ public class TestFxLibraryCommon {
     private static final int SECOND_POSITION = 2;
     private static final int THIRD_POSITION = 3;
 
+    private TestFxLibraryCommon() {
+    }
+
     /**
      * Method lookup to search specific Node.
      *
