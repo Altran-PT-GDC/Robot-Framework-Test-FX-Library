@@ -10,13 +10,13 @@ Test Get Matching Locator Count
     ${locator_count}=   Get Matching Locator Count    .button
     Should Be Equal     ${locator_count}    ${${default_btn_number}}
 
-#Test Get Tooltip Text
-    #${default_tooltip}=    Set Variable    Test Tooltip
-    #${tooltip_text}=     Get Tooltip Text    \#toErase
-    #Should Be Equal     ${tooltip_text}     ${default_tooltip}
+Test Get Tooltip Text
+    ${default_tooltip}=    Set Variable    Test Tooltip
+    ${tooltip_text}=     Get Tooltip Text    \#btntooltip
+    Should Be Equal     ${tooltip_text}     ${default_tooltip}
 
-#Test Tooltip Text Should Be
-    #${default_tooltip}=    Set Variable    Test Tooltip
-    #Tooltip Text Should Be    \#toErase     ${default_tooltip}
-    #${tooltip_text}=     Get Tooltip Text    \#toErase
-    #Should Be Equal     ${tooltip_text}     ${default_tooltip}
+Test Tooltip Text Should Be
+    ${default_tooltip}=    Set Variable    Test Tooltip
+    Tooltip Text Should Be    \#btntooltip     ${default_tooltip}
+    ${tooltip_text}=     Get Tooltip Text    \#btntooltip
+    Should Be Equal     ${tooltip_text}     ${default_tooltip}
