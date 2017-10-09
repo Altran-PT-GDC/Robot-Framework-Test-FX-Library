@@ -409,16 +409,17 @@ public class JavaFxExample3 extends Application {
         listPane.setVisible(false);
         vegetables.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        final Button vegFruitBut = new Button("Fruit or Veg");
+        final Button btnTooltip = new Button("Tooltip Button");
         final Tooltip tooltip = new Tooltip("Test Tooltip");
-        vegFruitBut.setTooltip(tooltip);
-        vegFruitBut.setOnAction(event -> {
+        btnTooltip.setId("btntooltip");
+        btnTooltip.setTooltip(tooltip);
+        btnTooltip.setOnAction(event -> {
             //switch the visibility for each FlowPane
             choicePane.setVisible(!choicePane.isVisible());
             listPane.setVisible(!listPane.isVisible());
         });
 
-        final Button toBeErase = new Button("To Be Erase");
+        final Button toBeErase = new Button("To Be Erased");
         toBeErase.setId("toErase");
         toBeErase.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -430,10 +431,11 @@ public class JavaFxExample3 extends Application {
         });
 
         Button testWait = new Button("Wait Button");
+        testWait.setId("btnwait");
         testWait.setOnAction(event -> {
-            vegFruitBut.setDisable(!vegFruitBut.isDisable());
+            btnTooltip.setDisable(!btnTooltip.isDisable());
             Timeline timer = new Timeline(
-                    new KeyFrame(Duration.seconds(WAIT_TIME), events -> changeElementForWait(vegFruitBut, false, vboxWait, toBeErase))
+                    new KeyFrame(Duration.seconds(WAIT_TIME), events -> changeElementForWait(btnTooltip, false, vboxWait, toBeErase))
             );
             timer.play();
         });
@@ -457,10 +459,7 @@ public class JavaFxExample3 extends Application {
         spinner.setValueFactory(value);
         spinner.setId("spinner");
 
-        vboxWait.getChildren().add(spinner);
-        vboxWait.getChildren().add(testWait);
-        vboxWait.getChildren().add(toBeErase);
-        vboxWait.getChildren().add(vegFruitBut);
+        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip);
         vboxWait.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
 
         //TreeView
