@@ -5,9 +5,14 @@ Suite Teardown    Close Application
 
 *** Test Cases ***
 
-Test Get Menu Items
+Test Get Menus
     @{default_items}=   Set Variable    File    View
-    @{menu_items}=   Get Menu Items  \#menuBar
+    @{menu_items}=   Get Menus  \#menuBar
+    Should Be Equal   ${menu_items}       ${default_items}
+
+Test Get Menu Items
+    @{default_items}=   Set Variable    Save    Exit
+    @{menu_items}=   Get Menu Items  \#menuBar  File
     Should Be Equal   ${menu_items}       ${default_items}
 
 Test Menu Should Have Item
@@ -19,5 +24,5 @@ Test Menu Should Have Item
 Test Menu Should Not Have Item
     ${false_item}=    Set Variable    Open
     Menu Should Not Have Item  \#menuBar   ${false_item}
-    @{menu_items}=   Get Menu Items  \#menuBar
+    @{menu_items}=   Get Menu Items  \#menuBar  File
     Should Not Contain    ${menu_items}     ${false_item}
