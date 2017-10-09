@@ -270,6 +270,43 @@ public class Menu {
         }
     }
 
+    /**
+     * <b>Description:</b> This keyword check if the Menu specified with <i>identifier</i> is visible.
+     *
+     * @param identifier
+     * : The menu id
+     *
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>item</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Menu Should Be Visible</td>
+     *         <td>\# menuId</td>
+     *     </tr>
+     * </table>
+     */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void menuShouldBeVisible(String identifier){
@@ -285,6 +322,61 @@ public class Menu {
 
         if(!menuBar.isVisible()){
             throw new TestFxLibraryNonFatalException(String.format("The menu %s is not visible ", menuBar));
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword check if the Menu specified with <i>identifier</i> is not visible.
+     *
+     * @param identifier
+     * : The menu id
+     *
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>item</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Menu Should Not Be Visible</td>
+     *         <td>\# menuId</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void menuShouldNotBeVisible(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        javafx.scene.control.MenuBar menuBar;
+        try {
+            menuBar = TestFxLibraryCommon.lookup(identifier);
+
+        } catch (Exception e){
+            throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier),e);
+        }
+
+        if(menuBar.isVisible()){
+            throw new TestFxLibraryNonFatalException(String.format("The menu %s is visible ", menuBar));
         }
     }
 }

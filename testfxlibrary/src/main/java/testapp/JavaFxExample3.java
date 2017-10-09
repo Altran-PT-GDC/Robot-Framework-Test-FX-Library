@@ -94,13 +94,18 @@ public class JavaFxExample3 extends Application {
         menuFile.getItems().addAll(menuItemSave, menuItemExit);
         menuBar.getMenus().addAll(menuFile, menuView);
 
+        MenuBar menuBar1 = new MenuBar();
+        menuBar1.setId("menuBar1");
+        menuBar1.setVisible(false);
+
+
         //Set master VBox and HBox
         VBox vBoxMaster = new VBox();
         HBox hBoxMaster1 = new HBox();
         HBox hBoxMaster2 = new HBox();
         p.getChildren().addAll(vBoxMaster);
 
-        vBoxMaster.getChildren().addAll(menuBar, hBoxMaster1, hBoxMaster2);
+        vBoxMaster.getChildren().addAll(menuBar,menuBar1, hBoxMaster1, hBoxMaster2);
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();

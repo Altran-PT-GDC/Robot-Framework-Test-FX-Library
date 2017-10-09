@@ -30,3 +30,6 @@ Test Menu Should Not Have Item
 
 Test Menu Should Be Visible
     Menu Should Be Visible  \#menuBar
+
+Test Menu Should Not Be Visible
+    Menu Should Not Be Visible  \#menuBar1
