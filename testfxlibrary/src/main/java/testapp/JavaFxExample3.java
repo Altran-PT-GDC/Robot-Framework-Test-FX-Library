@@ -459,8 +459,30 @@ public class JavaFxExample3 extends Application {
         spinner.setValueFactory(value);
         spinner.setId("spinner");
 
-        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip);
+        //RadioButtons
+        ToggleGroup group = new ToggleGroup();
+
+        RadioButton rb1 = new RadioButton("Radio Button1");
+        rb1.setToggleGroup(group);
+        rb1.setId("radiobutton1");
+        rb1.isSelected();
+
+        RadioButton rb2 = new RadioButton("Radio Button2");
+        rb1.setToggleGroup(group);
+        rb1.setId("radiobutton2");
+        rb1.isSelected();
+
+        RadioButton rb3 = new RadioButton("Radio Button3");
+        rb1.setToggleGroup(group);
+        rb1.setId("radiobutton3");
+        rb1.isSelected();
+
+        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip, rb1, rb2, rb3);
         vboxWait.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+
+
+
+
 
         //TreeView
         TreeItem<String> rootItem = new TreeItem<String> ("Inbox");
