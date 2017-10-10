@@ -468,7 +468,7 @@ public class Misc {
      */
     @RobotKeyword()
     @ArgumentNames({"identifier" , "attribute"})
-    public String getComponentAtrribute(String identifier, String attribute) {
+    public String getComponentAttribute(String identifier, String attribute) {
 
         TestFxLibraryValidation.validateArguments(identifier, attribute);
 
@@ -548,7 +548,7 @@ public class Misc {
             for (Method method : methods) {
 
                 try {
-                    getComponentAtrribute(identifier, method.getName());
+                    getComponentAttribute(identifier, method.getName());
                     attr.add(method.getName());
                 } catch (Exception e) {
                     Log.info(String.format("The %s is not attribute", identifier), e);

@@ -43,7 +43,7 @@ Test Get NTH Element
 
 Test Get Component Attribute
      ${default_value}=      Set Variable    false
-     ${attribute}=      Get Component Atrribute    \#checkbox     isSelected
+     ${attribute}=      Get Component Attribute    \#checkbox     isSelected
      Should Be Equal    ${${attribute}}     ${${default_value}}
 
 Test List Component Methods
