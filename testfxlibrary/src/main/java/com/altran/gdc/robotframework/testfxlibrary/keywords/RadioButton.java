@@ -115,7 +115,7 @@ public class RadioButton {
         try{
             javafx.scene.control.RadioButton rb=TestFxLibraryCommon.lookup(identifier);
             if(rb.isSelected()){
-                flag=false;
+                flag = false;
             }
         }catch(Exception e){
             throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
@@ -210,8 +210,6 @@ public class RadioButton {
      * </table>
      *
      */
-
-
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void radioButtonShouldBeDisabled(String identifier){
@@ -219,9 +217,10 @@ public class RadioButton {
         Boolean flag=false;
         try{
             javafx.scene.control.RadioButton rb=TestFxLibraryCommon.lookup(identifier);
-            if(rb.isDisable())
-                flag=true;
-        }catch(Exception e){
+            if (rb.isDisable()) {
+                flag = true;
+            }
+        }catch (Exception e){
             throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
         }
 
