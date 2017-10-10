@@ -472,18 +472,15 @@ public class Misc {
 
         TestFxLibraryValidation.validateArguments(identifier, attribute);
 
-        Node node = getNode(identifier);
+        Object obj = getNode(identifier);
 
         try {
-            Class clazz = Class.forName(node.getClass().getName());
-
-            Object obj = clazz.newInstance();
             Method m = obj.getClass().getMethod(attribute);
             Object o = m.invoke(obj);
 
             return o.toString();
 
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+        } catch ( IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new TestFxLibraryFatalException(e);
         }
     }
