@@ -489,12 +489,6 @@ public class Misc {
     }
 
     /**
-     * List the methods of a component
-     *
-     * @param identifier
-     *          The component where you want to get the list of Methods
-     */
-    /**
      * <b>Description:</b> This keyword lists the methods of a component.<br>
      *
      * @param identifier
