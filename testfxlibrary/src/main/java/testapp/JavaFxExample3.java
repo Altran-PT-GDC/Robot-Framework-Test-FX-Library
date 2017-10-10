@@ -20,6 +20,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +90,10 @@ public class JavaFxExample3 extends Application {
     private static final int SPINNER_DEFAULT_VALUE = 100;
     private static final int FLOWPANE_HGAP = 100;
     private static final int TREEITEMS_AMOUNT = 6;
+    private static final double PROGRESSBAR_SCALE = 0.5;
+    private static final double PROGRESSBAR_WIDTH = 100;
+    private static final double PROGRESSBAR1_SCALE = 0.6;
+    private static final double PROGRESSBAR1_WIDTH = 200;
 
     public static void main(String[] args) {
         launch(args);
@@ -123,15 +129,15 @@ public class JavaFxExample3 extends Application {
         HBox hBoxMaster2 = new HBox();
         p.getChildren().addAll(vBoxMaster);
 
-        ProgressBar progressBar = new ProgressBar(0.5);
+        ProgressBar progressBar = new ProgressBar(PROGRESSBAR_SCALE);
         progressBar.setId("progressBar");
-        progressBar.setPrefWidth(100);
+        progressBar.setPrefWidth(PROGRESSBAR_WIDTH);
         progressBar.setVisible(true);
 
-        ProgressBar progressBar1 = new ProgressBar(0.6);
+        ProgressBar progressBar1 = new ProgressBar(PROGRESSBAR1_SCALE);
         progressBar1.setId("progressBar1");
         progressBar1.setDisable(true);
-        progressBar1.setPrefWidth(200);
+        progressBar1.setPrefWidth(PROGRESSBAR1_WIDTH);
         progressBar1.setVisible(true);
 
         vBoxMaster.getChildren().addAll(menuBar,menuBar1, progressBar,progressBar1, hBoxMaster1, hBoxMaster2 );
@@ -334,11 +340,16 @@ public class JavaFxExample3 extends Application {
         listView1.getSelectionModel().select(DEFAULT_SELECTED_LIST_ITEM);
 
         //Add two checkboxes, one enabled and another disabled
-        VBox vBoxCheckBoxes = new VBox();
-        HBox hBoxCheckBoxes = new HBox();
-        Label labelCheckBoxes = new Label("Two checkboxes, enabled and disabled:");
+        final VBox vBoxCheckBoxes = new VBox();
+        final HBox hBoxCheckBoxes = new HBox();
+        final Label labelCheckBoxes = new Label("Two checkboxes, enabled and disabled:");
+        final DatePicker datePicker = new DatePicker();
+        datePicker.setId("datePicker");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate localDate = LocalDate.parse("10-10-2017", formatter);
+        datePicker.setValue(localDate);
         labelCheckBoxes.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
-        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes);
+        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes, datePicker);
         final CheckBox check = new CheckBox();
         final CheckBox checkDisabled = new CheckBox();
         final CheckBox checkInvisible = new CheckBox();
