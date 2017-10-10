@@ -30,3 +30,11 @@ Test Hyperlink Should Not Be Visited
      ${text}    Hyperlink Should Not Be Visited     .hyperlink[0]
      ${status}=     Get Hyperlink Status    .hyperlink[0]
      Should Be True     ${status}==${FALSE}
+
+Test Hyperlink Should Be Enabled
+     ${text}    Hyperlink Should Be Enabled     .hyperlink[0]
+
+Test Hyperlink Should Be Disabled
+     Click On Component    .scroll-bar[8]
+     Scroll Down   15
+     ${text}    Hyperlink Should Be Disabled     \#hyperlinkDisabled

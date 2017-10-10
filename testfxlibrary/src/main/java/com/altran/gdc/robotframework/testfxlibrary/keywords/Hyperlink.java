@@ -270,4 +270,106 @@ public class Hyperlink {
             throw  new TestFxLibraryFatalException(e);
         }
     }
+
+    /**
+     * <b>Description:</b> This keyword check if Hyperlink specified by an
+     *  <i>identifier</i> is enabled.
+     *
+     * @param identifier
+     * : the id of the Hyperlink component
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>/#hyperlink</td>
+     *         <td>Hyperlink Should Be Enabled</td>
+     *     </tr>
+     * </table>
+     */
+
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void hyperlinkShouldBeEnabled(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
+
+        javafx.scene.control.Hyperlink hyperlink = TestFxLibraryCommon.lookup(identifier);
+
+
+        try {
+            if(hyperlink.isDisabled()){
+
+                throw new TestFxLibraryFatalException("Hyperlink is disabled.");
+
+            }
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw  new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword check if Hyperlink specified by an
+     *  <i>identifier</i> is enabled.
+     *
+     * @param identifier
+     * : the id of the Hyperlink component
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>/#hyperlink</td>
+     *         <td>Hyperlink Should Be Enabled</td>
+     *     </tr>
+     * </table>
+     */
+
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void hyperlinkShouldBeDisabled(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
+
+        javafx.scene.control.Hyperlink hyperlink = TestFxLibraryCommon.lookup(identifier);
+
+
+        try {
+            if(!hyperlink.isDisabled()){
+
+                throw new TestFxLibraryFatalException("Hyperlink is Enabled.");
+
+            }
+        } catch (IllegalArgumentException | NullPointerException e){
+            throw  new TestFxLibraryFatalException(e);
+        }
+    }
 }

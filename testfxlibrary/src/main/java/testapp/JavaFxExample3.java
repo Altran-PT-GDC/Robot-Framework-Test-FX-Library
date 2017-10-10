@@ -42,6 +42,24 @@ public class JavaFxExample3 extends Application {
         }
     }
 
+    public static class HBoxCell1 extends HBox {
+        Label label = new Label();
+        Hyperlink hyperlink = new Hyperlink();
+
+        HBoxCell1(String labelText, String buttonText) {
+            super();
+            label.setText(labelText);
+            label.setMaxWidth(Double.MAX_VALUE);
+            HBox.setHgrow(label, Priority.ALWAYS);
+
+            hyperlink.setText(buttonText);
+            hyperlink.setDisable(true);
+            hyperlink.setId("hyperlinkDisabled");
+
+            this.getChildren().addAll(label, hyperlink);
+        }
+    }
+
     private static final String FIRST_BUTTON_TEXT = new String("Button 1");
     private static final String SECOND_BUTTON_TEXT = new String("Button 2");
     private static final String THIRD_BUTTON_TEXT = new String("Button 3");
@@ -289,16 +307,18 @@ public class JavaFxExample3 extends Application {
 
         //List view with text and buttons for each element
         VBox vBoxListView = new VBox();
-        ListView<HBoxCell> listView1 = new ListView<>();
+        ListView<HBox> listView1 = new ListView<>();
+        listView1.setId("listView");
         Label labelListView = new Label("Multiple Selection List View:");
         labelListView.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
         listView1.setMaxHeight(LIST_VIEW_MAX_HEIGHT);
         listView1.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        List<HBoxCell> list = new ArrayList<>();
+        List<HBox> list = new ArrayList<>();
         for (int i = 0; i < LIST_ITEMS; i++) {
             list.add(new HBoxCell("Item " + i, "Hyperlink Button"));
         }
-        ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);
+        list.add(new HBoxCell1("Item n", "Hyperlink Disabled"));
+        ObservableList<HBox> myObservableList = FXCollections.observableList(list);
         listView1.setItems(myObservableList);
         listView1.getSelectionModel().select(DEFAULT_SELECTED_LIST_ITEM);
 
