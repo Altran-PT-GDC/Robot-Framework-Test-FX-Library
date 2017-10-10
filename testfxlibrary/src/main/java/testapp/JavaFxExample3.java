@@ -123,7 +123,18 @@ public class JavaFxExample3 extends Application {
         HBox hBoxMaster2 = new HBox();
         p.getChildren().addAll(vBoxMaster);
 
-        vBoxMaster.getChildren().addAll(menuBar,menuBar1, hBoxMaster1, hBoxMaster2);
+        ProgressBar progressBar = new ProgressBar(0.5);
+        progressBar.setId("progressBar");
+        progressBar.setPrefWidth(100);
+        progressBar.setVisible(true);
+
+        ProgressBar progressBar1 = new ProgressBar(0.6);
+        progressBar1.setId("progressBar1");
+        progressBar1.setDisable(true);
+        progressBar1.setPrefWidth(200);
+        progressBar1.setVisible(true);
+
+        vBoxMaster.getChildren().addAll(menuBar,menuBar1, progressBar,progressBar1, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();
