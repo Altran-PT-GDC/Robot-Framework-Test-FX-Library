@@ -7,14 +7,10 @@ import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testfx.api.FxRobot;
 
 @RobotKeywords
 public class CheckBox {
-
-    private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
 
     /**
      * <b>Description:</b> This keyword sets the state of a checkbox specified with <i>identifier</i>.
@@ -162,9 +158,7 @@ public class CheckBox {
         javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
 
         try{
-            if(!checkBox.isDisable()){
-                LOG.info("CheckBox is enabled!");
-            } else {
+            if(checkBox.isDisable()){
                 throw new TestFxLibraryNonFatalException("CheckBox is disabled");
             }
         } catch (IllegalArgumentException | NullPointerException e) {
@@ -214,9 +208,7 @@ public class CheckBox {
         javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
 
         try{
-            if(checkBox.isDisable()){
-                LOG.info("CheckBox is disabled!");
-            } else {
+            if(!checkBox.isDisable()){
                 throw new TestFxLibraryNonFatalException("CheckBox is enabled");
             }
         } catch (IllegalArgumentException | NullPointerException e) {
@@ -267,7 +259,6 @@ public class CheckBox {
 
         try{
             if(!checkBox.isSelected()){
-                LOG.info("CheckBox is unselected!");
                 throw new TestFxLibraryNonFatalException("CheckBox is unselected!");
             }
         } catch (IllegalArgumentException | NullPointerException e) {
@@ -319,7 +310,6 @@ public class CheckBox {
 
         try{
             if(checkBox.isSelected()){
-                LOG.info("CheckBox is selected!");
                 throw new TestFxLibraryNonFatalException("CheckBox is selected!");
             }
         } catch (IllegalArgumentException | NullPointerException e) {

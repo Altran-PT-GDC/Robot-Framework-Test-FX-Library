@@ -777,7 +777,6 @@ public class Table {
         // Item row
         Object item = table.getItems().get(row);
 
-        LOG.info("INFO"+item);
         List<String> list = new ArrayList<>();
         for(int i = 0; i < table.getColumns().size(); i++){
             TableColumn col = (TableColumn) table.getColumns().get(i);
@@ -788,7 +787,6 @@ public class Table {
                 flag = true;
             }
         }
-        LOG.info("INFO :" +flag);
 
         if(!flag){
             throw new TestFxLibraryNonFatalException(String.format(ERROR_MSG, text));

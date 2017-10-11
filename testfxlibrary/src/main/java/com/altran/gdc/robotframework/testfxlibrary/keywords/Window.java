@@ -379,7 +379,6 @@ public class Window {
         try {
 
             Point2D p = new FxRobot().point(identifier).query();
-            LOG.info("X - " + (int)p.getX() + " Y - " + (int)p.getY());
             int[] position = new int[COMP_POSITION_SIZE];
             position[0] = (int)p.getX();
             position[1] = (int)p.getY();
@@ -433,14 +432,9 @@ public class Window {
         wait.waitUntilPageContains(identifier);
 
         try {
-
             Node node = new FxRobot().lookup(identifier).query();
 
-            LOG.info("Width - " + (int)node.getBoundsInLocal().getWidth() + " Height - " + (int)node.getBoundsInLocal().getHeight());
-
             return new int[]{(int) node.getBoundsInLocal().getWidth(), (int) node.getBoundsInLocal().getHeight()};
-
-
         } catch (Exception e) {
             LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
