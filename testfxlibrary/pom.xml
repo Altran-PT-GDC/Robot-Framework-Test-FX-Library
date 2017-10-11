@@ -32,6 +32,11 @@
             <version>1.2</version>
         </dependency>
         <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>openjfx-monocle</artifactId>
+            <version>1.8.0_20</version>
+        </dependency>
+        <dependency>
             <groupId>org.robotframework</groupId>
             <artifactId>robotframework</artifactId>
             <version>${robotframework.version}</version>

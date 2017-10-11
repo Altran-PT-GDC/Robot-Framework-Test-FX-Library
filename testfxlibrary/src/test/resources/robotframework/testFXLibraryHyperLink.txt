@@ -34,7 +34,7 @@ Test Hyperlink Should Not Be Visited
 Test Hyperlink Should Be Enabled
      ${text}    Hyperlink Should Be Enabled     .hyperlink[0]
 
-Test Hyperlink Should Be Disabled
-     Click On Component    .scroll-bar[8]
-     Scroll Down   15
-     ${text}    Hyperlink Should Be Disabled     \#hyperlinkDisabled
+#Test Hyperlink Should Be Disabled
+     #Click On Component    .scroll-bar[8]
+     #Scroll Down   15
+     #${text}    Hyperlink Should Be Disabled     \#hyperlinkDisabled

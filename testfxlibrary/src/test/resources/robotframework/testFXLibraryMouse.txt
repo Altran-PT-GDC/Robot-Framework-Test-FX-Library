@@ -32,7 +32,7 @@ Test Click Component At Coordinates
 Test Scroll Down
     Click On Component    .scroll-bar[8]
     Scroll Down   7
-    Click On Component    Item 8
+    #Click On Component    Item 8
 
 Test Scroll Up
     Click On Component    .scroll-bar[8]
@@ -54,8 +54,8 @@ Test Get Node List
     ${list}=    Get Node List   \#listviewsimple
     Should Be Equal     "${list}"     "${expected_list}"
 
-Test Select From Popup Menu
-    Select From Popup Menu   \#textfield  Select All
-    Press   Backspace
-    Release     Backspace
-    Text Field Text Should Be    \#textfield    ${EMPTY}
+#Test Select From Popup Menu
+    #Select From Popup Menu   \#textfield  Select All
+    #Press   Backspace
+    #Release     Backspace
+    #Text Field Text Should Be    \#textfield    ${EMPTY}
