@@ -11,6 +11,5 @@ Test Get Selected Datepicker Date
 
 Test Set Datepicker Date
     Set Datepicker Date      \#datePicker     01-01-2017
-    Pause Execution
     ${date}=      Get Selected Datepicker Date      \#datePicker
     LOG     ${date}   WARN
