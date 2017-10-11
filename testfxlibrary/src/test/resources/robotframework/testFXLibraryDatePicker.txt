@@ -7,9 +7,10 @@ Suite Teardown    Close Application
 *** Test Cases ***
 Test Get Selected Datepicker Date
     ${date}=      Get Selected Datepicker Date      \#datePicker
-    LOG     ${date}   WARN
 
 Test Set Datepicker Date
     Set Datepicker Date      \#datePicker     01-01-2017
     ${date}=      Get Selected Datepicker Date      \#datePicker
-    LOG     ${date}   WARN
+
+Test Datepicker Date Should Be
+    Datepicker Date Should Be      \#datePicker     01-01-2017
