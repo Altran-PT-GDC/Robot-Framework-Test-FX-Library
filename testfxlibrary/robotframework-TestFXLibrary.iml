@@ -14,6 +14,7 @@
     <orderEntry type="library" name="Maven: org.robotframework:javalib-core:1.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2" level="project" />
     <orderEntry type="library" name="Maven: com.thoughtworks.paranamer:paranamer:1.1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.testfx:openjfx-monocle:1.8.0_20" level="project" />
     <orderEntry type="library" name="Maven: org.robotframework:robotframework:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.markusbernhardt:xml-doclet:1.0.3" level="project" />
     <orderEntry type="module-library">
