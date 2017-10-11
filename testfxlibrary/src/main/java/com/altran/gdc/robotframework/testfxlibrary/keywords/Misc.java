@@ -548,13 +548,10 @@ public class Misc {
                     getComponentAttribute(identifier, method.getName());
                     attr.add(method.getName());
                 } catch (Exception e) {
-                    Log.info(String.format("The %s is not attribute", identifier), e);
+                    Log.debug(String.format("The %s is not attribute", identifier), e);
                     methodsList.add(method.getName());
                 }
             }
-
-            Log.info(ATTRIBUTES_STRING + list.get(ATTRIBUTES_STRING));
-            Log.info(METHODS_STRING + list.get(METHODS_STRING));
 
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException  e) {
             throw new TestFxLibraryFatalException(e);
