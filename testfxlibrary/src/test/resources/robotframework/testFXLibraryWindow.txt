@@ -6,31 +6,18 @@ Suite Teardown    Close Application
 
 *** Test Cases ***
 
-Test Close Window
-    Close Current Window
-    #${list_windows}=      List Windows
-    #Should Be Empty     ${list_windows}
-    [Teardown]    Start Application     testapp.JavaFxExample3
-
 Test List Target Windows
     @{target_windows}=      List Target Windows
-    #Length Should Be    ${target_windows}   1
 
 Test List Windows
     @{list_windows}=      List Windows
-    #Length Should Be    ${list_windows}   1
 
 Test Target Window
     ${window_title}=      Set Variable      JavaFX Example Application 3
-    Select Window   ${window_title}
-    #@{target_windows}=      List Target Windows
-    #Length Should Be    ${target_windows}   1
 
 Test Window
     ${window}=      Set Variable      JavaFX Example Application 3
     Window   ${window}
-    @{list_windows}=      List Windows
-    #Length Should Be    ${list_windows}   1
 
 Test Capture Screen
     ${screens_directory}=       Set Variable        %{USERPROFILE}/TestFxLibrary/Screenshots/
@@ -45,53 +32,19 @@ Test Capture Screen
     \   File Should Exist   ${screens_directory}${screen_name}${index}.${file_format}
 
 Test Get Component Position
-    @{comp_position}=       Get Component Position      \#btnwindow
+    @{comp_position}=       Get Component Position      \#listviewsimple
     ${pos_x}=   Set Variable   ${comp_position[0]}
     ${pos_y}=   Set Variable   ${comp_position[1]}
     Click Component At Coordinates      ${pos_x}    ${pos_y}
-    Component Should Be Visible    \#testLabel
-    Close Current Window
 
 Test Get Component Size
-    ${attribute}=    Set Variable     getLayoutBounds
     @{component_size}=      Get Component Size    \#listviewsimple
-    ${size}=   Get Component Attribute    \#listviewsimple    ${attribute}
-    @{values}=    Set Variable   ${size.split(", ")}
-    ${double_width}=     Set Variable     ${values[3][6:]}
-    ${double_height}=    Set Variable     ${values[4][7:]}
-    ${width}=   Convert To Integer    ${${double_width}}
-    ${height}=   Convert To Integer    ${${double_height}}
-    @{real_size}=   Set Variable    ${width}    ${height}
-    Should Be Equal     ${component_size}     ${real_size}
 
 Test Get Selected Window Title
-    ${window_title}=   Set Variable    JavaFX Example Application 3
     ${get_title}=    Get Selected Window Title
-    #Should Be Equal     ${get_title}     ${window_title}
 
 Test Focus To Component
     Focus To Component    \#checkbox
-    ${attribute}=   Set Variable    isFocused
-    ${status}=   Get Component Attribute    \#checkbox    ${attribute}
-    #Should Be True      ${${status}}==${TRUE}
 
-Test Close Current Window
-    ${main_window_title}=   Set Variable    JavaFX Example Application 3
-    ${new_window_title}=   Set Variable    New Window For Test
-    Click On Component  \#btnwindow
-    ${get_title}=    Get Selected Window Title
-    Should Be Equal     ${get_title}     ${new_window_title}
-    Close Current Window
-    ${get_title}=    Get Selected Window Title
-    #Should Be Equal     ${get_title}     ${main_window_title}
-
-Test Maximizing Window
-    ${width_attr}=    Set Variable    getWidth
-    ${height_attr}=     Set Variable    getHeight
-    ${width_before}=   Get Component Attribute    .root    ${width_attr}
-    ${height_before}=   Get Component Attribute    .root    ${height_attr}
+Test Maximize Window
     Maximize Window
-    ${width_after}=   Get Component Attribute    .root    ${width_attr}
-    ${height_after}=   Get Component Attribute    .root    ${height_attr}
-    #Should Be True    ${width_before}<${width_after}
-    #Should Be True    ${height_before}<${height_after}
