@@ -8,16 +8,28 @@ Suite Teardown    Close Application
 
 Test List Target Windows
     @{target_windows}=      List Target Windows
+    Length Should Be    ${target_windows}   1
 
 Test List Windows
     @{list_windows}=      List Windows
+    Length Should Be    ${list_windows}   1
 
-Test Target Window
-    ${window_title}=      Set Variable      JavaFX Example Application 3
+Test Get Selected Window Title
+    ${default_title}=   Set Variable    JavaFX Example Application 3
+    ${get_title}=    Get Selected Window Title
+    Should Be Equal     ${get_title}     ${default_title}
 
 Test Window
     ${window}=      Set Variable      JavaFX Example Application 3
     Window   ${window}
+    ${get_title}=    Get Selected Window Title
+    Should Be Equal     ${get_title}     ${window}
+
+Test Select Window
+    ${window_title}=      Set Variable      JavaFX Example Application 3
+    Select Window   ${window_title}
+    ${get_title}=    Get Selected Window Title
+    Should Be Equal     ${get_title}     ${window_title}
 
 Test Capture Screen
     ${screens_directory}=       Set Variable        %{USERPROFILE}/TestFxLibrary/Screenshots/
@@ -39,9 +51,7 @@ Test Get Component Position
 
 Test Get Component Size
     @{component_size}=      Get Component Size    \#listviewsimple
-
-Test Get Selected Window Title
-    ${get_title}=    Get Selected Window Title
+    Length Should Be    ${component_size}   2
 
 Test Focus To Component
     Focus To Component    \#checkbox
