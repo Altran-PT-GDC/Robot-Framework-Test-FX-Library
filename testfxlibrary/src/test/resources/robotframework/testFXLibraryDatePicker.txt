@@ -11,9 +11,9 @@ Test Datepicker Date Should Be
     Datepicker Date Should Be      \#datePicker     ${default_date}
 
 Test Get Selected Datepicker Date
-    ${default_date}=    Set Variable    Tue Oct 10 00:00:00 BST 2017
+    ${default_date}=    Set Variable    Tue Oct 10
     ${get_date}=      Get Selected Datepicker Date      \#datePicker
-    Should Be Equal     ${get_date}     ${default_date}
+    Should Contain     ${get_date}     ${default_date}
 
 Test Set Datepicker Date
     ${new_date}=    Set Variable    01-01-2017
