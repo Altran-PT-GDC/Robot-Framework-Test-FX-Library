@@ -543,7 +543,7 @@ public class JavaFxExample3 extends Application {
         //ChoiceBox
         ChoiceBox cb = new ChoiceBox();
         cb.setItems(FXCollections.observableArrayList(
-                "One", "Two ", "Three", "Four")
+                "One", "Two", "Three", "Four")
         );
         cb.setId("cb");
         cb.getSelectionModel().select(1);

@@ -8,3 +8,9 @@ Suite Teardown    Close Application
 Test Get Selected Choicebox Item
     ${value}=   Get Selected Choicebox Item     \#cb
     LOG     ${value}    WARN
+
+Test Choicebox Item Should Be Selected
+    Choicebox Item Should Be Selected       \#cb    Two
+
+Test Choicebox Item Should Not Be Selected
+    Choicebox Item Should Not Be Selected       \#cb    One
