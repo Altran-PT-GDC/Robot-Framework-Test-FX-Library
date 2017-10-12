@@ -348,10 +348,10 @@ public class JavaFxExample3 extends Application {
         listView1.setMaxHeight(LIST_VIEW_MAX_HEIGHT);
         listView1.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         List<HBox> list = new ArrayList<>();
-        for (int i = 0; i < LIST_ITEMS; i++) {
+        list.add(new HBoxCell1("Item 0", "Hyperlink Button"));
+        for (int i = 1; i < LIST_ITEMS; i++) {
             list.add(new HBoxCell("Item " + i, "Hyperlink Button"));
         }
-        list.add(new HBoxCell1("Item n", "Hyperlink Disabled"));
         ObservableList<HBox> myObservableList = FXCollections.observableList(list);
         listView1.setItems(myObservableList);
         listView1.getSelectionModel().select(DEFAULT_SELECTED_LIST_ITEM);

@@ -7,34 +7,32 @@ Suite Teardown    Close Application
 
 Test Get Hyperlink Text
      ${default_text}=   Set Variable    Hyperlink Button
-     ${text}    Get Hyperlink Text     .hyperlink[1]
-     Should Be Equal    ${text}     ${default_text}
+     ${status}=    Get Hyperlink Text     .hyperlink[2]
+     Should Be Equal    ${status}     ${default_text}
 
 Test Get Hyperlink Status
      ${default_text}=   Set Variable    False
-     ${text}    Get Hyperlink Status     .hyperlink[1]
-     Should Be Equal    ${text}     ${${default_text}}
+     ${status}=    Get Hyperlink Status     .hyperlink[2]
+     Should Be Equal    ${status}     ${${default_text}}
 
 Test Set Hyperlink Status
      ${new_status}=     Set Variable    true
-     Set Hyperlink Status     .hyperlink[1]  ${new_status}
-     ${status}=     Get Hyperlink Status    .hyperlink[1]
+     Set Hyperlink Status     .hyperlink[2]  ${new_status}
+     ${status}=     Get Hyperlink Status    .hyperlink[2]
      Should Be Equal    ${status}   ${${new_status}}
 
 Test Hyperlink Should Be Visited
-     Hyperlink Should Be Visited     .hyperlink[1]
-     ${status}=     Get Hyperlink Status    .hyperlink[1]
+     Hyperlink Should Be Visited     .hyperlink[2]
+     ${status}=     Get Hyperlink Status    .hyperlink[2]
      Should Be True     ${status}==${TRUE}
 
 Test Hyperlink Should Not Be Visited
-     ${text}    Hyperlink Should Not Be Visited     .hyperlink[0]
-     ${status}=     Get Hyperlink Status    .hyperlink[0]
+     ${text}    Hyperlink Should Not Be Visited     .hyperlink[1]
+     ${status}=     Get Hyperlink Status    .hyperlink[1]
      Should Be True     ${status}==${FALSE}
 
 Test Hyperlink Should Be Enabled
-     ${text}    Hyperlink Should Be Enabled     .hyperlink[0]
+     Hyperlink Should Be Enabled     .hyperlink[1]
 
-#Test Hyperlink Should Be Disabled
-     #Click On Component    .scroll-bar[8]
-     #Scroll Down   15
-     #${text}    Hyperlink Should Be Disabled     \#hyperlinkDisabled
+Test Hyperlink Should Be Disabled
+     Hyperlink Should Be Disabled     .hyperlink[0]
