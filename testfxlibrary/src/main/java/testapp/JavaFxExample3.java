@@ -540,7 +540,16 @@ public class JavaFxExample3 extends Application {
         rb3.setId("rb3");
         rb3.isDisable();
 
-        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip, rb1, rb2, rb3);
+        //ChoiceBox
+        ChoiceBox cb = new ChoiceBox();
+        cb.setItems(FXCollections.observableArrayList(
+                "One", "Two ", "Three", "Four")
+        );
+        cb.setId("cb");
+        cb.getSelectionModel().select(1);
+
+
+        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip, rb1, rb2, rb3, cb);
         vboxWait.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
 
 
