@@ -33,6 +33,12 @@ Test Hyperlink Should Not Be Visited
 
 Test Hyperlink Should Be Enabled
      Hyperlink Should Be Enabled     .hyperlink[1]
+     ${attribute}=   Set Variable    isDisable
+     ${status}=   Get Component Attribute    .hyperlink[1]    ${attribute}
+     Should Be True    ${${status}}==${FALSE}
 
 Test Hyperlink Should Be Disabled
      Hyperlink Should Be Disabled     .hyperlink[0]
+     ${attribute}=   Set Variable    isDisable
+     ${status}=   Get Component Attribute    .hyperlink[0]    ${attribute}
+     Should Be True    ${${status}}==${TRUE}
