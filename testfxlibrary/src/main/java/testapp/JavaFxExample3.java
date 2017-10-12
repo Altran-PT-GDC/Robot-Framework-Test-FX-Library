@@ -3,7 +3,6 @@ package testapp;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -91,10 +90,11 @@ public class JavaFxExample3 extends Application {
     private static final int SPINNER_DEFAULT_VALUE = 100;
     private static final int FLOWPANE_HGAP = 100;
     private static final int TREEITEMS_AMOUNT = 6;
-    private static final double PROGRESSBAR_SCALE = 0.5;
     private static final double PROGRESSBAR_WIDTH = 100;
     private static final double PROGRESSBAR1_SCALE = 0.6;
     private static final double PROGRESSBAR1_WIDTH = 200;
+    private static  final int SLEEP_ONE_SECUND = 1000;
+    private static  final int PROGRESSBAR_SIZE = 10;
 
     public static void main(String[] args) {
         launch(args);
@@ -135,15 +135,15 @@ public class JavaFxExample3 extends Application {
         progressBar.setPrefWidth(PROGRESSBAR_WIDTH);
         progressBar.setVisible(true);
 
-        int size = 10;
+        int size = PROGRESSBAR_SIZE;
         new Thread(() -> {
             for (int i = 0; i <= size; i++){
                 final double step = i;
-                //Platform.runLater(() -> );
+
                 progressBar.setProgress( step / size );
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(SLEEP_ONE_SECUND);
                 } catch(InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
@@ -361,12 +361,21 @@ public class JavaFxExample3 extends Application {
         final HBox hBoxCheckBoxes = new HBox();
         final Label labelCheckBoxes = new Label("Two checkboxes, enabled and disabled:");
         final DatePicker datePicker = new DatePicker();
+        final HBox toggleButtonsHBox = new HBox();
+        final ToggleButton toggleButton = new ToggleButton();
+        toggleButton.setSelected(true);
+        toggleButton.setDisable(true);
+        toggleButton.setId("toggleButtonDisableSelected");
+        final ToggleButton toggleButton1 = new ToggleButton();
+        toggleButton1.setId("toggleButton");
+        toggleButtonsHBox.getChildren().addAll(toggleButton, toggleButton1);
+
         datePicker.setId("datePicker");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate = LocalDate.parse("10-10-2017", formatter);
         datePicker.setValue(localDate);
         labelCheckBoxes.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
-        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes, datePicker);
+        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes, datePicker, toggleButtonsHBox);
         final CheckBox check = new CheckBox();
         final CheckBox checkDisabled = new CheckBox();
         final CheckBox checkInvisible = new CheckBox();
