@@ -3,6 +3,7 @@ package testapp;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -129,10 +130,26 @@ public class JavaFxExample3 extends Application {
         HBox hBoxMaster2 = new HBox();
         p.getChildren().addAll(vBoxMaster);
 
-        ProgressBar progressBar = new ProgressBar(PROGRESSBAR_SCALE);
+        ProgressBar progressBar = new ProgressBar();
         progressBar.setId("progressBar");
         progressBar.setPrefWidth(PROGRESSBAR_WIDTH);
         progressBar.setVisible(true);
+
+        int size = 10;
+        new Thread(() -> {
+            for (int i = 0; i <= size; i++){
+                final double step = i;
+                //Platform.runLater(() -> );
+                progressBar.setProgress( step / size );
+
+                try {
+                    Thread.sleep(1000);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }).start();
+
 
         ProgressBar progressBar1 = new ProgressBar(PROGRESSBAR1_SCALE);
         progressBar1.setId("progressBar1");

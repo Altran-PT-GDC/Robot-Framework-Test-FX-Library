@@ -14,3 +14,6 @@ Test Progress Bar Should Be Enabled
 
 Test Progress Bar Should Be Disabled
     Progress Bar Should Be Disabled  \#progressBar1
+
+Test Wait Until Progress Bar Is Complete
+    Wait Until Progress Bar Is Complete     \#progressBar  15
