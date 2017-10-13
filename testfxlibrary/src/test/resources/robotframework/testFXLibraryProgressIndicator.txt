@@ -6,4 +6,10 @@ Suite Teardown    Close Application
 *** Test Cases ***
 
 Test Get Progress Indicator Value
-    Get Progress Indicator Value  \#progressBar
+    Get Progress Indicator Value  \#progressIndicator
+
+Test Progress Indicator Should Be Enabled
+    Progress Indicator Should Be Enabled  \#progressIndicator
+
+Test Progress Indicator Should Be Disabled
+    Progress Indicator Should Be Disabled  \#progressIndicator1

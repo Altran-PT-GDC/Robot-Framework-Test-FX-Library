@@ -72,7 +72,7 @@ public class JavaFxExample3 extends Application {
     private static  final int BOTTOM_PADDING = 10;
     private static  final int LEFT_PADDING = 10;
     private static  final int MAIN_PANE_WIDTH = 1000;
-    private static  final int MAIN_PANE_HEIGHT = 650;
+    private static  final int MAIN_PANE_HEIGHT = 800;
     private static  final int SEC_PANE_WIDTH = 50;
     private static  final int SEC_PANE_HEIGHT = 50;
     private static  final int TABLE_WIDTH = 370;
@@ -157,7 +157,19 @@ public class JavaFxExample3 extends Application {
         progressBar1.setPrefWidth(PROGRESSBAR1_WIDTH);
         progressBar1.setVisible(true);
 
-        vBoxMaster.getChildren().addAll(menuBar,menuBar1, progressBar,progressBar1, hBoxMaster1, hBoxMaster2 );
+
+        ProgressIndicator progressIndicator = new ProgressIndicator(0);
+        progressIndicator.setId("progressIndicator");
+        progressIndicator.setProgress(0.3);
+
+        ProgressIndicator progressIndicator1 = new ProgressIndicator(0);
+        progressIndicator1.setId("progressIndicator1");
+        progressIndicator1.setProgress(0.3);
+        progressIndicator1.setDisable(true);
+
+
+
+        vBoxMaster.getChildren().addAll(menuBar,menuBar1, progressBar,progressBar1,progressIndicator,progressIndicator1, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();
