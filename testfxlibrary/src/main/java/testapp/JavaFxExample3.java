@@ -570,13 +570,17 @@ public class JavaFxExample3 extends Application {
             rootItem.getChildren().add(item);
         }
         TreeView<String> tree = new TreeView<String> (rootItem);
+        TreeView<String> treeDisabled = new TreeView<String> (rootItem);
         tree.setId("treeView");
+        treeDisabled.setId("treeViewDisabled");
+        treeDisabled.setDisable(true);
+        treeDisabled.setVisible(false);
         tree.setMaxHeight(TREE_VIEW_MAX_HEIGHT);
         tree.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         //Add elements to master elements and start primary stage
         hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple, vboxWait);
-        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, tree);
+        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, tree, treeDisabled);
         Scene scene = new Scene(p);
         primaryStage.setScene(scene);
         primaryStage.setTitle("JavaFX Example Application 3");
