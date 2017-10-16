@@ -6,7 +6,7 @@ Suite Teardown    Close Application
 *** Test Cases ***
 
 Test Get Matching Locator Count
-    ${default_btn_number}=      Set Variable    17
+    ${default_btn_number}=      Set Variable    19
     ${locator_count}=   Get Matching Locator Count    .button
     Should Be Equal     ${locator_count}    ${${default_btn_number}}
 

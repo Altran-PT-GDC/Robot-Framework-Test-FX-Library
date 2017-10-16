@@ -72,7 +72,7 @@ public class JavaFxExample3 extends Application {
     private static  final int BOTTOM_PADDING = 10;
     private static  final int LEFT_PADDING = 10;
     private static  final int MAIN_PANE_WIDTH = 1000;
-    private static  final int MAIN_PANE_HEIGHT = 800;
+    private static  final int MAIN_PANE_HEIGHT = 650;
     private static  final int SEC_PANE_WIDTH = 50;
     private static  final int SEC_PANE_HEIGHT = 50;
     private static  final int TABLE_WIDTH = 370;
@@ -123,6 +123,17 @@ public class JavaFxExample3 extends Application {
         menuBar1.setId("menuBar1");
         menuBar1.setVisible(false);
 
+        //Add Toolbar to test
+        ToolBar toolBar = new ToolBar();
+        toolBar.setId("toolbar");
+        Button btnToolBarOk = new Button();
+        Button btnToolBarCancel = new Button();
+        btnToolBarOk.setId("btnToolBarOk");
+        btnToolBarOk.setText("OK");
+        btnToolBarCancel.setText("Cancel");
+        btnToolBarCancel.setId("btnToolBarCancel");
+        toolBar.getItems().addAll(btnToolBarOk, btnToolBarCancel);
+
 
         //Set master VBox and HBox
         VBox vBoxMaster = new VBox();
@@ -167,9 +178,10 @@ public class JavaFxExample3 extends Application {
         progressIndicator1.setProgress(0.3);
         progressIndicator1.setDisable(true);
 
+        HBox hBoxProgressIndicator = new HBox();
+        hBoxProgressIndicator.getChildren().addAll(progressIndicator, progressIndicator1);
 
-
-        vBoxMaster.getChildren().addAll(menuBar,menuBar1, progressBar,progressBar1,progressIndicator,progressIndicator1, hBoxMaster1, hBoxMaster2 );
+        vBoxMaster.getChildren().addAll(menuBar,menuBar1, toolBar, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();
@@ -387,7 +399,7 @@ public class JavaFxExample3 extends Application {
         LocalDate localDate = LocalDate.parse("10-10-2017", formatter);
         datePicker.setValue(localDate);
         labelCheckBoxes.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
-        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes, datePicker, toggleButtonsHBox);
+        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes, datePicker);
         final CheckBox check = new CheckBox();
         final CheckBox checkDisabled = new CheckBox();
         final CheckBox checkInvisible = new CheckBox();
@@ -589,10 +601,14 @@ public class JavaFxExample3 extends Application {
         treeDisabled.setVisible(false);
         tree.setMaxHeight(TREE_VIEW_MAX_HEIGHT);
         tree.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        tree.setPrefSize(LIST_VIEW_SIMPLE_WIDTH, LIST_VIEW_SIMPLE_HEIGHT);
+
+        VBox vBoxTreeProgress = new VBox();
+        vBoxTreeProgress.getChildren().addAll(tree, progressBar, progressBar1, hBoxProgressIndicator, toggleButtonsHBox);
 
         //Add elements to master elements and start primary stage
         hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple, vboxWait);
-        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, tree, treeDisabled);
+        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, vBoxTreeProgress, treeDisabled);
         Scene scene = new Scene(p);
         primaryStage.setScene(scene);
         primaryStage.setTitle("JavaFX Example Application 3");
