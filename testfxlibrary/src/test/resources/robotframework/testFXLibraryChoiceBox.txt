@@ -6,11 +6,18 @@ Suite Teardown    Close Application
 *** Test Cases ***
 
 Test Get Selected Choicebox Item
-    ${value}=   Get Selected Choicebox Item     \#cb
-    LOG     ${value}    WARN
+    ${default_item}=     Set Variable     Two
+    ${item}=   Get Selected Choicebox Item     \#cb
+    Should Be Equal     ${item}     ${default_item}
 
 Test Choicebox Item Should Be Selected
-    Choicebox Item Should Be Selected       \#cb    Two
+    ${default_item}=     Set Variable     Two
+    Choicebox Item Should Be Selected       \#cb    ${default_item}
+    ${item}=   Get Selected Choicebox Item     \#cb
+    Should Be Equal     ${item}     ${default_item}
 
 Test Choicebox Item Should Not Be Selected
-    Choicebox Item Should Not Be Selected       \#cb    One
+    ${not_sel_item}=      Set Variable      One
+    Choicebox Item Should Not Be Selected       \#cb    ${not_sel_item}
+    ${item}=   Get Selected Choicebox Item     \#cb
+    Should Not Be Equal     ${item}     ${not_sel_item}
