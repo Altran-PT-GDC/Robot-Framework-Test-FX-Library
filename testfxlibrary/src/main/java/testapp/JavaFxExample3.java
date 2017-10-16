@@ -95,6 +95,7 @@ public class JavaFxExample3 extends Application {
     private static final double PROGRESSBAR1_WIDTH = 200;
     private static  final int SLEEP_ONE_SECUND = 1000;
     private static  final int PROGRESSBAR_SIZE = 10;
+    private static  final double PROGRESSINDICATOR_PROGRESS = 0.3;
 
     public static void main(String[] args) {
         launch(args);
@@ -124,16 +125,14 @@ public class JavaFxExample3 extends Application {
         menuBar1.setVisible(false);
 
         //Add Toolbar to test
-        ToolBar toolBar = new ToolBar();
-        toolBar.setId("toolbar");
         Button btnToolBarOk = new Button();
         Button btnToolBarCancel = new Button();
         btnToolBarOk.setId("btnToolBarOk");
         btnToolBarOk.setText("OK");
         btnToolBarCancel.setText("Cancel");
         btnToolBarCancel.setId("btnToolBarCancel");
-        toolBar.getItems().addAll(btnToolBarOk, btnToolBarCancel);
-
+        ToolBar toolBar = new ToolBar(btnToolBarOk, btnToolBarCancel);
+        toolBar.setId("toolbar");
 
         //Set master VBox and HBox
         VBox vBoxMaster = new VBox();
@@ -171,11 +170,11 @@ public class JavaFxExample3 extends Application {
 
         ProgressIndicator progressIndicator = new ProgressIndicator(0);
         progressIndicator.setId("progressIndicator");
-        progressIndicator.setProgress(0.3);
+        progressIndicator.setProgress(PROGRESSINDICATOR_PROGRESS);
 
         ProgressIndicator progressIndicator1 = new ProgressIndicator(0);
         progressIndicator1.setId("progressIndicator1");
-        progressIndicator1.setProgress(0.3);
+        progressIndicator1.setProgress(PROGRESSINDICATOR_PROGRESS);
         progressIndicator1.setDisable(true);
 
         HBox hBoxProgressIndicator = new HBox();
