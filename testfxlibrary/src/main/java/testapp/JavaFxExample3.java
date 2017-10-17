@@ -180,7 +180,24 @@ public class JavaFxExample3 extends Application {
         HBox hBoxProgressIndicator = new HBox();
         hBoxProgressIndicator.getChildren().addAll(progressIndicator, progressIndicator1);
 
-        vBoxMaster.getChildren().addAll(menuBar,menuBar1, toolBar, hBoxMaster1, hBoxMaster2 );
+        int sizeIndicator = PROGRESSBAR_SIZE;
+        new Thread(() -> {
+            for (int i = 0; i <= sizeIndicator; i++){
+                final double step = i;
+
+                progressIndicator.setProgress( step / size );
+
+                try {
+                    Thread.sleep(SLEEP_ONE_SECUND);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }).start();
+
+
+
+        vBoxMaster.getChildren().addAll(menuBar,menuBar1, progressBar,progressBar1,progressIndicator,progressIndicator1, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();
@@ -398,7 +415,7 @@ public class JavaFxExample3 extends Application {
         LocalDate localDate = LocalDate.parse("10-10-2017", formatter);
         datePicker.setValue(localDate);
         labelCheckBoxes.setFont(Font.font(null, FontWeight.BOLD, DEFAULT_FONT_SIZE));
-        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes, datePicker);
+        vBoxCheckBoxes.getChildren().addAll(labelCheckBoxes, hBoxCheckBoxes, datePicker, toggleButtonsHBox);
         final CheckBox check = new CheckBox();
         final CheckBox checkDisabled = new CheckBox();
         final CheckBox checkInvisible = new CheckBox();
@@ -607,7 +624,7 @@ public class JavaFxExample3 extends Application {
 
         //Add elements to master elements and start primary stage
         hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple, vboxWait);
-        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, vBoxTreeProgress, treeDisabled);
+        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, tree, treeDisabled);
         Scene scene = new Scene(p);
         primaryStage.setScene(scene);
         primaryStage.setTitle("JavaFX Example Application 3");

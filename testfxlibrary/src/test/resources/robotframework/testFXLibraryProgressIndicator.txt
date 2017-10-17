@@ -13,3 +13,6 @@ Test Progress Indicator Should Be Enabled
 
 Test Progress Indicator Should Be Disabled
     Progress Indicator Should Be Disabled  \#progressIndicator1
+
+Test Wait Until Progress Indicator Is Complete
+    Wait Until Progress Bar Is Complete     \#progressBar  15
