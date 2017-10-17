@@ -195,9 +195,7 @@ public class JavaFxExample3 extends Application {
             }
         }).start();
 
-
-
-        vBoxMaster.getChildren().addAll(menuBar,menuBar1, progressBar,progressBar1,progressIndicator,progressIndicator1, hBoxMaster1, hBoxMaster2 );
+        vBoxMaster.getChildren().addAll(menuBar,menuBar1, toolBar, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();
@@ -621,10 +619,11 @@ public class JavaFxExample3 extends Application {
 
         VBox vBoxTreeProgress = new VBox();
         vBoxTreeProgress.getChildren().addAll(tree, progressBar, progressBar1, hBoxProgressIndicator, toggleButtonsHBox);
+        vBoxTreeProgress.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
 
         //Add elements to master elements and start primary stage
         hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple, vboxWait);
-        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, tree, treeDisabled);
+        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, vBoxTreeProgress, treeDisabled);
         Scene scene = new Scene(p);
         primaryStage.setScene(scene);
         primaryStage.setTitle("JavaFX Example Application 3");
