@@ -133,6 +133,10 @@ public class JavaFxExample3 extends Application {
         btnToolBarCancel.setId("btnToolBarCancel");
         ToolBar toolBar = new ToolBar(btnToolBarOk, btnToolBarCancel);
         toolBar.setId("toolbar");
+        ToolBar toolBarDisabled = new ToolBar();
+        toolBarDisabled.setId("toolbarDisabled");
+        toolBarDisabled.setDisable(true);
+        toolBarDisabled.setVisible(false);
 
         //Set master VBox and HBox
         VBox vBoxMaster = new VBox();
@@ -195,7 +199,7 @@ public class JavaFxExample3 extends Application {
             }
         }).start();
 
-        vBoxMaster.getChildren().addAll(menuBar,menuBar1, toolBar, hBoxMaster1, hBoxMaster2 );
+        vBoxMaster.getChildren().addAll(menuBar,menuBar1, toolBar, toolBarDisabled, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();
