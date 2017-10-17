@@ -17,6 +17,38 @@ public class ToolBar {
     @Autowired
     private Wait wait;
 
+    /**
+     * <b>Description:</b> This keyword returns the items of a toolbar specified by <i>identifier</i>.
+     *
+     * @param identifier
+     * : The id of the component
+     * @return itemList
+     * : The list of items inside the toolbar
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>@{listItems}=</td>
+     *         <td>Get Tool Bar Items</td>
+     *         <td>\#toolbar</td>
+     *     </tr>
+     * </table>
+     */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public String[] getToolBarItems (String identifier){
@@ -32,6 +64,35 @@ public class ToolBar {
         return itemList;
     }
 
+    /**
+     * <b>Description:</b> This keyword fails if a toolbar specified by <i>identifier</i> is not enabled.
+     *
+     * @param identifier
+     * : The id of the component
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Tool Bar Should Be Enabled</td>
+     *         <td>\#toolbar</td>
+     *     </tr>
+     * </table>
+     */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void toolBarShouldBeEnabled(String identifier){
@@ -48,6 +109,35 @@ public class ToolBar {
         }
     }
 
+    /**
+     * <b>Description:</b> This keyword fails if a toolbar specified by <i>identifier</i> is enabled.
+     *
+     * @param identifier
+     * : The id of the component
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Tool Bar Should Be Disabled</td>
+     *         <td>\#toolbar</td>
+     *     </tr>
+     * </table>
+     */
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void toolBarShouldBeDisabled(String identifier){

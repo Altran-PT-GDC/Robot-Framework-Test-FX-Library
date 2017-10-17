@@ -598,9 +598,14 @@ public class JavaFxExample3 extends Application {
         );
         cb.setId("cb");
         cb.getSelectionModel().select(1);
+        ChoiceBox cbDisabled = new ChoiceBox();
+        cbDisabled.setId("cbDisabled");
+        cbDisabled.setDisable(true);
+        cbDisabled.setVisible(false);
+        HBox hBoxChoiceBox = new HBox();
+        hBoxChoiceBox.getChildren().addAll(cb, cbDisabled);
 
-
-        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip, rb1, rb2, rb3, cb);
+        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip, rb1, rb2, rb3, hBoxChoiceBox);
         vboxWait.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
 
 

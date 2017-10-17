@@ -21,3 +21,11 @@ Test Choicebox Item Should Not Be Selected
     Choicebox Item Should Not Be Selected       \#cb    ${not_sel_item}
     ${item}=   Get Selected Choicebox Item     \#cb
     Should Not Be Equal     ${item}     ${not_sel_item}
+
+Test Choicebox Should Be Enabled
+    Choicebox Should Be Enabled      \#cb
+    Verify That Is Enabled      \#cb
+
+Test Tool Bar Should Be Disabled
+    Choicebox Should Be Disabled      \#cbDisabled
+    Verify That Is Disabled      \#cbDisabled
