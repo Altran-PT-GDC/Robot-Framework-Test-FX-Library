@@ -159,6 +159,41 @@ public class ProgressIndicator {
         }
     }
 
+    /**
+     * <b>Description:</b> This keyword wait until the Progress Indicator specified with <i>identifier</i> is completed given the timeout.
+     *
+     * @param identifier
+     * : The progress indicator id
+     *
+     * @param timeout
+     * : The timeout in seconds
+     *
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Wait Until Progress Indicator Is Complete</td>
+     *         <td>\# progressIndicatorId</td>
+     *         <td>20</td>
+     *     </tr>
+     * </table>
+     */
     public void waitUntilProgressIndicatorIsComplete(String identifier, int timeout){
         TestFxLibraryValidation.validateArguments(identifier);
 
