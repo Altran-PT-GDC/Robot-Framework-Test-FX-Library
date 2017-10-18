@@ -96,6 +96,9 @@ public class JavaFxExample3 extends Application {
     private static  final int SLEEP_ONE_SECUND = 1000;
     private static  final int PROGRESSBAR_SIZE = 5;
     private static  final double PROGRESSINDICATOR_PROGRESS = 0.3;
+    private static  final double SCROLLBAR_MAX_VALUE = 150.2;
+    private static  final double SCROLLBAR_MIN_VALUE = 10.6;
+    private static  final double SCROLLBAR_DEFAULT_VALUE = 135;
 
     public static void main(String[] args) {
         launch(args);
@@ -219,6 +222,9 @@ public class JavaFxExample3 extends Application {
         //ScrollBar to test
         ScrollBar scrollBar = new ScrollBar();
         scrollBar.setId("scrollBar");
+        scrollBar.setMax(SCROLLBAR_MAX_VALUE);
+        scrollBar.setMin(SCROLLBAR_MIN_VALUE);
+        scrollBar.setValue(SCROLLBAR_DEFAULT_VALUE);
 
         vBoxMaster.getChildren().addAll(menuBar,menuBar1, hBoxToolbar, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
