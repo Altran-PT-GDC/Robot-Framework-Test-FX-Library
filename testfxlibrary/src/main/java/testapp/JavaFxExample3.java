@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
@@ -110,6 +111,7 @@ public class JavaFxExample3 extends Application {
         //Set main pane
         Pane p = new Pane();
         p.setPrefSize(MAIN_PANE_WIDTH, MAIN_PANE_HEIGHT);
+        p.setId("rootPane");
 
         //Add Menu to test
         MenuBar menuBar = new MenuBar();
@@ -618,6 +620,16 @@ public class JavaFxExample3 extends Application {
         rb3.setId("rb3");
         rb3.isDisable();
 
+        ColorPicker colorPicker = new ColorPicker();
+        colorPicker.setId("colorPiker");
+        colorPicker.setValue(Color.CORAL);
+        colorPicker.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                p.setBackground(new Background(new BackgroundFill(colorPicker.getValue(), null,null)));
+            }
+        });
+
         //ChoiceBox
         ChoiceBox cb = new ChoiceBox();
         cb.setItems(FXCollections.observableArrayList(
@@ -632,7 +644,7 @@ public class JavaFxExample3 extends Application {
         HBox hBoxChoiceBox = new HBox();
         hBoxChoiceBox.getChildren().addAll(cb, cbDisabled);
 
-        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip, rb1, rb2, rb3, hBoxChoiceBox);
+        vboxWait.getChildren().addAll(spinner, testWait, toBeErase, btnTooltip, rb1, rb2, rb3, hBoxChoiceBox, colorPicker);
         vboxWait.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
 
 
