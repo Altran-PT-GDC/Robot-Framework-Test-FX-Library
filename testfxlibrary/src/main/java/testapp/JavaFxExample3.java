@@ -94,7 +94,7 @@ public class JavaFxExample3 extends Application {
     private static final double PROGRESSBAR1_SCALE = 0.6;
     private static final double PROGRESSBAR1_WIDTH = 200;
     private static  final int SLEEP_ONE_SECUND = 1000;
-    private static  final int PROGRESSBAR_SIZE = 10;
+    private static  final int PROGRESSBAR_SIZE = 5;
     private static  final double PROGRESSINDICATOR_PROGRESS = 0.3;
 
     public static void main(String[] args) {
@@ -142,13 +142,14 @@ public class JavaFxExample3 extends Application {
         Tab tabOne = new Tab("Tab One");
         tabOne.setId("tabOne");
         Tab tabTwo = new Tab("Tab Two");
-        tabTwo.setId("tabOne");
+        tabTwo.setId("tabTwo");
         Tab tabThree = new Tab("Tab Three");
         tabOne.setId("tabThree");
         Tab tabDisabled = new Tab("Disabled Tab");
         tabDisabled.setId("tabDisabled");
         tabDisabled.setDisable(true);
         TabPane tabPane = new TabPane(tabOne, tabTwo, tabThree, tabDisabled);
+        tabPane.getSelectionModel().select(tabOne);
         tabPane.setId("tabPane");
 
         //Hbox for toolbars and tabs
