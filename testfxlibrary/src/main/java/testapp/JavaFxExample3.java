@@ -149,6 +149,7 @@ public class JavaFxExample3 extends Application {
         tabDisabled.setId("tabDisabled");
         tabDisabled.setDisable(true);
         TabPane tabPane = new TabPane(tabOne, tabTwo, tabThree, tabDisabled);
+        tabPane.setId("tabPane");
 
         //Hbox for toolbars and tabs
         HBox hBoxToolbar = new HBox(toolBar, toolBarDisabled, tabPane);
