@@ -316,12 +316,10 @@ public class Tab {
         TabPane tabPane = TestFxLibraryCommon.lookup(identifier);
         ObservableList<javafx.scene.control.Tab> tabs = tabPane.getTabs();
         Boolean tabEnabled = false;
-        for (int i=0; i<tabs.size(); i++){
-            if (tabs.get(i).getText().equals(tab)){
-                if (!tabs.get(i).isDisable()){
-                    tabEnabled = true;
-                    break;
-                }
+        for (javafx.scene.control.Tab tab1 : tabs) {
+            if (tab1.getText().equals(tab) && !tab1.isDisable()) {
+                tabEnabled = true;
+                break;
             }
         }
         if (!tabEnabled){
@@ -377,12 +375,10 @@ public class Tab {
         TabPane tabPane = TestFxLibraryCommon.lookup(identifier);
         ObservableList<javafx.scene.control.Tab> tabs = tabPane.getTabs();
         Boolean tabDisabled = false;
-        for (int i=0; i<tabs.size(); i++){
-            if (tabs.get(i).getText().equals(tab)){
-                if (tabs.get(i).isDisable()){
-                    tabDisabled = true;
-                    break;
-                }
+        for (javafx.scene.control.Tab tab1 : tabs) {
+            if (tab1.getText().equals(tab) && tab1.isDisable()) {
+                tabDisabled = true;
+                break;
             }
         }
         if (!tabDisabled){
