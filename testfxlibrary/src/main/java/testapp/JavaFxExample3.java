@@ -138,6 +138,21 @@ public class JavaFxExample3 extends Application {
         toolBarDisabled.setDisable(true);
         toolBarDisabled.setVisible(false);
 
+        //Tab to test
+        Tab tabOne = new Tab("Tab One");
+        tabOne.setId("tabOne");
+        Tab tabTwo = new Tab("Tab Two");
+        tabTwo.setId("tabOne");
+        Tab tabThree = new Tab("Tab Three");
+        tabOne.setId("tabThree");
+        Tab tabDisabled = new Tab("Disabled Tab");
+        tabDisabled.setId("tabDisabled");
+        tabDisabled.setDisable(true);
+        TabPane tabPane = new TabPane(tabOne, tabTwo, tabThree, tabDisabled);
+
+        //Hbox for toolbars and tabs
+        HBox hBoxToolbar = new HBox(toolBar, toolBarDisabled, tabPane);
+
         //Set master VBox and HBox
         VBox vBoxMaster = new VBox();
         HBox hBoxMaster1 = new HBox();
@@ -199,7 +214,7 @@ public class JavaFxExample3 extends Application {
             }
         }).start();
 
-        vBoxMaster.getChildren().addAll(menuBar,menuBar1, toolBar, toolBarDisabled, hBoxMaster1, hBoxMaster2 );
+        vBoxMaster.getChildren().addAll(menuBar,menuBar1, hBoxToolbar, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
 
         BorderPane border = new BorderPane();
