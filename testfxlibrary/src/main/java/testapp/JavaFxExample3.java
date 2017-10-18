@@ -216,6 +216,10 @@ public class JavaFxExample3 extends Application {
             }
         }).start();
 
+        //ScrollBar to test
+        ScrollBar scrollBar = new ScrollBar();
+        scrollBar.setId("scrollBar");
+
         vBoxMaster.getChildren().addAll(menuBar,menuBar1, hBoxToolbar, hBoxMaster1, hBoxMaster2 );
         vBoxMaster.autosize();
 
@@ -644,8 +648,10 @@ public class JavaFxExample3 extends Application {
         tree.setPrefSize(LIST_VIEW_SIMPLE_WIDTH, LIST_VIEW_SIMPLE_HEIGHT);
 
         VBox vBoxTreeProgress = new VBox();
-        vBoxTreeProgress.getChildren().addAll(tree, progressBar, progressBar1, hBoxProgressIndicator, toggleButtonsHBox);
+        vBoxTreeProgress.getChildren().addAll(tree, progressBar, progressBar1, hBoxProgressIndicator, toggleButtonsHBox, scrollBar);
         vBoxTreeProgress.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        hBoxProgressIndicator.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
+        toggleButtonsHBox.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
 
         //Add elements to master elements and start primary stage
         hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple, vboxWait);
