@@ -100,6 +100,12 @@ public class JavaFxExample3 extends Application {
     private static  final double SCROLLBAR_MAX_VALUE = 150.2;
     private static  final double SCROLLBAR_MIN_VALUE = 10.6;
     private static  final double SCROLLBAR_DEFAULT_VALUE = 135;
+    private static  final double SCROLLPANE_HMAX = 0.5;
+    private static  final double SCROLLPANE_HMIN = 0.1;
+    private static  final double SCROLLPANE_VMAX = 0.4;
+    private static  final double SCROLLPANE_VMIN = 0.2;
+    private static  final double SCROLLPANE_DEFAULT_VERTICAL_VALUE = 0.35;
+    private static  final double SCROLLPANE_DEFAULT_HORIZONTAL_VALUE = 0.23;
 
     public static void main(String[] args) {
         launch(args);
@@ -671,9 +677,19 @@ public class JavaFxExample3 extends Application {
         hBoxProgressIndicator.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
         toggleButtonsHBox.setPadding(new Insets(TOP_PADDING, RIGHT_PADDING, BOTTOM_PADDING, LEFT_PADDING));
 
+        //ScrollPane to test
+        ScrollPane scrollPane = new ScrollPane(vBoxTreeProgress);
+        scrollPane.setId("scrollPane");
+        scrollPane.setHmax(SCROLLPANE_HMAX);
+        scrollPane.setHmin(SCROLLPANE_HMIN);
+        scrollPane.setVmax(SCROLLPANE_VMAX);
+        scrollPane.setVmin(SCROLLPANE_VMIN);
+        scrollPane.setHvalue(SCROLLPANE_DEFAULT_HORIZONTAL_VALUE);
+        scrollPane.setVvalue(SCROLLPANE_DEFAULT_VERTICAL_VALUE);
+
         //Add elements to master elements and start primary stage
         hBoxMaster1.getChildren().addAll(vBox1, vbButtons3, vBoxCombo, vBoxListViewSimple, vboxWait);
-        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, vBoxTreeProgress, treeDisabled);
+        hBoxMaster2.getChildren().addAll(vBoxListView, hBoxTables, scrollPane, treeDisabled);
         Scene scene = new Scene(p);
         primaryStage.setScene(scene);
         primaryStage.setTitle("JavaFX Example Application 3");
