@@ -5,7 +5,9 @@
  */
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import static org.hamcrest.Matchers.contains;
@@ -19,6 +21,9 @@ import static org.testfx.matcher.base.NodeMatchers.hasChild;
  */
 @RobotKeywords
 public class Assert {
+
+    @Autowired
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword verifies if a component specified with <i>identifier</i>
@@ -65,6 +70,9 @@ public class Assert {
     @RobotKeyword
     @ArgumentNames({"identifier","textToValidate"})
     public void verifyThatHasText(String identifier, String textToValidate) {
+        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
+        wait.waitUntilPageContains(identifier);
+
         verifyThat( identifier, hasText(textToValidate));
     }
 
@@ -103,8 +111,10 @@ public class Assert {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void verifyThatIsEnabled(String identifier) {
-        verifyThat( identifier, isEnabled() );
+        TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
+        verifyThat( identifier, isEnabled() );
     }
 
 
@@ -143,8 +153,10 @@ public class Assert {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void verifyThatIsDisabled(String identifier) {
-        verifyThat( identifier, isDisabled() );
+        TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
+        verifyThat( identifier, isDisabled() );
     }
 
     /**
@@ -184,6 +196,9 @@ public class Assert {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void componentShouldBeVisible(String identifier) {
+        TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
+
         verifyThat( identifier, isVisible() );
     }
 
@@ -223,6 +238,9 @@ public class Assert {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void componentShouldBeInvisible(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
+
         verifyThat(identifier, isInvisible());
     }
 
@@ -272,6 +290,9 @@ public class Assert {
     @RobotKeyword
     @ArgumentNames({"identifier","identifierToValidate"})
     public void verifyThatHasChild(String identifier, String identifierToValidate) {
+        TestFxLibraryValidation.validateArguments(identifier, identifierToValidate);
+        wait.waitUntilPageContains(identifier);
+
         verifyThat( identifier, hasChild(identifierToValidate) );
     }
 
