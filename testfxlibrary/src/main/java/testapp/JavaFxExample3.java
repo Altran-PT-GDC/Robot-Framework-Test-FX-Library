@@ -622,7 +622,7 @@ public class JavaFxExample3 extends Application {
 
         ColorPicker colorPicker = new ColorPicker();
         colorPicker.setId("colorPiker");
-        colorPicker.setValue(Color.CORAL);
+        colorPicker.setValue(Color.BLUE);
         colorPicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
