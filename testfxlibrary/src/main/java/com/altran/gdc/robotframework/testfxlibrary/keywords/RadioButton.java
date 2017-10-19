@@ -229,4 +229,49 @@ public class RadioButton {
         }
     }
 
+    /**
+     *<b>Description:</b> This keyword get the name of the selected radio button toggle group passed by an <i>identifier</i> of a
+     * contained Radio Button.
+     *
+     * @param identifier
+     * : The identifier if the radiobutton
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>radiobutton1</td>
+     *         <td>Get Selected Radio Button</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public String getSelectedRadioButton(String identifier){
+        TestFxLibraryValidation.validateArguments(identifier);
+        try{
+            javafx.scene.control.RadioButton rb = TestFxLibraryCommon.lookup(identifier);
+            javafx.scene.control.RadioButton selectedToggle = (javafx.scene.control.RadioButton) rb.getToggleGroup().getSelectedToggle();
+
+            return selectedToggle.getText();
+        }catch (Exception e){
+            throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
+        }
+    }
 }

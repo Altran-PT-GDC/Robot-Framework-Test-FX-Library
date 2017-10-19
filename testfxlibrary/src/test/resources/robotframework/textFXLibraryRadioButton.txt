@@ -24,3 +24,8 @@ Test Radio Button Should Be Enabled
 Test Radio Button Should Be Disabled
     Radio Button Should Be Disabled     \#rb2
     Verify That Is Disabled  \#rb2
+
+Test Get Selected Radio Button
+    ${default_selected}=    Set Variable    Radio Button1
+    ${selected}=      Get Selected Radio Button     \#rb3
+    Should Be Equal     ${default_selected}     ${selected}

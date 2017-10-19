@@ -610,7 +610,7 @@ public class JavaFxExample3 extends Application {
         spinner.setId("spinner");
 
         //RadioButton
-        ToggleGroup group=new ToggleGroup();
+        ToggleGroup group = new ToggleGroup();
         RadioButton rb1 = new RadioButton("Radio Button1");
         rb1.setToggleGroup(group);
         rb1.setId("rb1");
