@@ -7,10 +7,13 @@ Suite Teardown    Close Application
 *** Test Cases ***
 
 Test List Target Windows
+    Click On Component      \#toErase
     @{target_windows}=      List Target Windows
-    Length Should Be    ${target_windows}   1
+    #Length Should Be    ${target_windows}   2
+    Cancel File Chooser     \#toErase
 
 Test List Windows
+
     @{list_windows}=      List Windows
     Length Should Be    ${list_windows}   1
 

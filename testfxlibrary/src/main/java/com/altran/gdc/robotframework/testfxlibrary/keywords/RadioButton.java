@@ -11,12 +11,10 @@ import org.robotframework.javalib.annotation.RobotKeywords;
 
 @RobotKeywords
 public class RadioButton {
-    private static final String IDENTIFIER_NOT_EXIST = "The identifier %s not exists!";
+    private static final String IDENTIFIER_NOT_EXIST = "The identifier does not exist!";
 
     @Autowired
     Wait wait;
-    @Autowired
-    Mouse mouse;
 
     /**
      *
@@ -56,6 +54,7 @@ public class RadioButton {
     @ArgumentNames({"identifier"})
     public void radioButtonShouldBeSelected(String identifier) {
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
         Boolean flag=false;
 
         try {
@@ -110,6 +109,7 @@ public class RadioButton {
     @ArgumentNames({"identifier"})
     public void radioButtonShouldNotBeSelected(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
         Boolean flag=true;
 
         try{
@@ -162,6 +162,7 @@ public class RadioButton {
     @ArgumentNames({"identifier"})
     public void radioButtonShouldBeEnabled(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
         Boolean flag=true;
         try{
             javafx.scene.control.RadioButton rb=TestFxLibraryCommon.lookup(identifier);
@@ -214,6 +215,7 @@ public class RadioButton {
     @ArgumentNames({"identifier"})
     public void radioButtonShouldBeDisabled(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
         Boolean flag=false;
         try{
             javafx.scene.control.RadioButton rb=TestFxLibraryCommon.lookup(identifier);
@@ -265,6 +267,7 @@ public class RadioButton {
     @ArgumentNames({"identifier"})
     public String getSelectedRadioButton(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
         try{
             javafx.scene.control.RadioButton rb = TestFxLibraryCommon.lookup(identifier);
             javafx.scene.control.RadioButton selectedToggle = (javafx.scene.control.RadioButton) rb.getToggleGroup().getSelectedToggle();
