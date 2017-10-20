@@ -14,13 +14,13 @@ public class RadioButton {
     private static final String IDENTIFIER_NOT_EXIST = "The identifier does not exist!";
 
     @Autowired
-    Wait wait;
+    private Wait wait;
 
     /**
      *
      * <b>Description:</b> This keyword check if a radio button passed by an <i>identifier</i> is selected.
      * Fails uf is not selected.
-     *
+     * <br><br>
      * @param identifier
      * : The identifier if the radiobutton
      * <br><br>
@@ -75,7 +75,7 @@ public class RadioButton {
     /**
      ** <b>Description:</b> This keyword check if a radio button passed by an <i>identifier</i> is not selected.
      * Fails uf is selected.
-     *
+     * <br><br>
      * @param identifier
      * : The identifier if the radiobutton
      * <br><br>
@@ -128,7 +128,7 @@ public class RadioButton {
     /**
      *<b>Description:</b> This keyword check if a radio button passed by an <i>identifier</i> is enabled.
      * Fails if radio button is disable.
-     *
+     * <br><br>
      * @param identifier
      * : The identifier if the radiobutton
      * <br><br>
@@ -182,7 +182,7 @@ public class RadioButton {
     /**
      *<b>Description:</b> This keyword check if a radio button passed by an <i>identifier</i> is disable.
      * Fails if radio button is enable.
-     *
+     * <br><br>
      * @param identifier
      * : The identifier if the radiobutton
      * <br><br>
@@ -232,9 +232,9 @@ public class RadioButton {
     }
 
     /**
-     *<b>Description:</b> This keyword get the name of the selected radio button toggle group passed by an <i>identifier</i> of a
+     * <b>Description:</b> This keyword get the name of the selected radio button toggle group passed by an <i>identifier</i> of a
      * contained Radio Button.
-     *
+     * <br><br>
      * @param identifier
      * : The identifier if the radiobutton
      * <br><br>
@@ -252,7 +252,8 @@ public class RadioButton {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
+     * @return
+     * The selected radio button
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -261,7 +262,6 @@ public class RadioButton {
      *         <td>Get Selected Radio Button</td>
      *     </tr>
      * </table>
-     *
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})

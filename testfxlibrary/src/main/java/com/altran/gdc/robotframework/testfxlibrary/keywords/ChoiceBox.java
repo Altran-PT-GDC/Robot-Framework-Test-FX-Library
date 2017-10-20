@@ -19,6 +19,7 @@ public class ChoiceBox {
     /**
      * <b>Description:</b> This keyword returns a String with the selected item of a choicebox
      * specified by an <i>identifier</i>.
+     * <br><br>
      * @param identifier
      * : The id of the component
      * <br><br>
@@ -53,6 +54,7 @@ public class ChoiceBox {
     @ArgumentNames({"identifier"})
     public String getSelectedChoiceboxItem(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
         javafx.scene.control.ChoiceBox cb= TestFxLibraryCommon.lookup(identifier);
         return cb.getSelectionModel().getSelectedItem().toString();
     }
@@ -60,7 +62,7 @@ public class ChoiceBox {
     /**
      *
      * <b>Description:</b> This keyword fails if a choicebox item given by <i>item</i> is not selected.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param item
@@ -101,6 +103,7 @@ public class ChoiceBox {
     @ArgumentNames({"identifier", "item"})
     public void choiceboxItemShouldBeSelected(String identifier, String item){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
         Boolean flag=false;
 
         try{
@@ -119,7 +122,7 @@ public class ChoiceBox {
 
     /**
      * <b>Description:</b> This keyword fails if a choicebox item given by <i>item</i> is selected.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param item
@@ -160,6 +163,7 @@ public class ChoiceBox {
     @ArgumentNames({"identifier", "item"})
     public void choiceboxItemShouldNotBeSelected(String identifier, String item){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
         Boolean flag=true;
 
         try{
@@ -177,7 +181,7 @@ public class ChoiceBox {
 
     /**
      * <b>Description:</b> This keyword fails if a choicebox given by <i>identifier</i> is disabled.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * <br><br>
@@ -222,7 +226,7 @@ public class ChoiceBox {
 
     /**
      * <b>Description:</b> This keyword fails if a choicebox given by <i>identifier</i> is enabled.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * <br><br>

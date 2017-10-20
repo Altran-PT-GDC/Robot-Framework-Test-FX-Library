@@ -192,7 +192,6 @@ public class Window {
      * If an error occurs a TestFxLibraryNonFatalException
      * is thrown.<br>
      *
-     * : The image format of ScreenShots
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -228,7 +227,7 @@ public class Window {
      *         <td></td>
      *     </tr>
      * </table>
-     *
+     * <br>
      */
     @RobotKeyword
     public void captureScreen(){

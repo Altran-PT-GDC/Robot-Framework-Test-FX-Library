@@ -11,14 +11,15 @@ import org.robotframework.javalib.annotation.RobotKeywords;
 @RobotKeywords
 public class ToggleButton {
 
-    private static final String TOGGLE_EXCEPTION_BEGIN = "The specified ToggleButton ";
     @Autowired
-    Wait wait;
+    private Wait wait;
+
+    private static final String TOGGLE_EXCEPTION_BEGIN = "The specified ToggleButton ";
 
     /**
      * <b>Description:</b> This keyword checks if the ToggleButton specified by an
      *  <i>identifier</i> is selected.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the ToggleButton component
      * <br><br>
@@ -68,7 +69,7 @@ public class ToggleButton {
     /**
      * <b>Description:</b> This keyword checks if the ToggleButton specified by an
      *  <i>identifier</i> is not selected.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the ToggleButton component
      * <br><br>
@@ -118,7 +119,7 @@ public class ToggleButton {
     /**
      * <b>Description:</b> This keyword checks if the ToggleButton specified by an
      *  <i>identifier</i> is Enabled.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the ToggleButton component
      * <br><br>
@@ -168,7 +169,7 @@ public class ToggleButton {
     /**
      * <b>Description:</b> This keyword checks if the ToggleButton specified by an
      *  <i>identifier</i> is Disable.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the ToggleButton component
      * <br><br>

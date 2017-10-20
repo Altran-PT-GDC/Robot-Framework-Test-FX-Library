@@ -18,13 +18,11 @@ public class Component {
 
     @Autowired
     Wait wait;
-    @Autowired
-    Mouse mouse;
 
     /**
      * <b>Description:</b> This keyword returns the number of instance's locators find in the window
      * specified with <i>identifier</i>.
-
+     * <br><br>
      * @param identifier
      * : The css class of the component
      * <br><br>
@@ -107,10 +105,7 @@ public class Component {
         wait.waitUntilPageContains(identifier);
 
         Control object=new FxRobot().lookup(identifier).query();
-
-
-
-
+        
         return object.getTooltip().getText();
     }
 

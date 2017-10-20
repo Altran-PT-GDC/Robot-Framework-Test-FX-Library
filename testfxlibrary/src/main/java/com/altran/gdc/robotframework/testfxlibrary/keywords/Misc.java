@@ -453,7 +453,7 @@ public class Misc {
      * </table>
      *
      * @return
-     * : Attribute value in a string
+     * Attribute value in a string
      *
      * <br><br>
      * <b>Examples:</b>
@@ -485,11 +485,14 @@ public class Misc {
         }
     }
 
-    /**
-     * <b>Description:</b> This keyword lists the methods of a component.<br>
+     /**
      *
      * @param identifier
      * : The component identifier
+     * @return
+     * : The component method list
+     * @throws IOException
+     * : Instantiation Exception
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -663,6 +666,8 @@ public class Misc {
      * <b>Description:</b> Switch application if more than one is running.
      * @param application
      * : The name of the application to request the focus
+     * @return
+     * : A list of applications
      * <br><br>
      * <table summary ="">
      *     <tr>

@@ -5,17 +5,21 @@ import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryConstants;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 
 @RobotKeywords
 public class ProgressIndicator {
 
+    @Autowired
+    private Wait wait;
+
     private static final String IDENTIFIER_NOT_EXIST = "The identifier %s not exists!";
 
     /**
      * <b>Description:</b> This keyword returns value from ProgressIndicator specified with <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The progress indicator id
      *
@@ -42,7 +46,7 @@ public class ProgressIndicator {
      * <b>Examples:</b>
      * <table summary="">
      *     <tr>
-     *         <td>Get Progress Indicator Value/td>
+     *         <td>Get Progress Indicator Value</td>
      *         <td>\# progressIndicatorId</td>
      *     </tr>
      * </table>
@@ -51,6 +55,7 @@ public class ProgressIndicator {
     @ArgumentNames({"identifier"})
     public Double getProgressIndicatorValue(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         Double value;
         try {
@@ -65,7 +70,7 @@ public class ProgressIndicator {
 
     /**
      * <b>Description:</b> This keyword check if the ProgressIndicator specified with <i>identifier</i> is enabled
-     *
+     * <br><br>
      * @param identifier
      * : The progress indicator id
      *
@@ -98,6 +103,7 @@ public class ProgressIndicator {
     @ArgumentNames({"identifier"})
     public void progressIndicatorShouldBeEnabled(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ProgressIndicator progressIndicator;
         try {
@@ -113,7 +119,7 @@ public class ProgressIndicator {
 
     /**
      * <b>Description:</b> This keyword check if the ProgressIndicator specified with <i>identifier</i> is disabled
-     *
+     * <br><br>
      * @param identifier
      * : The progress indicator id
      *
@@ -146,6 +152,7 @@ public class ProgressIndicator {
     @ArgumentNames({"identifier"})
     public void progressIndicatorShouldBeDisabled(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ProgressIndicator progressIndicator;
         try {
@@ -161,7 +168,7 @@ public class ProgressIndicator {
 
     /**
      * <b>Description:</b> This keyword wait until the Progress Indicator specified with <i>identifier</i> is completed given the timeout.
-     *
+     * <br><br>
      * @param identifier
      * : The progress indicator id
      *
@@ -196,6 +203,7 @@ public class ProgressIndicator {
      */
     public void waitUntilProgressIndicatorIsComplete(String identifier, int timeout){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ProgressIndicator progressIndicator;
         boolean isCompleted = false;

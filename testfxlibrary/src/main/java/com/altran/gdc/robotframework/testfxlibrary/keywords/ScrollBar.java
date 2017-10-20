@@ -18,11 +18,9 @@ public class ScrollBar {
 
     /**
      * <b>Description:</b> This keyword returns the maximum value of a scroll bar specified by <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The maximum value of the scroll bar
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -44,13 +42,14 @@ public class ScrollBar {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
-     * <br>
+     * @return
+     * The maximum value of the scroll bar
+     * <br><br>
      * <b>Examples:</b>
      * <table summary="">
      *     <tr>
      *         <td>${max_value}=</td>
-     *         <td>Get Scroll Bar Max Value/td>
+     *         <td>Get Scroll Bar Max Value</td>
      *         <td>\#scrollbar</td>
      *     </tr>
      * </table>
@@ -67,11 +66,9 @@ public class ScrollBar {
 
     /**
      * <b>Description:</b> This keyword returns the minimum value of a scroll bar specified by <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The minimum value of the scroll bar
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -86,27 +83,22 @@ public class ScrollBar {
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
-     *     <tr>
-     *         <td>value</td>
-     *         <td>Yes</td>
-     *         <td>float</td>
-     *         <td>N/A</td>
-     *     </tr>
      * </table>
-     *
-     * <br>
+     * @return
+     * The minimum value of the scroll bar
+     * <br><br>
      * <b>Examples:</b>
      * <table summary="">
      *     <tr>
      *         <td>${min_value}=</td>
-     *         <td>Get Scroll Bar Min Value/td>
+     *         <td>Get Scroll Bar Min Value</td>
      *         <td>\#scrollbar</td>
      *     </tr>
      * </table>
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public Double getSCrollBarMinValue(String identifier){
+    public Double getScrollBarMinValue(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
         wait.waitUntilPageContains(identifier);
 
@@ -116,11 +108,9 @@ public class ScrollBar {
 
     /**
      * <b>Description:</b> This keyword returns the current value of a scroll bar specified by <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The current value of the scroll bar
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -135,20 +125,15 @@ public class ScrollBar {
      *         <td>string</td>
      *         <td>N/A</td>
      *     </tr>
-     *     <tr>
-     *         <td>value</td>
-     *         <td>Yes</td>
-     *         <td>float</td>
-     *         <td>N/A</td>
-     *     </tr>
      * </table>
-     *
-     * <br>
+     * @return
+     * The current value of the scroll bar
+     * <br><br>
      * <b>Examples:</b>
      * <table summary="">
      *     <tr>
      *         <td>${current_value}=</td>
-     *         <td>Get Scroll Bar Value/td>
+     *         <td>Get Scroll Bar Value</td>
      *         <td>\#scrollbar</td>
      *     </tr>
      * </table>
@@ -165,7 +150,7 @@ public class ScrollBar {
 
     /**
      * <b>Description:</b> This keyword sets the scroll bar value to a specified <i>value</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param value
@@ -214,7 +199,7 @@ public class ScrollBar {
 
     /**
      * <b>Description:</b> This keyword fails if the value specified by <i>value</i> is not the current scroll bar specified by <i>identifier</i> value.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param value

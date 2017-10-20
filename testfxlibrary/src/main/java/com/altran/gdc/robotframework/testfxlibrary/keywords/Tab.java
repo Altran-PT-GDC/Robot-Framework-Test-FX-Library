@@ -19,11 +19,9 @@ public class Tab {
 
     /**
      * <b>Description:</b> This keyword returns a list of tabs inside a tab pane specified by <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return tabList
-     * : The list of tabs inside the tabpane
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -39,6 +37,8 @@ public class Tab {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The list of tabs inside the tabpane
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -66,7 +66,7 @@ public class Tab {
 
     /**
      * <b>Description:</b> This keyword selects a tab specified with <i>text</i> inside a tab pane specified by <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param text
@@ -126,11 +126,9 @@ public class Tab {
 
     /**
      * <b>Description:</b> This keyword returns the selected tab text inside a tab pane specified by <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return tab
-     * : The selected tab text
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -146,6 +144,8 @@ public class Tab {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The selected tab text
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -168,7 +168,7 @@ public class Tab {
 
     /**
      * <b>Description:</b> This keyword fails if a tab specified by <i>tab</i> is not selected in a tab pane specified by <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param tab
@@ -219,7 +219,7 @@ public class Tab {
 
     /**
      * <b>Description:</b> This keyword fails if a tab specified by <i>tab</i> is selected in a tab pane specified by <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param tab
@@ -269,8 +269,8 @@ public class Tab {
     }
 
     /**
-     * <b>Description:</b> This keyword fails if a tab specified by <i>tab<i> is not enabled in a tab pane specified by <i>identifier</i>.
-     *
+     * <b>Description:</b> This keyword fails if a tab specified by <i>tab</i> is not enabled in a tab pane specified by <i>identifier</i>.
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param tab
@@ -328,8 +328,8 @@ public class Tab {
     }
 
     /**
-     * <b>Description:</b> This keyword fails if a tab specified by <i>tab<i> is enabled in a tab pane specified by <i>identifier</i>.
-     *
+     * <b>Description:</b> This keyword fails if a tab specified by <i>tab</i> is enabled in a tab pane specified by <i>identifier</i>.
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param tab

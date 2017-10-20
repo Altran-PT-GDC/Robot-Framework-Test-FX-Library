@@ -5,12 +5,16 @@ import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFa
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.testfx.api.FxRobot;
 
 @RobotKeywords
 public class CheckBox {
+
+    @Autowired
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword sets the state of a checkbox specified with <i>identifier</i>.
@@ -58,6 +62,7 @@ public class CheckBox {
     public void setCheckBoxState(String identifier, String booleanValue) {
 
         TestFxLibraryValidation.validateArguments(identifier, booleanValue);
+        wait.waitUntilPageContains(identifier);
 
         try{
             javafx.scene.control.CheckBox check = TestFxLibraryCommon.lookup(identifier);
@@ -89,10 +94,8 @@ public class CheckBox {
      *         <td>N/A</td>
      *     </tr>
      * </table>
-     *
      * @return
-     * : Boolean value if the checkbox is selected (true) or not (false).
-     *
+     * Boolean value if the checkbox is selected (true) or not (false)
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -108,6 +111,7 @@ public class CheckBox {
     public Boolean getCheckBoxState(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
             javafx.scene.control.CheckBox check = TestFxLibraryCommon.lookup(identifier);
@@ -154,6 +158,7 @@ public class CheckBox {
     public void checkBoxShouldBeEnabled(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
 
@@ -204,6 +209,7 @@ public class CheckBox {
     public void checkBoxShouldBeDisabled(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
 
@@ -254,6 +260,7 @@ public class CheckBox {
     public void checkBoxShouldBeSelected(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.CheckBox checkBox = TestFxLibraryCommon.lookup(identifier);
 
@@ -305,6 +312,7 @@ public class CheckBox {
     public void checkBoxShouldNotBeSelected(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.CheckBox checkBox = TestFxLibraryCommon.lookup(identifier);
 

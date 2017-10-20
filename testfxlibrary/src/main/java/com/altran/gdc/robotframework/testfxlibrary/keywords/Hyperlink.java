@@ -12,12 +12,12 @@ import org.robotframework.javalib.annotation.RobotKeywords;
 public class Hyperlink {
 
     @Autowired
-    Wait wait;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns the text within a Hyperlink specified by an
      *  <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the Hyperlink component
      * <br><br>
@@ -67,7 +67,7 @@ public class Hyperlink {
     /**
      * <b>Description:</b> This keyword returns the status of an Hyperlink specified by an
      *  <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the Hyperlink component
      * <br><br>
@@ -117,7 +117,7 @@ public class Hyperlink {
     /**
      * <b>Description:</b> This keyword set the status of an Hyperlink specified by an
      *  <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the Hyperlink component
      * @param value
@@ -172,7 +172,7 @@ public class Hyperlink {
     /**
      * <b>Description:</b> This keyword check if Hyperlink status specified by an
      *  <i>identifier</i> is visited.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the Hyperlink component
      * <br><br>
@@ -223,7 +223,7 @@ public class Hyperlink {
     /**
      * <b>Description:</b> This keyword check if Hyperlink status specified by an
      *  <i>identifier</i> is visited.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the Hyperlink component
      * <br><br>
@@ -274,7 +274,7 @@ public class Hyperlink {
     /**
      * <b>Description:</b> This keyword check if Hyperlink specified by an
      *  <i>identifier</i> is enabled.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the Hyperlink component
      * <br><br>
@@ -325,7 +325,7 @@ public class Hyperlink {
     /**
      * <b>Description:</b> This keyword check if Hyperlink specified by an
      *  <i>identifier</i> is enabled.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the Hyperlink component
      * <br><br>

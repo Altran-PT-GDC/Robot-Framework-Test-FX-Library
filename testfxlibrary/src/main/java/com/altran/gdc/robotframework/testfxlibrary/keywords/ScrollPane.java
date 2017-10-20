@@ -11,15 +11,13 @@ import org.robotframework.javalib.annotation.RobotKeywords;
 public class ScrollPane {
 
     @Autowired
-    Wait wait;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns the maximum horizontal value of a scroll pane specified by an <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The maximum horizontal value
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -35,6 +33,8 @@ public class ScrollPane {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The maximum horizontal value
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -57,11 +57,9 @@ public class ScrollPane {
 
     /**
      * <b>Description:</b> This keyword returns the minimum horizontal value of a scroll pane specified by an <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The minimum horizontal value
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -77,6 +75,8 @@ public class ScrollPane {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The minimum horizontal value
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -99,11 +99,9 @@ public class ScrollPane {
 
     /**
      * <b>Description:</b> This keyword returns the maximum vertical value of a scroll pane specified by an <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The maximum vertical value
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -119,6 +117,8 @@ public class ScrollPane {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The maximum vertical value
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -141,11 +141,9 @@ public class ScrollPane {
 
     /**
      * <b>Description:</b> This keyword returns the minimum vertical value of a scroll pane specified by an <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The minimum vertical value
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -161,6 +159,8 @@ public class ScrollPane {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The minimum vertical value
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -183,11 +183,9 @@ public class ScrollPane {
 
     /**
      * <b>Description:</b> This keyword returns the horizontal value of a scroll pane specified by an <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The horizontal value
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -203,6 +201,8 @@ public class ScrollPane {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The horizontal value
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -225,11 +225,9 @@ public class ScrollPane {
 
     /**
      * <b>Description:</b> This keyword returns the vertical value of a scroll pane specified by an <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
-     * @return value
-     * : The vertical value
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -245,6 +243,8 @@ public class ScrollPane {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The vertical value
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">
@@ -267,7 +267,7 @@ public class ScrollPane {
 
     /**
      * <b>Description:</b> This keyword sets the horizontal value of a scroll pane specified by an <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param value
@@ -315,7 +315,7 @@ public class ScrollPane {
 
     /**
      * <b>Description:</b> This keyword sets the vertical value of a scroll pane specified by an <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The id of the component
      * @param value

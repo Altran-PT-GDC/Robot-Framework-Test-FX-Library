@@ -18,11 +18,9 @@ public class ProgressBar {
     private Wait wait;
 
     /**
-     * <b>Description:</b> This keyword returns value from ProgressBar specified with <i>identifier</i>.
-     *
+     * <b>Description:</b> This keyword returns the ProgressBar specified with <i>identifier</i> value.
      * @param identifier
      * : The progress bar id
-     *
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -46,7 +44,7 @@ public class ProgressBar {
      * <b>Examples:</b>
      * <table summary="">
      *     <tr>
-     *         <td>Get Progress Bar Value/td>
+     *         <td>Get Progress Bar Value</td>
      *         <td>\# progressBarId</td>
      *     </tr>
      * </table>
@@ -55,6 +53,7 @@ public class ProgressBar {
     @ArgumentNames({"identifier"})
     public Double getProgressBarValue(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         Double value;
         try {
@@ -102,6 +101,7 @@ public class ProgressBar {
     @ArgumentNames({"identifier"})
     public void progressBarShouldBeEnabled(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ProgressBar progressBar;
         try {
@@ -150,6 +150,7 @@ public class ProgressBar {
     @ArgumentNames({"identifier"})
     public void progressBarShouldBeDisabled(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ProgressBar progressBar;
         try {
@@ -202,6 +203,7 @@ public class ProgressBar {
     @ArgumentNames({"identifier","timeout"})
     public void waitUntilProgressBarIsComplete(String identifier, int timeout){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.ProgressBar progressBar;
         boolean isCompleted = false;

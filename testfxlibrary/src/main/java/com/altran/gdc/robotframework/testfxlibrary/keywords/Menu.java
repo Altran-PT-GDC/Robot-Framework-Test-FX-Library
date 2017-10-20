@@ -6,6 +6,7 @@ import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation
 import javafx.collections.ObservableList;
 import javafx.scene.control.MenuItem;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 
@@ -14,12 +15,15 @@ import java.util.ArrayList;
 @RobotKeywords
 public class Menu {
 
+    @Autowired
+    private Wait wait;
+
     private static final String IDENTIFIER_NOT_EXIST = "The identifier %s not exists!";
 
     /**
      * <b>Description:</b> This keyword returns the Menus
      * specified with <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The menu id
      * <br><br>
@@ -54,6 +58,7 @@ public class Menu {
     @ArgumentNames({"identifier"})
     public java.util.List<String> getMenus(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         java.util.List<String> list = new ArrayList<>();
 
@@ -73,10 +78,9 @@ public class Menu {
 
     /**
      * <b>Description:</b> This keyword returns the items for specific menu.
-     *
+     * <br><br>
      * @param identifier
      * : The menu id
-     *
      * @param menuName
      * : The menu name to get the items
      * <br><br>
@@ -89,6 +93,12 @@ public class Menu {
      *     </tr>
      *     <tr>
      *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>menuName</td>
      *         <td>Yes</td>
      *         <td>string</td>
      *         <td>N/A</td>
@@ -111,6 +121,7 @@ public class Menu {
     @ArgumentNames({"identifier","menuName"})
     public java.util.List<String> getMenuItems(String identifier, String menuName){
         TestFxLibraryValidation.validateArguments(identifier, menuName);
+        wait.waitUntilPageContains(identifier);
 
         java.util.List<String> list = new ArrayList<>();
 
@@ -141,7 +152,7 @@ public class Menu {
     /**
      * <b>Description:</b> This keyword check if the Menu specified with <i>identifier</i> should have item
      * specified with <i>item</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The menu id
      * @param item
@@ -182,6 +193,7 @@ public class Menu {
     @ArgumentNames({"identifier", "item"})
     public void menuShouldHaveItem(String identifier, String item){
         TestFxLibraryValidation.validateArguments(identifier, item);
+        wait.waitUntilPageContains(identifier);
 
         boolean found = false;
         try {
@@ -201,7 +213,7 @@ public class Menu {
     /**
      * <b>Description:</b> This keyword check if the Menu specified with <i>identifier</i> should not have item
      * specified with <i>item</i>.
-     *
+     * <br><br>
      * @param identifier
      * : The menu id
      * @param item
@@ -242,6 +254,7 @@ public class Menu {
     @ArgumentNames({"identifier", "item"})
     public void menuShouldNotHaveItem(String identifier, String item){
         TestFxLibraryValidation.validateArguments(identifier, item);
+        wait.waitUntilPageContains(identifier);
 
         boolean found = false;
         try {
@@ -266,7 +279,7 @@ public class Menu {
      * @param item
      *      The item to compare
      * @return
-     *      true is contains or false if not contains.
+     *      true if it contains or false if not contains.
      */
     private boolean compareItem(javafx.scene.control.MenuBar menuBar, String item){
         boolean found = false;
@@ -283,7 +296,7 @@ public class Menu {
 
     /**
      * <b>Description:</b> This keyword check if the Menu specified with <i>identifier</i> is visible.
-     *
+     * <br><br>
      * @param identifier
      * : The menu id
      *
@@ -322,6 +335,7 @@ public class Menu {
     @ArgumentNames({"identifier"})
     public void menuShouldBeVisible(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.MenuBar menuBar;
         try {
@@ -338,7 +352,7 @@ public class Menu {
 
     /**
      * <b>Description:</b> This keyword check if the Menu specified with <i>identifier</i> is not visible.
-     *
+     * <br><br>
      * @param identifier
      * : The menu id
      *
@@ -377,6 +391,7 @@ public class Menu {
     @ArgumentNames({"identifier"})
     public void menuShouldNotBeVisible(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
 
         javafx.scene.control.MenuBar menuBar;
         try {

@@ -18,7 +18,7 @@ public class ColorPiker {
     /**
      * <b>Description:</b> This keyword returns the Color selected in a ColorPiker specified by an
      *  <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the ColorPiker component
      * <br><br>
@@ -68,7 +68,7 @@ public class ColorPiker {
     /**
      * <b>Description:</b> This keyword checks if the color you specified matches the color seted in the ColorPiker specified by an
      *  <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the ColorPicker component
      * @param colorToValidate
@@ -126,7 +126,7 @@ public class ColorPiker {
     /**
      * <b>Description:</b> This keyword sets the color in the ColorPicker specified by an
      *  <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the ColorPicker component
      * @param colorToSet

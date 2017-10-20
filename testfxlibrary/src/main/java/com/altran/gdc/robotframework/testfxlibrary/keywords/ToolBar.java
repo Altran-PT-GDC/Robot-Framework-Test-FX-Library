@@ -22,8 +22,6 @@ public class ToolBar {
      *
      * @param identifier
      * : The id of the component
-     * @return itemList
-     * : The list of items inside the toolbar
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -39,6 +37,8 @@ public class ToolBar {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The list of items inside the toolbar
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">

@@ -413,7 +413,6 @@ public class List {
      *     </tr>
      * </table>
      *
-     *          the position of the component
      */
     @RobotKeyword
     @ArgumentNames({"identifier","position"})
@@ -530,6 +529,7 @@ public class List {
     @ArgumentNames({"identifier", "text"})
     public void listViewShouldContain(String identifier, String text) {
         ListView listView = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ObservableList items = listView.getItems();
 
@@ -594,6 +594,7 @@ public class List {
     @ArgumentNames({"identifier", "text"})
     public void listViewShouldNotContain(String identifier, String text) {
         ListView listView = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ObservableList items = listView.getItems();
 

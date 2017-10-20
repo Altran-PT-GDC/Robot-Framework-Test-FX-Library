@@ -185,7 +185,7 @@ public class TreeView {
     }
 
     /**
-     * <b>Description:</b> This keyword unselects a Tree Item on the specified index <i>index</i> from a Tree View <i>identifier</i>.<br>
+     * <b>Description:</b> This keyword collapses the Tree View specified by <i>identifier</i>.<br>
      *
      * @param identifier
      * : The id of the Tree View.
@@ -202,12 +202,6 @@ public class TreeView {
      *         <td>identifier</td>
      *         <td>Yes</td>
      *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *      <tr>
-     *         <td>index</td>
-     *         <td>Yes</td>
-     *         <td>int</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
@@ -241,11 +235,10 @@ public class TreeView {
     }
 
     /**
-     *
      * <b>Description:</b> This keyword returns the selected items from a Tree View <i>identifier</i>.<br>
      *
      * @param identifier
-     * : the TreeView locator
+     * : The TreeView locator
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -261,6 +254,8 @@ public class TreeView {
      *         <td>N/A</td>
      *     </tr>
      * </table>
+     * @return
+     * The selected tree view item
      * <br><br>
      * <b>Examples:</b>
      * <table summary="">

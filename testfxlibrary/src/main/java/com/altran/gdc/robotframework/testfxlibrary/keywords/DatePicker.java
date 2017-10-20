@@ -78,7 +78,7 @@ public class DatePicker {
     /**
      * <b>Description:</b> This keyword sets the date in the DatePicker specified by an
      *  <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the DatePicker component
      * @param date
@@ -136,7 +136,7 @@ public class DatePicker {
     /**
      * <b>Description:</b> This keyword sets the date in the DatePicker specified by an
      *  <i>identifier</i>.
-     *
+     * <br><br>
      * @param identifier
      * : the id of the DatePicker component
      * @param dateToValidate

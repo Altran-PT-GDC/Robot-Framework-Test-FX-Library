@@ -33,7 +33,7 @@ public class Keyboard {
 
     /**
      * <b>Description:</b> This keyword presses the key specified with <i>keycode</i>.<br>
-     *
+     * <br>
      * @param keycode
      * : The keycode of the key to be pressed. eg. "Enter"
      * <br><br>
@@ -85,7 +85,7 @@ public class Keyboard {
     /**
      * <b>Description:</b> This keyword erases text from a text field. The number of characters
      * erased is specified with <i>numberOfCharacters</i>.<br>
-     *
+     * <br>
      * @param numberOfCharacters
      * : The number of characters to be erased
      * <br><br>
@@ -122,7 +122,7 @@ public class Keyboard {
     /**
      * <b>Description:</b> This keyword writes text on the focused component.
      * It does not accept special characters (eg. a text field). <br>
-     *
+     * <br>
      * @param text
      * : The text to be written
      * <br><br>
@@ -162,7 +162,7 @@ public class Keyboard {
 
     /**
      * <b>Description:</b> This keyword releases the key specified with <i>keycode</i>.<br>
-     *
+     * <br>
      * @param keycode
      * : The keycode of the key to be released. eg. "Enter"
      * <br><br>
@@ -212,7 +212,7 @@ public class Keyboard {
 
     /**
      * <b>Description:</b> This keyword types the keycode specified with <i>keycode</i>.<br>
-     *
+     * <br>
      * @param keycode
      * : The keycode to be typed
      * <br><br>
@@ -251,8 +251,9 @@ public class Keyboard {
      *         <td>F10</td>
      *     </tr>
      * </table>
-     *
+     * <br><br>
      * For more information on keycodes see: https://docs.oracle.com/javafx/2/api/javafx/scene/input/KeyCode.html
+     * <br>
      */
     @RobotKeyword
     @ArgumentNames({"keycode"})
@@ -262,7 +263,7 @@ public class Keyboard {
 
     /**
      * <b>Description:</b> This keyword erases all the text on the the text area specified with <i>identifier</i>.<br>
-     *
+     * <br>
      * @param identifier
      * : The text area to be cleared of text
      * <br><br>
@@ -299,7 +300,7 @@ public class Keyboard {
 
     /**
      * <b>Description:</b> This keyword erases all the text on the the text field specified with <i>identifier</i>.<br>
-     *
+     * <br>
      * @param identifier
      * : The text field to be cleared of text
      * <br><br>
@@ -338,7 +339,7 @@ public class Keyboard {
      * <b>Description:</b> This keyword validates text in a text field. Text field is specified with
      * <i>identifier</i> and text to validate is specified with <i>textToValidate</i>. If text in the text
      * field does not match <i>textToValidate</i> a TestFxLibraryNonFatalException in thrown.<br>
-     *
+     * <br>
      * @param identifier
      * : The identifier of the text field you want to verify.
      * @param textToValidate
@@ -400,7 +401,7 @@ public class Keyboard {
      * <i>identifier</i> and the text to validate is specified with <i>textToValidate</i>. If the text in the
      * text area does not match <i>textToValidate</i> a TestFxLibraryNonFatalException
      * is thrown.<br>
-     *
+     * <br>
      * @param identifier
      * : The identifier of the text area you want to verify.
      * @param textToValidate
@@ -463,7 +464,7 @@ public class Keyboard {
      * <i>identifier</i> and text to validate is specified with <i>textToValidate</i>. If text
      * in the label does not match <i>textToValidate</i> a
      * TestFxLibraryNonFatalException in thrown.<br>
-     *
+     * <br>
      * @param identifier
      * : The identifier of the label you want to verify.
      * @param textToValidate
@@ -524,7 +525,7 @@ public class Keyboard {
     /**
      * <b>Description:</b> This keyword add text to the current text in the TextField. The TextField is specified with
      * <i>identifier</i> and text to add is specified with <i>textToValidate</i>.
-     *
+     * <br>
      * @param identifier
      * : The identifier of the label you want to verify.
      * @param text
@@ -583,7 +584,7 @@ public class Keyboard {
     /**
      * <b>Description:</b> This keyword add text to the current text in the TextArea. The TextArea is specified with
      * <i>identifier</i> and text to add is specified with <i>textToValidate</i>.
-     *
+     * <br>
      * @param identifier
      * : The identifier of the label you want to verify.
      * @param text
