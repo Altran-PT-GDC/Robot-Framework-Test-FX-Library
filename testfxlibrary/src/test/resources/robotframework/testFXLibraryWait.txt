@@ -1,6 +1,6 @@
 *** Settings ***
 Library           TestFXLibrary
-Test Setup       Start Application     testapp.JavaFxExample3
+Test Setup       Start Application     testapp.FxApplicationUnitTest
 Test Teardown    Close Application
 
 *** Test Cases ***

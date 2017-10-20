@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JavaFxExample3 extends Application {
+public class FxApplicationUnitTest extends Application {
 
     public static class HBoxCell extends HBox {
         Label label = new Label();
