@@ -49,6 +49,15 @@ public class Window {
     @Autowired
     private Wait wait;
 
+    private static void run() {
+        try {
+            new FxToolkitContext().getPrimaryStageFuture().get().setMaximized(true);
+        } catch (InterruptedException | ExecutionException e) {
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryNonFatalException(GENERAL_ERROR_MSG, e);
+        }
+    }
+
     /**
      * <b>Description:</b> This keyword closes the current focused window. If an error occurs
      * a TestFxLibraryNonFatalException is thrown.<br>
@@ -122,12 +131,7 @@ public class Window {
     public void selectWindow(String identifier) {
 
         javafx.stage.Window window = new FxRobot().targetWindow(identifier).targetWindow();
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                window.requestFocus();
-            }
-        });
+        Platform.runLater(window::requestFocus);
 
     }
 
@@ -244,7 +248,7 @@ public class Window {
             String fp = filePath + fileName + counter + "." + format;
             ImageIO.write(image, format, new File(fp));
             //This System out print can't be removed since it is respossible for the enbbeding of the ScreenShot on the Log file
-            System.out.println("*HTML* <img src=\"" + fp + "\">");
+            System.out.println("*HTML* <img src=\""+ "file://" + fp.replace("\\","/") + "\">");
             counter++;
 
         } catch (Exception e){
@@ -321,14 +325,16 @@ public class Window {
         }
     }
 
-    public void deleteFiles(){
+    private void deleteFiles(){
 
         File directory = new File(filePath);
 
         File[] files = directory.listFiles();
-        for (File f : files) {
-            if (f.getName().startsWith(fileName + format)) {
-                f.delete();
+        if (files != null) {
+            for (File f : files) {
+                if (f.getName().startsWith(fileName + format)) {
+                    f.delete();
+                }
             }
         }
     }
@@ -469,11 +475,11 @@ public class Window {
     @RobotKeyword
     public String getSelectedWindowTitle(){
         try {
-            Stage stage= null;
+            Stage stage;
             String windowTitle = "";
             List<javafx.stage.Window> windows = new FxRobot().listTargetWindows();
-            for (int i =0; i < windows.size(); i++){
-                stage = (Stage) windows.get(i);
+            for (javafx.stage.Window window : windows) {
+                stage = (Stage) window;
                 if (stage.isFocused()) {
                     windowTitle = stage.getTitle();
                 }
@@ -494,17 +500,7 @@ public class Window {
     public void maximizeWindow(){
 
         try {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        new FxToolkitContext().getPrimaryStageFuture().get().setMaximized(true);
-                    } catch (InterruptedException | ExecutionException e) {
-                        LOG.error(ERROR_MSG,e);
-                        throw new TestFxLibraryNonFatalException(GENERAL_ERROR_MSG, e);
-                    }
-                }
-            });
+            Platform.runLater(Window::run);
 
         } catch (Exception e){
             LOG.error(ERROR_MSG, e);
@@ -566,19 +562,13 @@ public class Window {
 
             double y = node.getBoundsInParent().getMaxY();
 
-            ScrollPane pane = (ScrollPane)TestFxLibraryCommon.lookup(scrollPaneIdentifier);
+            ScrollPane pane = TestFxLibraryCommon.lookup(scrollPaneIdentifier);
 
             double height = pane.getContent().getBoundsInLocal().getHeight();
 
             pane.setVvalue(y/height);
 
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-
-                    node.requestFocus();
-                }
-            });
+            Platform.runLater(node::requestFocus);
 
         } catch (Exception e) {
             LOG.error(ERROR_MSG, e);
@@ -626,12 +616,9 @@ public class Window {
         try {
             Node node = TestFxLibraryCommon.lookup(identifier);
 
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    node.setFocusTraversable(true);
-                    node.requestFocus();
-                }
+            Platform.runLater(() -> {
+                node.setFocusTraversable(true);
+                node.requestFocus();
             });
 
         } catch (Exception e) {
