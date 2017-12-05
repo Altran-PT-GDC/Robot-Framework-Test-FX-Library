@@ -127,7 +127,7 @@ public class List {
         new FxRobot().clickOn(listView);
 
         listView.getItems().forEach(item -> {
-            if(((String)item).equals(text)){
+            if(item.equals(text)){
                 listView.getSelectionModel().select(item);
             }
         });
@@ -477,7 +477,7 @@ public class List {
         ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         for(int i=0 ; i< listView.getItems().size(); i++){
-            if(((String)listView.getItems().get(i)).equals(text)){
+            if(listView.getItems().get(i).equals(text)){
                 listView.getSelectionModel().clearSelection(i);
             }
         }
@@ -666,10 +666,10 @@ public class List {
 
             String[] items = elements.split("//");
 
-            for (int i = 0; i < items.length; i++) {
-                Log.info(items[i].toString());
-                if (!listView.getSelectionModel().getSelectedItems().contains(items[i])) {
-                    throw new TestFxLibraryFatalException("Item " + items[i] + " is not selected.");
+            for (String item : items) {
+                Log.info(item);
+                if (!listView.getSelectionModel().getSelectedItems().contains(item)) {
+                    throw new TestFxLibraryFatalException("Item " + item + " is not selected.");
                 }
             }
         } catch (IllegalArgumentException e) {
@@ -729,8 +729,8 @@ public class List {
 
             String[] items = elements.split("//");
 
-            for (int i = 0; i < items.length; i++) {
-                listView.getSelectionModel().select(items[i]);
+            for (String item : items) {
+                listView.getSelectionModel().select(item);
             }
 
         } catch (IllegalArgumentException e) {

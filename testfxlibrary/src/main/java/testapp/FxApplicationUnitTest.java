@@ -5,14 +5,11 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -63,10 +60,10 @@ public class FxApplicationUnitTest extends Application {
         }
     }
 
-    private static final String FIRST_BUTTON_TEXT = new String("Button 1");
-    private static final String SECOND_BUTTON_TEXT = new String("Button 2");
-    private static final String THIRD_BUTTON_TEXT = new String("Button 3");
-    private static final String FOURTH_BUTTON_TEXT = new String("Button 4");
+    private static final String FIRST_BUTTON_TEXT = "Button 1";
+    private static final String SECOND_BUTTON_TEXT = "Button 2";
+    private static final String THIRD_BUTTON_TEXT = "Button 3";
+    private static final String FOURTH_BUTTON_TEXT = "Button 4";
     private static  final int DEFAULT_SPACING = 10;
     private static  final int TOP_PADDING = 10;
     private static  final int RIGHT_PADDING = 10;
@@ -179,10 +176,9 @@ public class FxApplicationUnitTest extends Application {
 
         int size = PROGRESSBAR_SIZE;
         new Thread(() -> {
-            for (int i = 0; i <= size; i++){
-                final double step = i;
+            for (int step = 0; step <= size; step++){
 
-                progressBar.setProgress( step / size );
+                progressBar.setProgress( (double) step / size );
 
                 try {
                     Thread.sleep(SLEEP_ONE_SECUND);
@@ -212,12 +208,10 @@ public class FxApplicationUnitTest extends Application {
         HBox hBoxProgressIndicator = new HBox();
         hBoxProgressIndicator.getChildren().addAll(progressIndicator, progressIndicator1);
 
-        int sizeIndicator = PROGRESSBAR_SIZE;
         new Thread(() -> {
-            for (int i = 0; i <= sizeIndicator; i++){
-                final double step = i;
+            for (int step = 0; step <= PROGRESSBAR_SIZE; step++){
 
-                progressIndicator.setProgress( step / size );
+                progressIndicator.setProgress( (double) step / size );
 
                 try {
                     Thread.sleep(SLEEP_ONE_SECUND);
@@ -333,54 +327,42 @@ public class FxApplicationUnitTest extends Application {
         //Open new windows with button
         Button buttonNewWindow = new Button("Open New Window");
         buttonNewWindow.setId("btnwindow");
-        buttonNewWindow.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Pane p2 = new Pane();
-                p2.setPrefSize(SEC_PANE_WIDTH, SEC_PANE_HEIGHT);
-                Scene scene2 = new Scene(p2);
-                Stage secondaryStage = new Stage();
-                secondaryStage.setScene(scene2);
-                secondaryStage.setTitle("New Window For Test");
-                secondaryStage.show();
-                Label label = new Label("Test");
-                label.setId("testLabel");
-                p2.getChildren().add(label);
-            }
+        buttonNewWindow.setOnAction(event -> {
+            Pane p2 = new Pane();
+            p2.setPrefSize(SEC_PANE_WIDTH, SEC_PANE_HEIGHT);
+            Scene scene2 = new Scene(p2);
+            Stage secondaryStage = new Stage();
+            secondaryStage.setScene(scene2);
+            secondaryStage.setTitle("New Window For Test");
+            secondaryStage.show();
+            Label label = new Label("Test");
+            label.setId("testLabel");
+            p2.getChildren().add(label);
         });
 
         //Open new window second button
         Button buttonNewWindow2 = new Button("Disabled Button");
-        p.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER){
-                    buttonNewWindow2.setDisable(false);
-                }
+        p.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                buttonNewWindow2.setDisable(false);
             }
         });
-        p.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER){
-                    buttonNewWindow2.setDisable(true);
-                }
+        p.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                buttonNewWindow2.setDisable(true);
             }
         });
 
         buttonNewWindow2.setId("disableBtn");
         buttonNewWindow2.setDisable(true);
-        buttonNewWindow2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Pane p3 = new Pane();
-                p3.setPrefSize(SEC_PANE_WIDTH, SEC_PANE_HEIGHT);
-                Scene scene3 = new Scene(p3);
-                Stage thirdStage = new Stage();
-                thirdStage.setScene(scene3);
-                thirdStage.setTitle("New Window For Test V2");
-                thirdStage.show();
-            }
+        buttonNewWindow2.setOnAction(event -> {
+            Pane p3 = new Pane();
+            p3.setPrefSize(SEC_PANE_WIDTH, SEC_PANE_HEIGHT);
+            Scene scene3 = new Scene(p3);
+            Stage thirdStage = new Stage();
+            thirdStage.setScene(scene3);
+            thirdStage.setTitle("New Window For Test V2");
+            thirdStage.show();
         });
 
         //Add text field with default text
@@ -571,13 +553,10 @@ public class FxApplicationUnitTest extends Application {
 
         final Button toBeErase = new Button("To Be Erased");
         toBeErase.setId("toErase");
-        toBeErase.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setTitle("Open Resource File");
-                fileChooser.showOpenDialog(primaryStage);
-            }
+        toBeErase.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open Resource File");
+            fileChooser.showOpenDialog(primaryStage);
         });
 
         Button testWait = new Button("Wait Button");
@@ -629,12 +608,7 @@ public class FxApplicationUnitTest extends Application {
         ColorPicker colorPicker = new ColorPicker();
         colorPicker.setId("colorPiker");
         colorPicker.setValue(Color.BLUE);
-        colorPicker.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                p.setBackground(new Background(new BackgroundFill(colorPicker.getValue(), null,null)));
-            }
-        });
+        colorPicker.setOnAction(event -> p.setBackground(new Background(new BackgroundFill(colorPicker.getValue(), null,null))));
 
         //ChoiceBox
         ChoiceBox cb = new ChoiceBox();
@@ -655,14 +629,14 @@ public class FxApplicationUnitTest extends Application {
 
 
         //TreeView
-        TreeItem<String> rootItem = new TreeItem<String> ("Inbox");
+        TreeItem<String> rootItem = new TreeItem<>("Inbox");
         rootItem.setExpanded(true);
         for (int i = 1; i < TREEITEMS_AMOUNT; i++) {
-            TreeItem<String> item = new TreeItem<String> ("Message" + i);
+            TreeItem<String> item = new TreeItem<>("Message" + i);
             rootItem.getChildren().add(item);
         }
-        TreeView<String> tree = new TreeView<String> (rootItem);
-        TreeView<String> treeDisabled = new TreeView<String> (rootItem);
+        TreeView<String> tree = new TreeView<>(rootItem);
+        TreeView<String> treeDisabled = new TreeView<>(rootItem);
         tree.setId("treeView");
         treeDisabled.setId("treeViewDisabled");
         treeDisabled.setDisable(true);

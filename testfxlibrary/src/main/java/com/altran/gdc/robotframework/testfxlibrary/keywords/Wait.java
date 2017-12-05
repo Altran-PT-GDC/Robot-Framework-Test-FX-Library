@@ -10,6 +10,7 @@ import org.robotframework.javalib.annotation.*;
 import org.testfx.service.support.WaitUntilSupport;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import static org.testfx.matcher.base.NodeMatchers.hasText;
@@ -1017,7 +1018,7 @@ public class Wait {
 
         String changedIdentifier = null;
 
-        if (identifier.substring(0) != "#") {
+        if (!Objects.equals(identifier.substring(0), "#")) {
             changedIdentifier = "#" + identifier;
         }
 
@@ -1143,7 +1144,7 @@ public class Wait {
 
         String changedIdentifier = null;
 
-        if (identifier.substring(0) != "#") {
+        if (!Objects.equals(identifier.substring(0), "#")) {
             changedIdentifier = "#" + identifier;
         }
 

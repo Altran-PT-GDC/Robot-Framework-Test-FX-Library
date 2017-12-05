@@ -115,7 +115,7 @@ public class ChoiceBox {
             throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
         }
         if(!flag){
-            throw new TestFxLibraryNonFatalException(String.format("The item is not selected!"));
+            throw new TestFxLibraryNonFatalException("The item is not selected!");
         }
 
     }
@@ -175,7 +175,7 @@ public class ChoiceBox {
             throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
         }
         if(!flag){
-            throw new TestFxLibraryNonFatalException(String.format("The item is selected!"));
+            throw new TestFxLibraryNonFatalException("The item is selected!");
         }
     }
 

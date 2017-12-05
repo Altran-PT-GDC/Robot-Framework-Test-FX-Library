@@ -41,9 +41,9 @@ public class TestFxLibraryProperties {
     /**
      * Loads properties file
      *
-     * @param propFileName
-     * @return
-     * @throws IOException
+     * @param propFileName is the name of the properties file.
+     * @return Properties from a class path.
+     * @throws IOException in case of a fail.
      */
     private Properties getPropertiesFromClasspath(String propFileName) throws IOException {
         Properties properties = new Properties();

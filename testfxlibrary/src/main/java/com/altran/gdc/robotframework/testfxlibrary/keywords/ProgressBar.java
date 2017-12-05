@@ -214,7 +214,7 @@ public class ProgressBar {
 
                 progressBar = this.getProgressBar(identifier);
 
-                if(progressBar.getProgress() == new Double(1).doubleValue()){
+                if(progressBar.getProgress() == 1d){
                     isCompleted = true;
                     break;
                 }

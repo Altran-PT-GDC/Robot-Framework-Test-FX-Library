@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class TestFxLibraryCommon {
 
-    private static final String PATTERN_COMPILE = ".*\\[\\d\\].*";
+    private static final String PATTERN_COMPILE = ".*\\[\\d].*";
     private static final int FIRST_POSITION = 1;
     private static final int SECOND_POSITION = 2;
     private static final int THIRD_POSITION = 3;
@@ -33,11 +33,11 @@ public class TestFxLibraryCommon {
      *      The Node
      */
     public static <T extends Node> T lookup(String lookup){
-        T node = null;
+        T node;
 
         List<Node> nodes = new ArrayList<>();
         String nth = null;
-        String identifier = null;
+        String identifier;
 
         String[] lookupStr = lookup.split("//");
 

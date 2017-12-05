@@ -10,10 +10,9 @@ import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
-import static org.hamcrest.Matchers.contains;
+
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.*;
-import static org.testfx.matcher.base.NodeMatchers.hasChild;
 
 /**
  *

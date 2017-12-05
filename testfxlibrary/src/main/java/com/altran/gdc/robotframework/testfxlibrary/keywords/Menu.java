@@ -195,7 +195,7 @@ public class Menu {
         TestFxLibraryValidation.validateArguments(identifier, item);
         wait.waitUntilPageContains(identifier);
 
-        boolean found = false;
+        boolean found;
         try {
             javafx.scene.control.MenuBar menuBar = TestFxLibraryCommon.lookup(identifier);
 
@@ -256,7 +256,7 @@ public class Menu {
         TestFxLibraryValidation.validateArguments(identifier, item);
         wait.waitUntilPageContains(identifier);
 
-        boolean found = false;
+        boolean found;
         try {
             javafx.scene.control.MenuBar menuBar = TestFxLibraryCommon.lookup(identifier);
 

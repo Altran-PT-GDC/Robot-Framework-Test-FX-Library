@@ -509,13 +509,12 @@ public class Table {
         ObservableList items = table.getItems();
 
         List<String> list = new ArrayList<>();
-        Iterator it = items.iterator();
-        while(it.hasNext()){
+        for (Object item : items) {
             // Get Column
             TableColumn col = (TableColumn) table.getColumns().get(columnIndex);
 
             // this gives the value in the selected cell:
-            String data = (String) col.getCellObservableValue(it.next()).getValue();
+            String data = (String) col.getCellObservableValue(item).getValue();
 
             list.add(data);
         }
@@ -710,7 +709,7 @@ public class Table {
 
             ObservableList<TableColumn> columns = table.getColumns();
             for (TableColumn col : columns) {
-                String data = "";
+                String data;
                 try{
                     data = (String) col.getCellObservableValue(it.next()).getValue();
                 }catch (Exception e) {
@@ -799,8 +798,8 @@ public class Table {
             TableColumn col = (TableColumn) table.getColumns().get(i);
             list.add((String) col.getCellObservableValue(item).getValue());
         }
-        for (int i=0;i<list.size();i++){
-            if(list.get(i).contains(text)) {
+        for (String aList : list) {
+            if (aList.contains(text)) {
                 flag = true;
             }
         }

@@ -65,9 +65,7 @@ public class ComboBox {
         javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         List<Object> list = new ArrayList<>();
-        comboBox.getItems().forEach(item ->
-            list.add(item)
-        );
+            list.addAll(comboBox.getItems());
         return list;
         } catch (IllegalArgumentException | NullPointerException e){
             throw new TestFxLibraryFatalException(e);

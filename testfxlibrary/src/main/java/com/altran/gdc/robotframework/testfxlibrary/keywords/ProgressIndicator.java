@@ -214,7 +214,7 @@ public class ProgressIndicator {
 
                 progressIndicator = this.getProgressIndicator(identifier);
 
-                if(progressIndicator.getProgress() == new Double(1).doubleValue()){
+                if(progressIndicator.getProgress() == 1d){
                     isCompleted = true;
                     break;
                 }

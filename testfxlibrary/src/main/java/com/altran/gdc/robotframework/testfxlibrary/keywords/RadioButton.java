@@ -67,7 +67,7 @@ public class RadioButton {
         }
 
         if(!flag){
-            throw new TestFxLibraryNonFatalException(String.format("The radio button is not selected!"));
+            throw new TestFxLibraryNonFatalException("The radio button is not selected!");
         }
 
     }
@@ -121,7 +121,7 @@ public class RadioButton {
             throw new TestFxLibraryNonFatalException(String.format(IDENTIFIER_NOT_EXIST, identifier), e);
         }
         if(!flag){
-            throw new TestFxLibraryNonFatalException(String.format("This radio button is selected"));
+            throw new TestFxLibraryNonFatalException("This radio button is selected");
         }
     }
 
@@ -174,7 +174,7 @@ public class RadioButton {
         }
 
         if(!flag){
-            throw new TestFxLibraryNonFatalException(String.format("This radio button is disabled"));
+            throw new TestFxLibraryNonFatalException("This radio button is disabled");
         }
 
     }
@@ -227,7 +227,7 @@ public class RadioButton {
         }
 
         if(!flag){
-            throw new TestFxLibraryNonFatalException(String.format("This radio button is enabled"));
+            throw new TestFxLibraryNonFatalException("This radio button is enabled");
         }
     }
 

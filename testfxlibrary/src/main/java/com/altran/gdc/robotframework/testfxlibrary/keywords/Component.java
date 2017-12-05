@@ -58,7 +58,7 @@ public class Component {
     public int getMatchingLocatorCount(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
         wait.waitUntilPageContains(identifier);
-        java.util.ArrayList<Object> count = new ArrayList<Object>();
+        java.util.ArrayList<Object> count = new ArrayList<>();
         count.addAll(new FxRobot().lookup(identifier).queryAll());
         return count.size();
     }

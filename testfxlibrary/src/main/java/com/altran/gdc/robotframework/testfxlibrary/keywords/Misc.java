@@ -30,7 +30,6 @@ import java.net.URLClassLoader;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.*;
-import java.util.function.Supplier;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -108,12 +107,9 @@ public class Misc {
                 FxToolkit.showStage();
                 TestFXLibraryCache.getIstance().put(KEY + distinctiveName, FxToolkit.toolkitContext().getPrimaryStageFuture());
             } else {
-                FxToolkit.registerStage(new Supplier<Stage>() {
-                    @Override
-                    public Stage get() {
-                        stage[0] = new Stage();
-                        return stage[0];
-                    }
+                FxToolkit.registerStage(() -> {
+                    stage[0] = new Stage();
+                    return stage[0];
                 });
                 FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
                 FxToolkit.showStage();
@@ -717,12 +713,7 @@ public class Misc {
                 stage = (Stage) obj;
             }
 
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    stage.requestFocus();
-                }
-            });
+            Platform.runLater(stage::requestFocus);
         }
 
         return listAppKey;

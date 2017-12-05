@@ -160,7 +160,7 @@ public class CheckBox {
         TestFxLibraryValidation.validateArguments(identifier);
         wait.waitUntilPageContains(identifier);
 
-        javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
+        javafx.scene.control.CheckBox checkBox = new FxRobot().lookup(identifier).query();
 
         try{
             if(checkBox.isDisable()){
@@ -211,7 +211,7 @@ public class CheckBox {
         TestFxLibraryValidation.validateArguments(identifier);
         wait.waitUntilPageContains(identifier);
 
-        javafx.scene.control.CheckBox checkBox = (javafx.scene.control.CheckBox)new FxRobot().lookup(identifier).query();
+        javafx.scene.control.CheckBox checkBox = new FxRobot().lookup(identifier).query();
 
         try{
             if(!checkBox.isDisable()){

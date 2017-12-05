@@ -26,7 +26,7 @@ public class TestFxLibraryValidation {
                 if(((String) obj).isEmpty()){
                     throw new IllegalArgumentException(String.format("Argument %s is empty", obj));
                 }
-            } else if (obj instanceof Boolean && ((Boolean) obj) == null ){
+            } else if (obj instanceof Boolean ){
                     throw new IllegalArgumentException(String.format("Argument %s is empty", obj));
                 }
             }
