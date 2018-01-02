@@ -33,8 +33,7 @@ First you will need to install maven and jython. You can check the instructions 
 [here](https://maven.apache.org/install.html), for Robot Framework [here](http://robotframework.org/MavenPlugin/examples/javalibraries.html) and for Jython 
 [here](https://wiki.python.org/jython/InstallationInstructions). This will enable you to run tests using Jybot.
 
-Then you need to make sure that the Path is configured. See here how to do it 
-[here](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#configuring-path).
+Then you need to make sure that the Path is configured. See [here](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#configuring-path) how to do it.
 
 ## Running the tests
 
@@ -89,9 +88,9 @@ requests to us.
 ## Authors
 
 * **Altran** - *Initial work* - [Altran Web Site](https://www.altran.com/us/en/)
-* **João Gomes** - *Initial work* 
-* **Sergio Lourenço** - *Initial work* 
-* **Diogo Ribeiro** - *Initial work* 
+* **João Gomes** - *Initial work* - [GitHub Profile](https://github.com/jdagomes)
+* **Sergio Lourenço** - *Initial work* - [LinkedIn Profile](https://www.linkedin.com/in/s%C3%A9rgio-louren%C3%A7o-7425094/)
+* **Diogo Ribeiro** - *Initial work* - [LinkedIn Profile](https://www.linkedin.com/in/diogo-ribeiro-530863a8/)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
