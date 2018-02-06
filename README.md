@@ -6,7 +6,7 @@ Altran developed and open sourced a test library for Robot Framework to enable t
 Clone repository to your machine.
 
 ```
-git clone [repository]
+git clone https://github.com/altranpt/Robot-Framework-Test-FX-Library.git
 ```
 
 The TestFXLibrary.jar needs to be in the class path during execution.
