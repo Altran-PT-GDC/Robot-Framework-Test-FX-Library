@@ -35,7 +35,7 @@ First you will need to install maven and jython. You can check the instructions 
 Then you need to make sure that the Path is configured. See here how to do it 
 [here](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#configuring-path).
 
-## Running the tests
+## Running the unit tests
 
 To run unit test via Maven, you only need to execute this command in command line : 
 
