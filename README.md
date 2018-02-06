@@ -9,7 +9,7 @@ Clone repository to your machine.
 git clone https://github.com/altranpt/Robot-Framework-Test-FX-Library.git
 ```
 
-The TestFXLibrary.jar needs to be in the class path during execution.
+The TestFXLibrary.jar needs to be in the classpath during execution. The classpath configuration is key for the library to work properly, please ensure that it correctly configured.
 
 ### Tools to help component discovery
 
