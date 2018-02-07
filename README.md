@@ -11,6 +11,8 @@ git clone https://github.com/altranpt/Robot-Framework-Test-FX-Library.git
 
 The TestFXLibrary.jar needs to be in the classpath during execution. The classpath configuration is key for the library to work properly, please ensure that it correctly configured.
 
+The library JAR can be downloaded in [releases](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/releases).
+
 ### Tools to help component discovery
 
 ScenicView - It will show all the component id's and properties for a JavaFX application. You can find more info about 
@@ -95,6 +97,8 @@ requests to us.
 
 
 See also the list of [contributors](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/contributors) who participated in this project.
+
+This project was developed with the support of [Sophia Genetics](http://www.sophiagenetics.com/)
 
 ## License
 
