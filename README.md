@@ -94,7 +94,7 @@ requests to us.
 * **Pedro Costa** - *Initial work* 
 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/contributors) who participated in this project.
 
 ## License
 
