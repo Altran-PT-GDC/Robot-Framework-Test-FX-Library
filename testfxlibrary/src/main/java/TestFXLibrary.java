@@ -32,6 +32,7 @@ import org.robotframework.javalib.library.RobotJavaLibrary;
  * Import TestFxLibrary in Robot Framework:<br>
  * <br>
  * <table>
+ *     <caption>Import</caption>
  *     <tr>
  *         <td><b>Settings</b></td>
  *         <td><b>Value</b></td>
@@ -44,6 +45,7 @@ import org.robotframework.javalib.library.RobotJavaLibrary;
  * <h3>Example Test Case</h3>
  * <b>My Test Case</b><br>
  * <table>
+ *     <caption>Example Test Cases</caption>
  *     <tr>
  *         <td>Start Application</td>
  *         <td>testapp.FxApplication</td>
