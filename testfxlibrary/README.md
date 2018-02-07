@@ -20,10 +20,6 @@ _*** Settings ***_
 
 Library | TestFXLibrary
 
-### WIKI
-
-For more information visit this repository [Wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki).
-
 ### Example Test Case
 
 _*** My Test Case ***_
@@ -36,7 +32,11 @@ Select From List View By Text |	\#listViewId | Example Text
 
 Close Application
 
-### Tools to help component discovery
+### WIKI
+
+For more information visit this repository [Wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki).
+
+## Tools to help component discovery
 
 ScenicView - It will show all the component id's and properties for a JavaFX application. You can find more info about 
 Scenic View [here](http://fxexperience.com/scenic-view/).
