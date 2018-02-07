@@ -1,89 +1,74 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
 
 *** Test Cases ***
 
 Test Get Table Column Count
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Column Count  \#table
-    Log     ${count}    WARN
-    Close Application
+    ${count}=    Get Table Column Count  \#tableView
+    ${column}=  Set Variable    3
+    Should Be Equal    "${count}"    "${column}"
 
 Test Table Should Be Visible
-    Start Application  testapp.JavafxExample
-    Table Should Be Visible  \#table
-    Close Application
+    ${table}=    Table Should Be Visible  \#tableView
+    Component Should Be Visible   \#tableView
 
 Test Table Should Not Be Visible
-    Start Application  testapp.JavafxExample
-    Table Should Not Be Visible  \#table1
-    Close Application
+    Table Should Not Be Visible  \#tableView3
+    Component Should Be Invisible   \#tableView3
 
 Test Get Table Row Count
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Row Count  \#table
-    Log     ${count}    WARN
-    Close Application
+    ${count}=    Get Table Row Count  \#tableView
+    ${row}=   Set Variable    5
+    Should Be Equal    "${count}"   "${row}"
 
 Test Get Table Headers
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Headers  \#table
-    Log     ${count}    WARN
-    Close Application
+    ${count}=    Get Table Headers  \#tableView
+    ${header}=  Set Variable    "[First Name, Last Name, Email]"
+    Should Be Equal     "${count}"  ${header}
 
 Test Get Table Values
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Values  \#table
-    Log     ${count}    WARN
-    Close Application
+    ${count}=    Get Table Values  \#tableView
+    ${values}=  Set Variable    Jacob   Smith  jacob.smith@example.com      Isabella    Johnson     isabella.johnson@example.com    Ethan    Williams    ethan.williams@example.com      Emma    Jones   emma.jones@example.com      Michael     Brown       michael.brown@example.com
+    :FOR    ${item_it}    IN    @{values}
+    \    Should Contain     "${count}"     ${item_it}
 
 Test Get Table Cell Value
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Cell Value  \#table   0   2
-    Log     ${count}    WARN
-    Close Application
+    ${count}    Get Table Cell Value  \#tableView   0   2
+    ${value}=   Set Variable    "jacob.smith@example.com"
+    Should Be Equal     "${count}"  ${value}
 
 Test Table Cell Should Contain
-    Start Application  testapp.JavafxExample
-    Table Cell Should Contain   \#table   1   0     Jonh
-    Close Application
-
+    ${table}=   Table Cell Should Contain   \#tableView   1   0     Isabella
+    ${value}=       Set Variable    Isabella
+    ${value2}=      Get Table Cell Value    \#tableView     1   0
+    Should Be Equal     ${value2}    ${value}
 
 Test Get Table Column Values
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Column Values  \#table    0
-    Log     ${count}    WARN
-    Close Application
+    ${count}=    Get Table Column Values  \#tableView    0
+    ${value}=   Set Variable   "[Jacob, Isabella, Ethan, Emma, Michael]"
+    Should Be Equal     ${value}    "${count}"
 
 Test Get Table Row Values
-    Start Application  testapp.JavafxExample
-    ${count}    Get Table Row Values  \#table    0
-    Log     ${count}    WARN
-    Close Application
-
+    ${count}=    Get Table Row Values  \#tableView    0
+    ${value}=   Set Variable    "[Jacob, Smith, jacob.smith@example.com]"
+    Should Be Equal     ${value}    "${count}"
 
 Test Table Header Should Contain
-    Start Application  testapp.JavafxExample
-    Table Header Should Contain  \#table    Email
-    Close Application
+    ${header}=      Get Table Headers    \#tableView
+    ${item_to_find}=    Set Variable    Email
+    Should Contain  ${header}   ${item_to_find}
+    Table Header Should Contain  \#tableView    Email
 
 Test Table Should Contain
-    Start Application  testapp.JavafxExample
-    Table Should Contain  \#table    Dow
-    Close Application
+    Table Should Contain  \#tableView    Jacob
+    ${item_values}=    Get Table Values    \#tableView
+    ${item_to_find}=    Set Variable    Jacob
+    Should Contain  "${item_values}"  ${item_to_find}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Test Table Row Should Contains
+    ${all_row_items}=   Get Table Row Values    \#tableView     0
+    ${item_to_find}=    Set Variable    Jacob
+    Should Contain  ${all_row_items}    ${item_to_find}
+    Table Row Should Contains  \#tableView    0      Jacob

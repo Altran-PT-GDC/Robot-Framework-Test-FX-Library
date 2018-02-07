@@ -11,17 +11,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.loadui:testFx:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Maven: org.robotframework:javalib-core:1.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2" level="project" />
     <orderEntry type="library" name="Maven: com.thoughtworks.paranamer:paranamer:1.1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.testfx:openjfx-monocle:1.8.0_20" level="project" />
     <orderEntry type="library" name="Maven: org.robotframework:robotframework:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.markusbernhardt:xml-doclet:1.0.3" level="project" />
     <orderEntry type="module-library">
       <library name="Maven: com.sun:tools:1.7">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_131/lib/tools.jar!/" />
+          <root url="jar://C:/Program Files/Java/jdk1.8.0_102/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

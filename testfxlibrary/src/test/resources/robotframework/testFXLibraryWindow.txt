@@ -1,61 +1,60 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
+Library           OperatingSystem
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
 
 *** Test Cases ***
 
-Test Close Window
-    Start Application  testapp.JavafxExample2
-    Close Current Window
-    Close Application
-
 Test List Target Windows
-    Start Application  testapp.JavafxExample2
-    List Target Windows
-    Close Application
+    @{target_windows}=      List Target Windows
+    Length Should Be    ${target_windows}   1
 
 Test List Windows
-    Start Application  testapp.JavafxExample2
-    List Windows
-    Close Application
-
-Test Target Window
-    Start Application  testapp.JavafxExample2
-    Select Window   example Gui
-    Close Application
-
-Test Window
-    Start Application  testapp.JavafxExample2
-    Window   example Gui
-    Close Application
-
-
-Test Capture Screen
-    Start Application  testapp.JavafxExample2
-    ${fp}=  Set Variable    %{USERPROFILE}\\Documents\\Test_ScreenShot\\
-    ${fname}=   Set Variable    ScreenShot
-    Set File Path   ${fp}   ${fname}    png
-    Capture Screen
-    Capture Screen
-    Capture Screen
-    Close Application
-
-Test Get Component Position
-    Start Application  testapp.JavafxExample2
-    Get Component Position  \#listView
-    Close Application
-
-Test Get Component Size
-    Start Application  testapp.JavafxExample2
-    Get Component Size  \#listView
-    Close Application
+    @{list_windows}=      List Windows
+    Length Should Be    ${list_windows}   1
 
 Test Get Selected Window Title
-    Start Application  testapp.JavafxExample2
-    Get Selected Window Title
-    Close Application
+    ${default_title}=   Set Variable    JavaFX Example Application 3
+    ${get_title}=    Get Selected Window Title
+    Should Be Equal     ${get_title}     ${default_title}
 
-Test Maximizing Window
-    Start Application  testapp.JavafxExample2
+Test Window
+    ${window}=      Set Variable      JavaFX Example Application 3
+    Window   ${window}
+    ${get_title}=    Get Selected Window Title
+    Should Be Equal     ${get_title}     ${window}
+
+Test Select Window
+    ${window_title}=      Set Variable      JavaFX Example Application 3
+    Select Window   ${window_title}
+    ${get_title}=    Get Selected Window Title
+    Should Be Equal     ${get_title}     ${window_title}
+
+Test Capture Screen
+    ${screens_directory}=       Set Variable        %{USERPROFILE}/TestFxLibrary/Screenshots/
+    Create Directory   ${screens_directory}
+    ${screen_name}=   Set Variable    ScreenShot
+    ${file_format}=     Set Variable    png
+    Set File Path   ${screens_directory}   ${screen_name}    ${file_format}
+    Capture Screen
+    Capture Screen
+    Capture Screen
+    :FOR    ${index}  IN RANGE    1   4
+    \   File Should Exist   ${screens_directory}${screen_name}${index}.${file_format}
+
+Test Get Component Position
+    @{comp_position}=       Get Component Position      \#listviewsimple
+    ${pos_x}=   Set Variable   ${comp_position[0]}
+    ${pos_y}=   Set Variable   ${comp_position[1]}
+    Click Component At Coordinates      ${pos_x}    ${pos_y}
+
+Test Get Component Size
+    @{component_size}=      Get Component Size    \#listviewsimple
+    Length Should Be    ${component_size}   2
+
+Test Focus To Component
+    Focus To Component    \#checkbox
+
+Test Maximize Window
     Maximize Window
-    Close Application

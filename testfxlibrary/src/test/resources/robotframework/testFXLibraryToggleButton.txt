@@ -1,0 +1,17 @@
+*** Settings ***
+Library           TestFXLibrary
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
+
+*** Test Cases ***
+Test ToggleButton Button Should Be Selected
+    ToggleButton Button Should Be Selected      \#toggleButtonDisableSelected
+
+Test ToggleButton Button Should Not Be Selected
+    ToggleButton Button Should Not Be Selected      \#toggleButton
+
+Test ToggleButton Should Be Enabled
+    ToggleButton Should Be Enabled      \#toggleButton
+
+Test ToggleButton Should Be Disabled
+    ToggleButton Should Be Disabled      \#toggleButtonDisableSelected

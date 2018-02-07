@@ -1,9 +1,11 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
+import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
@@ -13,11 +15,12 @@ import org.testfx.api.FxRobot;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
 @RobotKeywords
 public class List {
 
     @Autowired
-    Misc misc;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns a list with the values in a listview specified with
@@ -59,9 +62,9 @@ public class List {
     public java.util.List<String> getListItemsFromListView(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         java.util.List<String> list = new ArrayList<>();
         listView.getItems().forEach(item ->
@@ -117,14 +120,14 @@ public class List {
     public void selectFromListViewByText(String identifier, String text){
         TestFxLibraryValidation.validateArguments(identifier, text);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(listView);
 
         listView.getItems().forEach(item -> {
-            if(((String)item).equals(text)){
+            if(item.equals(text)){
                 listView.getSelectionModel().select(item);
             }
         });
@@ -179,9 +182,9 @@ public class List {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateIndex(position);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(listView);
 
@@ -229,9 +232,9 @@ public class List {
     public java.util.List<String> getSelectedItemsFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
         return listView.getSelectionModel().getSelectedItems();
     }
 
@@ -276,9 +279,9 @@ public class List {
     public int getListItemCountFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
         return listView.getSelectionModel().getSelectedItems().size();
     }
 
@@ -318,9 +321,9 @@ public class List {
     public void clearSelectionFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         listView.getSelectionModel().clearSelection();
     }
@@ -363,9 +366,9 @@ public class List {
     public void selectAllFromList(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         listView.getSelectionModel().selectAll();
     }
@@ -410,16 +413,15 @@ public class List {
      *     </tr>
      * </table>
      *
-     *          the position of the component
      */
     @RobotKeyword
     @ArgumentNames({"identifier","position"})
     public void unselectFromListByPosition(String identifier, int position){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         listView.getSelectionModel().clearSelection(position);
     }
@@ -470,12 +472,12 @@ public class List {
     public void unselectFromListByText(String identifier, String text){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
 
         for(int i=0 ; i< listView.getItems().size(); i++){
-            if(((String)listView.getItems().get(i)).equals(text)){
+            if(listView.getItems().get(i).equals(text)){
                 listView.getSelectionModel().clearSelection(i);
             }
         }
@@ -526,7 +528,8 @@ public class List {
     @RobotKeyword
     @ArgumentNames({"identifier", "text"})
     public void listViewShouldContain(String identifier, String text) {
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ObservableList items = listView.getItems();
 
@@ -590,7 +593,8 @@ public class List {
     @RobotKeyword
     @ArgumentNames({"identifier", "text"})
     public void listViewShouldNotContain(String identifier, String text) {
-        ListView listView = new FxRobot().lookup(identifier).query();
+        ListView listView = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
 
         ObservableList items = listView.getItems();
 
@@ -607,6 +611,131 @@ public class List {
         }
 
 
+    }
+
+    /**
+     * <b>Description:</b> This keyword selects all items on a listview. <i>identifier</i>
+     * specifies the listview.<br>
+     *
+     * @param identifier
+     * : The id of the listview
+     * @param elements
+     * : The id of the elements that you want to validate if they are selected. The list of elements should be splited by <b>//</b>.
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>elements</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select All From List</td>
+     *         <td>idListView56</td>
+     *         <td>first//Secund//Third//Fourth</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier","elements"})
+    public void listSelectionShouldBe(String identifier, String elements) {
+        TestFxLibraryValidation.validateArguments(identifier, elements);
+
+        wait.waitUntilPageContains(identifier);
+
+        try {
+            ListView listView = TestFxLibraryCommon.lookup(identifier);
+
+            String[] items = elements.split("//");
+
+            for (String item : items) {
+                Log.info(item);
+                if (!listView.getSelectionModel().getSelectedItems().contains(item)) {
+                    throw new TestFxLibraryFatalException("Item " + item + " is not selected.");
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword selects items on a listview specified by <i>identifier</i> and a list of <i>elements</i>.<br>
+     *
+     * @param identifier
+     * : The id of the listview
+     * @param elements
+     * : The id of the elements that you want to validate if they are selected. The list of elements should be splited by <b>//</b>.
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>elements</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Select Items From List View</td>
+     *         <td>idListView</td>
+     *         <td>first//Secund//Third//Fourth</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier","elements"})
+    public void selectItemsFromListView(String identifier, String elements) {
+        TestFxLibraryValidation.validateArguments(identifier, elements);
+
+        wait.waitUntilPageContains(identifier);
+
+        try {
+            ListView listView = TestFxLibraryCommon.lookup(identifier);
+
+            String[] items = elements.split("//");
+
+            for (String item : items) {
+                listView.getSelectionModel().select(item);
+            }
+
+        } catch (IllegalArgumentException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
     }
 
 }

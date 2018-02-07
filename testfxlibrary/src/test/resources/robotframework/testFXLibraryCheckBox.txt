@@ -1,0 +1,33 @@
+*** Settings ***
+Library           TestFXLibrary
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
+
+*** Test Cases ***
+
+Test Get CheckBox State
+    ${status}     Get CheckBox State    \#checkbox
+    Should Be Equal     "${status}"       "False"
+
+Test Set CheckBox State
+    Set CheckBox State    \#checkbox   true
+    ${status}=     Get CheckBox State    \#checkbox
+    Should Be Equal     "${status}"     "True"
+
+Test CheckBox Should Be Enabled
+    CheckBox Should Be Enabled   \#checkbox
+
+Test CheckBox Should Be Disabled
+    CheckBox Should Be Disabled   \#disabledCheckbox
+
+Test CheckBox Should Be Selected
+    Set CheckBox State    \#checkbox   true
+    CheckBox Should Be Selected   \#checkbox
+    ${status}=     Get CheckBox State    \#checkbox
+    Should Be Equal     "${status}"     "True"
+
+Test CheckBox Should Not Be Selected
+    Set CheckBox State    \#checkbox   false
+    CheckBox Should Not Be Selected   \#checkbox
+    ${status}     Get CheckBox State    \#checkbox
+    Should Be Equal     "${status}"       "False"

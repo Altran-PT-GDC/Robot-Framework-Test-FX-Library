@@ -1,0 +1,40 @@
+*** Settings ***
+Library           TestFXLibrary
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
+
+*** Test Cases ***
+
+Test Get Menus
+    @{default_items}=   Set Variable    File    View
+    @{menu_items}=   Get Menus  \#menuBar
+    Should Be Equal   ${menu_items}       ${default_items}
+
+Test Get Menu Items
+    @{default_items}=   Set Variable    Save    Exit
+    @{menu_items}=   Get Menu Items  \#menuBar  File
+    Should Be Equal   ${menu_items}       ${default_items}
+
+Test Menu Should Have Item
+    ${item}=   Set Variable    Save
+    Menu Should Have Item  \#menuBar   ${item}
+    @{menu_items}=   Get Menu Items  \#menuBar    File
+    Should Contain    ${menu_items}     ${item}
+
+Test Menu Should Not Have Item
+    ${false_item}=    Set Variable    Open
+    Menu Should Not Have Item  \#menuBar   ${false_item}
+    @{menu_items}=   Get Menu Items  \#menuBar  File
+    Should Not Contain    ${menu_items}     ${false_item}
+
+Test Menu Should Be Visible
+    Menu Should Be Visible  \#menuBar
+    ${attribute}=   Set Variable    isVisible
+    ${status}=   Get Component Attribute    \#menuBar    ${attribute}
+    Should Be True      ${${status}}==${TRUE}
+
+Test Menu Should Not Be Visible
+    Menu Should Not Be Visible  \#menuBar1
+    ${attribute}=   Set Variable    isVisible
+    ${status}=   Get Component Attribute    \#menuBar1    ${attribute}
+    Should Be True      ${${status}}==${FALSE}

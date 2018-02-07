@@ -1,16 +1,17 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.robotframework.javalib.annotation.ArgumentNames;
+import org.robotframework.javalib.annotation.Autowired;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testfx.api.FxRobot;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,6 +19,9 @@ import java.util.List;
 
 @RobotKeywords
 public class Table {
+
+    @Autowired
+    private Wait wait;
 
     private static final Logger LOG = LoggerFactory.getLogger(Table.class);
     private static String ERROR_MSG = "The table not contains the text %s";
@@ -45,7 +49,7 @@ public class Table {
      * </table>
      *
      * @return
-     * : The number of columns
+     * The column count
      *
      * <br><br>
      * <b>Examples:</b>
@@ -60,7 +64,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public int getTableColumnCount(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
         return table.getColumns().size();
     }
 
@@ -99,7 +104,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void tableShouldBeVisible(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
         if (!table.isVisible()){
            throw new TestFxLibraryNonFatalException("Table is not visible");
         }
@@ -140,7 +146,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void tableShouldNotBeVisible(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
         if (table.isVisible()){
             throw new TestFxLibraryNonFatalException("Table is visible");
         }
@@ -184,7 +191,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public int getTableRowCount(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
         return table.getItems().size();
     }
 
@@ -226,7 +234,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public List<String> getTableHeaders(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
         ObservableList<TableColumn> columns = table.getColumns();
 
         List<String> columnName = new ArrayList<>();
@@ -275,7 +284,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public List<String> getTableValues(String identifier){
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
         return table.getItems();
     }
 
@@ -340,8 +350,9 @@ public class Table {
     public String getTableCellValue(String identifier, int rowIndex, int columnIndex){
         TestFxLibraryValidation.validateIndex(rowIndex);
         TestFxLibraryValidation.validateIndex(columnIndex);
+        wait.waitUntilPageContains(identifier);
 
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
 
         // Item row
         Object item = table.getItems().get(rowIndex);
@@ -421,8 +432,9 @@ public class Table {
     public void tableCellShouldContain(String identifier, int rowIndex, int columnIndex, String text){
         TestFxLibraryValidation.validateIndex(rowIndex);
         TestFxLibraryValidation.validateIndex(columnIndex);
+        wait.waitUntilPageContains(identifier);
 
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
 
         // Item row
         Object item = table.getItems().get(rowIndex);
@@ -471,7 +483,7 @@ public class Table {
      * </table>
      *
      * @return
-     *  List of values
+     * List of values
      *
      * <br><br>
      * <b>Examples:</b>
@@ -489,20 +501,20 @@ public class Table {
     @ArgumentNames({"identifier", "columnIndex"})
     public List<String> getTableColumnValues(String identifier, int columnIndex){
         TestFxLibraryValidation.validateIndex(columnIndex);
+        wait.waitUntilPageContains(identifier);
 
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
 
         // Item row
         ObservableList items = table.getItems();
 
         List<String> list = new ArrayList<>();
-        Iterator it = items.iterator();
-        while(it.hasNext()){
+        for (Object item : items) {
             // Get Column
             TableColumn col = (TableColumn) table.getColumns().get(columnIndex);
 
             // this gives the value in the selected cell:
-            String data = (String) col.getCellObservableValue(it.next()).getValue();
+            String data = (String) col.getCellObservableValue(item).getValue();
 
             list.add(data);
         }
@@ -544,7 +556,7 @@ public class Table {
      * </table>
      *
      * @return
-     *  List of values
+     * List of values
      *
      * <br><br>
      * <b>Examples:</b>
@@ -562,8 +574,9 @@ public class Table {
     @ArgumentNames({"identifier", "rowIndex"})
     public List<String> getTableRowValues(String identifier, int rowIndex){
         TestFxLibraryValidation.validateIndex(rowIndex);
+        wait.waitUntilPageContains(identifier);
         
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
 
         // Item row
         Object item = table.getItems().get(rowIndex);
@@ -622,7 +635,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"ientifier", "text"})
     public void tableHeaderShouldContain(String identifier, String text) {
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
         ObservableList<TableColumn> columns = table.getColumns();
 
         boolean flag = false;
@@ -683,7 +697,8 @@ public class Table {
     @RobotKeyword
     @ArgumentNames({"ientifier", "text"})
     public void tableShouldContain(String identifier, String text) {
-        TableView table = new FxRobot().lookup(identifier).query();
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
         // Item row
         ObservableList items = table.getItems();
 
@@ -694,7 +709,7 @@ public class Table {
 
             ObservableList<TableColumn> columns = table.getColumns();
             for (TableColumn col : columns) {
-                String data = "";
+                String data;
                 try{
                     data = (String) col.getCellObservableValue(it.next()).getValue();
                 }catch (Exception e) {
@@ -708,6 +723,85 @@ public class Table {
                 }
             }
             break;
+        }
+
+        if(!flag){
+            throw new TestFxLibraryNonFatalException(String.format(ERROR_MSG, text));
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword validates if a text is present on a given table and row.
+     * <i>identifier</i> specifies the table, <i>row</i> specifies the row number and
+     * <i>text</i> specifies the text to be found on that table row. If text is not found
+     * a TestFxLibraryNonFatalException is thrown.<br>
+     *
+     * @param identifier
+     * :The id of the table
+     * @param row
+     * :row oh the table
+     * @param text
+     * :text to compare
+     *
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>rowIndex</td>
+     *         <td>Yes</td>
+     *         <td>int (0 to max row index)</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>text</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>tableRowShouldContains</td>
+     *         <td>idTable05</td>
+     *         <td>5</td>
+     *         <td>Hello World</td>
+     *     </tr>
+     * </table>
+     *
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier", "row", "text"})
+    public void tableRowShouldContains(String identifier, int row, String text){
+        TableView table = TestFxLibraryCommon.lookup(identifier);
+        wait.waitUntilPageContains(identifier);
+
+        boolean flag=false;
+        // Item row
+        Object item = table.getItems().get(row);
+
+        List<String> list = new ArrayList<>();
+        for(int i = 0; i < table.getColumns().size(); i++){
+            TableColumn col = (TableColumn) table.getColumns().get(i);
+            list.add((String) col.getCellObservableValue(item).getValue());
+        }
+        for (String aList : list) {
+            if (aList.contains(text)) {
+                flag = true;
+            }
         }
 
         if(!flag){

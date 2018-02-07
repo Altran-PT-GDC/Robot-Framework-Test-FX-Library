@@ -6,17 +6,13 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
-import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
-import com.altran.gdc.robotframework.testfxlibrary.utils.TestFXLibraryCache;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.geometry.HorizontalDirection;
 import javafx.geometry.Point2D;
 import javafx.geometry.VerticalDirection;
 import javafx.scene.Node;
-import javafx.scene.control.CheckBox;
 import org.robotframework.javalib.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testfx.api.FxRobot;
 import org.testfx.robot.Motion;
 import java.util.Set;
@@ -31,10 +27,12 @@ public class Mouse {
 
     @Autowired
     private Logging logging;
+
+    @Autowired
+    private Wait wait;
+
     @Autowired
     private Misc misc;
-
-    private static final Logger LOG = LoggerFactory.getLogger(Logging.class);
 
     /**
      * <b>Description:</b>This keyword clicks on a component specified with <i>identifier</i>.<br>
@@ -69,9 +67,63 @@ public class Mouse {
      * @throws TimeoutException
      * : If something goes wrong
      */
-    @RobotKeywordOverload
+    @RobotKeyword
     public void clickOnComponent(String identifier) throws TimeoutException {
-        clickOnComponent(identifier, null);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().clickOn(n);
+    }
+
+    /**
+     * <b>Description:</b>This keyword clicks on a component specified with <i>identifier</i>.<br>
+     *
+     * @param identifier
+     * : The identifier of the component
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>n</td>
+     *         <td>Yes</td>
+     *         <td>int</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#button</td>
+     *         <td>2</td>
+     *         <td>Click On Nth Component</td>
+     *     </tr>
+     * </table>
+     * @throws TimeoutException
+     * : If something goes wrong
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void clickOnNthComponent(String identifier) throws TimeoutException {
+        TestFxLibraryValidation.validateArguments(identifier);
+
+        try {
+            Node node = TestFxLibraryCommon.lookup(identifier);
+            new FxRobot().clickOn(node);
+        }catch (IllegalArgumentException e){
+            throw new TestFxLibraryFatalException(e);
+        }
     }
 
     /**
@@ -124,67 +176,6 @@ public class Mouse {
     }
 
     /**
-     * <b>Description:</b>This keyword clicks on a component specified with
-     * <i>identifier</i> within a parent component specified with <i>nodeKey</i>.
-     * If <i>nodeKey</i> is not provided, <i>identifier</i> is used alone.<br>
-     *
-     * @throws TimeoutException
-     *  If something goes wrong
-     *
-     * @param identifier
-     * : The identifier of the component
-     * @param nodeKey
-     * : The parent component of <i>identifier</i>.
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>nodeKey</td>
-     *         <td>No</td>
-     *         <td>string</td>
-     *         <td>null</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Click On Component</td>
-     *         <td>idComponent05</td>
-     *         <td>aNodeKey</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Click On Component</td>
-     *         <td>idComponent05</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "nodeKey=null"})
-    public void clickOnComponent(String identifier, String nodeKey) throws TimeoutException {
-        if(nodeKey != null){
-            Node node = (Node) TestFXLibraryCache.getIstance().get(nodeKey);
-            Node n = new FxRobot().from(node).lookup(identifier).query();
-            new FxRobot().clickOn(n);
-        } else {
-            new FxRobot().clickOn(identifier);
-        }
-    }
-
-    /**
      * <b>Description:</b> This keyword double clicks on a component specified with <i>identifier</i>.<br>
      *
      * @param identifier
@@ -217,7 +208,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void doubleClickOnComponent(String identifier) {
-        new FxRobot().doubleClickOn(identifier);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().doubleClickOn(n);
     }
 
     /**
@@ -253,7 +245,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void drag(String identifier) {
-        new FxRobot().drag(identifier);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().drag(n);
     }
 
     /**
@@ -262,6 +255,7 @@ public class Mouse {
      */
     @RobotKeyword
     public void drop() {
+
         new FxRobot().drop();
     }
 
@@ -299,7 +293,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void dropTo(String identifier) {
-        new FxRobot().dropTo(identifier);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().dropTo(n);
     }
 
     /**
@@ -381,7 +376,9 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void moveTo(String identifier) {
-        new FxRobot().moveTo(identifier, Motion.DIRECT);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+
+        new FxRobot().moveTo(n, Motion.DIRECT);
     }
 
     /**
@@ -417,7 +414,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void rightClickOnComponent(String identifier) {
-        new FxRobot().rightClickOn(identifier, Motion.DIRECT);
+        Node n = TestFxLibraryCommon.lookup(identifier);
+        new FxRobot().rightClickOn(n, Motion.DIRECT);
     }
 
     /**
@@ -453,6 +451,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollLeft(int amount) {
+
         new FxRobot().scroll(amount, HorizontalDirection.LEFT);
     }
 
@@ -489,6 +488,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollRight(int amount) {
+
         new FxRobot().scroll(amount, HorizontalDirection.RIGHT);
     }
 
@@ -525,6 +525,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollUp(int amount) {
+
         new FxRobot().scroll(amount, VerticalDirection.UP);
     }
 
@@ -561,6 +562,7 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"amount"})
     public void scrollDown(int amount) {
+
         new FxRobot().scroll(amount, VerticalDirection.DOWN);
     }
 
@@ -601,315 +603,8 @@ public class Mouse {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public Set<Node> getNodeList(String identifier) {
+
         return new FxRobot().lookup(identifier).queryAll();
-    }
-
-    /**
-     * <b>Description:</b> This keyword sets the state of a checkbox specified with <i>identifier</i>.
-     * <i>booleanValue</i> is a boolean which defines the state<br>
-     *
-     * @param identifier
-     * : The identifier of the checkbox
-     * @param booleanValue
-     * : Boolean value to set the checkbox selection
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>booleanValue</td>
-     *         <td>Yes</td>
-     *         <td>boolean</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     *<br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Set Check Box State</td>
-     *         <td>idCheckBox05</td>
-     *         <td>true</td>
-     *     </tr>
-     * </table>
-     *
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier" , "booleanValue"})
-    public void setCheckBoxState(String identifier, String booleanValue) {
-
-        TestFxLibraryValidation.validateArguments(identifier, booleanValue);
-
-        try{
-            CheckBox check = new FxRobot().lookup(identifier).query();
-            check.setSelected(Boolean.valueOf(booleanValue));
-        } catch (IllegalArgumentException | NullPointerException e) {
-            throw  new TestFxLibraryFatalException(e);
-        }
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword returns the boolean value state of a given
-     * checkbox identified with <i>identifier</i>.<br>
-     *
-     * @param identifier
-     * : The identifier of the checkbox
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * @return
-     * : Boolean value if the checkbox is selected (true) or not (false).
-     *
-     * <br><br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>${boolean}=</td>
-     *         <td>Get Check Box State</td>
-     *         <td>idCheckBox05</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public Boolean getCheckBoxState(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        try{
-            CheckBox check = new FxRobot().lookup(identifier).query();
-            return check.isSelected();
-        } catch (IllegalArgumentException | NullPointerException e) {
-            throw  new TestFxLibraryFatalException(e);
-        }
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword tests if a given checkbox specified with <i>identifier</i> is enabled.<br>
-     *
-     * @param identifier
-     * : The identifier of the checkbox
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Check Box Should Be Enabled</td>
-     *         <td>idCheckBox05</td>
-     *     </tr>
-     * </table>
-     *
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public void checkBoxShouldBeEnabled(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        try{
-            if(getCheckBoxState(identifier).equals(true)){
-                LOG.info("CheckBox is enabled!");
-            } else {
-                throw new TestFxLibraryNonFatalException("Component is disabled");
-            }
-        } catch (IllegalArgumentException | NullPointerException e) {
-            throw  new TestFxLibraryFatalException(e);
-        }
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword tests if a given checkbox specified
-     * with <i>identifier</i> is disabled<br>
-     *
-     * @param identifier
-     * : The identifier of the checkbox
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Check Box Should Be Disabled</td>
-     *         <td>idCheckBox05</td>
-     *     </tr>
-     * </table>
-     *
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public void checkBoxShouldBeDisabled(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        try{
-            if(getCheckBoxState(identifier).equals(false)){
-                LOG.info("CheckBox is disabled!");
-            } else {
-                throw new TestFxLibraryNonFatalException("Component is enabled");
-            }
-        } catch (IllegalArgumentException | NullPointerException e) {
-            throw  new TestFxLibraryFatalException(e);
-        }
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword verifies if a checkbox specified with <i>identifier</i> is selected.
-     * If this checkbox is not selected a TestFxLibraryFatalException is thrown.<br>
-     *
-     * @param identifier
-     * : The identifier of the checkbox
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Check Box Should Be Selected</td>
-     *         <td>idCheckBox05</td>
-     *     </tr>
-     * </table>
-     *
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public void checkBoxShouldBeSelected(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        CheckBox checkBox = new FxRobot().lookup(identifier).query();
-
-        try{
-            if(!checkBox.isSelected()){
-                LOG.info("CheckBox is unselected!");
-                throw new TestFxLibraryNonFatalException("CheckBox is unselected!");
-            }
-        } catch (IllegalArgumentException | NullPointerException e) {
-            throw  new TestFxLibraryFatalException(e);
-        }
-
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword verifies if a checkbox specified with <i>identifier</i> is not selected.
-     * If this checkbox is selected a TestFxLibraryFatalException is thrown.<br>
-     *
-     * @param identifier
-     * : The identifier of the checkbox
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Check Box Should Not Be Selected</td>
-     *         <td>idCheckBox05</td>
-     *     </tr>
-     * </table>
-     *
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public void checkBoxShouldNotBeSelected(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        CheckBox checkBox = new FxRobot().lookup(identifier).query();
-
-        try{
-            if(checkBox.isSelected()){
-                LOG.info("CheckBox is selected!");
-                throw new TestFxLibraryNonFatalException("CheckBox is selected!");
-            }
-        } catch (IllegalArgumentException | NullPointerException e) {
-            throw  new TestFxLibraryFatalException(e);
-        }
-
     }
 
     /**
@@ -961,7 +656,7 @@ public class Mouse {
         TestFxLibraryValidation.validateArguments(identifier, functionText);
 
         try{
-            misc.waitUntilPageContains(identifier);
+            wait.waitUntilPageContains(identifier);
             rightClickOnComponent(identifier);
             clickOnComponent(functionText);
         } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {

@@ -1,0 +1,20 @@
+*** Settings ***
+Library           TestFXLibrary
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
+
+*** Test Cases ***
+Test Get Selected Colorpicker Color
+    ${selected_color}=     Set Variable     0x0000ffff
+    ${color}=   Get Selected Colorpicker Color     \#colorPiker
+    Should Be Equal     ${color}     ${selected_color}
+
+Test ColorPicker Color Should Be
+    ${default_color}=    Set Variable    0x0000ffff
+    ColorPicker Color Should Be      \#colorPiker     ${default_color}
+
+Test Set ColorPicker Color
+    ${color}=   Set Variable    0xffffffff
+    Set ColorPicker Color     \#colorPiker      ${color}
+    ${selected_color}=     Get Selected Colorpicker Color       \#colorPiker
+    Should Be Equal     ${color}     ${selected_color}

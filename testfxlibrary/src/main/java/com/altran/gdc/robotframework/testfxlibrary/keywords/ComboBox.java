@@ -1,6 +1,7 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.javalib.annotation.Autowired;
@@ -17,7 +18,7 @@ public class ComboBox {
     private boolean verifyComboBoxText = false;
 
     @Autowired
-    Misc misc;
+    private Wait wait;
 
     /**
      * <b>Description:</b> This keyword returns a list of values from a combobox specified with <i>identifier</i>.<br>
@@ -58,15 +59,13 @@ public class ComboBox {
     public List<Object> getListItemsFromComboBox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         List<Object> list = new ArrayList<>();
-        comboBox.getItems().forEach(item ->
-            list.add(item)
-        );
+            list.addAll(comboBox.getItems());
         return list;
         } catch (IllegalArgumentException | NullPointerException e){
             throw new TestFxLibraryFatalException(e);
@@ -118,11 +117,11 @@ public class ComboBox {
     public void selectFromComboBoxByText(String identifier, String text){
         TestFxLibraryValidation.validateArguments(identifier, text);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try{
 
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(comboBox);
 
@@ -176,12 +175,12 @@ public class ComboBox {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public void selectFristFromComboBox(String identifier){
+    public void selectFirstFromComboBox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(comboBox);
         comboBox.getSelectionModel().selectFirst();
@@ -236,9 +235,9 @@ public class ComboBox {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateIndex(position);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         new FxRobot().clickOn(comboBox);
 
@@ -284,12 +283,12 @@ public class ComboBox {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public String getSelectedItemFromCombox(String identifier){
+    public String getSelectedItemFromCombobox(String identifier){
         TestFxLibraryValidation.validateArguments(identifier);
 
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
-        javafx.scene.control.ComboBox comboBox = new FxRobot().lookup(identifier).query();
+        javafx.scene.control.ComboBox comboBox = TestFxLibraryCommon.lookup(identifier);
 
         return (String)comboBox.getSelectionModel().getSelectedItem();
 

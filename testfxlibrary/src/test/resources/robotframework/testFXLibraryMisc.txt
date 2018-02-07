@@ -1,94 +1,59 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
 
 *** Test Cases ***
-Test Wait Until Element Contains
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     Wait Until Element Contains   Fruit or Veg  Fruit or Veg
-     Log     OK      WARN
+
+Test Start Application
+     Close Application
+     Start Application  testapp.FxApplicationUnitTest
      Close Application
 
-Test Wait Until Element Does Not Contains
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     Wait Until Element Does Not Contains   Fruit or Veg  Batatas
-     Log     OK      WARN
+Test Multiple Start Application Overload KeyWord
+     Start Application  testapp.FxApplicationUnitTest  app1
+     Start Application  testapp.FxApplicationUnitTest  app2
      Close Application
 
-Test Wait Until Element Is Enabled
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     Wait Until Element Is Enabled   Fruit or Veg
-     Log     OK      WARN
+Test Switch Application
+     Start Application  testapp.FxApplicationUnitTest  app1
+     Start Application  testapp.FxApplicationUnitTest  app2
+     Switch Application     app1
      Close Application
+     [Teardown]     Start Application   testapp.FxApplicationUnitTest
 
-Test Wait Until Element Is Visible
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     Wait Until Element Is Enabled   Fruit or Veg
-     Log     OK      WARN
+Test Switch Application not exist
+     Start Application  testapp.FxApplicationUnitTest  app1
+     Start Application  testapp.FxApplicationUnitTest  app2
+     ${listApp} =   Switch Application     app4
      Close Application
+     [Teardown]     Start Application   testapp.FxApplicationUnitTest
 
-Test Wait Until Element Is Enabled Time Out
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     Set Timeout     Timeout   1
-     ${status}=  Run Keyword and return status   Wait Until Element Is Enabled   Fruit or Veg
-     Run keyword if  ${status} is ${TRUE}   Fail
-     Close Application
-
-Test Wait Until Page Contains on Application
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     Set Timeout     Timeout   20
-     Wait Until Page Contains       test
-     Click On Component    test
-     Close Application
-
-Test Wait Until Page Contains on Application Time Out
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     ${status}=  Run Keyword and return status   Wait Until Page Contains       test    1
-     Run keyword if  ${status} is ${TRUE}   Fail
-     Log     ${status}   WARN
-     Close Application
-
-Test Wait Until Page Does Not Contains on Application
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     Wait Until Page Does Not Contains   To Be Erase
-     Close Application
-
-Test Wait Until Page Does Not Contains on Application Time Out
-     Start Application  testapp.JavafxExample2
-     Click On Component    Wait Button
-     ${status}=  Run Keyword and return status      Wait Until Page Does Not Contains   To Be Erase    2
-     Run keyword if  ${status} is ${TRUE}   Fail
-     Log     ${status}   WARN
-     Close Application
-
-Test Node Key
-     Start Application  testapp.JavafxExample
-     ${node}=   Get Node Key   \#counterPane
-     Click On Component   \#countButton   ${node}
-     Close Application
+Test Sleep
+     ${before_kw_time}=   Get Time      sec
+     TestFXLibrary.Sleep      1
+     ${after_kw_time}=   Get Time       sec
+     ${time_passed}=    Set Variable    ${${after_kw_time}}-${${before_kw_time}}
+     Evaluate   ${time_passed} < 1
 
 Test Get NTH Element
-     Start Application  testapp.JavafxExample
-     ${node}=   Get Nth Element  \#counterPane      0
-     Log    ${node}     WARN
-     Close Application
+     ${default_element}=    Set Variable    VBox[id=vbuttons1]
+     ${node}=   Get Nth Element  \#vbuttons1[0]
+     Should Be Equal    "${node}"     "${default_element}"
 
 Test Get Component Attribute
-     Start Application  testapp.JavafxExample2
-     ${attribute}=      Get Component Atrribute    \#check     isSelected
-     Log    ${attribute}     WARN
-     Close Application
+     ${default_value}=      Set Variable    false
+     ${attribute}=      Get Component Attribute    \#checkbox     isSelected
+     Should Be Equal    ${${attribute}}     ${${default_value}}
 
 Test List Component Methods
-     Start Application  testapp.JavafxExample2
-     ${attribute}=      List Component Methods    \#check
-     Log    ${attribute}     WARN
-     Close Application
+     List Component Methods    \#vbuttons1[0]
+
+
+Test List Components In Context
+     ${component_context}=       List Components In Context
+     Should Not Be Empty    ${component_context}
+
+Test Get Node All
+     Get Node All       \#vbuttons1[0]
+

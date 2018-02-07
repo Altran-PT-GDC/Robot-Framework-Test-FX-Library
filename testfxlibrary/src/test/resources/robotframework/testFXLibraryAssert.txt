@@ -1,34 +1,25 @@
 *** Settings ***
 Library           TestFXLibrary
-Library           Dialogs
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
 
 *** Test Cases ***
-#Test Verify That Contains
-#    Start Application  testapp.JavafxExample
-#    Verify That Contains    \#countValue     \#countValue
-#    Close Application
 
 Test Verify That Has Text
-    Start Application  testapp.JavafxExample
-    Verify That Has Text    \#countValue  0
-    Close Application
+    ${text}=    Set Variable    Open New Window
+    Verify That Has Text    \#btnwindow  ${text}
 
 Test Verify That Is Enabled
-    Start Application  testapp.JavafxExample
-    Verify That Is Enabled  \#countValue
-    Close Application
+    Verify That Is Enabled  \#btnwindow
 
 Test Verify That Is Disabled
-    Start Application  testapp.JavafxExample
-    Verify That Is Disabled  \#btnDisable
-    Close Application
+    Verify That Is Disabled  \#disableBtn
 
 Test Component Should Be Visible
-    Start Application  testapp.JavafxExample
-    Component Should Be Visible  \#countValue
-    Close Application
+    Component Should Be Visible  \#btnwindow
+
+Test Component Should Be Invisible
+    Component Should Be Invisible   \#checkInvisible
 
 Test Verify That Has Child
-    Start Application  testapp.JavafxExample
-    Verify That Has Child  \#counterPane     \#btnDisable
-    Close Application
+    Verify That Has Child  \#listviewsimple     \#virtual-flow

@@ -11,9 +11,60 @@ import com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc;
 import org.robotframework.javalib.library.RobotJavaLibrary;
 
 /**
- * TestFXLibrary is a ... library for the Robot Framework.<br>
+ * TestFXLibrary is a Robot Framework test library for JavaFx.<br>
  * <br>
- * <b>Insert library introduction here.</b>
+ * The library allows to create automated test scripts to test Java FX applications using the TestFX framework.
+ * <br>
+ * <h2>Getting Started</h2>
+ * <h3>Download</h3>
+ * Download the latest version of TestFXLibrary from <a href="https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library">TestFXLibrary GitHub</a>
+ * <br>
+ * <h3>Classpath</h3>
+ * To be able to execute the library and the application in Robot Framework, you need to add both application and library jars to CLASSPATH.<br>
+ * You can add them and jybot execution to a script and run it as execution profile in Robot Framework.<br>
+ * Below is an example of a custom bat script:<br>
+ * <pre>@echo off</pre>
+ * <pre>set LIBRARIES_FOLDER=C:\LibraryFolder</pre>
+ * <pre>set APP_FOLDER=C:\ApplicationFolder</pre>
+ * <pre>set CLASSPATH=%CLASSPATH%;%LIBRARIES_FOLDER%\*;%APP_FOLDER%\*</pre>
+ * <pre>jython -m robot.run %*</pre>
+ * <h3>Importing</h3>
+ * Import TestFxLibrary in Robot Framework:<br>
+ * <br>
+ * <table>
+ *     <tr>
+ *         <td><b>Settings</b></td>
+ *         <td><b>Value</b></td>
+ *     </tr>
+ *     <tr>
+ *         <td>Library</td>
+ *         <td>TestFXLibrary</td>
+ *     </tr>
+ * </table>
+ * <h3>Example Test Case</h3>
+ * <b>My Test Case</b><br>
+ * <table>
+ *     <tr>
+ *         <td>Start Application</td>
+ *         <td>testapp.FxApplication</td>
+ *         <td></td>
+ *     </tr>
+ *     <tr>
+ *         <td>Click On Component</td>
+ *         <td>buttonId</td>
+ *         <td></td>
+ *     </tr>
+ *     <tr>
+ *         <td>Select From List View By Text</td>
+ *         <td>listViewId</td>
+ *         <td>Example Text</td>
+ *     </tr>
+ *     <tr>
+ *         <td>Close Application</td>
+ *         <td></td>
+ *         <td></td>
+ *     </tr>
+ * </table>
  */
 
 //This class can't be moved to a named package.

@@ -20,14 +20,11 @@ public class Logging {
     /**
      * Thread local variable with loaded logger.
      */
-    protected static ThreadLocal<PythonInterpreter> loggingPythonInterpreter = new ThreadLocal<PythonInterpreter>() {
-        @Override
-        protected PythonInterpreter initialValue() {
-            PythonInterpreter pythonInterpreter = new PythonInterpreter();
-            pythonInterpreter.exec("from robot.variables import GLOBAL_VARIABLES; from robot.api import logger;");
-            return pythonInterpreter;
-        }
-    };
+    protected static ThreadLocal<PythonInterpreter> loggingPythonInterpreter = ThreadLocal.withInitial(() -> {
+        PythonInterpreter pythonInterpreter = new PythonInterpreter();
+        pythonInterpreter.exec("from robot.variables import GLOBAL_VARIABLES; from robot.api import logger;");
+        return pythonInterpreter;
+    });
 
     protected static final Map<String, String[]> VALID_LOG_LEVELS;
 
@@ -40,7 +37,7 @@ public class Logging {
     private static final String ERROR_CONSTANT = "error";
 
     static {
-        VALID_LOG_LEVELS = new HashMap<String, String[]>();
+        VALID_LOG_LEVELS = new HashMap<>();
         VALID_LOG_LEVELS.put(DEBUG_CONSTANT, new String[]{DEBUG_CONSTANT, ""});
         VALID_LOG_LEVELS.put(HTML_CONSTANT, new String[]{HTML_CONSTANT, ", True, False"});
         VALID_LOG_LEVELS.put(INFO_CONSTANT, new String[]{INFO_CONSTANT, ""});

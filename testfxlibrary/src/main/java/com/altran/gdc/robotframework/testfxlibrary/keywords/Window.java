@@ -7,10 +7,12 @@ package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryCommon;
 import com.altran.gdc.robotframework.testfxlibrary.utils.TestFxLibraryValidation;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 import org.robotframework.javalib.annotation.ArgumentNames;
@@ -41,10 +43,20 @@ public class Window {
     private String format;
     private static final Logger LOG = LoggerFactory.getLogger(Window.class);
     private static final String ERROR_MSG = "Error";
-    private static final String GENERAL_ERROR_MSG = "Something goes wrong";
+    private static final String GENERAL_ERROR_MSG = "Something went wrong";
+    private static final int COMP_POSITION_SIZE = 2;
 
     @Autowired
-    Misc misc;
+    private Wait wait;
+
+    private static void run() {
+        try {
+            new FxToolkitContext().getPrimaryStageFuture().get().setMaximized(true);
+        } catch (InterruptedException | ExecutionException e) {
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryNonFatalException(GENERAL_ERROR_MSG, e);
+        }
+    }
 
     /**
      * <b>Description:</b> This keyword closes the current focused window. If an error occurs
@@ -68,6 +80,7 @@ public class Window {
      */
     @RobotKeyword
     public List<javafx.stage.Window> listTargetWindows() {
+
         return new FxRobot().listTargetWindows();
     }
 
@@ -116,7 +129,10 @@ public class Window {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void selectWindow(String identifier) {
-        new FxRobot().targetWindow(identifier);
+
+        javafx.stage.Window window = new FxRobot().targetWindow(identifier).targetWindow();
+        Platform.runLater(window::requestFocus);
+
     }
 
     /**
@@ -152,6 +168,7 @@ public class Window {
     @RobotKeyword
     @ArgumentNames({"identifier"})
     public void window(String identifier) {
+
         new FxRobot().window(identifier);
     }
 
@@ -179,7 +196,6 @@ public class Window {
      * If an error occurs a TestFxLibraryNonFatalException
      * is thrown.<br>
      *
-     * : The image format of ScreenShots
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -215,7 +231,7 @@ public class Window {
      *         <td></td>
      *     </tr>
      * </table>
-     *
+     * <br>
      */
     @RobotKeyword
     public void captureScreen(){
@@ -232,7 +248,7 @@ public class Window {
             String fp = filePath + fileName + counter + "." + format;
             ImageIO.write(image, format, new File(fp));
             //This System out print can't be removed since it is respossible for the enbbeding of the ScreenShot on the Log file
-            System.out.println("*HTML* <img src=\"" + fp + "\">");
+            System.out.println("*HTML* <img src=\""+ "file://" + fp.replace("\\","/") + "\">");
             counter++;
 
         } catch (Exception e){
@@ -309,14 +325,16 @@ public class Window {
         }
     }
 
-    public void deleteFiles(){
+    private void deleteFiles(){
 
         File directory = new File(filePath);
 
         File[] files = directory.listFiles();
-        for (File f : files) {
-            if (f.getName().startsWith(fileName + format)) {
-                f.delete();
+        if (files != null) {
+            for (File f : files) {
+                if (f.getName().startsWith(fileName + format)) {
+                    f.delete();
+                }
             }
         }
     }
@@ -358,16 +376,18 @@ public class Window {
      */
     @RobotKeyword
     @ArgumentNames({"identifier"})
-    public Point2D getComponentPosition(String identifier) {
+    public int[] getComponentPosition(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try {
 
             Point2D p = new FxRobot().point(identifier).query();
-            LOG.info("X - " + (int)p.getX() + " Y - " + (int)p.getY());
-            return p;
+            int[] position = new int[COMP_POSITION_SIZE];
+            position[0] = (int)p.getX();
+            position[1] = (int)p.getY();
+            return position;
 
         } catch (Exception e) {
             LOG.error(ERROR_MSG, e);
@@ -414,17 +434,12 @@ public class Window {
     public int[] getComponentSize(String identifier) {
 
         TestFxLibraryValidation.validateArguments(identifier);
-        misc.waitUntilPageContains(identifier);
+        wait.waitUntilPageContains(identifier);
 
         try {
-
             Node node = new FxRobot().lookup(identifier).query();
 
-            LOG.info("Width - " + (int)node.getBoundsInLocal().getWidth() + " Height - " + (int)node.getBoundsInLocal().getHeight());
-
             return new int[]{(int) node.getBoundsInLocal().getWidth(), (int) node.getBoundsInLocal().getHeight()};
-
-
         } catch (Exception e) {
             LOG.error(ERROR_MSG, e);
             throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
@@ -434,16 +449,45 @@ public class Window {
     /**
      * <b>Description:</b>This keyword returns the title of the current window. If an error occurs
      * a TestFxLibraryNonFatalException is thrown.<br>
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     * </table>
      *
+     *  @return
+     *  Title of the component
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#scrollPane</td>
+     *         <td>#textField</td>
+     *         <td>Scroll Component To View</td>
+     *     </tr>
+     * </table>
      */
     @RobotKeyword
-    public void getSelectedWindowTitle(){
-
+    public String getSelectedWindowTitle(){
         try {
-            LOG.info(new FxToolkitContext().getPrimaryStageFuture().get().getTitle());
+            Stage stage;
+            String windowTitle = "";
+            List<javafx.stage.Window> windows = new FxRobot().listTargetWindows();
+            for (javafx.stage.Window window : windows) {
+                stage = (Stage) window;
+                if (stage.isFocused()) {
+                    windowTitle = stage.getTitle();
+                }
+            }
+            return windowTitle;
         } catch (Exception e){
             LOG.error(ERROR_MSG, e);
-            throw new TestFxLibraryNonFatalException("Error get main window");
+            throw new TestFxLibraryNonFatalException("Error retrieving current window");
         }
     }
 
@@ -456,17 +500,7 @@ public class Window {
     public void maximizeWindow(){
 
         try {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        new FxToolkitContext().getPrimaryStageFuture().get().setMaximized(true);
-                    } catch (InterruptedException | ExecutionException e) {
-                        LOG.error(ERROR_MSG,e);
-                        throw new TestFxLibraryNonFatalException(GENERAL_ERROR_MSG, e);
-                    }
-                }
-            });
+            Platform.runLater(Window::run);
 
         } catch (Exception e){
             LOG.error(ERROR_MSG, e);
@@ -474,4 +508,122 @@ public class Window {
         }
     }
 
+    /**
+     * <b>Description:</b> This keyword scrolls the component to view in the ScrollPane witch is specified with the <i>scrollPaneIdentifier</i>.
+     * This component is specified with <i>identifier</i>.<br>
+     *
+     * @param scrollPaneIdentifier
+     * : ScrollPane where component is contained
+     * @param identifier
+     * : Component identifier
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>scrollPaneIdentifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#scrollPane</td>
+     *         <td>#textField</td>
+     *         <td>Scroll Component To View</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"scrollPaneIdentifier","identifier"})
+    public void scrollComponentToView(String scrollPaneIdentifier , String identifier) {
+
+        TestFxLibraryValidation.validateArguments(scrollPaneIdentifier,identifier);
+        wait.waitUntilPageContains(scrollPaneIdentifier);
+        wait.waitUntilPageContains(identifier);
+
+        try {
+
+            Node node = TestFxLibraryCommon.lookup(identifier);
+
+
+            double y = node.getBoundsInParent().getMaxY();
+
+            ScrollPane pane = TestFxLibraryCommon.lookup(scrollPaneIdentifier);
+
+            double height = pane.getContent().getBoundsInLocal().getHeight();
+
+            pane.setVvalue(y/height);
+
+            Platform.runLater(node::requestFocus);
+
+        } catch (Exception e) {
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword requests the focus to the component.
+     * This component is specified with <i>identifier</i>.<br>
+     *
+     * @param identifier
+     * : Component identifier
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>#textField</td>
+     *         <td>Focus To Component</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"identifier"})
+    public void focusToComponent(String identifier) {
+
+        TestFxLibraryValidation.validateArguments(identifier);
+        wait.waitUntilPageContains(identifier);
+
+        try {
+            Node node = TestFxLibraryCommon.lookup(identifier);
+
+            Platform.runLater(() -> {
+                node.setFocusTraversable(true);
+                node.requestFocus();
+            });
+
+        } catch (Exception e) {
+            LOG.error(ERROR_MSG, e);
+            throw new TestFxLibraryFatalException(GENERAL_ERROR_MSG);
+        }
+    }
 }

@@ -1,0 +1,31 @@
+*** Settings ***
+Library           TestFXLibrary
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
+
+*** Test Cases ***
+
+Test Radio Button Should Be Selected
+    Radio Button Should Be Selected    \#rb1
+    ${attribute}=   Set Variable    isSelected
+    ${status}=   Get Component Attribute    \#rb1    ${attribute}
+    Should Be True    ${${status}}==${TRUE}
+
+Test Radio Button Should Not Be Selected
+    Radio Button Should Not Be Selected    \#rb2
+    ${attribute}=   Set Variable    isSelected
+    ${status}=   Get Component Attribute    \#rb2    ${attribute}
+    Should Be True    ${${status}}==${FALSE}
+
+Test Radio Button Should Be Enabled
+    Radio Button Should Be Enabled      \#rb1
+    Verify That Is Enabled  \#rb1
+
+Test Radio Button Should Be Disabled
+    Radio Button Should Be Disabled     \#rb2
+    Verify That Is Disabled  \#rb2
+
+Test Get Selected Radio Button
+    ${default_selected}=    Set Variable    Radio Button1
+    ${selected}=      Get Selected Radio Button     \#rb3
+    Should Be Equal     ${default_selected}     ${selected}

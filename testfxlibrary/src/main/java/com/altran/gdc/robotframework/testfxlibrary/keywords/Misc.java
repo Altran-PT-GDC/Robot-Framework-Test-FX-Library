@@ -6,31 +6,34 @@
 package com.altran.gdc.robotframework.testfxlibrary.keywords;
 
 import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryFatalException;
+import com.altran.gdc.robotframework.testfxlibrary.exceptions.TestFxLibraryNonFatalException;
 import com.altran.gdc.robotframework.testfxlibrary.utils.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Node;
-import org.awaitility.Awaitility;
-import org.hamcrest.Matchers;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.python.google.common.collect.Iterables;
 import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
-import org.testfx.service.support.WaitUntilSupport;
+import org.testfx.toolkit.PrimaryStageFuture;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Enumeration;
+import java.util.*;
+import java.util.List;
 import java.util.concurrent.*;
-import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 import static java.net.URLClassLoader.newInstance;
-import static org.testfx.matcher.base.NodeMatchers.*;
 
 /**
  * @author pcosta
@@ -39,9 +42,84 @@ import static org.testfx.matcher.base.NodeMatchers.*;
 public class Misc {
 
     private static final int CLASS_VALUE = 6;
+    private static final int MILLISECONDS = 1000;
+    private static final String ATTRIBUTES_STRING = "Attributes";
+    private static final String KEY = "APP_";
+    private static final String METHODS_STRING = "Methods";
+
 
     @Autowired
     private Logging log;
+
+    /**
+     * <b>Description:</b> This keyword launches JavaFX application. The classname
+     * passed as <i>className</i> must extend javafx.application.Application.<br>
+     * ATENTTION: The class must be added to the classpath beforehand.<br>
+     *
+     * @param className
+     * : The name of the class that extends javafx.application.Application to be launched
+     * @param distinctiveName
+     * : The name to identify the session of the application
+     * <br><br>
+     * <table summary="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>className</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>distinctiveName</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * <br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Start Application</td>
+     *         <td>AnApplication</td>
+     *         <td>Application1</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword
+    @ArgumentNames({"className" , "distinctiveName=null"})
+    public void startApplication(String className, String distinctiveName){
+
+        TestFxLibraryValidation.validateArguments(className, distinctiveName);
+
+        final Stage[] stage = {null};
+        try {
+            int size = new FxRobot().listTargetWindows().size();
+            if(size == 0) {
+                FxToolkit.registerPrimaryStage();
+                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+                FxToolkit.showStage();
+                TestFXLibraryCache.getIstance().put(KEY + distinctiveName, FxToolkit.toolkitContext().getPrimaryStageFuture());
+            } else {
+                FxToolkit.registerStage(() -> {
+                    stage[0] = new Stage();
+                    return stage[0];
+                });
+                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+                FxToolkit.showStage();
+                TestFXLibraryCache.getIstance().put(KEY + distinctiveName, stage[0]);
+            }
+
+        } catch (TimeoutException | ClassNotFoundException e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
 
     /**
      * <b>Description:</b> This keyword launches JavaFX application. The classname
@@ -75,18 +153,12 @@ public class Misc {
      *     </tr>
      * </table>
      */
-    @RobotKeyword
-    @ArgumentNames({"className"})
+    @RobotKeywordOverload
     public void startApplication(String className){
         TestFxLibraryValidation.validateArguments(className);
 
-        try {
-            FxToolkit.registerPrimaryStage();
-            FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
-            FxToolkit.showStage();
-        } catch (TimeoutException | ClassNotFoundException e) {
-            throw new TestFxLibraryFatalException(e);
-        }
+        startApplication(className, " ");
+
     }
 
     /**
@@ -226,1137 +298,10 @@ public class Misc {
      */
     @RobotKeyword
     @ArgumentNames({"seconds"})
-    public void sleep(int seconds) {
-        new FxRobot().sleep(seconds, TimeUnit.SECONDS);
-    }
+    public void sleep(float seconds) {
 
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is
-     * visible. Fails if <i>timeout</i> expires before the component is visible.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Is Visible</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Element Is Visible</td>
-     *         <td>idComponent3A2</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilElementIsVisible(String identifier, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        try{
-
-            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isVisible()), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
-            throw new TestFxLibraryFatalException(e);
-
-        }
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is
-     * visible. Fails if default timeout expires before the component is visible.<br>
-     *
-     * @param identifier
-     * : The name of the element that you are going to test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Is Visible</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilElementIsVisible(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilElementIsVisible(identifier, waitTimeout);
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is
-     * not visible. Fails if <i>timeout</i> expires before the component is not visible.<br>
-     *
-     * @param identifier
-     * : The name of the element that you are going to test
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Is Not Visible</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Element Is Not Visible</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilElementIsNotVisible(String identifier, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        try{
-
-            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isVisible()), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
-            throw new TestFxLibraryFatalException(e);
-
-        }
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is
-     * not visible. Fails if default timeout expires before the component is not visible.<br>
-     *
-     * @param identifier
-     * : The name of the element that you are going to test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Is Not Visible</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilElementIsNotVisible(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilElementIsNotVisible(identifier, waitTimeout);
-
-    }
-
-    /**
-     * <b>Description:</b>This keyword waits until given component contains <i>textToValidate</i>.
-     * Fails if <i>timeout</i> expires before the text appears on given component specified with
-     * <i>identifier</i>.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * @param textToValidate
-     * : The Text you want to validate
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>textToValidate</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Contains</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Element Contains</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
-    public void waitUntilElementContains(String identifier, String textToValidate, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        try{
-
-            new WaitUntilSupport().waitUntil(getNode(identifier), hasText(textToValidate), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
-            throw new TestFxLibraryFatalException(e);
-
-        }
-    }
-
-    /**
-     * <b>Description:</b>This keyword waits until given component contains <i>textToValidate</i>.
-     * Fails if default timeout expires before the text appears on given component specified with
-     * <i>identifier</i>.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * @param textToValidate
-     * : The Text you want to validate
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>textToValidate</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Contains</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilElementContains(String identifier, String textToValidate) {
-
-        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilElementContains(identifier, textToValidate, waitTimeout);
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until given component does not contain <i>textToValidate</i>.
-     * Fails if <i>timeout</i> expires before the text disappears from given component specified with
-     * <i>identifier</i>. <br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * @param textToValidate
-     * : The Text you want to validate
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameters</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>textToValidate</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Does Not Contain</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Element Does Not Contain</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "textToValidate", "timeout=20"})
-    public void waitUntilElementDoesNotContains(String identifier, String textToValidate, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        try{
-
-            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(hasText(textToValidate)), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
-            throw new TestFxLibraryFatalException(e);
-
-        }
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until given component does not contain <i>textToValidate</i>.
-     * Fails if default timeout expires before the text disappears from given component specified with
-     * <i>identifier</i>. <br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * @param textToValidate
-     * : The Text you want to validate
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>textToValidate</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Does Not Contain</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilElementDoesNotContains(String identifier, String textToValidate) {
-
-        TestFxLibraryValidation.validateArguments(identifier, textToValidate);
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilElementDoesNotContains(identifier, textToValidate, waitTimeout);
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is disabled.
-     * Fails if <i>timeout</i> expires before the component is disabled.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Is Disabled</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Element Is Disabled</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilElementIsDisabled(String identifier, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        try{
-
-            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.is(isDisabled()),timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
-            throw new TestFxLibraryFatalException(e);
-
-        }
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is disabled.
-     * Fails if default timeout expires before the component is disabled.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Is Disabled</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilElementIsDisabled(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilElementIsDisabled(identifier, waitTimeout);
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is enabled.
-     * Fails if <i>timeout</i> expires before the component is enabled.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Is Enabled</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Element Is Enabled</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilElementIsEnabled(String identifier, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        try{
-
-            new WaitUntilSupport().waitUntil(getNode(identifier), Matchers.not(isDisabled()), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
-            throw new TestFxLibraryFatalException(e);
-
-        }
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> is enabled.
-     * Fails if default timeout expires before the component is disabled.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Argument</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Element Is Enabled</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilElementIsEnabled(String identifier) {
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilElementIsEnabled(identifier, waitTimeout);
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with text containing <i>identifier</i>
-     * appears on current page. Fails if <i>timeout</i> expires before the element appears.<br>
-     *
-     * @param identifier
-     * : Text to identify the component that you are going to test
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Page Contains</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Page Contains</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilPageContains(String identifier, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        try{
-
-            Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-            Awaitility.await().until(() -> getNode(identifier) != null);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
-            throw new TestFxLibraryFatalException(e);
-
-        }
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with text containing <i>identifier</i>
-     * appears on current page. Fails if default timeout expires before the element appears.<br>
-     *
-     * @param identifier
-     * : Text to identify the component that you are going to test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Page Contains</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilPageContains(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilPageContains(identifier, waitTimeout);
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with text containing <i>identifier</i>
-     * disappears from current page. Fails if <i>timeout</i> expires before the element disappears.<br>
-     *
-     * @param identifier
-     * : Text to identify the component that you are going to test
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Page Does Not Contain</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Page Does Not Contain</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilPageDoesNotContains(String identifier, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        try{
-
-            Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-            Awaitility.await().until(() -> getNode(identifier) == null);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
-            throw new TestFxLibraryFatalException(e);
-
-        }
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with text containing <i>identifier</i>
-     * disappears from current page. Fails if default timeout expires before the element disappears.<br>
-     *
-     * @param identifier
-     * : Text to identify the component that you are going to test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Page Does Not Contain</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilPageDoesNotContains(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilPageDoesNotContains(identifier, waitTimeout);
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> appears on
-     * current page. Fails if <i>timeout</i> expires before the element appears.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Page Contains Element</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Page Contains Element</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     *
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilPageContainsElement(String identifier, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        if (identifier.startsWith("#")) {
-            try{
-
-                Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-                Awaitility.await().until(() -> getNode(identifier) != null);
-
-            } catch (IllegalArgumentException | NullPointerException e){
-
-                throw new TestFxLibraryFatalException(e);
-
-            }
-        } else {
-            final String changedIdentifier = "#" + identifier;
-            try {
-
-                Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-                Awaitility.await().until(() -> getNode(changedIdentifier) != null);
-
-            } catch (IllegalArgumentException | NullPointerException e) {
-
-                throw new TestFxLibraryFatalException(e);
-
-            }
-        }
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> appears on
-     * current page. Fails if default timeout expires before the element appears.<br>
-     *
-     * @param identifier
-     * : The name of the component that you are going to test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Page Contains Element</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilPageContainsElement(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        String changedIdentifier = null;
-
-        if (identifier.substring(0) != "#") {
-            changedIdentifier = "#" + identifier;
-        }
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilPageContainsElement(changedIdentifier, waitTimeout);
-
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> disappears from
-     * current page. Fails if <i>timeout</i> expires before the element disappears.<br>
-     *
-     * @param identifier
-     * : The name of the element that you are going to test
-     * @param timeout
-     * : The time limit to complete the test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>20</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Page Does Not Contain Element</td>
-     *         <td>idComponent01</td>
-     *         <td>250</td>
-     *     </tr>
-     *     <tr>
-     *         <td>Wait Until Page Does Not Contain Element</td>
-     *         <td>idComponent3a</td>
-     *         <td></td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier", "timeout=20"})
-    public void waitUntilPageDoesNotContainElement(String identifier, int timeout) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-        TestFxLibraryValidation.validateTimeout(timeout);
-
-        if (identifier.startsWith("#")) {
-            try{
-
-                Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-                Awaitility.await().until(() -> getNode(identifier) == null);
-
-            } catch (IllegalArgumentException | NullPointerException e){
-
-                throw new TestFxLibraryFatalException(e);
-
-            }
-        } else {
-            final String changedIdentifier = "#" + identifier;
-            try {
-
-                Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-                Awaitility.await().until(() -> getNode(changedIdentifier) == null);
-
-            } catch (IllegalArgumentException | NullPointerException e) {
-
-                throw new TestFxLibraryFatalException(e);
-
-            }
-        }
-    }
-
-    /**
-     * <b>Description:</b> This keyword waits until component specified with <i>identifier</i> disappears from
-     * current page. Fails if default timeout expires before the element disappears.<br>
-     *
-     * @param identifier
-     * : The name of the element that you are going to test
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Wait Until Page Does Not Contain Element</td>
-     *         <td>idComponent01</td>
-     *     </tr>
-     * </table>
-     */
-    @RobotKeywordOverload
-    public void waitUntilPageDoesNotContainElement(String identifier) {
-
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        String changedIdentifier = null;
-
-        if (identifier.substring(0) != "#") {
-            changedIdentifier = "#" + identifier;
-        }
-
-        int waitTimeout = Integer.parseInt(TestFxLibraryProperties.getProperty(TimeoutConstants.GENERIC_TIMEOUT, "20"));
-
-        waitUntilPageDoesNotContainElement(changedIdentifier, waitTimeout);
-
+        int convertedInt = (int)(seconds * MILLISECONDS);
+        new FxRobot().sleep(convertedInt);
     }
 
     /**
@@ -1365,8 +310,6 @@ public class Misc {
      *
      * @param identifier
      * : The component to search
-     * @param nthElement
-     * : The index of the component to return from the list
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -1379,12 +322,6 @@ public class Misc {
      *         <td>identifier</td>
      *         <td>Yes</td>
      *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>nthElement</td>
-     *         <td>Yes</td>
-     *         <td>int</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
@@ -1399,14 +336,14 @@ public class Misc {
      *         <td>${component}=</td>
      *         <td>Get Nth Element</td>
      *         <td>idComponent02</td>
-     *         <td>12</td>
      *     </tr>
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"identifier", "nthElement"})
-    public Node getNthElement(String identifier, int nthElement) {
-        return getNode(identifier, nthElement);
+    @ArgumentNames({"identifier"})
+    public Node getNthElement(String identifier) {
+
+        return getNode(identifier);
     }
 
     /**
@@ -1453,8 +390,18 @@ public class Misc {
         return key;
     }
 
+    /**
+     * Search if the specific Node exists.
+     *
+     * @param identifier
+     *      The id of the Node to search.
+     *
+     * @return
+     *      The Node.
+     */
     public Node getNode(String identifier) {
-        return new FxRobot().lookup(identifier).query();
+
+        return TestFxLibraryCommon.lookup(identifier);
     }
 
     /**
@@ -1468,51 +415,8 @@ public class Misc {
      *      The Node
      */
     public Node getNode(String identifier, int nthElement) {
-        Set<Node> nodeList = new FxRobot().lookup(identifier).queryAll();
+        Set<Node> nodeList = TestFxLibraryCommon.lookup(identifier);
         return  Iterables.get(nodeList, nthElement);
-    }
-
-    /**
-     * <b>Description:</b> This keyword sets the default <i>timeout</i> for wait keywords.
-     * This value is used if another timeout is not specified.<br>
-     *
-     * @param timeout
-     * : The time limit to complete the test in milliseconds
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>timeout</td>
-     *         <td>No</td>
-     *         <td>int</td>
-     *         <td>0</td>
-     *     </tr>
-     * </table>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>Default Wait</td>
-     *         <td>1000</td>
-     *     </tr>
-     * </table>
-     * @throws IOException
-     *  If something goes wrong
-     */
-    @RobotKeyword()
-    @ArgumentNames({"timeout"})
-    public void defaultWait(long timeout) throws IOException {
-        try {
-            new WaitUntilSupport().wait(timeout);
-        } catch (InterruptedException e) {
-            log.error("Error!");
-        }
     }
 
     /**
@@ -1545,7 +449,7 @@ public class Misc {
      * </table>
      *
      * @return
-     * : Attribute value in a string
+     * Attribute value in a string
      *
      * <br><br>
      * <b>Examples:</b>
@@ -1560,37 +464,31 @@ public class Misc {
      */
     @RobotKeyword()
     @ArgumentNames({"identifier" , "attribute"})
-    public String getComponentAtrribute(String identifier, String attribute) {
+    public String getComponentAttribute(String identifier, String attribute) {
 
         TestFxLibraryValidation.validateArguments(identifier, attribute);
 
-        Node node = getNode(identifier);
+        Object obj = getNode(identifier);
 
         try {
-            Class clazz = Class.forName(node.getClass().getName());
-
-            Object obj = clazz.newInstance();
             Method m = obj.getClass().getMethod(attribute);
             Object o = m.invoke(obj);
 
             return o.toString();
 
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+        } catch ( IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new TestFxLibraryFatalException(e);
         }
     }
 
-    /**
-     * List the methods of a component
-     *
-     * @param identifier
-     *          The component where you want to get the list of Methods
-     */
-    /**
-     * <b>Description:</b> This keyword lists the methods of a component.<br>
+     /**
      *
      * @param identifier
      * : The component identifier
+     * @return
+     * : The component method list
+     * @throws IOException
+     * : Instantiation Exception
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -1624,7 +522,8 @@ public class Misc {
      */
     @RobotKeyword()
     @ArgumentNames({"identifier"})
-    public void listComponentMethods(String identifier) {
+    public String listComponentMethods(String identifier) throws IOException {
+        HashMap<String,List<String>> list = new HashMap<>();
 
         TestFxLibraryValidation.validateArguments(identifier);
 
@@ -1637,13 +536,187 @@ public class Misc {
 
             Method[] methods = obj.getClass().getMethods();
 
-            for (int i=0; i < methods.length; i++){
+            List<String> attr = new ArrayList<>();
+            List<String> methodsList = new ArrayList<>();
 
-                Log.info(methods[i].getName());
+            list.put(ATTRIBUTES_STRING, attr);
+            list.put(METHODS_STRING, methodsList);
+            for (Method method : methods) {
+
+                try {
+                    getComponentAttribute(identifier, method.getName());
+                    attr.add(method.getName());
+                } catch (Exception e) {
+                    Log.debug(String.format("The %s is not attribute", identifier), e);
+                    methodsList.add(method.getName());
+                }
             }
 
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException  e) {
             throw new TestFxLibraryFatalException(e);
         }
+        return list.toString();
+    }
+
+    /**
+     * <b>Description:</b> This keyword list components in context
+     *
+     * <br><br>
+     * @return
+     *  The list of components
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${list}=</td>
+     *         <td>List Components In Context</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword()
+    public List<List<String>> listComponentsInContext(){
+        List<List<String>> list = new ArrayList<>();
+        try {
+
+            List<String> mapComponents = new ArrayList<>();
+            List<Window> windows = new FxRobot().listWindows();
+
+            for(Window w : windows) {
+                Scene scene = w.getScene();
+                Parent p = scene.getRoot();
+                list.add(getParents(p, mapComponents));
+            }
+
+        } catch (Exception e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+
+        return list;
+    }
+
+    /**
+     * Get Parents from component.
+     *
+     * @param parent
+     *      The root parent to check if contains more components.
+     * @param mapComponents
+     *      List of components search to add more.
+     * @return
+     *      The List of components
+     */
+    private List<String> getParents(Parent parent, List<String> mapComponents){
+        for (int i = 0; i < parent.getChildrenUnmodifiable().size() && parent.getChildrenUnmodifiable().size() > 1; i++) {
+            if(parent.getChildrenUnmodifiable().get(i) instanceof Parent){
+                Parent p = (Parent) parent.getChildrenUnmodifiable().get(i);
+                mapComponents.add(String.format("Component: %s - Child: %s \\n", parent, p));
+                getParents(p, mapComponents);
+            }
+        }
+        return mapComponents;
+    }
+
+    /**
+     * <b>Description:</b> This keyword gets the inner component from a given component
+     * specified with <i>identifier</i><br>
+     *
+     * @param identifier
+     * : The name of the component that you are going to test
+     * <br><br>
+     * <table summary ="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>identifier</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     *
+     * @return
+     *  The inner component of the provided component
+     *
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>${component}=</td>
+     *         <td>Get Node Key</td>
+     *         <td>idComponent02</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword()
+    @ArgumentNames({"identifier"})
+    public String getNodeAll(String identifier) {
+        Set<Node> nodes = new FxRobot().lookup(identifier).queryAll();
+        return nodes.toString();
+    }
+
+    /**
+     * <b>Description:</b> Switch application if more than one is running.
+     * @param application
+     * : The name of the application to request the focus
+     * @return
+     * : A list of applications
+     * <br><br>
+     * <table summary ="">
+     *     <tr>
+     *         <th>Parameter</th>
+     *         <th>Mandatory</th>
+     *         <th>Values</th>
+     *         <th>Default</th>
+     *     </tr>
+     *     <tr>
+     *         <td>application</td>
+     *         <td>Yes</td>
+     *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     * </table>
+     * <br><br>
+     * <b>Examples:</b>
+     * <table summary="">
+     *     <tr>
+     *         <td>Switch Application</td>
+     *         <td>my application</td>
+     *     </tr>
+     * </table>
+     */
+    @RobotKeyword()
+    @ArgumentNames({"application"})
+    public List<String> switchApplication(String application){
+        Stage stage;
+        List<String> listAppKey = new ArrayList<>();
+
+        Object obj = TestFXLibraryCache.getIstance().get(application);
+
+        if(obj == null){
+            for (String key : TestFXLibraryCache.getIstance().getMap().keySet()) {
+                if(key != null && key.startsWith(KEY) && !" ".equals(key.split("_")[1])){
+                    listAppKey.add(key);
+                }
+            }
+        } else {
+            if(obj instanceof PrimaryStageFuture){
+                try {
+                    stage = ((PrimaryStageFuture) obj).get();
+                } catch (Exception e) {
+                    throw new TestFxLibraryNonFatalException(e);
+                }
+            } else {
+                stage = (Stage) obj;
+            }
+
+            Platform.runLater(stage::requestFocus);
+        }
+
+        return listAppKey;
+
     }
 }

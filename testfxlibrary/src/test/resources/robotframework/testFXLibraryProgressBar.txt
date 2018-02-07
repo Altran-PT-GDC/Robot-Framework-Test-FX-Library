@@ -1,0 +1,19 @@
+*** Settings ***
+Library           TestFXLibrary
+Suite Setup       Start Application     testapp.FxApplicationUnitTest
+Suite Teardown    Close Application
+
+*** Test Cases ***
+
+Test Get Progress Bar Value
+    Get Progress Bar Value  \#progressBar
+
+
+Test Progress Bar Should Be Enabled
+    Progress Bar Should Be Enabled  \#progressBar
+
+Test Progress Bar Should Be Disabled
+    Progress Bar Should Be Disabled  \#progressBar1
+
+Test Wait Until Progress Bar Is Complete
+    Wait Until Progress Bar Is Complete     \#progressBar  15
