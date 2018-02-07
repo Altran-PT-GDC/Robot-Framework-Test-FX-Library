@@ -2,17 +2,39 @@
 
 TestFX Library is a Robot Framework library based in Java to test Java FX applications.
 
-## Getting Started
+## Usage
 
-Clone repository to your machine.
-
-```
-git clone [repository]
-```
-
-The TestFXLibrary.jar needs to be in the class path during execution.
+### Download
 
 The library JAR can be downloaded in [releases](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/releases).
+
+### Classpath
+
+In order to execute the library and the application in Robot Framework, you need to add both application and library jars to CLASSPATH.
+
+### Import
+
+Import TestFxLibrary in Robot Framework:
+
+_*** Settings ***_
+
+Library | TestFXLibrary
+
+### WIKI
+
+For more information visit this repository [Wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki).
+
+### Example Test Case
+
+_*** My Test Case ***_
+
+Start Application | testapp.FxApplication
+
+Click On Component | \#buttonId
+
+Select From List View By Text |	\#listViewId | Example Text
+
+Close Application
 
 ### Tools to help component discovery
 
