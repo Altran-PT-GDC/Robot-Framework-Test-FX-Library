@@ -1,4 +1,4 @@
-# Project Title
+# Robot-Framework-Test-FX-Library
 
 TestFX Library is a Robot Framework library based in Java to test Java FX applications.
 
