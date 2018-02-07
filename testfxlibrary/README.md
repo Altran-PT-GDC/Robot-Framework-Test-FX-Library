@@ -92,7 +92,7 @@ requests to us.
 * **Sergio Lourenço** - *Initial work* - [LinkedIn Profile](https://www.linkedin.com/in/s%C3%A9rgio-louren%C3%A7o-7425094/)
 * **Diogo Ribeiro** - *Initial work* - [LinkedIn Profile](https://www.linkedin.com/in/diogo-ribeiro-530863a8/)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/contributors) who participated in this project.
 
 ## License
 
