@@ -84,7 +84,7 @@ Then you need to make sure that the Path is configured. See here how to do it
 
 # TestFX Library for Developers 
 
-This is an open source project, if you are developer you can clone this project, change the code, compile it, etc. And, of course we're realy open for contribuition. New fetures, additional keywords, bug reports and documentation are welcome!
+This is an open source project, if you are developer you can clone this project, change the code, compile it, etc. And, of course we're realy open for contribuition. New features, additional keywords, bug reports and documentation are welcome!
 
 The library is writen in Java and the tests for the library are writen in Robot Framework, that run against a sample JavaFX application.
 
