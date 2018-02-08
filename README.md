@@ -48,7 +48,7 @@ Import TestFxLibrary in Robot Framework:
     Close Application
     
     
-NOTICE: If your using an id (eg. #id) as locator you must escape the hash sign (eg. \#id)
+NOTICE: If your using an id (eg. #id) as locator you must escape the hash sign (eg. \\#id)
 
 
 ### Keyword Documentation
