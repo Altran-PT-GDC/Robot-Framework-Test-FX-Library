@@ -5,9 +5,9 @@ Altran developed and open sourced a test library for Robot Framework to enable t
 
 ## Introduction
 
-[TestFX](https://github.com/TestFX/TestFX) is simple and clean testing framework for JavaFX with fluent and clean API that uses Junit.
+Our library is based in [TestFX](https://github.com/TestFX/TestFX) a simple and clean testing framework for JavaFX with fluent and clean API that uses Junit.
 
-The goal of the TestFX Library, is to wrap all the features of TestFX in a Robot Framework library that is easy to use.
+The goal of the TestFX Library, is to wrap the main features of TestFX in a Robot Framework library that could be easy to use.
 
 
 ## Getting Started
