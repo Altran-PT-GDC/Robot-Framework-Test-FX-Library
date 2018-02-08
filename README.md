@@ -1,10 +1,11 @@
-# Robot-Framework-Test-FX-Library
+# Robot Framework TestFX Library
+
 Altran developed and open sourced a test library for Robot Framework to enable to create automated test scripts to test Java FX applications using the TestFX framework. 
 
 
 ## Introduction
 
-TestFX (https://github.com/TestFX/TestFX) is simple and clean testing framework for JavaFX with fluent and clean API that uses Junit. 
+[TestFX](https://github.com/TestFX/TestFX) is simple and clean testing framework for JavaFX with fluent and clean API that uses Junit.
 
 The goal of the TestFX Library, is to wrap all the features of TestFX in a Robot Framework library that is easy to use.
 
@@ -15,7 +16,7 @@ The goal of the TestFX Library, is to wrap all the features of TestFX in a Robot
 2. Install Jython
 3. Download TestFXLibrary.jar
 4. Add the JavaFX application under test and TestFXLibrary.jar to the classpath
-5. Create a Robot Framework script [example](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts)
+5. Create a Robot Framework script. see the [example](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts)
 6. Run the test with Jybot!
 
 
@@ -117,6 +118,7 @@ mvn deploy
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html) - Java version.
 * [Maven](https://maven.apache.org/) - Dependency Management
+* [TestFX](https://github.com/TestFX/TestFX) - The JavaFX test framework
 * [RobotFramework](http://robotframework.org/MavenPlugin/examples/javalibraries.html) - To run phyton test cases in 
 java projects
 * [Monocle](https://mvnrepository.com/artifact/org.testfx/openjfx-monocle/1.8.0_20) - To run the library tests in 
