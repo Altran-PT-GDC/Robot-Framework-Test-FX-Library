@@ -76,6 +76,7 @@ Like in TestFX you can use the following query types to interact with JavaFX com
     
     Click On Component  \#okbutton     
     
+Please see this [wiki page](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/5.-Identifying-Locators) for more information.
 
 ### WIKI
 
