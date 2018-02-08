@@ -25,8 +25,7 @@ The library JAR can be downloaded in [releases](https://github.com/Altran-PT-GDC
 
 ### Classpath
 
-In order to execute the library and the application in Robot Framework, you need to add both application under test and TestFX library jars to CLASSPATH. See here how to do it 
-[here](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#configuring-path).
+In order to execute the library and the application in Robot Framework, you need to add both application under test and TestFX library jars to CLASSPATH. See [here](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#configuring-path) how to do it.
 
 ### Import
 
