@@ -186,12 +186,13 @@ requests to us.
 
 ## Authors
 
-* **Altran** - *Initial work* - [Altran Web Site](https://www.altran.com/us/en/)
-* **João Gomes** - *Initial work* 
-* **Sergio Lourenço** - *Initial work* 
-* **Diogo Ribeiro** - *Initial work* 
-* **Pedro Costa** - *Initial work* 
-
+* **Altran** - [Altran Web Site](https://www.altran.com/us/en/)
+* **João Gomes** 
+* **Sérgio Lourenço** 
+* **Diogo Ribeiro** 
+* **Pedro Costa** 
+* **Bruno Calado** 
+* **Hugo Firmino** 
 
 See also the list of [contributors](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/contributors) who participated in this project.
 
