@@ -60,18 +60,18 @@ You can find the keywords documentation [here](https://cdn.rawgit.com/Altran-PT-
 
 Like in TestFX you can use the following query types to interact with JavaFX components:
 
-    # using a text query. 
+    # using a text query
     # click on a component (eg. a button) that has the text "OK"
     
     Click On Component  OK  
     
-    # using a CSS class query. 
+    # using a CSS class query
     # Click on a component (eg. a button) that has the class "button"
     
     Click On Component  .button  
     
-    # using a CSS id query. 
-    # Click on a component (eg. a button) that has the id "okbutton". 
+    # using a CSS id query
+    # Click on a component (eg. a button) that has the id "okbutton"
     # Don't forget to escape the hash
     
     Click On Component  \#okbutton     
