@@ -31,29 +31,34 @@ In order to execute the library and the application in Robot Framework, you need
 
 Import TestFxLibrary in Robot Framework:
 
-    _*** Settings ***_
+    *** Settings ***
+    Library TestFXLibrary
 
-    Library | TestFXLibrary
 
 ### Example Test Case
 
-    _*** My Test Case ***_
+    *** Settings ***
+    Library TestFXLibrary
 
-    Start Application | testapp.FxApplication
+    *** My Test Case ***
 
-    Click On Component | \#buttonId
-
-    Select From List View By Text |	\#listViewId | Example Text
-
+    Start Application   testapp.FxApplication
+    Click On Component  \#buttonId
+    Select From List View By Text   \#listViewId    Example Text
     Close Application
+    
+    
+NOTICE: If your using an id (eg. #id) as locator you must escape the hash sign (eg. \#id)
 
-### WIKI
-
-For more information visit this repository [Wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki).
 
 ### Keyword Documentation
 
 You can find the keywords documentation [here](https://cdn.rawgit.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/585ec941/docs/TestFXLibrary.html)
+
+
+### WIKI
+
+For more information visit this repository [Wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki).
 
 
 ### Tools to help component discovery
@@ -66,7 +71,6 @@ ScenicView - It will show all the component id's, locators and properties for a 
 [Robot Framework](https://github.com/robotframework/robotframework)
 
 [Jython](http://www.jython.org/)
-
 
 
 ### Installing
