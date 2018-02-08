@@ -16,17 +16,44 @@ The goal of the TestFX Library, is to wrap all the features of TestFX in a Robot
 2. Install Jython
 3. Download TestFXLibrary.jar
 4. Add the JavaFX application under test and TestFXLibrary.jar to the classpath
-5. Create a Robot Framework script. see the [example](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts)
+5. Create a Robot Framework script
 6. Run the test with Jybot!
 
-
-IMPORTANT: The TestFXLibrary.jar and the application under test needs to be in the classpath during execution. The classpath configuration is key for the library to work properly, please ensure that it correctly configured.
+### Download
 
 The library JAR can be downloaded in [releases](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/releases).
 
-You can find the keywords documentation [here](https://cdn.rawgit.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/585ec941/docs/TestFXLibrary.html)
+### Classpath
 
-You can also find useful documentation in our [wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki)
+In order to execute the library and the application in Robot Framework, you need to add both application under test and TestFX library jars to CLASSPATH.
+
+### Import
+
+Import TestFxLibrary in Robot Framework:
+
+_*** Settings ***_
+
+Library | TestFXLibrary
+
+### Example Test Case
+
+_*** My Test Case ***_
+
+Start Application | testapp.FxApplication
+
+Click On Component | \#buttonId
+
+Select From List View By Text |	\#listViewId | Example Text
+
+Close Application
+
+### WIKI
+
+For more information visit this repository [Wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki).
+
+### Keyword Documentation
+
+You can find the keywords documentation [here](https://cdn.rawgit.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/585ec941/docs/TestFXLibrary.html)
 
 
 ### Tools to help component discovery
