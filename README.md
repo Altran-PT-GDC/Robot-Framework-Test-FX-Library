@@ -58,7 +58,7 @@ You can find the keywords documentation [here](https://cdn.rawgit.com/Altran-PT-
 
 ### Locators / Queries
 
-Like in TestFX you can use the following query types to interact with JavaFX components:
+Like in TestFX you can use several types of queries to interact with JavaFX components:
 
     # using a text query
     # click on a component (eg. a button) that has the text "OK"
