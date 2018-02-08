@@ -1,7 +1,71 @@
 # Robot-Framework-Test-FX-Library
 Altran developed and open sourced a test library for Robot Framework to enable to create automated test scripts to test Java FX applications using the TestFX framework. 
 
+
+## Introduction
+
+TestFX (https://github.com/TestFX/TestFX) is simple and clean testing framework for JavaFX with fluent and clean API that uses Junit. 
+
+The goal of the TestFX Library, is to wrap all the features of TestFX in a Robot Framework library that is easy to use.
+
+
 ## Getting Started
+
+1. Install Robot Framework
+2. Install Jython
+3. Download TestFXLibrary.jar
+4. Add the JavaFX application under test and TestFXLibrary.jar to the classpath
+5. Create a Robot Framework script [example](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts)
+6. Run the test with Jybot!
+
+
+IMPORTANT: The TestFXLibrary.jar and the application under test needs to be in the classpath during execution. The classpath configuration is key for the library to work properly, please ensure that it correctly configured.
+
+The library JAR can be downloaded in [releases](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/releases).
+
+You can find the keywords documentation [here](https://cdn.rawgit.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/585ec941/docs/TestFXLibrary.html)
+
+You can also find useful documentation in our [wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki)
+
+
+### Tools to help component discovery
+
+ScenicView - It will show all the component id's, locators and properties for a JavaFX application. You can find more info about Scenic View [here](http://fxexperience.com/scenic-view/).
+
+
+### Prerequisites for running tests
+
+[Robot Framework](https://github.com/robotframework/robotframework)
+
+[Jython](http://www.jython.org/)
+
+
+
+### Installing
+
+First you will need to Robot Framework and jython, for Robot Framework [here](http://robotframework.org/MavenPlugin/examples/javalibraries.html) and for Jython 
+[here](https://wiki.python.org/jython/InstallationInstructions). This will enable you to run tests using Jybot.
+
+Then you need to make sure that the Path is configured. See here how to do it 
+[here](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#configuring-path).
+
+
+# TestFX Library for Developers 
+
+This is an open source project, if you are developer you can clone this project, change the code, compile it, etc. And, of course we're realy open for contribuition. New fetures, additional keywords, bug reports and documentation are welcome!
+
+The library is writen in Java and the tests for the library are writen in Robot Framework, that run against a sample JavaFX application.
+
+## Prerequisites
+
+Besides Robot Framework and Jython we have the following additional prerequisites: 
+
+[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
+[Maven](https://maven.apache.org/) 
+
+
+## Cloning the TextFXLibrary project
 
 Clone repository to your machine.
 
@@ -9,35 +73,8 @@ Clone repository to your machine.
 git clone https://github.com/altranpt/Robot-Framework-Test-FX-Library.git
 ```
 
-The TestFXLibrary.jar needs to be in the classpath during execution. The classpath configuration is key for the library to work properly, please ensure that it correctly configured.
 
-The library JAR can be downloaded in [releases](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/releases).
-
-### Tools to help component discovery
-
-ScenicView - It will show all the component id's and properties for a JavaFX application. You can find more info about 
-Scenic View [here](http://fxexperience.com/scenic-view/).
-
-### Prerequisites
-
-[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-
-[Maven](https://maven.apache.org/)
-
-[Robot Framework](https://github.com/robotframework/robotframework)
-
-[Jython](http://www.jython.org/)
-
-### Installing
-
-First you will need to install maven and jython. You can check the instructions for Maven 
-[here](https://maven.apache.org/install.html), for Robot Framework [here](http://robotframework.org/MavenPlugin/examples/javalibraries.html) and for Jython 
-[here](https://wiki.python.org/jython/InstallationInstructions). This will enable you to run tests using Jybot.
-
-Then you need to make sure that the Path is configured. See here how to do it 
-[here](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#configuring-path).
-
-## Running the unit tests
+## Running the library unit tests
 
 To run unit test via Maven, you only need to execute this command in command line : 
 
@@ -49,6 +86,9 @@ Remember that you need to execute the command on the folder where you have the p
 
 If you have added any keyword on the project, you will need to add the test script on the test folder to the correct 
 test suite. 
+
+
+## Compiling
 
 If you want to compile the project without running the tests you must execute the command in command line:
 
@@ -62,6 +102,7 @@ If you want to run the tests in a headless environment you must to execute the c
 mvn clean test -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dprism.order=j2d
 ```
 
+
 ## Deployment
 
 Once you've configured your repository deployment information correctly deploying your project's artifact will only 
@@ -70,6 +111,7 @@ require invocation of the deploy phase of the build:
 ```
 mvn deploy
 ```
+
 
 ## Built With
 
@@ -80,12 +122,14 @@ java projects
 * [Monocle](https://mvnrepository.com/artifact/org.testfx/openjfx-monocle/1.8.0_20) - To run the library tests in 
 headless mode.
 
+
 ## Contributing
 
 We suggest [IntelIJ Community](https://www.jetbrains.com/idea/download/#section=windows) for code editing.
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull 
 requests to us.
+
 
 ## Authors
 
@@ -99,6 +143,7 @@ requests to us.
 See also the list of [contributors](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/contributors) who participated in this project.
 
 This project was developed with the support of [Sophia Genetics](http://www.sophiagenetics.com/)
+
 
 ## License
 
