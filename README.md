@@ -31,21 +31,21 @@ In order to execute the library and the application in Robot Framework, you need
 
 Import TestFxLibrary in Robot Framework:
 
-_*** Settings ***_
+    _*** Settings ***_
 
-Library | TestFXLibrary
+    Library | TestFXLibrary
 
 ### Example Test Case
 
-_*** My Test Case ***_
+    _*** My Test Case ***_
 
-Start Application | testapp.FxApplication
+    Start Application | testapp.FxApplication
 
-Click On Component | \#buttonId
+    Click On Component | \#buttonId
 
-Select From List View By Text |	\#listViewId | Example Text
+    Select From List View By Text |	\#listViewId | Example Text
 
-Close Application
+    Close Application
 
 ### WIKI
 
