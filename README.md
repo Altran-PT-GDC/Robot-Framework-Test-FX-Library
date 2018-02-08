@@ -35,7 +35,6 @@ Import TestFxLibrary in Robot Framework:
     *** Settings ***
     Library TestFXLibrary
 
-
 ### Example Test Case
 
     *** Settings ***
@@ -49,30 +48,27 @@ Import TestFxLibrary in Robot Framework:
     Close Application
     
     
-NOTICE: If your using an id (eg. #id) as locator you must escape the hash sign (eg. \\#id)
-
+TIPS: 
+- The parameter to Start the application is the package.JavaFXApplicationClass
+- If your using an id (eg. #id) as locator you must escape the hash sign in the RF script (eg. \\#id)
 
 ### Keyword Documentation
 
 You can find the keywords documentation [here](https://cdn.rawgit.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/585ec941/docs/TestFXLibrary.html)
 
-
 ### WIKI
 
 For more information visit this repository [Wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki).
 
-
 ### Tools to help component discovery
 
 ScenicView - It will show all the component id's, locators and properties for a JavaFX application. You can find more info about Scenic View [here](http://fxexperience.com/scenic-view/).
-
 
 ### Prerequisites for running tests
 
 [Robot Framework](https://github.com/robotframework/robotframework)
 
 [Jython](http://www.jython.org/)
-
 
 ### Installing
 
@@ -83,11 +79,14 @@ Then you need to make sure that the Path is configured. See here how to do it
 [here](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#configuring-path).
 
 
+
+
 # TestFX Library for Developers 
 
 This is an open source project, if you are developer you can clone this project, change the code, compile it, etc. And, of course we're realy open for contribuition. New features, additional keywords, bug reports and documentation are welcome!
 
 The library is writen in Java and the tests for the library are writen in Robot Framework, that run against a sample JavaFX application.
+
 
 ## Prerequisites
 
@@ -105,7 +104,6 @@ Clone repository to your machine.
 ```
 git clone https://github.com/altranpt/Robot-Framework-Test-FX-Library.git
 ```
-
 
 ## Running the library unit tests
 
