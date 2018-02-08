@@ -156,7 +156,7 @@ headless mode.
 
 We suggest [IntelIJ Community](https://www.jetbrains.com/idea/download/#section=windows) for code editing.
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull 
+Please read [CONTRIBUTING.md](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/blob/master/testfxlibrary/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull 
 requests to us.
 
 
@@ -171,9 +171,11 @@ requests to us.
 
 See also the list of [contributors](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/contributors) who participated in this project.
 
-This project was developed with the support of [Sophia Genetics](http://www.sophiagenetics.com/)
+This project was developed with the support and contribution of [Sophia Genetics](http://www.sophiagenetics.com/)
 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/blob/master/testfxlibrary/LICENSE.md) file for details.
+
+
