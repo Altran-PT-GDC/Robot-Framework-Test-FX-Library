@@ -53,7 +53,7 @@ TIPS:
 
 ### Keyword Documentation
 
-You can find the keywords documentation [here](https://cdn.rawgit.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/585ec941/docs/TestFXLibrary.html)
+You can find the keywords documentation [here](https://rawgit.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/master/docs/TestFXLibrary.html)
 
 ### Locators / Queries
 
