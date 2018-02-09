@@ -68,62 +68,10 @@ public class Mouse {
      * : If something goes wrong
      */
     @RobotKeyword
+    @ArgumentNames({"identifier"})
     public void clickOnComponent(String identifier) throws TimeoutException {
         Node n = TestFxLibraryCommon.lookup(identifier);
         new FxRobot().clickOn(n);
-    }
-
-    /**
-     * <b>Description:</b>This keyword clicks on a component specified with <i>identifier</i>.<br>
-     *
-     * @param identifier
-     * : The identifier of the component
-     * <br><br>
-     * <table summary="">
-     *     <tr>
-     *         <th>Parameter</th>
-     *         <th>Mandatory</th>
-     *         <th>Values</th>
-     *         <th>Default</th>
-     *     </tr>
-     *     <tr>
-     *         <td>identifier</td>
-     *         <td>Yes</td>
-     *         <td>string</td>
-     *         <td>N/A</td>
-     *     </tr>
-     *     <tr>
-     *         <td>n</td>
-     *         <td>Yes</td>
-     *         <td>int</td>
-     *         <td>N/A</td>
-     *     </tr>
-     * </table>
-     * <br>
-     *
-     * <br>
-     * <b>Examples:</b>
-     * <table summary="">
-     *     <tr>
-     *         <td>#button</td>
-     *         <td>2</td>
-     *         <td>Click On Nth Component</td>
-     *     </tr>
-     * </table>
-     * @throws TimeoutException
-     * : If something goes wrong
-     */
-    @RobotKeyword
-    @ArgumentNames({"identifier"})
-    public void clickOnNthComponent(String identifier) throws TimeoutException {
-        TestFxLibraryValidation.validateArguments(identifier);
-
-        try {
-            Node node = TestFxLibraryCommon.lookup(identifier);
-            new FxRobot().clickOn(node);
-        }catch (IllegalArgumentException e){
-            throw new TestFxLibraryFatalException(e);
-        }
     }
 
     /**
