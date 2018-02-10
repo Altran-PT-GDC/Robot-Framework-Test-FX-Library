@@ -9,6 +9,8 @@ Our library is based in [TestFX](https://github.com/TestFX/TestFX) a simple and 
 
 The goal of the TestFX Library, is to wrap the main features of TestFX in a Robot Framework library that could be easy to use.
 
+The library was created in Java (using Robot Framework Javalib Core). This makes that the RF scripts must be runned with Jython instead of Python.
+
 
 ## Getting Started
 
