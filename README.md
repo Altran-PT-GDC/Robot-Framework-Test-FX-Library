@@ -52,6 +52,7 @@ Import TestFxLibrary in Robot Framework:
 TIPS: 
 - The parameter to Start the application is the package.JavaFXApplicationClass
 - If your using an id (eg. #id) as locator you must escape the hash sign in the RF script (eg. \\#id)
+- Please visit this [wiki](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts) page for more information on how to run the scripts
 
 ### Keyword Documentation
 
