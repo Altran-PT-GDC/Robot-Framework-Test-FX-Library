@@ -23,6 +23,7 @@ Test Text Area Text Should Be
 Test Erase Text
     ${del_text}=    Set Variable    Default T
     Click On Component    \#textfield
+    Type    End
     Erase Text  3
     Text Field Text Should Be    \#textfield    ${del_text}
 

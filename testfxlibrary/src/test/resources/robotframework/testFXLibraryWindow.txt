@@ -32,7 +32,7 @@ Test Select Window
     Should Be Equal     ${get_title}     ${window_title}
 
 Test Capture Screen
-    ${screens_directory}=       Set Variable        %{USERPROFILE}/TestFxLibrary/Screenshots/
+    ${screens_directory}=       Set Variable        ${CURDIR}/Screenshots/
     Create Directory   ${screens_directory}
     ${screen_name}=   Set Variable    ScreenShot
     ${file_format}=     Set Variable    png
