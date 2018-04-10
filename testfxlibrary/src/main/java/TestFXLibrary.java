@@ -9,6 +9,7 @@ import org.robotframework.javalib.library.AnnotationLibrary;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc;
 import org.robotframework.javalib.library.RobotJavaLibrary;
+import org.robotframework.remoteserver.RemoteServer;
 
 /**
  * TestFXLibrary is a Robot Framework test library for JavaFx.<br>
@@ -170,5 +171,21 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
      */
     private void setDefaultTimeouts() {
         new Timeout().setTimeout(TimeoutConstants.GENERIC_TIMEOUT, TestFxLibraryConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * Starts a server in port 8270 with the library to allow remote library in Robot Framework using jrobotremoteserver
+     * this repository can be found at https://github.com/ombre42/jrobotremoteserver
+     *
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+        // use jrobotremoteserver to start library as a server in port 8270
+        RemoteServer.configureLogging();
+        RemoteServer server = new RemoteServer();
+        server.putLibrary("/", new TestFXLibrary());
+        server.setPort(8270);
+        server.start();
     }
 }
