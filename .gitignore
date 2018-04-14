@@ -6,3 +6,6 @@ target/**
 
 # IML file
 robotframework-TestFXLibrary.iml
+
+# PNG FILES
+*.png
