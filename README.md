@@ -9,13 +9,15 @@ Our library is based in [TestFX](https://github.com/TestFX/TestFX) a simple and 
 
 The goal of the TestFX Library, is to wrap the main features of TestFX in a Robot Framework library that could be easy to use.
 
-The library was created in Java (using Robot Framework Javalib Core). This makes that the RF scripts must be runned with Jython instead of Python.
+The library was created in Java (using Robot Framework Javalib Core). This makes that the RF scripts can be runned with Jython.
+
+NOTE: in order to use Python instead of Jython, you should use our remote library feature, please follow these [instructions](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts#running-remote-library).
 
 
 ## Getting Started
 
 1. Install Robot Framework
-2. Install Jython
+2. Install Jython 
 3. Download TestFXLibrary.jar
 4. Add the JavaFX application under test and TestFXLibrary.jar to the classpath
 5. Create a Robot Framework script
