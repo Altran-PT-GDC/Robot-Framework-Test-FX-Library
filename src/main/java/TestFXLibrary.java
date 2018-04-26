@@ -9,6 +9,7 @@ import org.robotframework.javalib.library.AnnotationLibrary;
 
 import com.altran.gdc.robotframework.testfxlibrary.utils.Javadoc2Libdoc;
 import org.robotframework.javalib.library.RobotJavaLibrary;
+import org.robotframework.remoteserver.RemoteServer;
 
 /**
  * TestFXLibrary is a Robot Framework test library for JavaFx.<br>
@@ -20,6 +21,7 @@ import org.robotframework.javalib.library.RobotJavaLibrary;
  * Download the latest version of TestFXLibrary from <a href="https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library">TestFXLibrary GitHub</a>
  * <br>
  * <h3>Classpath</h3>
+ * <h4>Running Library Locally</h4>
  * To be able to execute the library and the application in Robot Framework, you need to add both application and library jars to CLASSPATH.<br>
  * You can add them and jybot execution to a script and run it as execution profile in Robot Framework.<br>
  * Below is an example of a custom bat script:<br>
@@ -28,11 +30,19 @@ import org.robotframework.javalib.library.RobotJavaLibrary;
  * <pre>set APP_FOLDER=C:\ApplicationFolder</pre>
  * <pre>set CLASSPATH=%CLASSPATH%;%LIBRARIES_FOLDER%\*;%APP_FOLDER%\*</pre>
  * <pre>jython -m robot.run %*</pre>
+ * <h4>Running Remote Library</h4>
+ * It is possible to run as a remote library. By executing the jar file, a local server is created in port 8270.
+ * You need to add the library and the application to test in the classpath when executing the jar file, to do so use java -cp command:
+ * <pre>java -cp "&lt;library_path&gt;;&lt;app_to_be_tested_path&gt;" &lt;library_class_name&gt;</pre>
+ * Example with library and application to test in the same folder:
+ * <pre>java -cp "testFXLibrary.jar;testFxLibraryDemoApp.jar" TestFXLibrary</pre>
+ * * Example with library and application to test in different folders:
+ * <pre>java -cp "testFXLibrary.jar;C:\TestFxLibrary\testFxLibraryDemoApp.jar" TestFXLibrary</pre>
  * <h3>Importing</h3>
  * Import TestFxLibrary in Robot Framework:<br>
  * <br>
  * <table>
- *     <caption>Import</caption>
+ *     <caption>Import Library</caption>
  *     <tr>
  *         <td><b>Settings</b></td>
  *         <td><b>Value</b></td>
@@ -40,6 +50,19 @@ import org.robotframework.javalib.library.RobotJavaLibrary;
  *     <tr>
  *         <td>Library</td>
  *         <td>TestFXLibrary</td>
+ *     </tr>
+ * </table>
+ * <table>
+ *     <caption>Remote Library</caption>
+ *     <tr>
+ *         <td><b>Settings</b></td>
+ *         <td><b>Value</b></td>
+ *         <td>Arguments</td>
+ *     </tr>
+ *     <tr>
+ *         <td>Library</td>
+ *         <td>Remote</td>
+ *         <td>http://localhost:8270/ | WITH NAME | TestFXLibrary</td>
  *     </tr>
  * </table>
  * <h3>Example Test Case</h3>
@@ -170,5 +193,21 @@ public class TestFXLibrary extends AnnotationLibrary implements RobotJavaLibrary
      */
     private void setDefaultTimeouts() {
         new Timeout().setTimeout(TimeoutConstants.GENERIC_TIMEOUT, TestFxLibraryConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * Starts a server in port 8270 with the library to allow remote library in Robot Framework using jrobotremoteserver
+     * this repository can be found at https://github.com/ombre42/jrobotremoteserver
+     *
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+        // use jrobotremoteserver to start library as a server in port 8270
+        RemoteServer.configureLogging();
+        RemoteServer server = new RemoteServer();
+        server.putLibrary("/", new TestFXLibrary());
+        server.setPort(8270);
+        server.start();
     }
 }
