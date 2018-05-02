@@ -17,7 +17,7 @@ The library was created in Java (using Robot Framework Javalib Core). This makes
 ## Getting Started
 
 1. Install Robot Framework
-2. Install Jython 
+2. Install Jython (or use the [remote interface](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts#running-remote-library) to run in Python)
 3. Download TestFXLibrary.jar
 4. Add the JavaFX application under test and TestFXLibrary.jar to the classpath
 5. Create a Robot Framework script
@@ -95,6 +95,8 @@ ScenicView - It will show all the component id's, locators and properties for a 
 [Robot Framework](https://github.com/robotframework/robotframework)
 
 [Jython](http://www.jython.org/)
+
+or [Python](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts#running-remote-library) TestFXLibrary now has a remote interface that enables to run the testing in Python
 
 ### Installing
 
