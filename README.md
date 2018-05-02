@@ -11,7 +11,7 @@ The goal of the TestFX Library, is to wrap the main features of TestFX in a Robo
 
 The library was created in Java (using Robot Framework Javalib Core). This makes that the RF scripts can be runned with Jython.
 
-#### NOTE: In order to use Python instead of Jython, you should use our remote library feature, please follow these [instructions](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts#running-remote-library).
+NOTE: In order to use Python instead of Jython, you should use our remote inteface feature, please follow these [instructions](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts#running-remote-library).
 
 
 ## Getting Started
@@ -96,7 +96,7 @@ ScenicView - It will show all the component id's, locators and properties for a 
 
 [Jython](http://www.jython.org/)
 
-or [Python](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts#running-remote-library) TestFXLibrary now has a remote interface that enables to run the testing in Python
+or [Python](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/wiki/4.-Executing-Test-Scripts#running-remote-library) - TestFXLibrary now has a remote interface that enables to run the testing in Python
 
 ### Installing
 
