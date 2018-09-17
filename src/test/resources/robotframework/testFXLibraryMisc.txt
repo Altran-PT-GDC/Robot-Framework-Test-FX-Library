@@ -1,5 +1,6 @@
 *** Settings ***
 Library           TestFXLibrary
+Library           Dialogs
 Suite Setup       Start Application     testapp.FxApplicationUnitTest
 Suite Teardown    Close Application
 
@@ -11,20 +12,20 @@ Test Start Application
      Close Application
 
 Test Multiple Start Application Overload KeyWord
-     Start Application  testapp.FxApplicationUnitTest  app1
-     Start Application  testapp.FxApplicationUnitTest  app2
+     Start Application  testapp.FxApplicationUnitTest  distinctiveName=app1
+     Start Application  testapp.FxApplicationUnitTest  distinctiveName=app2
      Close Application
 
 Test Switch Application
-     Start Application  testapp.FxApplicationUnitTest  app1
-     Start Application  testapp.FxApplicationUnitTest  app2
+     Start Application  testapp.FxApplicationUnitTest  distinctiveName=app1
+     Start Application  testapp.FxApplicationUnitTest  distinctiveName=app2
      Switch Application     app1
      Close Application
      [Teardown]     Start Application   testapp.FxApplicationUnitTest
 
 Test Switch Application not exist
-     Start Application  testapp.FxApplicationUnitTest  app1
-     Start Application  testapp.FxApplicationUnitTest  app2
+     Start Application  testapp.FxApplicationUnitTest  distinctiveName=app1
+     Start Application  testapp.FxApplicationUnitTest  distinctiveName=app2
      ${listApp} =   Switch Application     app4
      Close Application
      [Teardown]     Start Application   testapp.FxApplicationUnitTest
@@ -56,4 +57,13 @@ Test List Components In Context
 
 Test Get Node All
      Get Node All       \#vbuttons1[0]
+
+Test Start Application With Custom Arguments
+     Close Application
+     Start Application   testapp.FxApplicationUnitTest    args=newText
+     Text Field Text Should Be    \#textfield    newText
+
+
+
+
 
