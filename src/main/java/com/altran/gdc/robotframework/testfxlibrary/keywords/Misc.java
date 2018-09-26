@@ -93,7 +93,7 @@ public class Misc {
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"className" , "distinctiveName=null", "args=null"})
+    @ArgumentNames({"className" , "distinctiveName=null", "*args=null"})
     public void startApplication(String className, String distinctiveName, String... args){
 
         TestFxLibraryValidation.validateArguments(className, distinctiveName);

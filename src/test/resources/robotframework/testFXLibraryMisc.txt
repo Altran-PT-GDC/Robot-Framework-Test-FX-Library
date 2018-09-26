@@ -60,8 +60,8 @@ Test Get Node All
 
 Test Start Application With Custom Arguments
      Close Application
-     Start Application   testapp.FxApplicationUnitTest    args=newText
-     Text Field Text Should Be    \#textfield    newText
+     Start Application   testapp.FxApplicationUnitTest    Application1    ArgumentNumber1    ArgumentNumber2    ArgumentNumber3
+     Text Field Text Should Be    \#textfield    ArgumentNumber1ArgumentNumber2ArgumentNumber3
 
 
 

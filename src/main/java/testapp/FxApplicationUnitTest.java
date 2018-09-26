@@ -369,10 +369,11 @@ public class FxApplicationUnitTest extends Application {
 
         //Add text field with default text
         HBox hBoxText = new HBox();
-        String default_text;
-
+        String default_text = "";
         if(args.size() > 0) {
-           default_text = args.get(0);
+            for (int i=0; i<args.size(); i++){
+                default_text += args.get(i);
+            }
         }else {
             default_text = "Default Text";
         }
