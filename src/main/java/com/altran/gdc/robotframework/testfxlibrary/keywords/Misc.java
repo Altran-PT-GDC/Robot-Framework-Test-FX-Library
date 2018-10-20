@@ -164,7 +164,7 @@ public class Misc {
     /**
      * <b>Description:</b> This keyword launches JavaFX application from external JAR.<br>
      * The classname given must extend javafx.application.Application.<br>
-     * ATENTTION: The JAR must be added to the classpath beforehand.<br>
+     * IMPORTANT: The JAR must be added to the classpath beforehand.<br>
      *
      * @param applicationJAR
      * : The path of the JAR that contains the application to be launched
