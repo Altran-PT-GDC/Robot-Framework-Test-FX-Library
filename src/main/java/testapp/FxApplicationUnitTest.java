@@ -373,6 +373,9 @@ public class FxApplicationUnitTest extends Application {
         if(args.size() > 0) {
             for (int i=0; i<args.size(); i++){
                 default_text += args.get(i);
+                if (i!=args.size()-1){
+                    default_text += ";";
+                }
             }
         }else {
             default_text = "Default Text";
