@@ -5,7 +5,6 @@ Suite Setup       Start Application     testapp.FxApplicationUnitTest
 Suite Teardown    Close Application
 
 *** Test Cases ***
-
 Test Start Application
      Close Application
      Start Application  testapp.FxApplicationUnitTest
@@ -50,7 +49,6 @@ Test Get Component Attribute
 Test List Component Methods
      List Component Methods    \#vbuttons1[0]
 
-
 Test List Components In Context
      ${component_context}=       List Components In Context
      Should Not Be Empty    ${component_context}
@@ -60,8 +58,10 @@ Test Get Node All
 
 Test Start Application With Custom Arguments
      Close Application
-     Start Application   testapp.FxApplicationUnitTest    Application1    ArgumentNumber1    ArgumentNumber2    ArgumentNumber3
-     Text Field Text Should Be    \#textfield    ArgumentNumber1ArgumentNumber2ArgumentNumber3
+     @{arguments_list}=    Create List    ArgumentNumber1    ArgumentNumber2   ArgumentNumber3
+     Start Application   testapp.FxApplicationUnitTest    Application1    @{arguments_list}
+     ${expected_text}=    Catenate    SEPARATOR=;    @{arguments_list}
+     Text Field Text Should Be    \#textfield    ${expected_text}
 
 
 
