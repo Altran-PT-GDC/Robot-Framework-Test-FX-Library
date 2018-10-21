@@ -15,6 +15,13 @@ Test Multiple Start Application Overload KeyWord
      Start Application  testapp.FxApplicationUnitTest  distinctiveName=app2
      Close Application
 
+Test Start Application With Custom Arguments
+     @{arguments_list}=    Create List    ArgumentNumber1    ArgumentNumber2   ArgumentNumber3
+     Start Application   testapp.FxApplicationUnitTest    Application1    @{arguments_list}
+     ${expected_text}=    Catenate    SEPARATOR=;    @{arguments_list}
+     Text Field Text Should Be    \#textfield    ${expected_text}
+     Close Application
+
 Test Switch Application
      Start Application  testapp.FxApplicationUnitTest  distinctiveName=app1
      Start Application  testapp.FxApplicationUnitTest  distinctiveName=app2
@@ -55,13 +62,6 @@ Test List Components In Context
 
 Test Get Node All
      Get Node All       \#vbuttons1[0]
-
-Test Start Application With Custom Arguments
-     Close Application
-     @{arguments_list}=    Create List    ArgumentNumber1    ArgumentNumber2   ArgumentNumber3
-     Start Application   testapp.FxApplicationUnitTest    Application1    @{arguments_list}
-     ${expected_text}=    Catenate    SEPARATOR=;    @{arguments_list}
-     Text Field Text Should Be    \#textfield    ${expected_text}
 
 
 
