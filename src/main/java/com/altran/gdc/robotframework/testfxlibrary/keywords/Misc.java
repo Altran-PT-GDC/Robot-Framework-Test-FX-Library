@@ -54,7 +54,7 @@ public class Misc {
     /**
      * <b>Description:</b> This keyword launches JavaFX application. The classname
      * passed as <i>className</i> must extend javafx.application.Application.<br>
-     * ATENTTION: The class must be added to the classpath beforehand.<br>
+     * IMPORTANT: The class must be added to the classpath beforehand.<br>
      *
      * @param className
      * : The name of the class that extends javafx.application.Application to be launched
@@ -72,12 +72,18 @@ public class Misc {
      *         <td>className</td>
      *         <td>Yes</td>
      *         <td>string</td>
-     *         <td>N/A</td>
+     *
      *     </tr>
      *     <tr>
      *         <td>distinctiveName</td>
-     *         <td>Yes</td>
+     *         <td>No</td>
      *         <td>string</td>
+     *         <td>N/A</td>
+     *     </tr>
+     *     <tr>
+     *         <td>args</td>
+     *         <td>No</td>
+     *         <td>string or list of strings</td>
      *         <td>N/A</td>
      *     </tr>
      * </table>
@@ -89,6 +95,7 @@ public class Misc {
      *         <td>Start Application</td>
      *         <td>AnApplication</td>
      *         <td>Application1</td>
+     *         <td>myCustomArguments</td>
      *     </tr>
      * </table>
      */
@@ -124,7 +131,7 @@ public class Misc {
     /**
      * <b>Description:</b> This keyword launches JavaFX application. The classname
      * passed as <i>className</i> must extend javafx.application.Application.<br>
-     * ATENTTION: The class must be added to the classpath beforehand.<br>
+     * IMPORTANT: The class must be added to the classpath beforehand.<br>
      *
      * @param className
      * : The name of the class that extends javafx.application.Application to be launched
