@@ -108,9 +108,11 @@ public class FxApplicationUnitTest extends Application {
         launch(args);
     }
 
-
     @Override
     public void start(Stage primaryStage) throws InterruptedException {
+
+        List<String> args = this.getParameters().getRaw();
+
         //Set main pane
         Pane p = new Pane();
         p.setPrefSize(MAIN_PANE_WIDTH, MAIN_PANE_HEIGHT);
@@ -367,7 +369,19 @@ public class FxApplicationUnitTest extends Application {
 
         //Add text field with default text
         HBox hBoxText = new HBox();
-        TextField textField = new TextField("Default Text");
+        String default_text = "";
+        if(args.size() > 0) {
+            for (int i=0; i<args.size(); i++){
+                default_text += args.get(i);
+                if (i!=args.size()-1){
+                    default_text += ";";
+                }
+            }
+        }else {
+            default_text = "Default Text";
+        }
+        //default_text = "Default Text";
+        TextField textField = new TextField(default_text);
         textField.setId("textfield");
         TextArea textArea = new TextArea("Text Area Text");
         textArea.setId("textarea");

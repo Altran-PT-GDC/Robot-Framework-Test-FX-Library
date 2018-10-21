@@ -93,8 +93,8 @@ public class Misc {
      * </table>
      */
     @RobotKeyword
-    @ArgumentNames({"className" , "distinctiveName=null"})
-    public void startApplication(String className, String distinctiveName){
+    @ArgumentNames({"className" , "distinctiveName=null", "*args=null"})
+    public void startApplication(String className, String distinctiveName, String... args){
 
         TestFxLibraryValidation.validateArguments(className, distinctiveName);
 
@@ -103,7 +103,7 @@ public class Misc {
             int size = new FxRobot().listTargetWindows().size();
             if(size == 0) {
                 FxToolkit.registerPrimaryStage();
-                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className), args);
                 FxToolkit.showStage();
                 TestFXLibraryCache.getIstance().put(KEY + distinctiveName, FxToolkit.toolkitContext().getPrimaryStageFuture());
             } else {
@@ -111,7 +111,7 @@ public class Misc {
                     stage[0] = new Stage();
                     return stage[0];
                 });
-                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className));
+                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className), args);
                 FxToolkit.showStage();
                 TestFXLibraryCache.getIstance().put(KEY + distinctiveName, stage[0]);
             }
@@ -164,7 +164,7 @@ public class Misc {
     /**
      * <b>Description:</b> This keyword launches JavaFX application from external JAR.<br>
      * The classname given must extend javafx.application.Application.<br>
-     * ATENTTION: The JAR must be added to the classpath beforehand.<br>
+     * IMPORTANT: The JAR must be added to the classpath beforehand.<br>
      *
      * @param applicationJAR
      * : The path of the JAR that contains the application to be launched
