@@ -1,9 +1,6 @@
 package com.altran.gdc.robotframework.testfxlibrary.utils;
 
-
-
-
-import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Objects.requireNonNull;
 
 public class TestFxLibraryValidation {
 
@@ -20,7 +17,7 @@ public class TestFxLibraryValidation {
      */
     public static void validateArguments(Object... args){
         for(Object obj : args){
-            checkNotNull(obj, String.format("Argument %s is null", obj ));
+            requireNonNull(obj, String.format("Argument %s is null", obj ));
 
             if (obj instanceof String ){
                 if(((String) obj).isEmpty()){

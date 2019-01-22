@@ -20,7 +20,6 @@ import org.python.jline.internal.Log;
 import org.robotframework.javalib.annotation.*;
 import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
-import org.testfx.toolkit.PrimaryStageFuture;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -539,7 +538,7 @@ public class Misc {
         try {
             Class clazz = Class.forName(node.getClass().getName());
 
-            Object obj = clazz.newInstance();
+            Object obj = clazz.getDeclaredConstructor().newInstance();
 
             Method[] methods = obj.getClass().getMethods();
 
@@ -559,7 +558,7 @@ public class Misc {
                 }
             }
 
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException  e) {
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
             throw new TestFxLibraryFatalException(e);
         }
         return list.toString();
@@ -710,9 +709,9 @@ public class Misc {
                 }
             }
         } else {
-            if(obj instanceof PrimaryStageFuture){
+            if(obj instanceof CompletableFuture){
                 try {
-                    stage = ((PrimaryStageFuture) obj).get();
+                    stage = ((CompletableFuture<Stage>) obj).get();
                 } catch (Exception e) {
                     throw new TestFxLibraryNonFatalException(e);
                 }
