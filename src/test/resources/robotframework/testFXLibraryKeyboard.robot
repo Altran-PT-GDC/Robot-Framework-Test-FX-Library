@@ -5,10 +5,12 @@ Suite Teardown    Close Application
 
 *** Test Cases ***
 Test Press
+    Focus To Component          \#textfield
     Press       Enter
     Verify That Is Enabled      \#disableBtn
 
 Test Release
+    Focus To Component          \#textfield
     Release       Enter
     Verify That Is Disabled      \#disableBtn
 
