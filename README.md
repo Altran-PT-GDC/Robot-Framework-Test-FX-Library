@@ -111,7 +111,7 @@ Then you need to make sure that the Path is configured. See here how to do it
 
 # TestFX Library for Developers 
 
-This is an open source project, if you are developer you can clone this project, change the code, compile it, etc. And, of course we're realy open for contribuition. New features, additional keywords, bug reports and documentation are welcome!
+This is an open source project, if you are developer you can clone this project, change the code, compile it, etc. And, of course we're really open for contribuition. New features, additional keywords, bug reports and documentation are welcome!
 
 The library is writen in Java and the tests for the library are writen in Robot Framework, that run against a sample JavaFX application.
 
@@ -174,13 +174,13 @@ mvn deploy
 
 ## Built With
 
-* [TestFX](https://github.com/TestFX/TestFX) - The JavaFX test framework - we're using TestFX 4.0.6-alpha.
-* [Java 8](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html) - Java version.
+* [TestFX](https://github.com/TestFX/TestFX) - The JavaFX test framework - we're using TestFX 4.0.15-alpha.
+* [Java 11](https://jdk.java.net/11/) - Java version.
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [RobotFramework](http://robotframework.org/MavenPlugin/examples/javalibraries.html) - To run phyton test cases in 
+* [RobotFramework](http://robotframework.org/MavenPlugin/examples/javalibraries.html) - To run python test cases in 
 java projects
 * [RobotFramework Javalib Core](https://github.com/robotframework/JavalibCore) - Javalib Core is a common core for all Robot Framework test libraries written in Java.
-* [Monocle](https://mvnrepository.com/artifact/org.testfx/openjfx-monocle/1.8.0_20) - To run the library tests in 
+* [Monocle](https://mvnrepository.com/artifact/org.testfx/openjfx-monocle/jdk-11+26) - To run the library tests in 
 headless mode.
 
 
@@ -188,7 +188,7 @@ headless mode.
 
 We suggest [IntelIJ Community](https://www.jetbrains.com/idea/download/#section=windows) for code editing.
 
-Please read [CONTRIBUTING.md](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/blob/master/testfxlibrary/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull 
+Please read [CONTRIBUTING.md](https://github.com/weiqigao/Robot-Framework-Test-FX-Library/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull 
 requests to us.
 
 
@@ -200,7 +200,8 @@ requests to us.
 * **Diogo Ribeiro** 
 * **Pedro Costa** 
 * **Bruno Calado** 
-* **Hugo Firmino** 
+* **Hugo Firmino**
+* **Weiqi Gao** 
 
 See also the list of [contributors](https://github.com/Altran-PT-GDC/Robot-Framework-Test-FX-Library/contributors) who participated in this project.
 

@@ -7,13 +7,14 @@ import com.altran.gdc.robotframework.testfxlibrary.utils.TimeoutConstants;
 import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;
 import org.robotframework.javalib.annotation.*;
-import org.testfx.service.support.WaitUntilSupport;
+import org.testfx.util.WaitForAsyncUtils;
 
 import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
-import static org.testfx.matcher.base.NodeMatchers.hasText;
+import static org.testfx.matcher.control.LabeledMatchers.hasText;
 import static org.testfx.matcher.base.NodeMatchers.isDisabled;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
@@ -78,14 +79,11 @@ public class Wait {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateTimeout(timeout);
 
-        try{
-
-            new WaitUntilSupport().waitUntil(misc.getNode(identifier), Matchers.is(isVisible()), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
+        try {
+            WaitForAsyncUtils.waitFor(timeout, TimeUnit.SECONDS,
+                    () -> Matchers.is(isVisible()).matches(misc.getNode(identifier)));
+        } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
-
         }
 
     }
@@ -184,14 +182,11 @@ public class Wait {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateTimeout(timeout);
 
-        try{
-
-            new WaitUntilSupport().waitUntil(misc.getNode(identifier), Matchers.not(isVisible()), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
+        try {
+            WaitForAsyncUtils.waitFor(timeout, TimeUnit.SECONDS,
+                    () -> Matchers.not(isVisible()).matches(misc.getNode(identifier)));
+        } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
-
         }
     }
 
@@ -298,14 +293,11 @@ public class Wait {
         TestFxLibraryValidation.validateArguments(identifier, textToValidate);
         TestFxLibraryValidation.validateTimeout(timeout);
 
-        try{
-
-            new WaitUntilSupport().waitUntil(misc.getNode(identifier), hasText(textToValidate), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
+        try {
+                WaitForAsyncUtils.waitFor(timeout, TimeUnit.SECONDS, () -> hasText(textToValidate)
+                        .matches(misc.getNode(identifier)));
+        } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
-
         }
     }
 
@@ -421,14 +413,11 @@ public class Wait {
         TestFxLibraryValidation.validateArguments(identifier, textToValidate);
         TestFxLibraryValidation.validateTimeout(timeout);
 
-        try{
-
-            new WaitUntilSupport().waitUntil(misc.getNode(identifier), Matchers.not(hasText(textToValidate)), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
+        try {
+                WaitForAsyncUtils.waitFor(timeout, TimeUnit.SECONDS,
+                        () -> Matchers.not(hasText(textToValidate)).matches(misc.getNode(identifier)));
+        } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
-
         }
     }
 
@@ -535,14 +524,11 @@ public class Wait {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateTimeout(timeout);
 
-        try{
-
-            new WaitUntilSupport().waitUntil(misc.getNode(identifier), Matchers.is(isDisabled()),timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
+        try {
+            WaitForAsyncUtils.waitFor(timeout, TimeUnit.SECONDS,
+                    () -> Matchers.is(isDisabled()).matches(misc.getNode(identifier)));
+        } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
-
         }
     }
 
@@ -640,14 +626,11 @@ public class Wait {
         TestFxLibraryValidation.validateArguments(identifier);
         TestFxLibraryValidation.validateTimeout(timeout);
 
-        try{
-
-            new WaitUntilSupport().waitUntil(misc.getNode(identifier), Matchers.not(isDisabled()), timeout);
-
-        } catch (IllegalArgumentException | NullPointerException e){
-
+        try {
+            WaitForAsyncUtils.waitFor(timeout, TimeUnit.SECONDS,
+                    () -> Matchers.not(isDisabled()).matches(misc.getNode(identifier)));
+        } catch (IllegalArgumentException | NullPointerException | TimeoutException e) {
             throw new TestFxLibraryFatalException(e);
-
         }
     }
 
@@ -745,11 +728,19 @@ public class Wait {
         try{
 
             Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-            Awaitility.await().until(() -> misc.getNode(identifier) != null);
+            Awaitility.await().until(() -> nodeIsPresent(identifier));
 
         } catch (IllegalArgumentException | NullPointerException e){
             throw new TestFxLibraryFatalException(e);
 
+        }
+    }
+
+    private boolean nodeIsPresent(String identifier) {
+        try {
+            return misc.getNode(identifier) != null;
+        } catch (Exception e) {
+            return false;
         }
     }
 
@@ -850,12 +841,20 @@ public class Wait {
         try{
 
             Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-            Awaitility.await().until(() -> misc.getNode(identifier) == null);
+            Awaitility.await().until(() -> nodeIsNotPresent(identifier));
 
         } catch (IllegalArgumentException | NullPointerException e){
 
             throw new TestFxLibraryFatalException(e);
 
+        }
+    }
+
+    private boolean nodeIsNotPresent(String identifier) {
+        try {
+            return misc.getNode(identifier) == null;
+        } catch (Exception e) {
+            return true;
         }
     }
 
@@ -958,7 +957,7 @@ public class Wait {
             try{
 
                 Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-                Awaitility.await().until(() -> misc.getNode(identifier) != null);
+                Awaitility.await().until(() -> nodeIsPresent(identifier));
 
             } catch (IllegalArgumentException | NullPointerException e){
 
@@ -970,7 +969,7 @@ public class Wait {
             try {
 
                 Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-                Awaitility.await().until(() -> misc.getNode(changedIdentifier) != null);
+                Awaitility.await().until(() -> nodeIsPresent(changedIdentifier));
 
             } catch (IllegalArgumentException | NullPointerException e) {
 
@@ -1084,7 +1083,7 @@ public class Wait {
             try{
 
                 Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-                Awaitility.await().until(() -> misc.getNode(identifier) == null);
+                Awaitility.await().until(() -> nodeIsNotPresent(identifier));
 
             } catch (IllegalArgumentException | NullPointerException e){
 
@@ -1096,7 +1095,7 @@ public class Wait {
             try {
 
                 Awaitility.setDefaultTimeout(timeout, TimeUnit.SECONDS);
-                Awaitility.await().until(() -> misc.getNode(changedIdentifier) == null);
+                Awaitility.await().until(() -> nodeIsNotPresent(changedIdentifier));
 
             } catch (IllegalArgumentException | NullPointerException e) {
 
@@ -1191,7 +1190,7 @@ public class Wait {
     @ArgumentNames({"timeout"})
     public void defaultWait(long timeout) throws IOException {
         try {
-            new WaitUntilSupport().wait(timeout);
+            new Object().wait(timeout);
         } catch (InterruptedException e) {
             log.error("Error!");
         }
