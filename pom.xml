@@ -10,7 +10,7 @@
 
     <groupId>com.altran.gdc</groupId>
     <artifactId>robotframework-TestFXLibrary</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 
     <name>Test Library - robotframework-TestFXLibrary</name>
     <url>http://www.company.com/department/project</url>

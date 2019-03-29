@@ -43,7 +43,8 @@ public class Misc {
     private static final int CLASS_VALUE = 6;
     private static final int MILLISECONDS = 1000;
     private static final String ATTRIBUTES_STRING = "Attributes";
-    private static final String KEY = "APP_";
+    private static final String STAGE_KEY = "STAGE_";
+    private static final String APP_KEY = "APP_";
     private static final String METHODS_STRING = "Methods";
 
 
@@ -59,6 +60,8 @@ public class Misc {
      * : The name of the class that extends javafx.application.Application to be launched
      * @param distinctiveName
      * : The name to identify the session of the application
+     * @param args
+     * : The command line arguments to pass into the application
      * <br><br>
      * <table summary="">
      *     <tr>
@@ -97,31 +100,38 @@ public class Misc {
      *         <td>myCustomArguments</td>
      *     </tr>
      * </table>
+     *
+     * @return
+     *  The applicationKey that can be used with closeApplication.
      */
     @RobotKeyword
     @ArgumentNames({"className" , "distinctiveName=null", "*args=null"})
-    public void startApplication(String className, String distinctiveName, String... args){
+    public String startApplication(String className, String distinctiveName, String... args){
 
         TestFxLibraryValidation.validateArguments(className, distinctiveName);
 
         final Stage[] stage = {null};
         try {
             int size = new FxRobot().listTargetWindows().size();
+            String applicationKey = APP_KEY + distinctiveName + UUID.randomUUID();
+            String stageKey = STAGE_KEY + distinctiveName;
             if(size == 0) {
                 FxToolkit.registerPrimaryStage();
-                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className), args);
+                Application application = FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className), args);
                 FxToolkit.showStage();
-                TestFXLibraryCache.getIstance().put(KEY + distinctiveName, FxToolkit.toolkitContext().getPrimaryStageFuture());
+                TestFXLibraryCache.getIstance().put(stageKey, FxToolkit.toolkitContext().getPrimaryStageFuture());
+                TestFXLibraryCache.getIstance().put(applicationKey, application);
             } else {
                 FxToolkit.registerStage(() -> {
                     stage[0] = new Stage();
                     return stage[0];
                 });
-                FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className), args);
+                Application application = FxToolkit.setupApplication((Class<? extends Application>) Class.forName(className), args);
                 FxToolkit.showStage();
-                TestFXLibraryCache.getIstance().put(KEY + distinctiveName, stage[0]);
+                TestFXLibraryCache.getIstance().put(stageKey, stage[0]);
+                TestFXLibraryCache.getIstance().put(applicationKey, application);
             }
-
+            return applicationKey;
         } catch (TimeoutException | ClassNotFoundException e) {
             throw new TestFxLibraryFatalException(e);
         }
@@ -158,12 +168,15 @@ public class Misc {
      *         <td>AnApplication</td>
      *     </tr>
      * </table>
+     *
+     * @return
+     *  The applicationKey that can be used with closeApplication.
      */
     @RobotKeywordOverload
-    public void startApplication(String className){
+    public String startApplication(String className){
         TestFxLibraryValidation.validateArguments(className);
 
-        startApplication(className, " ");
+        return startApplication(className, " ");
 
     }
 
@@ -261,11 +274,34 @@ public class Misc {
      * @throws TestFxLibraryFatalException
      *      If something goes wrong
      */
-    @RobotKeyword
+    @RobotKeywordOverload
     public void closeApplication() {
         try {
             FxToolkit.hideStage();
             FxToolkit.cleanupStages();
+        } catch (Exception e) {
+            throw new TestFxLibraryFatalException(e);
+        }
+    }
+
+    /**
+     * <b>Description:</b> This keyword closes the specified JavaFX application. The primary stage is hidden and cleaned
+     * up. The application's stop() method is called.<br>
+     *
+     * @param applicationKey
+     * : The applicationKey returned from startApplication().
+     * @throws TestFxLibraryFatalException
+     *      If something goes wrong
+     */
+    @RobotKeyword
+    @ArgumentNames({"applicationKey="})
+    public void closeApplication(String applicationKey) {
+        try {
+            FxToolkit.hideStage();
+            FxToolkit.cleanupStages();
+            Application application = (Application) TestFXLibraryCache.getIstance()
+                                         .get(applicationKey);
+            FxToolkit.cleanupApplication(application);
         } catch (Exception e) {
             throw new TestFxLibraryFatalException(e);
         }
@@ -704,7 +740,7 @@ public class Misc {
 
         if(obj == null){
             for (String key : TestFXLibraryCache.getIstance().getMap().keySet()) {
-                if(key != null && key.startsWith(KEY) && !" ".equals(key.split("_")[1])){
+                if(key != null && key.startsWith(STAGE_KEY) && !" ".equals(key.split("_")[1])){
                     listAppKey.add(key);
                 }
             }

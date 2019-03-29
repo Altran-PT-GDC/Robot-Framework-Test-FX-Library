@@ -22,6 +22,11 @@ Test Start Application With Custom Arguments
      Text Field Text Should Be    \#textfield    ${expected_text}
      Close Application
 
+Test Start Application Then Close Application
+     @{arguments_list}=     Create List    ArgumentNumber1    ArgumentNumber2   ArgumentNumber3
+     ${applicationKey}=     Start Application   testapp.FxApplicationUnitTest    Application1    @{arguments_list}
+     Close Application      ${applicationKey}
+
 Test Switch Application
      Start Application  testapp.FxApplicationUnitTest  distinctiveName=app1
      Start Application  testapp.FxApplicationUnitTest  distinctiveName=app2
